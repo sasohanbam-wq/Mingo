@@ -19,13 +19,13 @@
 <div id="stockList" class="list"><div class="stock">시장 데이터 불러오는 중…</div></div>
 
 <details><summary>📐 V2 점수/게이트 방식</summary><div class="inside">
-<div class="minirow"><b>가격 유효성</b><span>KRX 최근 완료 정규세션과 종목·벤치마크 날짜 일치 필수</span></div>
+<div class="minirow"><b>가격 유효성</b><span>KRX 최근 완료 정규세션 필수. 벤치마크 날짜가 다르면 초과수익만 N/A</span></div>
 <div class="minirow"><b>눌림형</b><span>정의된 매수구간 + MA20 위 + 상승추세 + 지지/반전 확인</span></div>
 <div class="minirow"><b>돌파형</b><span>실제 High 기반 저항 + 종가 돌파 + 거래량 1.2× + 8% 이내</span></div>
 <div class="minirow"><b>회복형</b><span>회복 트리거 + MA20 회복 + 반전 확인</span></div>
 <div class="minirow"><b>가치스윙</b><span>별도 상태로 분리; 추세매수와 동일 라벨 사용 금지</span></div>
 <div class="minirow"><b>기술점수</b><span>추세 45% · 지수 초과수익 30% · Wilder RSI 15% · 거래량 10%</span></div>
-<div class="minirow"><b>F/E/V</b><span>기존 점수는 감사용 보존. 근거·날짜·출처 재검증 전 확정 총점 N/A</span></div>
+<div class="minirow"><b>F/E/V</b><span>F 37.5% · E 37.5% · V 25%. 세 요인이 모두 verified일 때만 연구점수 생성</span></div><div class="minirow"><b>확정 🟢</b><span>셋업 Gate 통과 + 연구점수 70 이상 + 가격 데이터 유효</span></div>
 </div></details>
 
 <details><summary>🧾 기업점수 검증 현황</summary><div id="evidenceList" class="inside"></div></details>
@@ -37,8 +37,10 @@ const fmt=n=>n==null?'—':Math.round(n).toLocaleString('ko-KR');
 function badgeClass(s){return ['green','blue','yellow','red','gray'].includes(s)?s:'gray'}
 function row(s){
  const ev=s.evidence_status||'legacy_unverified';
- const legacy='기존 F '+(s.legacy_F??'—')+' · E '+(s.legacy_E??'—')+' · V '+(s.legacy_V??'—');
- return '<a class="stock" data-state="'+s.state+'" data-name="'+s.name.toLowerCase()+'" href="stocks/'+s.page+'"><div><b>'+s.name+'</b> <span class="ticker">'+s.code+'</span><div class="desc">'+s.theme+'</div><div class="meta">현재 '+fmt(s.price)+'원 · 가격기준 '+(s.quote_as_of||'—')+' · RSI '+(s.rsi14_wilder??'—')+'</div><div class="meta">'+s.setup_reason+'</div></div><div class="stockright"><span class="badge '+badgeClass(s.state)+'">'+s.label+'</span><div class="scorebig">'+(s.execution_score??'—')+'</div><div class="factors">기술/셋업 점수 · '+legacy+'</div><div class="meta '+(ev==='verified'?'':'warn')+'">근거 '+ev+'</div></div></a>';
+ const research='새 F '+(s.research_F??'N/A')+' · E '+(s.research_E??'N/A')+' · V '+(s.research_V??'N/A');
+ const statuses='F '+(s.research_F_status??'—')+' / E '+(s.research_E_status??'—')+' / V '+(s.research_V_status??'—');
+ const legacy='기존 '+(s.legacy_F??'—')+'/'+(s.legacy_E??'—')+'/'+(s.legacy_V??'—');
+ return '<a class="stock" data-state="'+s.state+'" data-name="'+s.name.toLowerCase()+'" href="stocks/'+s.page+'"><div><b>'+s.name+'</b> <span class="ticker">'+s.code+'</span><div class="desc">'+s.theme+'</div><div class="meta">현재 '+fmt(s.price)+'원 · 가격기준 '+(s.quote_as_of||'—')+' · RSI '+(s.rsi14_wilder??'—')+'</div><div class="meta">'+s.setup_reason+'</div></div><div class="stockright"><span class="badge '+badgeClass(s.state)+'">'+s.label+'</span><div class="scorebig">'+(s.execution_score??'—')+'</div><div class="factors">연구 '+(s.research_score??'N/A')+' · '+research+'</div><div class="meta '+(ev==='verified'?'':'warn')+'">'+statuses+' · '+ev+'</div><div class="meta">감사용 '+legacy+'</div></div></a>';
 }
 function render(d){
  DATA=d;
@@ -49,7 +51,7 @@ function render(d){
  const pass=d.stocks.filter(s=>s.quote_valid&&s.setup_pass&&(s.state==='blue'||s.state==='green')).slice(0,5);
  document.getElementById('top5').innerHTML=pass.length?pass.map((s,i)=>'<a class="pick" href="stocks/'+s.page+'"><div class="rank">#'+(i+1)+'</div><div><div class="pickname">'+s.name+'</div><div class="reason">'+s.setup_reason+'</div></div><div class="pickright"><span class="badge '+badgeClass(s.state)+'">'+s.label+'</span><div class="scorebig">'+s.execution_score+'점</div><div class="price">'+fmt(s.price)+'원</div><div class="trigger">구간 '+fmt(s.buy_zone?.[0])+'~'+fmt(s.buy_zone?.[1])+' · 트리거 '+fmt(s.trigger)+'</div></div></a>').join(''):'<div class="sub">현재 V2 셋업 Gate를 통과한 종목이 없다. 억지로 TOP5를 채우지 않는다.</div>';
  document.getElementById('stockList').innerHTML=d.stocks.map(row).join('');
- document.getElementById('evidenceList').innerHTML=d.stocks.map(s=>'<div class="minirow"><b>'+s.name+'</b><span>'+s.evidence_status+' · 연구점수 '+(s.research_score??'N/A')+'</span></div>').join('');
+ document.getElementById('evidenceList').innerHTML=[...d.stocks].sort((a,b)=>(b.research_score??-1)-(a.research_score??-1)).map(s=>'<div class="minirow"><b>'+s.name+'</b><span>F '+(s.research_F??'N/A')+' · E '+(s.research_E??'N/A')+' · V '+(s.research_V??'N/A')+' · 연구 '+(s.research_score??'N/A')+' · '+s.evidence_status+'</span></div>').join('');
  apply();
  const err=document.getElementById('error');
  if(d.errors&&d.errors.length){err.style.display='block';err.textContent='데이터/계산 오류 '+d.errors.length+'건. 해당 종목은 자동으로 평가 보류된다.'}else err.style.display='none';
