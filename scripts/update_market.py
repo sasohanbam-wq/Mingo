@@ -10,6 +10,7 @@ import yfinance as yf
 ROOT = os.path.dirname(os.path.dirname(__file__))
 CFG = os.path.join(ROOT, "data", "stocks.json")
 OUT = os.path.join(ROOT, "data", "live_scores.json")
+EVIDENCE = os.path.join(ROOT, "data", "research_evidence.json")
 KST = ZoneInfo("Asia/Seoul")
 CAL = xcals.get_calendar("XKRX")
 SOURCE = "Yahoo Finance daily OHLCV via yfinance (completed regular session only)"
@@ -352,25 +353,42 @@ def setup_gate(df, metrics, setup):
     }
 
 
-def classify(data_valid, gate, evidence_status, technical_score):
+def compute_research_score(research):
+    if not research:
+        return None, "N/A — no structured research evidence"
+    factors = [research.get("F", {}), research.get("E", {}), research.get("V", {})]
+    if any(x.get("status") != "verified" or x.get("score") is None for x in factors):
+        return None, "N/A — one or more F/E/V factors are not verified"
+    score = round(
+        0.375 * float(research["F"]["score"])
+        + 0.375 * float(research["E"]["score"])
+        + 0.25 * float(research["V"]["score"]),
+        1,
+    )
+    return score, "verified"
+
+
+def classify(data_valid, gate, evidence_status, research_score, technical_score):
     if not data_valid:
         return "gray", "⚪ 데이터 확인 필요"
     if gate["invalidated"] or gate["overheated"]:
         return "red", "🔴 보류"
     if gate["setup_pass"]:
-        if evidence_status == "verified":
+        if evidence_status == "verified" and research_score is not None and research_score >= 70:
             if gate["setup_type"] == "value_swing":
-                return "blue", "🟦 가치스윙 조건충족"
-            return "green", "🟢 매수 Gate 통과"
+                return "blue", "🟦 가치스윙 조건충족 · 연구점수 통과"
+            return "green", "🟢 데이터·셋업·연구점수 통과"
+        if evidence_status == "verified" and research_score is not None:
+            return "blue", f"🔵 셋업 통과 · 연구점수 {research_score}(<70)"
         if gate["setup_type"] == "value_swing":
-            return "blue", "🟦 가치스윙 조건충족·근거 검증중"
-        return "blue", "🔵 셋업 통과·근거 검증중"
+            return "blue", "🟦 가치스윙 조건충족 · F/E/V 검증중"
+        return "blue", "🔵 셋업 통과 · F/E/V 검증중"
     if technical_score < 30:
         return "red", "🔴 기술 약세"
     return "yellow", "🟡 조건부/대기"
 
 
-def process_stock(stock, bench_df, context):
+def process_stock(stock, bench_df, context, research_map):
     symbol = stock["code"] + (".KS" if stock["exchange"] == "KS" else ".KQ")
     raw = load_history(symbol)
     hist, quote_as_of, quote_ok = select_completed(raw, context["expected_completed_session"])
@@ -388,16 +406,16 @@ def process_stock(stock, bench_df, context):
         hist, bench_hist, relative_valid=benchmark_aligned
     )
     gate = setup_gate(hist, metrics, stock["setup"])
-    evidence_status = stock.get("evidence", {}).get("status", "legacy_unverified")
+    research = research_map.get(stock["code"])
+    evidence_status = research.get("overall_status", "legacy_unverified") if research else "legacy_unverified"
+    research_score, research_score_status = compute_research_score(research)
 
     data_valid = bool(quote_ok)
     state, label = classify(
-        data_valid, gate, evidence_status, metrics["technical_score"]
+        data_valid, gate, evidence_status, research_score, metrics["technical_score"]
     )
 
     legacy = stock.get("legacy_scores", {})
-    research_score = None
-    research_score_status = "N/A — F/E/V evidence re-verification required"
     execution_score = round(
         clamp(metrics["technical_score"] + (10 if gate["setup_pass"] else -10)), 1
     )
@@ -418,8 +436,23 @@ def process_stock(stock, bench_df, context):
         "data_status": "valid" if data_valid else "stale",
         "quote_valid": data_valid,
         "evidence_status": evidence_status,
-        "evidence_notes": stock.get("evidence", {}).get("notes", []),
-        "evidence_sources": stock.get("evidence", {}).get("sources", []),
+        "research_F": None if not research else research.get("F", {}).get("score"),
+        "research_E": None if not research else research.get("E", {}).get("score"),
+        "research_V": None if not research else research.get("V", {}).get("score"),
+        "research_F_status": None if not research else research.get("F", {}).get("status"),
+        "research_E_status": None if not research else research.get("E", {}).get("status"),
+        "research_V_status": None if not research else research.get("V", {}).get("status"),
+        "research_next_check": [] if not research else research.get("next_check", []),
+        "evidence_notes": [] if not research else (
+            research.get("F", {}).get("basis", [])
+            + research.get("E", {}).get("basis", [])
+            + research.get("V", {}).get("basis", [])
+        ),
+        "evidence_sources": [] if not research else list(dict.fromkeys(
+            research.get("F", {}).get("sources", [])
+            + research.get("E", {}).get("sources", [])
+            + research.get("V", {}).get("sources", [])
+        )),
         "legacy_F": legacy.get("F"),
         "legacy_E": legacy.get("E"),
         "legacy_V": legacy.get("V"),
@@ -437,6 +470,10 @@ def process_stock(stock, bench_df, context):
 def main(now=None):
     with open(CFG, encoding="utf-8") as f:
         cfg = json.load(f)
+    research_map = {}
+    if os.path.exists(EVIDENCE):
+        with open(EVIDENCE, encoding="utf-8") as f:
+            research_map = json.load(f).get("stocks", {})
 
     context = market_context(now)
     bench = {}
@@ -460,7 +497,7 @@ def main(now=None):
     for stock in cfg["stocks"]:
         try:
             b = bench.get(stock["exchange"])
-            row = process_stock(stock, b, context)
+            row = process_stock(stock, b, context, research_map)
         except Exception as exc:
             errors.append(f'{stock["code"]}: {exc}')
             prev = old.get(stock["code"], {})
