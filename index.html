@@ -1,115 +1,139 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MINGO Investment OS</title>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MINGO · 오늘 뭐 살까?</title>
 <style>
-:root{--bg:#071019;--card:#0d1924;--line:#1d3040;--text:#eaf2f8;--muted:#8da4b5;--mint:#5ee6c4;--amber:#ffd166;--red:#ff6b6b}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#061018,#0a121a);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Segoe UI",sans-serif}
-.wrap{max-width:1050px;margin:auto;padding:24px 16px 60px}.eyebrow{color:var(--mint);font-size:12px;font-weight:800;letter-spacing:.14em}.hero{padding:30px 0 22px}h1{font-size:34px;margin:8px 0}.sub{color:var(--muted);line-height:1.6}
-.nav{display:flex;gap:8px;overflow:auto;margin:10px 0 25px}.pill{white-space:nowrap;padding:9px 13px;border:1px solid var(--line);border-radius:999px;color:var(--text);text-decoration:none;font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.card{background:rgba(13,25,36,.9);border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:inherit}
-.card:hover{border-color:var(--mint)}.tag{font-size:11px;color:var(--mint);font-weight:800}.ticker{color:var(--muted);font-size:12px}.score{font-size:28px;font-weight:800;margin-top:12px}.status{display:inline-block;padding:5px 9px;border-radius:8px;background:#102b28;color:var(--mint);font-size:12px;font-weight:700}
-h2{margin-top:34px}.mini{color:var(--muted);font-size:13px;line-height:1.55}.row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
-.footer{margin-top:45px;color:#607687;font-size:12px}
-.refreshbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#0d1924;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:4px 0 18px}.refreshbtn{border:1px solid var(--mint);background:#102b28;color:var(--mint);font-weight:800;border-radius:10px;padding:10px 14px;cursor:pointer}.updated{font-size:12px;color:var(--muted)}
-</style></head><body><main class="wrap"><section class="hero"><div class="eyebrow">MINGO INVESTMENT OS</div><h1>투자 리서치 대시보드</h1><div class="sub">산업 → 병목/Power → 기업 → 4팩터 → 시장/수급 → 실행. 분석이 끝날 때마다 이곳에 누적한다.</div></section>
-<div class="refreshbar"><div><b>LIVE DASHBOARD</b><div class="updated">마지막 리서치 업데이트 · 2026-09-30 23:50 KST</div></div><button id="refreshBtn" class="refreshbtn" type="button">↻ 최신 데이터 불러오기</button></div><nav class="nav"><a class="pill" href="#stocks">종목 분석</a><a class="pill" href="#industries">산업 딥다이브</a><a class="pill" href="#ranking">4팩터 랭킹</a><a class="pill" href="#watch">Watchlist</a></nav>
-<h2 id="stocks">종목 분석</h2><div class="grid"><a class="card" href="stocks/sebo.html"><div class="tag">NEW · DEEP DIVE</div><h3>세보엠이씨 <span class="ticker">011560</span></h3><div class="score">F95 · E93 · V96 · RS76</div><span class="status">🟢 눌림 매수 후보</span></a><a class="card" href="stocks/gst.html"><div class="tag">NEW · DEEP DIVE</div><h3>GST <span class="ticker">083450</span></h3><div class="score">F89 · E90 · V72 · RS92</div><span class="status">🟢 모멘텀 매수 후보</span></a><a class="card" href="stocks/bhi.html"><div class="tag">NEW · DEEP DIVE</div><h3>비에이치아이 <span class="ticker">083650</span></h3><div class="score">F98 · E97 · V55 · RS63</div><span class="status">🟡 눌림/반등 확인</span></a><a class="card" href="stocks/g2power.html"><div class="tag">NEW · DEEP DIVE</div><h3>지투파워 <span class="ticker">388050</span></h3><div class="score">F76 · E82 · V58 · RS40</div><span class="status">🟡 바닥 확인 대기</span></a><a class="card" href="stocks/hyundaiec.html"><div class="tag">NEW · DEEP DIVE</div><h3>현대건설 <span class="ticker">000720</span></h3><div class="score">F87 · E91 · V64 · RS58</div><span class="status">🟡 눌림 반등 대기</span></a><a class="card" href="stocks/gsconst.html"><div class="tag">NEW · DEEP DIVE</div><h3>GS건설 <span class="ticker">006360</span></h3><div class="score">F72 · E76 · V82 · RS52</div><span class="status">🟡 가치 스윙 후보</span></a><a class="card" href="stocks/worldex.html"><div class="tag">NEW · DEEP DIVE</div><h3>월덱스 <span class="ticker">101160</span></h3><div class="score">F 94 · E 90 · V 95 · RS 88</div><span class="status">🟢 매수 후보</span></a><a class="card" href="stocks/dongjin.html"><div class="tag">NEW · DEEP DIVE</div><h3>동진쎄미켐 <span class="ticker">005290</span></h3><div class="score">F 93 · E 90 · V 75 · RS 84</div><span class="status">🟢 조건부 추세매수</span></a><a class="card" href="stocks/sapien.html"><div class="tag">NEW · DEEP DIVE</div><h3>사피엔반도체 <span class="ticker">452430</span></h3><div class="score">F 84 · E 94 · V 35 · RS 82</div><span class="status">🟡 고성장 모멘텀</span></a><a class="card" href="stocks/eotechnics.html"><div class="tag">NEW · DEEP DIVE</div><h3>이오테크닉스 <span class="ticker">039030</span></h3><div class="mini">AI/HBM·첨단패키징 CAPEX → 레이저 마커/커팅/어닐링/그루빙 수요 → CAPA 2배 → 고마진 장비 믹스</div><div class="score">F 96 · E 96 · V 55 · RS 92</div><span class="status">🟢 조건부 추세매수</span></a><a class="card" href="stocks/protec.html"><div class="tag">NEW · DEEP DIVE</div><h3>프로텍 <span class="ticker">053610</span></h3><div class="mini">HBM·2.5D/3D 패키징 투자 → 후공정 장비 CAPEX → 디스펜서/패키징 장비 수요 → 고정비 레버리지</div><div class="score">F 95 · E 94 · V 72 · RS 89</div><span class="status">🟡 눌림 대기</span></a><a class="card" href="stocks/robotis.html"><div class="tag">NEW · DEEP DIVE</div><h3>로보티즈 <span class="ticker">108490</span></h3><div class="mini">휴머노이드 양산 → 액추에이터 초과수요 → DYNAMIXEL X/Y/Q 출하·CAPA 확대 → 매출/마진 레버리지 + 데이터팩토리 옵션</div><div class="score">F 97 · E 96 · V 25 · RS 78</div><span class="status">🟡 고성장 추세 재확인</span></a><a class="card" href="stocks/aurora.html"><div class="tag">NEW · DEEP DIVE</div><h3>오로라 <span class="ticker">039830</span></h3><div class="mini">Palm Pals 등 자체 IP 해외 흥행 → 미국 중심 판매 증가 → 규모의 경제/OPM 상승 → IP기업 멀티플 재평가 + 주주환원</div><div class="score">F 93 · E 91 · V 96 · RS 48</div><span class="status">🟡 바닥형 가치 스윙</span></a><a class="card" href="stocks/ltc.html"><div class="tag">NEW · DEEP DIVE</div><h3>엘티씨 <span class="ticker">170920</span></h3><div class="mini">M15X DRAM CAPEX → 웨이퍼 세정장비 + 321단 NAND → 고선택비인산 → 장비·소재 동시 레버리지</div><div class="score">F 93 · E 94 · V 66 · RS 88</div><span class="status">🟡 눌림 대기</span></a><a class="card" href="stocks/mkelectron.html"><div class="tag">NEW · DEEP DIVE</div><h3>엠케이전자 <span class="ticker">033160</span></h3><div class="mini">반도체 출하 회복 → 본딩와이어·솔더볼 판매 ↑ + Pd Alloy 신규소재 안정화 → 중국 포함 소재부문 마진 개선</div><div class="score">F 90 · E 91 · V 88 · RS 91</div><span class="status">🟢 조건부 매수</span></a><a class="card" href="stocks/cafe24.html"><div class="tag">NEW · DEEP DIVE</div><h3>카페24 <span class="ticker">042000</span></h3><div class="mini">GMV 성장 → 결제·EC솔루션 매출 → AI/유튜브쇼핑 생태계 확장 → 비용 레버리지 회복</div><div class="score">F 82 · E 70 · V 72 · RS 78</div><span class="status">🟡 초기 추세전환</span></a><a class="card" href="stocks/hdenergy.html"><div class="tag">NEW · DEEP DIVE</div><h3>HD현대에너지솔루션 <span class="ticker">322000</span></h3><div class="mini">미국 태양광 설치수요 + 모듈 판가 ↑ → 미국 매출비중 확대 → OPM 레버리지 + 앙골라 프로젝트</div><div class="score">F 96 · E 95 · V 67 · RS 94</div><span class="status">🟢 추세추종 가능</span></a><a class="card" href="stocks/sgcenergy.html"><div class="tag">NEW · DEEP DIVE</div><h3>SGC에너지 <span class="ticker">005090</span></h3><div class="mini">SMP 정상화 + 연료 믹스/원가관리 → 발전이익 회복 + AIDC 전력공급 옵션 → 본업 현금흐름과 데이터센터 리레이팅</div><div class="score">F 94 · E 92 · V 94 · RS 38</div><span class="status">🟡 반등 확인 대기</span></a><a class="card" href="stocks/gncenergy.html"><div class="tag">NEW · DEEP DIVE</div><h3>지엔씨에너지 <span class="ticker">119850</span></h3><div class="mini">AI 데이터센터 증설 → 비상발전기 용량 증가 → 국내 DC 점유율 약 70% → 대형 프로젝트 수주잔고 → 매출 레버리지</div><div class="score">F 92 · E 94 · V 65 · RS 94</div><span class="status">🟡 눌림/돌파 대기</span></a><a class="card" href="stocks/vitzrocell.html"><div class="tag">NEW · DEEP DIVE</div><h3>비츠로셀 <span class="ticker">082920</span></h3><div class="mini">스마트미터 안정 성장 + 고온전지/방산 고부가 믹스 + Innova → 매출 성장과 수익성 개선</div><div class="score">F 94 · E 91 · V 76 · RS 72</div><span class="status">🟢 스윙 매수 후보</span></a><a class="card" href="stocks/lncbio.html"><div class="tag">NEW · DEEP DIVE</div><h3>엘앤씨바이오 <span class="ticker">290650</span></h3><div class="mini">리투오 수요 > CAPA → 3·4공장 증설 → ASP/믹스·영업레버리지 → 미국/중국 확장 → ECM 플랫폼 재평가</div><div class="score">F 91 · E 92 · V 62 · RS 68</div><span class="status">🟡 추세전환 확인</span></a><a class="card" href="stocks/tomocube.html"><div class="tag">NEW · DEEP DIVE</div><h3>토모큐브 <span class="ticker">475960</span></h3><div class="mini">HT 원천기술 → 해외 연구장비 성장 → 세포치료제 QC·반도체 계측으로 TAM 확장 → 손익분기 돌파 가능성</div><div class="score">F 62 · E 75 · V 35 · RS 70</div><span class="status">🟡 초기 돌파 관찰</span></a><a class="card" href="stocks/dnautomotive.html"><div class="tag">NEW · DEEP DIVE</div><h3>DN오토모티브 <span class="ticker">007340</span></h3><div class="mini">DN솔루션즈 · 공작기계 업사이클 · 방진/배터리 · 저평가</div><div class="score">F 95 · E 94 · V 95</div><span class="status">🟢 눌림 추세매수 후보</span></a><a class="card" href="stocks/hyundaimarine.html"><div class="tag">NEW · DEEP DIVE</div><h3>현대해상 <span class="ticker">001450</span></h3><div class="mini">보험손익 정상화 · CSM · K-ICS · 배당가능이익 회복</div><div class="score">F 91 · E 90</div><span class="status">배당 리레이팅 추적</span></a>
-<a class="card" href="stocks/hanamicron.html"><div class="tag">NEW · DEEP DIVE</div><h3>하나마이크론 <span class="ticker">067310</span></h3><div class="mini">SK하이닉스 외주화 · 베트남 Full CAPA · 브라질 메모리 ASP · Advanced Packaging</div><div class="score">F 95 · E 92</div><span class="status">실적 증명 구간</span></a>
-<a class="card" href="stocks/apact.html"><div class="tag">NEW · DEEP DIVE</div><h3>에이팩트 <span class="ticker">200470</span></h3><div class="mini">SK하이닉스 OSAT 외주화 · SOCAMM2 · CAPA 1.7× · 2027 영업레버리지</div><div class="score">F ↑↑</div><span class="status">성장 확인 구간</span></a>
-<a class="card" href="stocks/simmtech.html"><div class="tag">CASE 001</div><h3>심텍 <span class="ticker">222800</span></h3><div class="mini">AI 서버 · SoCAMM2/GDDR7 · 고부가 기판 믹스 · 가동률 레버리지</div><div class="score">F 90 · E 88</div><span class="status">Price/RS 보완 필요</span></a>
-</div>
-<h2 id="industries">산업 딥다이브</h2><div class="grid"><div class="card"><div class="tag">SEMICONDUCTOR</div><h3>AI 메모리 / 후공정</h3><div class="mini">HBM · LPDDR5X · SOCAMM2 → 패키징/테스트 외주화 → OSAT 가동률과 영업레버리지</div></div><div class="card"><div class="tag">COMING</div><h3>패키지 기판</h3><div class="mini">심텍 공부 자료와 밸류체인 맵을 산업 페이지로 통합 예정.</div></div></div>
-<h2 id="ranking">4팩터 종합 랭킹</h2>
-<div class="mini">기업/실적/추정/밸류/RS를 종합한 리서치 우선순위. <b>매수순위와는 별개</b>이며 아래 실행보드에서 현재 가격을 다시 필터링한다.</div>
-<div class="card">
-<div class="row"><b>1 · DN오토모티브</b><span>F95 · E94 · V95 · RS90</span></div>
-<div class="row"><b>2 · 세보엠이씨</b><span>F95 · E93 · V96 · RS76</span></div>
-<div class="row"><b>3 · 월덱스</b><span>F94 · E90 · V95 · RS88</span></div>
-<div class="row"><b>4 · HD현대에너지솔루션</b><span>F96 · E95 · V67 · RS94</span></div>
-<div class="row"><b>5 · 엠케이전자</b><span>F90 · E91 · V88 · RS91</span></div>
-<div class="row"><b>6 · 이오테크닉스</b><span>F96 · E96 · V55 · RS92</span></div>
-<div class="row"><b>7 · 비에이치아이</b><span>F98 · E97 · V55 · RS63</span></div>
-<div class="row"><b>8 · 비츠로셀</b><span>F94 · E91 · V76 · RS72</span></div>
-<div class="row"><b>9 · 프로텍</b><span>F95 · E94 · V72 · RS89</span></div>
-<div class="row"><b>10 · 동진쎄미켐</b><span>F93 · E90 · V75 · RS84</span></div>
-<div class="row"><b>11 · SGC에너지</b><span>F94 · E92 · V94 · RS38</span></div>
-<div class="row"><b>12 · 지엔씨에너지</b><span>F92 · E94 · V65 · RS94</span></div>
-<div class="row"><b>13 · 엘티씨</b><span>F93 · E94 · V66 · RS88</span></div>
-<div class="row"><b>14 · 오로라</b><span>F93 · E91 · V96 · RS48</span></div>
-<div class="row"><b>15 · 하나마이크론</b><span>F95 · E92 · V82 · RS68</span></div>
-<div class="row"><b>16 · 엘앤씨바이오</b><span>F91 · E92 · V62 · RS68</span></div>
-<div class="row"><b>17 · GST</b><span>F89 · E90 · V72 · RS92</span></div>
-<div class="row"><b>18 · 로보티즈</b><span>F97 · E96 · V25 · RS78</span></div>
-<div class="row"><b>19 · 현대해상</b><span>F91 · E90 · V90 · RS52</span></div>
-<div class="row"><b>20 · 심텍</b><span>F90 · E88 · V62 · RS80</span></div>
-<div class="row"><b>21 · 현대건설</b><span>F87 · E91 · V64 · RS58</span></div>
-<div class="row"><b>22 · 사피엔반도체</b><span>F84 · E94 · V35 · RS82</span></div>
-<div class="row"><b>23 · 카페24</b><span>F82 · E70 · V72 · RS78</span></div>
-<div class="row"><b>24 · 지투파워</b><span>F76 · E82 · V58 · RS40</span></div>
-<div class="row"><b>25 · GS건설</b><span>F72 · E76 · V82 · RS52</span></div>
-<div class="row"><b>26 · 토모큐브</b><span>F62 · E75 · V35 · RS70</span></div>
-<div class="row"><b>27 · 에이팩트</b><span>F/E 강함 · 단기 과열</span></div>
-</div>
+:root{--bg:#071019;--card:#0d1924;--line:#1d3040;--text:#edf5f9;--muted:#8da4b5;--mint:#5ee6c4;--amber:#ffd166;--red:#ff7373}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#061018,#09131c);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Segoe UI",sans-serif}
+.wrap{max-width:900px;margin:auto;padding:18px 14px 56px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--mint)}h1{font-size:30px;margin:8px 0 4px}.sub{font-size:13px;color:var(--muted);line-height:1.55}
+.refresh{border:1px solid var(--mint);background:#102b28;color:var(--mint);font-weight:800;border-radius:10px;padding:10px 12px;cursor:pointer}
+.hero{padding:12px 0 8px}.market{display:flex;gap:8px;overflow:auto;margin:14px 0}.chip{white-space:nowrap;border:1px solid var(--line);background:var(--card);padding:7px 10px;border-radius:999px;font-size:12px;color:var(--muted)}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;margin:24px 0 10px}.sectionhead h2{margin:0;font-size:21px}.hint{font-size:12px;color:var(--muted)}
+.focus{border:1px solid #245c50;background:linear-gradient(145deg,#0b211f,#0d1924);border-radius:20px;padding:14px}
+.pick{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;color:inherit;text-decoration:none;padding:13px 4px;border-bottom:1px solid var(--line)}.pick:last-child{border-bottom:0}
+.rank{font-weight:900;color:var(--mint);font-size:18px}.pickname{font-size:17px;font-weight:850}.reason{font-size:12px;color:var(--muted);margin-top:4px}.pickright{text-align:right}.zone{font-size:13px;font-weight:800;margin-top:6px}.trigger{font-size:11px;color:var(--muted);margin-top:3px}
+.badge{display:inline-block;padding:5px 8px;border-radius:8px;font-size:11px;font-weight:850}.buy{background:#10322c;color:var(--mint)}.wait{background:#332c16;color:var(--amber)}
+.tabs{display:flex;gap:7px;position:sticky;top:0;z-index:5;background:rgba(7,16,25,.93);backdrop-filter:blur(8px);padding:10px 0}.tab{border:1px solid var(--line);background:#0d1924;color:var(--muted);border-radius:999px;padding:8px 11px;font-weight:800;font-size:12px;cursor:pointer}.tab.active{border-color:var(--mint);color:var(--mint)}
+.search{width:100%;margin:4px 0 8px;border:1px solid var(--line);background:#0b1620;color:var(--text);padding:12px 13px;border-radius:12px;outline:none}
+.list{border:1px solid var(--line);border-radius:16px;overflow:hidden}.stock{display:grid;grid-template-columns:1fr auto;gap:12px;color:inherit;text-decoration:none;padding:13px 14px;border-bottom:1px solid var(--line);background:rgba(13,25,36,.75)}.stock:last-child{border-bottom:0}.stockright{text-align:right}.ticker,.desc,.factors{color:var(--muted);font-size:11px}.desc{margin-top:4px}.factors{margin-top:6px}
+details{margin-top:18px;border:1px solid var(--line);border-radius:16px;background:#0d1924}summary{cursor:pointer;padding:15px 16px;font-weight:850}.inside{padding:0 14px 14px}.minirow{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:11px 2px;font-size:13px}.minirow span:last-child{color:var(--muted);text-align:right}
+.footer{margin-top:28px;color:#607687;font-size:11px}.hidden{display:none!important}
+@media(max-width:600px){h1{font-size:27px}.pick{grid-template-columns:34px 1fr}.pickright{grid-column:2;text-align:left;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.stock{grid-template-columns:1fr}.stockright{text-align:left}.factors{display:inline;margin-left:6px}}
+</style></head><body><main class="wrap">
+<div class="top"><div><div class="brand">MINGO INVESTMENT OS</div><div class="sub">2026-09-30 기준 · 리서치/차트 신호</div></div><button id="refreshBtn" class="refresh">↻ 최신</button></div>
+<section class="hero"><h1>오늘 뭐 살까?</h1><div class="sub">기업이 좋은 순서가 아니라 <b>현재 가격에서 실행하기 좋은 순서</b>를 먼저 보여준다.</div></section>
+<div class="market"><span class="chip">KOSPI 6,838 · -0.48%</span><span class="chip">KOSDAQ 855.9 · +0.72%</span><span class="chip">레짐: 개별 실적·RS 선별</span></div>
 
-<h2 id="signals">오늘의 실행 보드</h2>
-<div class="mini">2026-09-30 종가 기준. 🟢는 현재 가격에서 실행 가능한 셋업, 🟡은 가격 확인이 먼저 필요한 종목.</div>
-<div class="card">
-<div class="row"><b>🟢 월덱스</b><span>31~32K 지지 / 32.3K 돌파 · 실적+저평가+거래량</span></div>
-<div class="row"><b>🟢 DN오토모티브</b><span>47~49K 지지 / 51K 돌파 · 눌림 추세추종</span></div>
-<div class="row"><b>🟢 세보엠이씨</b><span>22~23K 지지 / 24.5K 회복 · 실적+밸류</span></div>
-<div class="row"><b>🟢 엠케이전자</b><span>16~16.5K 지지 / 17.35K 돌파 · 소재 모멘텀</span></div>
-<div class="row"><b>🟢 HD현대에너지솔루션</b><span>124~127K / 132.2K 돌파 · 강한 추세</span></div>
-<div class="row"><b>🟢 이오테크닉스</b><span>490~505K / 526K 돌파 · 실적 추세</span></div>
-<div class="row"><b>🟢 GST</b><span>50~52K / 54K 돌파 · RS 강함</span></div>
-<div class="row"><b>🟢 비츠로셀</b><span>27~28K 지지 / 30.4K 돌파 · 박스 스윙</span></div>
-<div class="row"><b>🟢 동진쎄미켐</b><span>46~47K / 49.5~50K 돌파 · 추세복귀</span></div>
-<div class="row"><b>🟢 심텍</b><span>148~150K 지지 / 156.6K 돌파 · 타이트닝</span></div>
-<div class="row"><b>🟢 하나마이크론</b><span>46~47K 지지 / 48.5K 돌파 · 모멘텀</span></div>
-</div>
+<div class="sectionhead"><h2>🔥 오늘 매수 TOP 5</h2><span class="hint">가격 조건 충족 시</span></div>
+<section class="focus"><a class="pick" href="stocks/worldex.html">
+<div class="rank">#1</div><div class="pickmain"><div class="pickname">월덱스</div><div class="reason">실적·밸류·거래량이 동시에 붙는 구간</div></div>
+<div class="pickright"><span class="badge buy">매수 후보</span><div class="zone">31~32K</div><div class="trigger">↑ 32.3K 돌파</div></div></a><a class="pick" href="stocks/dnautomotive.html">
+<div class="rank">#2</div><div class="pickmain"><div class="pickname">DN오토모티브</div><div class="reason">저평가 + 실적 + RS 균형</div></div>
+<div class="pickright"><span class="badge buy">눌림 추세매수</span><div class="zone">47~49K</div><div class="trigger">↑ 51K 돌파</div></div></a><a class="pick" href="stocks/sebo.html">
+<div class="rank">#3</div><div class="pickmain"><div class="pickname">세보엠이씨</div><div class="reason">실적 급증 대비 낮은 밸류</div></div>
+<div class="pickright"><span class="badge buy">눌림 매수</span><div class="zone">22~23K</div><div class="trigger">↑ 24.5K 회복</div></div></a><a class="pick" href="stocks/mkelectron.html">
+<div class="rank">#4</div><div class="pickmain"><div class="pickname">엠케이전자</div><div class="reason">반도체 소재 업황 + RS 강도</div></div>
+<div class="pickright"><span class="badge buy">조건부 매수</span><div class="zone">16~16.5K</div><div class="trigger">↑ 17.35K 돌파</div></div></a><a class="pick" href="stocks/hdenergy.html">
+<div class="rank">#5</div><div class="pickmain"><div class="pickname">HD현대에너지솔루션</div><div class="reason">실적 모멘텀 + 강한 추세</div></div>
+<div class="pickright"><span class="badge buy">추세추종</span><div class="zone">124~127K</div><div class="trigger">↑ 132.2K 돌파</div></div></a></section>
 
-<h2>조건부 / 대기 보드</h2>
-<div class="card">
-<div class="row"><b>🟡 지엔씨에너지</b><span>55~56K 눌림 또는 59K 신고가 돌파</span></div>
-<div class="row"><b>🟡 프로텍</b><span>72~74K 눌림 / 78~80K 재돌파</span></div>
-<div class="row"><b>🟡 엘티씨</b><span>40~41K 지지 / 43.2K 돌파 · 추격 금지</span></div>
-<div class="row"><b>🟡 BHI</b><span>57~59K 바닥 + 62K 회복 · F/E 최상위</span></div>
-<div class="row"><b>🟡 엘앤씨바이오</b><span>48~50K 재지지 / 52K 안착</span></div>
-<div class="row"><b>🟡 로보티즈</b><span>280~285K 지지 + 300K 회복 · 초고밸류</span></div>
-<div class="row"><b>🟡 사피엔반도체</b><span>38~39K 지지 + 40.2K 돌파 · 양산 확인형</span></div>
-<div class="row"><b>🟡 카페24</b><span>17.5~18K 재지지 / 19.6K 돌파</span></div>
-<div class="row"><b>🟡 토모큐브</b><span>29~30K 눌림 / 32.6K 돌파 · 이벤트형</span></div>
-<div class="row"><b>🟡 현대해상</b><span>47K 지지 + 50~50.5K 회복 · 스윙</span></div>
-<div class="row"><b>🟡 현대건설</b><span>115~118K 지지 + 123K 회복</span></div>
-<div class="row"><b>🟡 GS건설</b><span>33~34K 지지 / 35.5~36K 회복</span></div>
-<div class="row"><b>🟡 오로라</b><span>15~15.5K 지지 / 17.2K 회복 · 가치 스윙</span></div>
-<div class="row"><b>🟡 SGC에너지</b><span>47~48K 바닥 + 50K 회복 · F/E/V 좋고 RS 약함</span></div>
-<div class="row"><b>🟡 지투파워</b><span>9.3~9.6K 지지 + 10.3K 회복</span></div>
-<div class="row"><b>🟡 에이팩트</b><span>8.2~8.5K 눌림 / 9.4K 안착 · 단기 과열</span></div>
-</div>
+<div class="sectionhead"><h2>실행 보드</h2><span class="hint">27종목 · 탭으로 필터</span></div>
+<div class="tabs"><button class="tab active" data-filter="green">🟢 지금 가능</button><button class="tab" data-filter="yellow">🟡 조건부</button><button class="tab" data-filter="all">전체</button></div>
+<input id="search" class="search" placeholder="종목 검색">
+<div id="stockList" class="list"><a class="stock green" data-state="green" data-name="월덱스" href="stocks/worldex.html">
+<div><b>월덱스</b> <span class="ticker">101160</span><div class="desc">식각 소모품 · 실적+저평가+거래량</div></div>
+<div class="stockright"><span class="badge buy">🟢 지금 가능</span><div class="factors">F94 · E90 · V95 · RS88</div><div class="trigger">31~32K 지지 / 32.3K 돌파</div></div></a><a class="stock green" data-state="green" data-name="dn오토모티브" href="stocks/dnautomotive.html">
+<div><b>DN오토모티브</b> <span class="ticker">007340</span><div class="desc">DN솔루션즈 · 공작기계 업사이클 · 저평가</div></div>
+<div class="stockright"><span class="badge buy">🟢 지금 가능</span><div class="factors">F95 · E94 · V95 · RS90</div><div class="trigger">47~49K 지지 / 51K 돌파</div></div></a><a class="stock green" data-state="green" data-name="세보엠이씨" href="stocks/sebo.html">
+<div><b>세보엠이씨</b> <span class="ticker">011560</span><div class="desc">반도체/DC 설비 · 실적 급증 · 저평가</div></div>
+<div class="stockright"><span class="badge buy">🟢 지금 가능</span><div class="factors">F95 · E93 · V96 · RS76</div><div class="trigger">22~23K 지지 / 24.5K 회복</div></div></a><a class="stock green" data-state="green" data-name="엠케이전자" href="stocks/mkelectron.html">
+<div><b>엠케이전자</b> <span class="ticker">033160</span><div class="desc">반도체 소재 · 실적+RS</div></div>
+<div class="stockright"><span class="badge buy">🟢 지금 가능</span><div class="factors">F90 · E91 · V88 · RS91</div><div class="trigger">16~16.5K 지지 / 17.35K 돌파</div></div></a><a class="stock green" data-state="green" data-name="hd현대에너지솔루션" href="stocks/hdenergy.html">
+<div><b>HD현대에너지솔루션</b> <span class="ticker">322000</span><div class="desc">미국 태양광 · 강한 실적/추세</div></div>
+<div class="stockright"><span class="badge buy">🟢 지금 가능</span><div class="factors">F96 · E95 · V67 · RS94</div><div class="trigger">124~127K 지지 / 132.2K 돌파</div></div></a><a class="stock green" data-state="green" data-name="이오테크닉스" href="stocks/eotechnics.html">
+<div><b>이오테크닉스</b> <span class="ticker">039030</span><div class="desc">레이저 장비 · AI/HBM CAPEX</div></div>
+<div class="stockright"><span class="badge buy">🟢 조건부</span><div class="factors">F96 · E96 · V55 · RS92</div><div class="trigger">490~505K / 526K 돌파</div></div></a><a class="stock green" data-state="green" data-name="gst" href="stocks/gst.html">
+<div><b>GST</b> <span class="ticker">083450</span><div class="desc">스크러버·칠러 + 액침냉각 옵션</div></div>
+<div class="stockright"><span class="badge buy">🟢 모멘텀</span><div class="factors">F89 · E90 · V72 · RS92</div><div class="trigger">50~52K / 54K 돌파</div></div></a><a class="stock green" data-state="green" data-name="비츠로셀" href="stocks/vitzrocell.html">
+<div><b>비츠로셀</b> <span class="ticker">082920</span><div class="desc">고온전지·방산 · 박스 스윙</div></div>
+<div class="stockright"><span class="badge buy">🟢 스윙</span><div class="factors">F94 · E91 · V76 · RS72</div><div class="trigger">27~28K / 30.4K 돌파</div></div></a><a class="stock green" data-state="green" data-name="동진쎄미켐" href="stocks/dongjin.html">
+<div><b>동진쎄미켐</b> <span class="ticker">005290</span><div class="desc">PR·반도체 소재 · 추세복귀</div></div>
+<div class="stockright"><span class="badge buy">🟢 조건부</span><div class="factors">F93 · E90 · V75 · RS84</div><div class="trigger">46~47K / 49.5~50K 돌파</div></div></a><a class="stock green" data-state="green" data-name="심텍" href="stocks/simmtech.html">
+<div><b>심텍</b> <span class="ticker">222800</span><div class="desc">기판 · 타이트닝</div></div>
+<div class="stockright"><span class="badge buy">🟢 추세</span><div class="factors">F90 · E88 · V62 · RS80</div><div class="trigger">148~150K / 156.6K 돌파</div></div></a><a class="stock green" data-state="green" data-name="하나마이크론" href="stocks/hanamicron.html">
+<div><b>하나마이크론</b> <span class="ticker">067310</span><div class="desc">OSAT · 베트남 Full CAPA</div></div>
+<div class="stockright"><span class="badge buy">🟢 모멘텀</span><div class="factors">F95 · E92 · V82 · RS68</div><div class="trigger">46~47K / 48.5K 돌파</div></div></a><a class="stock yellow" data-state="yellow" data-name="지엔씨에너지" href="stocks/gncenergy.html">
+<div><b>지엔씨에너지</b> <span class="ticker">119850</span><div class="desc">AI 데이터센터 비상발전기</div></div>
+<div class="stockright"><span class="badge wait">🟡 대기</span><div class="factors">F92 · E94 · V65 · RS94</div><div class="trigger">55~56K / 59K 돌파</div></div></a><a class="stock yellow" data-state="yellow" data-name="프로텍" href="stocks/protec.html">
+<div><b>프로텍</b> <span class="ticker">053610</span><div class="desc">Advanced Packaging</div></div>
+<div class="stockright"><span class="badge wait">🟡 대기</span><div class="factors">F95 · E94 · V72 · RS89</div><div class="trigger">72~74K / 78~80K</div></div></a><a class="stock yellow" data-state="yellow" data-name="엘티씨" href="stocks/ltc.html">
+<div><b>엘티씨</b> <span class="ticker">170920</span><div class="desc">세정장비+고선택비인산</div></div>
+<div class="stockright"><span class="badge wait">🟡 대기</span><div class="factors">F93 · E94 · V66 · RS88</div><div class="trigger">40~41K / 43.2K 돌파</div></div></a><a class="stock yellow" data-state="yellow" data-name="비에이치아이" href="stocks/bhi.html">
+<div><b>비에이치아이</b> <span class="ticker">083650</span><div class="desc">HRSG·원전 · F/E 최상위</div></div>
+<div class="stockright"><span class="badge wait">🟡 반등 확인</span><div class="factors">F98 · E97 · V55 · RS63</div><div class="trigger">57~59K + 62K 회복</div></div></a><a class="stock yellow" data-state="yellow" data-name="엘앤씨바이오" href="stocks/lncbio.html">
+<div><b>엘앤씨바이오</b> <span class="ticker">290650</span><div class="desc">리투오 CAPA</div></div>
+<div class="stockright"><span class="badge wait">🟡 확인</span><div class="factors">F91 · E92 · V62 · RS68</div><div class="trigger">48~50K / 52K 안착</div></div></a><a class="stock yellow" data-state="yellow" data-name="로보티즈" href="stocks/robotis.html">
+<div><b>로보티즈</b> <span class="ticker">108490</span><div class="desc">휴머노이드 액추에이터 · 초고밸류</div></div>
+<div class="stockright"><span class="badge wait">🟡 확인</span><div class="factors">F97 · E96 · V25 · RS78</div><div class="trigger">280~285K + 300K 회복</div></div></a><a class="stock yellow" data-state="yellow" data-name="사피엔반도체" href="stocks/sapien.html">
+<div><b>사피엔반도체</b> <span class="ticker">452430</span><div class="desc">Micro-LED DDIC · 양산 확인</div></div>
+<div class="stockright"><span class="badge wait">🟡 확인</span><div class="factors">F84 · E94 · V35 · RS82</div><div class="trigger">38~39K + 40.2K 돌파</div></div></a><a class="stock yellow" data-state="yellow" data-name="카페24" href="stocks/cafe24.html">
+<div><b>카페24</b> <span class="ticker">042000</span><div class="desc">GMV·AI커머스</div></div>
+<div class="stockright"><span class="badge wait">🟡 대기</span><div class="factors">F82 · E70 · V72 · RS78</div><div class="trigger">17.5~18K / 19.6K</div></div></a><a class="stock yellow" data-state="yellow" data-name="토모큐브" href="stocks/tomocube.html">
+<div><b>토모큐브</b> <span class="ticker">475960</span><div class="desc">HT · 고위험 이벤트</div></div>
+<div class="stockright"><span class="badge wait">🟡 관찰</span><div class="factors">F62 · E75 · V35 · RS70</div><div class="trigger">29~30K / 32.6K</div></div></a><a class="stock yellow" data-state="yellow" data-name="현대해상" href="stocks/hyundaimarine.html">
+<div><b>현대해상</b> <span class="ticker">001450</span><div class="desc">보험 정상화·배당</div></div>
+<div class="stockright"><span class="badge wait">🟡 스윙</span><div class="factors">F91 · E90 · V90 · RS52</div><div class="trigger">47K + 50~50.5K 회복</div></div></a><a class="stock yellow" data-state="yellow" data-name="현대건설" href="stocks/hyundaiec.html">
+<div><b>현대건설</b> <span class="ticker">000720</span><div class="desc">원전·해외EPC</div></div>
+<div class="stockright"><span class="badge wait">🟡 대기</span><div class="factors">F87 · E91 · V64 · RS58</div><div class="trigger">115~118K + 123K</div></div></a><a class="stock yellow" data-state="yellow" data-name="gs건설" href="stocks/gsconst.html">
+<div><b>GS건설</b> <span class="ticker">006360</span><div class="desc">주택 원가율 정상화</div></div>
+<div class="stockright"><span class="badge wait">🟡 스윙</span><div class="factors">F72 · E76 · V82 · RS52</div><div class="trigger">33~34K / 35.5~36K</div></div></a><a class="stock yellow" data-state="yellow" data-name="오로라" href="stocks/aurora.html">
+<div><b>오로라</b> <span class="ticker">039830</span><div class="desc">IP 소비재 · 저평가</div></div>
+<div class="stockright"><span class="badge wait">🟡 스윙</span><div class="factors">F93 · E91 · V96 · RS48</div><div class="trigger">15~15.5K / 17.2K</div></div></a><a class="stock yellow" data-state="yellow" data-name="sgc에너지" href="stocks/sgcenergy.html">
+<div><b>SGC에너지</b> <span class="ticker">005090</span><div class="desc">발전+AI DC 옵션</div></div>
+<div class="stockright"><span class="badge wait">🟡 반등 확인</span><div class="factors">F94 · E92 · V94 · RS38</div><div class="trigger">47~48K + 50K 회복</div></div></a><a class="stock yellow" data-state="yellow" data-name="지투파워" href="stocks/g2power.html">
+<div><b>지투파워</b> <span class="ticker">388050</span><div class="desc">원전·배전반·ESS</div></div>
+<div class="stockright"><span class="badge wait">🟡 바닥 확인</span><div class="factors">F76 · E82 · V58 · RS40</div><div class="trigger">9.3~9.6K + 10.3K</div></div></a><a class="stock yellow" data-state="yellow" data-name="에이팩트" href="stocks/apact.html">
+<div><b>에이팩트</b> <span class="ticker">200470</span><div class="desc">SOCAMM2 · OSAT</div></div>
+<div class="stockright"><span class="badge wait">🟡 과열 대기</span><div class="factors">F/E 강함</div><div class="trigger">8.2~8.5K / 9.4K</div></div></a></div>
 
-<h2 id="watch">Watchlist · 다음 확인값</h2>
-<div class="card">
-<div class="row"><span>월덱스</span><b>32.3K 돌파 거래량 · 메모리 가동률</b></div>
-<div class="row"><span>DN오토모티브</span><b>51K 돌파 · DN솔루션즈 수주/OPM · 순차입금</b></div>
-<div class="row"><span>세보엠이씨</span><b>24.5K 회복 · 반도체/DC 신규수주</b></div>
-<div class="row"><span>HD현대에너지솔루션</span><b>132.2K · 미국 모듈 ASP/정책</b></div>
-<div class="row"><span>이오테크닉스</span><b>526K · 어닐링/그루빙 고객 확대 · CAPA</b></div>
-<div class="row"><span>BHI</span><b>62K 회복 · HRSG/원전 신규수주</b></div>
-<div class="row"><span>SGC에너지</span><b>50~52K 회복 · SMP · AIDC 계약</b></div>
-<div class="row"><span>지엔씨에너지</span><b>59K · 데이터센터 신규수주</b></div>
-<div class="row"><span>엘앤씨바이오</span><b>52K · 리투오 CAPA/판매량</b></div>
-<div class="row"><span>로보티즈</span><b>300K 회복 · 액추에이터 출하/CAPA</b></div>
-<div class="row"><span>동진쎄미켐</span><b>50K · ArF PR 고객 승인/원가율</b></div>
-<div class="row"><span>사피엔반도체</span><b>40.2K · 빅테크 양산 매출</b></div>
-</div>
+<details><summary>📊 4팩터 종합 랭킹 보기</summary><div class="inside">
+<div class="minirow"><b>1 DN오토모티브</b><span>F95 · E94 · V95 · RS90</span></div>
+<div class="minirow"><b>2 세보엠이씨</b><span>F95 · E93 · V96 · RS76</span></div>
+<div class="minirow"><b>3 월덱스</b><span>F94 · E90 · V95 · RS88</span></div>
+<div class="minirow"><b>4 HD현대에너지솔루션</b><span>F96 · E95 · V67 · RS94</span></div>
+<div class="minirow"><b>5 엠케이전자</b><span>F90 · E91 · V88 · RS91</span></div>
+<div class="minirow"><b>6 이오테크닉스</b><span>F96 · E96 · V55 · RS92</span></div>
+<div class="minirow"><b>7 BHI</b><span>F98 · E97 · V55 · RS63</span></div>
+<div class="minirow"><b>8 비츠로셀</b><span>F94 · E91 · V76 · RS72</span></div>
+<div class="minirow"><b>9 프로텍</b><span>F95 · E94 · V72 · RS89</span></div>
+<div class="minirow"><b>10 동진쎄미켐</b><span>F93 · E90 · V75 · RS84</span></div>
+</div></details>
 
-<h2>시장 레짐</h2>
-<div class="card">
-<div class="row"><b>KOSPI</b><span>6,838.04 · -0.48% · 3거래일 연속 하락</span></div>
-<div class="row"><b>KOSDAQ</b><span>855.91 · +0.72%</span></div>
-<div class="row"><b>해석</b><span>고금리 부담 + 외국인 KOSPI 매도 속 개별 실적/모멘텀 선별장</span></div>
-</div>
-<div class="footer">MINGO OS · Research dashboard · Last updated 2026-09-30 23:50 KST</div></main><!-- deploy-sync: 2026-09-30T23:30+09:00 --><script>
-document.getElementById('refreshBtn')?.addEventListener('click',function(){
-  const base=location.origin+location.pathname;
-  location.replace(base+'?refresh='+Date.now());
-});
+<details><summary>👀 핵심 Watchlist 보기</summary><div class="inside">
+<div class="minirow"><b>BHI</b><span>62K 회복 · HRSG/원전 수주</span></div>
+<div class="minirow"><b>SGC에너지</b><span>50~52K 회복 · SMP/AIDC</span></div>
+<div class="minirow"><b>지엔씨에너지</b><span>59K · 데이터센터 신규수주</span></div>
+<div class="minirow"><b>로보티즈</b><span>300K · 액추에이터 출하/CAPA</span></div>
+<div class="minirow"><b>사피엔반도체</b><span>40.2K · 빅테크 양산매출</span></div>
+</div></details>
+
+<details><summary>🧠 산업 딥다이브 보기</summary><div class="inside">
+<div class="minirow"><b>AI 메모리 / 후공정</b><span>HBM · SOCAMM2 · OSAT</span></div>
+<div class="minirow"><b>패키지 기판</b><span>심텍 중심 밸류체인</span></div>
+<div class="minirow"><b>AI 전력 인프라</b><span>HRSG · 발전 · DC</span></div>
+</div></details>
+
+<div class="footer">MINGO OS · 실행 우선형 대시보드 · 종목 상세는 각 행을 탭하면 이동</div>
+</main>
+<script>
+const tabs=[...document.querySelectorAll('.tab')], items=[...document.querySelectorAll('.stock')], q=document.getElementById('search');
+let filter='green';
+function apply(){
+ const term=q.value.trim().toLowerCase();
+ items.forEach(el=>{
+   const okFilter=filter==='all'||el.dataset.state===filter;
+   const okSearch=!term||el.dataset.name.includes(term)||el.textContent.toLowerCase().includes(term);
+   el.classList.toggle('hidden',!(okFilter&&okSearch));
+ });
+}
+tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;apply()}));
+q.addEventListener('input',apply);apply();
+document.getElementById('refreshBtn').addEventListener('click',()=>location.replace(location.origin+location.pathname+'?refresh='+Date.now()));
 </script></body></html>
