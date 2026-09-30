@@ -6,6 +6,7 @@ on:
     paths:
       - "scripts/update_market.py"
       - "data/stocks.json"
+      - "data/research_evidence.json"
       - "tests/**"
       - ".github/workflows/market-refresh.yml"
   schedule:
