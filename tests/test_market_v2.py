@@ -53,7 +53,7 @@ def test_stale_data_can_never_be_green():
         "setup_pass": True,
         "setup_type": "trend",
     }
-    state, _ = m.classify(False, gate, "verified", 95)
+    state, _ = m.classify(False, gate, "verified", 80, 95)
     assert state == "gray"
 
 
@@ -64,7 +64,7 @@ def test_first_failure_or_unverified_cannot_create_definitive_green():
         "setup_pass": True,
         "setup_type": "trend",
     }
-    state, _ = m.classify(True, gate, "legacy_unverified", 95)
+    state, _ = m.classify(True, gate, "legacy_unverified", None, 95)
     assert state == "blue"
 
 
@@ -137,3 +137,27 @@ def test_benchmark_mismatch_withholds_relative_metric_not_price_tech():
     assert t["relative_return_score"] is None
     assert t["relative_return_status"].startswith("N/A")
     assert isinstance(t["technical_score"], float)
+
+
+def test_research_score_requires_all_three_verified():
+    r={"F":{"score":80,"status":"verified"},"E":{"score":70,"status":"verified"},"V":{"score":60,"status":"verified"}}
+    score,status=m.compute_research_score(r)
+    assert score == 72.5
+    assert status == "verified"
+    r["E"]={"score":None,"status":"N/A"}
+    score,status=m.compute_research_score(r)
+    assert score is None
+    assert status.startswith("N/A")
+
+
+def test_setup_pass_with_verified_research_below_70_is_not_green():
+    gate={"invalidated":False,"overheated":False,"setup_pass":True,"setup_type":"trend"}
+    state,label=m.classify(True,gate,"verified",61.0,90)
+    assert state == "blue"
+    assert "61.0" in label
+
+
+def test_setup_pass_with_verified_research_at_70_can_be_green():
+    gate={"invalidated":False,"overheated":False,"setup_pass":True,"setup_type":"trend"}
+    state,label=m.classify(True,gate,"verified",70.0,90)
+    assert state == "green"
