@@ -38,7 +38,7 @@ jobs:
 
       - name: Commit refreshed scores
         run: |
-          if git diff --quiet -- data/live_scores.json; then
+          if [ -z "$(git status --porcelain -- data/live_scores.json)" ]; then
             echo "No score changes"
             exit 0
           fi
