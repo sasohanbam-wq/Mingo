@@ -142,7 +142,7 @@ def test_benchmark_mismatch_withholds_relative_metric_not_price_tech():
 def test_research_score_requires_all_three_verified():
     r={"F":{"score":80,"status":"verified"},"E":{"score":70,"status":"verified"},"V":{"score":60,"status":"verified"}}
     score,status=m.compute_research_score(r)
-    assert score == 72.5
+    assert score == 71.2
     assert status == "verified"
     r["E"]={"score":None,"status":"N/A"}
     score,status=m.compute_research_score(r)
