@@ -1,330 +1,841 @@
 {
-  "version": 1,
-  "score_model": "MINGO dynamic v1",
+  "version": 2,
+  "score_model": "MINGO v2 gate-first",
   "stocks": [
     {
       "name": "월덱스",
       "code": "101160",
       "exchange": "KQ",
       "page": "worldex.html",
-      "F": 94,
-      "E": 90,
-      "V": 95,
-      "PR": 88,
-      "ref": 32100,
-      "theme": "식각 소모품 · 메모리 가동률"
+      "theme": "식각 소모품 · 메모리 가동률",
+      "legacy_scores": {
+        "F": 94,
+        "E": 90,
+        "V": 95,
+        "PR": 88,
+        "ref": 32100
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          31000,
+          32000
+        ],
+        "trigger": 32300,
+        "stop": 29800
+      },
+      "evidence": {
+        "status": "priority_review",
+        "notes": [
+          "최신 가격·셋업과 고득점 재검증"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "DN오토모티브",
       "code": "007340",
       "exchange": "KS",
       "page": "dnautomotive.html",
-      "F": 95,
-      "E": 94,
-      "V": 95,
-      "PR": 90,
-      "ref": 48950,
-      "theme": "DN솔루션즈 · 공작기계"
+      "theme": "DN솔루션즈 · 공작기계",
+      "legacy_scores": {
+        "F": 95,
+        "E": 94,
+        "V": 95,
+        "PR": 90,
+        "ref": 48950
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          47000,
+          49000
+        ],
+        "trigger": 51000,
+        "stop": 45000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "세보엠이씨",
       "code": "011560",
       "exchange": "KQ",
       "page": "sebo.html",
-      "F": 95,
-      "E": 93,
-      "V": 96,
-      "PR": 76,
-      "ref": 22950,
-      "theme": "반도체/DC 기계설비"
+      "theme": "반도체/DC 기계설비",
+      "legacy_scores": {
+        "F": 95,
+        "E": 93,
+        "V": 96,
+        "PR": 76,
+        "ref": 22950
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          22000,
+          23000
+        ],
+        "trigger": 24500,
+        "stop": 21000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "엠케이전자",
       "code": "033160",
       "exchange": "KQ",
       "page": "mkelectron.html",
-      "F": 90,
-      "E": 91,
-      "V": 88,
-      "PR": 91,
-      "ref": 17030,
-      "theme": "본딩와이어·솔더볼"
+      "theme": "본딩와이어·솔더볼",
+      "legacy_scores": {
+        "F": 90,
+        "E": 91,
+        "V": 88,
+        "PR": 91,
+        "ref": 17030
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          16000,
+          16500
+        ],
+        "trigger": 17350,
+        "stop": 15500
+      },
+      "evidence": {
+        "status": "conflict_review_required",
+        "notes": [
+          "법률 리스크의 기소 시점과 가격 반영 여부를 분리 검증",
+          "상반기 OP 회계 범위 재확인"
+        ],
+        "sources": [
+          "https://www.asiae.co.kr/article/2026081316313005834",
+          "https://biz.heraldcorp.com/article/10889368",
+          "https://stockeasy.intellio.kr/stock-analysis/stock-info/033160"
+        ]
+      }
     },
     {
       "name": "HD현대에너지솔루션",
       "code": "322000",
       "exchange": "KS",
       "page": "hdenergy.html",
-      "F": 96,
-      "E": 95,
-      "V": 67,
-      "PR": 94,
-      "ref": 129850,
-      "theme": "미국 태양광"
+      "theme": "미국 태양광",
+      "legacy_scores": {
+        "F": 96,
+        "E": 95,
+        "V": 67,
+        "PR": 94,
+        "ref": 129850
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          124000,
+          127000
+        ],
+        "trigger": 132200,
+        "stop": 120000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "이오테크닉스",
       "code": "039030",
       "exchange": "KQ",
       "page": "eotechnics.html",
-      "F": 96,
-      "E": 96,
-      "V": 55,
-      "PR": 92,
-      "ref": 518000,
-      "theme": "레이저·HBM/첨단패키징"
+      "theme": "레이저·HBM/첨단패키징",
+      "legacy_scores": {
+        "F": 96,
+        "E": 96,
+        "V": 55,
+        "PR": 92,
+        "ref": 518000
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          490000,
+          505000
+        ],
+        "trigger": 526000,
+        "stop": 470000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "GST",
       "code": "083450",
       "exchange": "KQ",
       "page": "gst.html",
-      "F": 89,
-      "E": 90,
-      "V": 72,
-      "PR": 92,
-      "ref": 52900,
-      "theme": "스크러버·칠러·액침냉각"
+      "theme": "스크러버·칠러·액침냉각",
+      "legacy_scores": {
+        "F": 89,
+        "E": 90,
+        "V": 72,
+        "PR": 92,
+        "ref": 52900
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          50000,
+          52000
+        ],
+        "trigger": 54000,
+        "stop": 48000
+      },
+      "evidence": {
+        "status": "conflict_review_required",
+        "notes": [
+          "2Q YoY 수치 출처 충돌 검증",
+          "액침냉각 실증과 상용수주·이익 분리"
+        ],
+        "sources": [
+          "https://www.kharn.kr/news/article.html?no=31596",
+          "https://www.thinkpool.com/item/083450/disclosures/major/16914317"
+        ]
+      }
     },
     {
       "name": "비츠로셀",
       "code": "082920",
       "exchange": "KQ",
       "page": "vitzrocell.html",
-      "F": 94,
-      "E": 91,
-      "V": 76,
-      "PR": 72,
-      "ref": 28050,
-      "theme": "고온전지·방산"
+      "theme": "고온전지·방산",
+      "legacy_scores": {
+        "F": 94,
+        "E": 91,
+        "V": 76,
+        "PR": 72,
+        "ref": 28050
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          27000,
+          28000
+        ],
+        "trigger": 30400,
+        "stop": 26500
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "동진쎄미켐",
       "code": "005290",
       "exchange": "KQ",
       "page": "dongjin.html",
-      "F": 93,
-      "E": 90,
-      "V": 75,
-      "PR": 84,
-      "ref": 47650,
-      "theme": "PR·반도체 소재"
+      "theme": "PR·반도체 소재",
+      "legacy_scores": {
+        "F": 93,
+        "E": 90,
+        "V": 75,
+        "PR": 84,
+        "ref": 47650
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          46000,
+          47000
+        ],
+        "trigger": 50000,
+        "stop": 44000
+      },
+      "evidence": {
+        "status": "conflict_review_required",
+        "notes": [
+          "2Q YoY 비교치·연결 범위 원공시 확인"
+        ],
+        "sources": [
+          "https://www.yna.co.kr/view/AKR20260806087700527",
+          "https://www.thinkpool.com/stockDiscuss/005290/cont/11900990"
+        ]
+      }
     },
     {
       "name": "심텍",
       "code": "222800",
       "exchange": "KQ",
       "page": "simmtech.html",
-      "F": 90,
-      "E": 88,
-      "V": 62,
-      "PR": 80,
-      "ref": 149800,
-      "theme": "패키지기판·SoCAMM2/GDDR7"
+      "theme": "패키지기판·SoCAMM2/GDDR7",
+      "legacy_scores": {
+        "F": 90,
+        "E": 88,
+        "V": 62,
+        "PR": 80,
+        "ref": 149800
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          148000,
+          150000
+        ],
+        "trigger": 156600,
+        "stop": 144500
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "하나마이크론",
       "code": "067310",
       "exchange": "KQ",
       "page": "hanamicron.html",
-      "F": 95,
-      "E": 92,
-      "V": 82,
-      "PR": 68,
-      "ref": 47350,
-      "theme": "OSAT·SK하이닉스 외주"
+      "theme": "OSAT·SK하이닉스 외주",
+      "legacy_scores": {
+        "F": 95,
+        "E": 92,
+        "V": 82,
+        "PR": 68,
+        "ref": 47350
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          46000,
+          47000
+        ],
+        "trigger": 48500,
+        "stop": 44600
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "지엔씨에너지",
       "code": "119850",
       "exchange": "KQ",
       "page": "gncenergy.html",
-      "F": 92,
-      "E": 94,
-      "V": 65,
-      "PR": 94,
-      "ref": 57600,
-      "theme": "AI DC 비상발전기"
+      "theme": "AI DC 비상발전기",
+      "legacy_scores": {
+        "F": 92,
+        "E": 94,
+        "V": 65,
+        "PR": 94,
+        "ref": 57600
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          55000,
+          56000
+        ],
+        "trigger": 59000,
+        "stop": 53500
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "프로텍",
       "code": "053610",
       "exchange": "KQ",
       "page": "protec.html",
-      "F": 95,
-      "E": 94,
-      "V": 72,
-      "PR": 89,
-      "ref": 76000,
-      "theme": "Advanced Packaging"
+      "theme": "Advanced Packaging",
+      "legacy_scores": {
+        "F": 95,
+        "E": 94,
+        "V": 72,
+        "PR": 89,
+        "ref": 76000
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          72000,
+          74000
+        ],
+        "trigger": 79000,
+        "stop": 69500
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "엘티씨",
       "code": "170920",
       "exchange": "KQ",
       "page": "ltc.html",
-      "F": 93,
-      "E": 94,
-      "V": 66,
-      "PR": 88,
-      "ref": 41000,
-      "theme": "세정장비·고선택비인산"
+      "theme": "세정장비·고선택비인산",
+      "legacy_scores": {
+        "F": 93,
+        "E": 94,
+        "V": 66,
+        "PR": 88,
+        "ref": 41000
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          40000,
+          41000
+        ],
+        "trigger": 43200,
+        "stop": 38000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "비에이치아이",
       "code": "083650",
       "exchange": "KQ",
       "page": "bhi.html",
-      "F": 98,
-      "E": 97,
-      "V": 55,
-      "PR": 63,
-      "ref": 59800,
-      "theme": "HRSG·원전"
+      "theme": "HRSG·원전",
+      "legacy_scores": {
+        "F": 98,
+        "E": 97,
+        "V": 55,
+        "PR": 63,
+        "ref": 59800
+      },
+      "setup": {
+        "type": "recovery",
+        "buy": [
+          57000,
+          59000
+        ],
+        "trigger": 62000,
+        "stop": 56500
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "엘앤씨바이오",
       "code": "290650",
       "exchange": "KQ",
       "page": "lncbio.html",
-      "F": 91,
-      "E": 92,
-      "V": 62,
-      "PR": 68,
-      "ref": 50900,
-      "theme": "리투오·ECM"
+      "theme": "리투오·ECM",
+      "legacy_scores": {
+        "F": 91,
+        "E": 92,
+        "V": 62,
+        "PR": 68,
+        "ref": 50900
+      },
+      "setup": {
+        "type": "recovery",
+        "buy": [
+          48000,
+          50000
+        ],
+        "trigger": 52000,
+        "stop": 45000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "로보티즈",
       "code": "108490",
       "exchange": "KQ",
       "page": "robotis.html",
-      "F": 97,
-      "E": 96,
-      "V": 25,
-      "PR": 78,
-      "ref": 286500,
-      "theme": "휴머노이드 액추에이터"
+      "theme": "휴머노이드 액추에이터",
+      "legacy_scores": {
+        "F": 97,
+        "E": 96,
+        "V": 25,
+        "PR": 78,
+        "ref": 286500
+      },
+      "setup": {
+        "type": "recovery",
+        "buy": [
+          280000,
+          285000
+        ],
+        "trigger": 300000,
+        "breakout": 306000,
+        "stop": 275000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "사피엔반도체",
       "code": "452430",
       "exchange": "KQ",
       "page": "sapien.html",
-      "F": 84,
-      "E": 94,
-      "V": 35,
-      "PR": 82,
-      "ref": 39800,
-      "theme": "Micro-LED DDIC"
+      "theme": "Micro-LED DDIC",
+      "legacy_scores": {
+        "F": 84,
+        "E": 94,
+        "V": 35,
+        "PR": 82,
+        "ref": 39800
+      },
+      "setup": {
+        "type": "recovery",
+        "buy": [
+          38000,
+          39000
+        ],
+        "trigger": 40200,
+        "stop": 36000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "카페24",
       "code": "042000",
       "exchange": "KQ",
       "page": "cafe24.html",
-      "F": 82,
-      "E": 70,
-      "V": 72,
-      "PR": 78,
-      "ref": 18760,
-      "theme": "GMV·AI 커머스"
+      "theme": "GMV·AI 커머스",
+      "legacy_scores": {
+        "F": 82,
+        "E": 70,
+        "V": 72,
+        "PR": 78,
+        "ref": 18760
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          17500,
+          18000
+        ],
+        "trigger": 19600,
+        "stop": 17000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "토모큐브",
       "code": "475960",
       "exchange": "KQ",
       "page": "tomocube.html",
-      "F": 62,
-      "E": 75,
-      "V": 35,
-      "PR": 70,
-      "ref": 31800,
-      "theme": "홀로토모그래피"
+      "theme": "홀로토모그래피",
+      "legacy_scores": {
+        "F": 62,
+        "E": 75,
+        "V": 35,
+        "PR": 70,
+        "ref": 31800
+      },
+      "setup": {
+        "type": "event",
+        "buy": [
+          29000,
+          30000
+        ],
+        "trigger": 32600,
+        "stop": 28000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "현대해상",
       "code": "001450",
       "exchange": "KS",
       "page": "hyundaimarine.html",
-      "F": 91,
-      "E": 90,
-      "V": 90,
-      "PR": 52,
-      "ref": 48250,
-      "theme": "보험 정상화·배당"
+      "theme": "보험 정상화·배당",
+      "legacy_scores": {
+        "F": 91,
+        "E": 90,
+        "V": 90,
+        "PR": 52,
+        "ref": 48250
+      },
+      "setup": {
+        "type": "value_swing",
+        "buy": [
+          47000,
+          48500
+        ],
+        "trigger": 50500,
+        "stop": 46500
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "현대건설",
       "code": "000720",
       "exchange": "KS",
       "page": "hyundaiec.html",
-      "F": 87,
-      "E": 91,
-      "V": 64,
-      "PR": 58,
-      "ref": 118000,
-      "theme": "원전·해외 EPC"
+      "theme": "원전·해외 EPC",
+      "legacy_scores": {
+        "F": 87,
+        "E": 91,
+        "V": 64,
+        "PR": 58,
+        "ref": 118000
+      },
+      "setup": {
+        "type": "recovery",
+        "buy": [
+          115000,
+          118000
+        ],
+        "trigger": 123000,
+        "stop": 112000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "GS건설",
       "code": "006360",
       "exchange": "KS",
       "page": "gsconst.html",
-      "F": 72,
-      "E": 76,
-      "V": 82,
-      "PR": 52,
-      "ref": 33950,
-      "theme": "주택 원가 정상화"
+      "theme": "주택 원가 정상화",
+      "legacy_scores": {
+        "F": 72,
+        "E": 76,
+        "V": 82,
+        "PR": 52,
+        "ref": 33950
+      },
+      "setup": {
+        "type": "value_swing",
+        "buy": [
+          33000,
+          34000
+        ],
+        "trigger": 36000,
+        "stop": 32000
+      },
+      "evidence": {
+        "status": "priority_review",
+        "notes": [
+          "대손·소각로 손실의 반복 가능성과 정상화 이익 분리"
+        ],
+        "sources": [
+          "https://www.hankyung.com/article/2026073044636"
+        ]
+      }
     },
     {
       "name": "오로라",
       "code": "039830",
       "exchange": "KQ",
       "page": "aurora.html",
-      "F": 93,
-      "E": 91,
-      "V": 96,
-      "PR": 48,
-      "ref": 15750,
-      "theme": "글로벌 IP 소비재"
+      "theme": "글로벌 IP 소비재",
+      "legacy_scores": {
+        "F": 93,
+        "E": 91,
+        "V": 96,
+        "PR": 48,
+        "ref": 15750
+      },
+      "setup": {
+        "type": "value_swing",
+        "buy": [
+          15000,
+          15500
+        ],
+        "trigger": 17200,
+        "stop": 14000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "SGC에너지",
       "code": "005090",
       "exchange": "KS",
       "page": "sgcenergy.html",
-      "F": 94,
-      "E": 92,
-      "V": 94,
-      "PR": 38,
-      "ref": 47900,
-      "theme": "발전·SMP·AI DC"
+      "theme": "발전·SMP·AI DC",
+      "legacy_scores": {
+        "F": 94,
+        "E": 92,
+        "V": 94,
+        "PR": 38,
+        "ref": 47900
+      },
+      "setup": {
+        "type": "value_swing",
+        "buy": [
+          47000,
+          48000
+        ],
+        "trigger": 50000,
+        "breakout": 52000,
+        "stop": 46000
+      },
+      "evidence": {
+        "status": "conflict_review_required",
+        "notes": [
+          "AI 데이터센터 60MW 1단계와 후속 240MW 분리",
+          "LP 출자·준공 후 매각 구조와 발전이익 구분"
+        ],
+        "sources": [
+          "https://www.hyundaimotorgroup.com/ko/news/hyundai-engineering-gunsan-ai-data-center-project",
+          "https://www.joongang.co.kr/article/25465684"
+        ]
+      }
     },
     {
       "name": "지투파워",
       "code": "388050",
       "exchange": "KQ",
       "page": "g2power.html",
-      "F": 76,
-      "E": 82,
-      "V": 58,
-      "PR": 40,
-      "ref": 9630,
-      "theme": "원전·배전반·ESS"
+      "theme": "원전·배전반·ESS",
+      "legacy_scores": {
+        "F": 76,
+        "E": 82,
+        "V": 58,
+        "PR": 40,
+        "ref": 9630
+      },
+      "setup": {
+        "type": "recovery",
+        "buy": [
+          9300,
+          9600
+        ],
+        "trigger": 10300,
+        "stop": 9000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     },
     {
       "name": "에이팩트",
       "code": "200470",
       "exchange": "KQ",
       "page": "apact.html",
-      "F": 92,
-      "E": 90,
-      "V": 58,
-      "PR": 88,
-      "ref": 9280,
-      "theme": "SOCAMM2·OSAT"
+      "theme": "SOCAMM2·OSAT",
+      "legacy_scores": {
+        "F": 92,
+        "E": 90,
+        "V": 58,
+        "PR": 88,
+        "ref": 9280
+      },
+      "setup": {
+        "type": "trend",
+        "buy": [
+          8200,
+          8500
+        ],
+        "trigger": 9400,
+        "stop": 8000
+      },
+      "evidence": {
+        "status": "legacy_unverified",
+        "notes": [
+          "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
+        ],
+        "sources": []
+      }
     }
-  ]
+  ],
+  "methodology": {
+    "company_scores": "legacy F/E/V are preserved only for audit until evidence is structured and re-verified",
+    "execution": "quote validity → setup gate → technical score; unverified company evidence cannot produce definitive green",
+    "valuation": "price decline alone never increases V; legacy V is not dynamically adjusted"
+  }
 }
