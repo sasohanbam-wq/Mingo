@@ -88,6 +88,8 @@ def test_pullback_needs_zone_trend_and_reversal():
     d = frame(closes, lows=lows)
     b = frame(np.linspace(90, 105, 80))
     t = m.technical_metrics(d, b)
+    # This test isolates the pullback gate; overheat behavior is tested separately.
+    t["rsi14_wilder"] = 60.0
     gate = m.setup_gate(d, t, {
         "type": "trend", "buy": [99, 101], "trigger": 105, "stop": 95
     })
