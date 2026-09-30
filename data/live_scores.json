@@ -1,11 +1,39 @@
 {
   "version": 1,
   "model": "MINGO dynamic v1",
-  "updated_at": "2026-10-01T00:19:24+09:00",
-  "updated_at_label": "2026-10-01 00:19 KST",
+  "updated_at": "2026-10-01T07:04:33+09:00",
+  "updated_at_label": "2026-10-01 07:04 KST",
   "refresh_policy": "KST weekdays 09:07-15:37 every 30m + 16:10 close",
   "source": "Yahoo Finance via yfinance; quotes may be delayed",
-  "errors": [],
+  "errors": [
+    "101160:'ref'",
+    "007340:'ref'",
+    "011560:'ref'",
+    "033160:'ref'",
+    "322000:'ref'",
+    "039030:'ref'",
+    "083450:'ref'",
+    "082920:'ref'",
+    "005290:'ref'",
+    "222800:'ref'",
+    "067310:'ref'",
+    "119850:'ref'",
+    "053610:'ref'",
+    "170920:'ref'",
+    "083650:'ref'",
+    "290650:'ref'",
+    "108490:'ref'",
+    "452430:'ref'",
+    "042000:'ref'",
+    "475960:'ref'",
+    "001450:'ref'",
+    "000720:'ref'",
+    "006360:'ref'",
+    "039830:'ref'",
+    "005090:'ref'",
+    "388050:'ref'",
+    "200470:'ref'"
+  ],
   "stocks": [
     {
       "name": "월덱스",
@@ -45,7 +73,8 @@
       "buy_score": 93.4,
       "state": "green",
       "label": "🟢 지금 가능",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "DN오토모티브",
@@ -85,7 +114,8 @@
       "buy_score": 91.9,
       "state": "green",
       "label": "🟢 지금 가능",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "현대해상",
@@ -125,7 +155,8 @@
       "buy_score": 84.4,
       "state": "green",
       "label": "🟢 지금 가능",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "지엔씨에너지",
@@ -165,7 +196,8 @@
       "buy_score": 81.5,
       "state": "green",
       "label": "🟢 지금 가능",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "이오테크닉스",
@@ -205,7 +237,8 @@
       "buy_score": 81.2,
       "state": "green",
       "label": "🟢 지금 가능",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "GST",
@@ -245,7 +278,8 @@
       "buy_score": 80.2,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "엠케이전자",
@@ -285,7 +319,8 @@
       "buy_score": 79.7,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "동진쎄미켐",
@@ -325,7 +360,8 @@
       "buy_score": 79.2,
       "state": "green",
       "label": "🟢 지금 가능",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "엘티씨",
@@ -365,7 +401,8 @@
       "buy_score": 79.0,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "프로텍",
@@ -405,7 +442,8 @@
       "buy_score": 77.0,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "오로라",
@@ -445,7 +483,8 @@
       "buy_score": 75.9,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "하나마이크론",
@@ -485,7 +524,8 @@
       "buy_score": 75.5,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "심텍",
@@ -525,7 +565,8 @@
       "buy_score": 75.0,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "에이팩트",
@@ -565,7 +606,8 @@
       "buy_score": 72.3,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "세보엠이씨",
@@ -605,7 +647,8 @@
       "buy_score": 71.4,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "GS건설",
@@ -645,7 +688,8 @@
       "buy_score": 70.8,
       "state": "green",
       "label": "🟢 지금 가능",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "SGC에너지",
@@ -685,7 +729,8 @@
       "buy_score": 69.6,
       "state": "red",
       "label": "🔴 보류",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "사피엔반도체",
@@ -725,7 +770,8 @@
       "buy_score": 69.1,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "카페24",
@@ -765,7 +811,8 @@
       "buy_score": 69.0,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "로보티즈",
@@ -805,7 +852,8 @@
       "buy_score": 66.6,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "현대건설",
@@ -845,7 +893,8 @@
       "buy_score": 65.3,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "비츠로셀",
@@ -885,7 +934,8 @@
       "buy_score": 65.0,
       "state": "red",
       "label": "🔴 보류",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "HD현대에너지솔루션",
@@ -925,7 +975,8 @@
       "buy_score": 63.6,
       "state": "red",
       "label": "🔴 보류",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "지투파워",
@@ -965,7 +1016,8 @@
       "buy_score": 62.3,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "비에이치아이",
@@ -1005,7 +1057,8 @@
       "buy_score": 61.4,
       "state": "red",
       "label": "🔴 보류",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "엘앤씨바이오",
@@ -1045,7 +1098,8 @@
       "buy_score": 61.3,
       "state": "red",
       "label": "🔴 보류",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     },
     {
       "name": "토모큐브",
@@ -1085,7 +1139,8 @@
       "buy_score": 54.5,
       "state": "yellow",
       "label": "🟡 조건부",
-      "data_status": "live"
+      "data_status": "stale",
+      "error": "'ref'"
     }
   ]
 }
