@@ -6,6 +6,7 @@ on:
     paths:
       - "scripts/update_market.py"
       - "data/stocks.json"
+      - "tests/**"
       - ".github/workflows/market-refresh.yml"
   schedule:
     - cron: "7,37 9-15 * * 1-5"
@@ -21,7 +22,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  update:
+  test-and-update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,10 +31,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install market data dependencies
-        run: pip install --disable-pip-version-check yfinance pandas
+      - name: Install dependencies
+        run: pip install --disable-pip-version-check yfinance pandas exchange_calendars pytest
 
-      - name: Recalculate price-sensitive scores
+      - name: Run v2 gate tests
+        run: pytest -q tests/test_market_v2.py
+
+      - name: Recalculate completed-session scores
         run: python scripts/update_market.py
 
       - name: Commit refreshed scores
@@ -45,5 +49,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/live_scores.json
-          git commit -m "data: refresh live market scores"
+          git commit -m "data: refresh MINGO v2 market gates"
           git push
