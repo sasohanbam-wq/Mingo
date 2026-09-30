@@ -153,7 +153,7 @@ def breakout_confirmation(df, trigger):
     return {"passed": False, "volume_ratio": None, "cross_date": None}
 
 
-def technical_metrics(df, bench_df):
+def technical_metrics(df, bench_df=None, relative_valid=True):
     c = df["Close"].astype(float)
     h = df["High"].astype(float)
     l = df["Low"].astype(float)
@@ -167,7 +167,7 @@ def technical_metrics(df, bench_df):
     high20 = float(h.tail(20).max()) if len(h) >= 20 else float(h.max())
     low20 = float(l.tail(20).min()) if len(l) >= 20 else float(l.min())
     rsi = wilder_rsi(c)
-    ex = excess_returns(df, bench_df)
+    ex = excess_returns(df, bench_df) if (relative_valid and bench_df is not None) else {20: None, 60: None}
 
     prior_vol = v.iloc[-21:-1] if len(v) >= 21 else v.iloc[:-1]
     vol_mean = float(prior_vol.mean()) if len(prior_vol) and prior_vol.mean() > 0 else 0.0
@@ -215,10 +215,12 @@ def technical_metrics(df, bench_df):
     else:
         volume_score = 40.0
 
-    technical_score = round(
-        0.45 * trend + 0.30 * rel_score + 0.15 * momentum_score + 0.10 * volume_score,
-        1,
-    )
+    parts = [(trend, 0.45), (momentum_score, 0.15), (volume_score, 0.10)]
+    relative_available = rel20 is not None or rel60 is not None
+    if relative_available:
+        parts.append((rel_score, 0.30))
+    weight_sum = sum(w for _, w in parts)
+    technical_score = round(sum(v * w for v, w in parts) / weight_sum, 1)
     extension = None if ma20 is None else (p / ma20 - 1) * 100
 
     return {
@@ -236,7 +238,8 @@ def technical_metrics(df, bench_df):
         "extension_ma20_pct": None if extension is None else round(extension, 1),
         "technical_score": technical_score,
         "trend_score": round(trend, 1),
-        "relative_return_score": round(rel_score, 1),
+        "relative_return_score": round(rel_score, 1) if relative_available else None,
+        "relative_return_status": "valid" if relative_available else "N/A — benchmark session mismatch/unavailable",
     }
 
 
@@ -371,16 +374,23 @@ def process_stock(stock, bench_df, context):
     symbol = stock["code"] + (".KS" if stock["exchange"] == "KS" else ".KQ")
     raw = load_history(symbol)
     hist, quote_as_of, quote_ok = select_completed(raw, context["expected_completed_session"])
-    bench_hist, bench_as_of, bench_ok = select_completed(
-        bench_df, context["expected_completed_session"]
+    if bench_df is not None:
+        bench_hist, bench_as_of, bench_ok = select_completed(
+            bench_df, context["expected_completed_session"]
+        )
+    else:
+        bench_hist, bench_as_of, bench_ok = None, None, False
+    benchmark_aligned = bool(
+        quote_ok and bench_ok and quote_as_of == bench_as_of
     )
-    aligned = quote_ok and bench_ok and quote_as_of == bench_as_of
 
-    metrics = technical_metrics(hist, bench_hist)
+    metrics = technical_metrics(
+        hist, bench_hist, relative_valid=benchmark_aligned
+    )
     gate = setup_gate(hist, metrics, stock["setup"])
     evidence_status = stock.get("evidence", {}).get("status", "legacy_unverified")
 
-    data_valid = bool(aligned)
+    data_valid = bool(quote_ok)
     state, label = classify(
         data_valid, gate, evidence_status, metrics["technical_score"]
     )
@@ -401,6 +411,7 @@ def process_stock(stock, bench_df, context):
         "source": SOURCE,
         "quote_as_of": quote_as_of,
         "benchmark_as_of": bench_as_of,
+        "benchmark_status": "aligned" if benchmark_aligned else "stale_or_unavailable",
         "expected_completed_session": context["expected_completed_session"],
         "session": context["market_state"],
         "calculated_at": context["calculated_at"],
@@ -443,14 +454,12 @@ def main(now=None):
             bench[ex] = load_history(symbol)
         except Exception as exc:
             bench[ex] = None
-            errors.append(f"benchmark {ex}: {exc}")
+            errors.append(f"benchmark {ex}: {exc} — relative-return metric withheld")
 
     rows = []
     for stock in cfg["stocks"]:
         try:
             b = bench.get(stock["exchange"])
-            if b is None:
-                raise RuntimeError("benchmark unavailable")
             row = process_stock(stock, b, context)
         except Exception as exc:
             errors.append(f'{stock["code"]}: {exc}')
