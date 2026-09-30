@@ -128,3 +128,12 @@ def test_select_completed_marks_one_day_late_as_stale():
     _, asof, valid = m.select_completed(d, expected)
     assert asof == latest
     assert valid is False
+
+
+def test_benchmark_mismatch_withholds_relative_metric_not_price_tech():
+    d = frame(np.linspace(80, 100, 80))
+    b = frame(np.linspace(90, 105, 80))
+    t = m.technical_metrics(d, b, relative_valid=False)
+    assert t["relative_return_score"] is None
+    assert t["relative_return_status"].startswith("N/A")
+    assert isinstance(t["technical_score"], float)
