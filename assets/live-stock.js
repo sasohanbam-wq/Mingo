@@ -25,8 +25,10 @@
       '<p><b>셋업:</b> '+(s.setup_reason||'—')+'</p>'+
       '<p><b>매수구간:</b> '+zone+' · <b>트리거:</b> '+fmt(s.trigger)+'원 · <b>무효화:</b> '+fmt(s.invalidation)+'원</p>'+
       '<p><b>기술/셋업 점수:</b> '+(s.execution_score??'—')+' · <b>Wilder RSI:</b> '+(s.rsi14_wilder??'—')+'</p>'+
-      '<p style="color:#ffd166"><b>기업 근거:</b> '+(s.evidence_status||'—')+' · 확정 연구점수 '+(s.research_score??'N/A')+'</p>'+
-      '<div style="color:#8da4b5;font-size:11px">기존 F/E/V는 재검증 전 감사용 값이며 V2 매수 Gate를 상쇄하지 않는다.</div>';
+      '<p style="color:#ffd166"><b>기업 근거:</b> '+(s.evidence_status||'—')+' · 연구점수 '+(s.research_score??'N/A')+'</p>'+
+      '<p><b>새 F/E/V:</b> '+(s.research_F??'N/A')+' / '+(s.research_E??'N/A')+' / '+(s.research_V??'N/A')+
+      ' <span style="color:#8da4b5;font-size:11px">('+ (s.research_F_status??'—')+' / '+(s.research_E_status??'—')+' / '+(s.research_V_status??'—') +')</span></p>'+
+      '<div style="color:#8da4b5;font-size:11px">기존 F/E/V는 감사용 값. 세 요인이 모두 verified일 때만 연구점수를 생성하며, 연구점수 70 미만은 셋업이 좋아도 확정 🟢가 되지 않는다.</div>';
     const h1=document.querySelector('h1');
     const thesis=h1?.nextElementSibling;
     (thesis||h1)?.insertAdjacentElement('afterend',box);
