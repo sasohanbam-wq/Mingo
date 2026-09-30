@@ -1,140 +1,69 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MINGO · 오늘 뭐 살까?</title>
 <style>
 :root{--bg:#071019;--card:#0d1924;--line:#1d3040;--text:#edf5f9;--muted:#8da4b5;--mint:#5ee6c4;--amber:#ffd166;--red:#ff7373}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#061018,#09131c);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Segoe UI",sans-serif}
-.wrap{max-width:900px;margin:auto;padding:18px 14px 56px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--mint)}h1{font-size:30px;margin:8px 0 4px}.sub{font-size:13px;color:var(--muted);line-height:1.55}
-.refresh{border:1px solid var(--mint);background:#102b28;color:var(--mint);font-weight:800;border-radius:10px;padding:10px 12px;cursor:pointer}
-.hero{padding:12px 0 8px}.market{display:flex;gap:8px;overflow:auto;margin:14px 0}.chip{white-space:nowrap;border:1px solid var(--line);background:var(--card);padding:7px 10px;border-radius:999px;font-size:12px;color:var(--muted)}
-.sectionhead{display:flex;justify-content:space-between;align-items:end;margin:24px 0 10px}.sectionhead h2{margin:0;font-size:21px}.hint{font-size:12px;color:var(--muted)}
-.focus{border:1px solid #245c50;background:linear-gradient(145deg,#0b211f,#0d1924);border-radius:20px;padding:14px}
-.pick{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;color:inherit;text-decoration:none;padding:13px 4px;border-bottom:1px solid var(--line)}.pick:last-child{border-bottom:0}
-.rank{font-weight:900;color:var(--mint);font-size:18px}.pickname{font-size:17px;font-weight:850}.reason{font-size:12px;color:var(--muted);margin-top:4px}.pickright{text-align:right}.zone{font-size:13px;font-weight:800;margin-top:6px}.trigger{font-size:11px;color:var(--muted);margin-top:3px}
-.badge{display:inline-block;padding:5px 8px;border-radius:8px;font-size:11px;font-weight:850}.buy{background:#10322c;color:var(--mint)}.wait{background:#332c16;color:var(--amber)}
-.tabs{display:flex;gap:7px;position:sticky;top:0;z-index:5;background:rgba(7,16,25,.93);backdrop-filter:blur(8px);padding:10px 0}.tab{border:1px solid var(--line);background:#0d1924;color:var(--muted);border-radius:999px;padding:8px 11px;font-weight:800;font-size:12px;cursor:pointer}.tab.active{border-color:var(--mint);color:var(--mint)}
-.search{width:100%;margin:4px 0 8px;border:1px solid var(--line);background:#0b1620;color:var(--text);padding:12px 13px;border-radius:12px;outline:none}
-.list{border:1px solid var(--line);border-radius:16px;overflow:hidden}.stock{display:grid;grid-template-columns:1fr auto;gap:12px;color:inherit;text-decoration:none;padding:13px 14px;border-bottom:1px solid var(--line);background:rgba(13,25,36,.75)}.stock:last-child{border-bottom:0}.stockright{text-align:right}.ticker,.desc,.factors{color:var(--muted);font-size:11px}.desc{margin-top:4px}.factors{margin-top:6px}
-details{margin-top:18px;border:1px solid var(--line);border-radius:16px;background:#0d1924}summary{cursor:pointer;padding:15px 16px;font-weight:850}.inside{padding:0 14px 14px}.minirow{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:11px 2px;font-size:13px}.minirow span:last-child{color:var(--muted);text-align:right}
-.footer{margin-top:28px;color:#607687;font-size:11px}.hidden{display:none!important}
-@media(max-width:600px){h1{font-size:27px}.pick{grid-template-columns:34px 1fr}.pickright{grid-column:2;text-align:left;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.stock{grid-template-columns:1fr}.stockright{text-align:left}.factors{display:inline;margin-left:6px}}
-.score-note{margin:10px 0 0;padding:11px 13px;border:1px solid #4b4120;background:#211d0e;border-radius:12px;color:#ffd166;font-size:12px;line-height:1.55}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#061018,#09131c);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Segoe UI",sans-serif}.wrap{max-width:920px;margin:auto;padding:18px 14px 56px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--mint)}h1{font-size:30px;margin:8px 0 4px}.sub{font-size:13px;color:var(--muted);line-height:1.55}.refresh{border:1px solid var(--mint);background:#102b28;color:var(--mint);font-weight:800;border-radius:10px;padding:10px 12px;cursor:pointer}.market{display:flex;gap:8px;overflow:auto;margin:14px 0}.chip{white-space:nowrap;border:1px solid var(--line);background:var(--card);padding:7px 10px;border-radius:999px;font-size:12px;color:var(--muted)}.chip.live{color:var(--mint);border-color:#245c50}.sectionhead{display:flex;justify-content:space-between;align-items:end;margin:24px 0 10px}.sectionhead h2{margin:0;font-size:21px}.hint{font-size:12px;color:var(--muted)}.focus{border:1px solid #245c50;background:linear-gradient(145deg,#0b211f,#0d1924);border-radius:20px;padding:14px}.pick{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;color:inherit;text-decoration:none;padding:13px 4px;border-bottom:1px solid var(--line)}.pick:last-child{border-bottom:0}.rank{font-weight:900;color:var(--mint);font-size:18px}.pickname{font-size:17px;font-weight:850}.reason{font-size:12px;color:var(--muted);margin-top:4px}.pickright{text-align:right}.price{font-size:14px;font-weight:900;margin-top:6px}.scorebig{font-size:21px;font-weight:900;color:var(--mint)}.trigger{font-size:11px;color:var(--muted);margin-top:3px}.badge{display:inline-block;padding:5px 8px;border-radius:8px;font-size:11px;font-weight:850}.buy{background:#10322c;color:var(--mint)}.wait{background:#332c16;color:var(--amber)}.stop{background:#321919;color:var(--red)}.tabs{display:flex;gap:7px;position:sticky;top:0;z-index:5;background:rgba(7,16,25,.94);backdrop-filter:blur(8px);padding:10px 0;overflow:auto}.tab{white-space:nowrap;border:1px solid var(--line);background:#0d1924;color:var(--muted);border-radius:999px;padding:8px 11px;font-weight:800;font-size:12px;cursor:pointer}.tab.active{border-color:var(--mint);color:var(--mint)}.search{width:100%;margin:4px 0 8px;border:1px solid var(--line);background:#0b1620;color:var(--text);padding:12px 13px;border-radius:12px;outline:none}.list{border:1px solid var(--line);border-radius:16px;overflow:hidden}.stock{display:grid;grid-template-columns:1fr auto;gap:12px;color:inherit;text-decoration:none;padding:13px 14px;border-bottom:1px solid var(--line);background:rgba(13,25,36,.75)}.stock:last-child{border-bottom:0}.stockright{text-align:right}.ticker,.desc,.factors{color:var(--muted);font-size:11px}.desc{margin-top:4px}.factors{margin-top:6px}.mini{font-size:11px;color:var(--muted);margin-top:4px}.stale{color:var(--amber)}details{margin-top:18px;border:1px solid var(--line);border-radius:16px;background:#0d1924}summary{cursor:pointer;padding:15px 16px;font-weight:850}.inside{padding:0 14px 14px}.minirow{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:11px 2px;font-size:13px}.minirow span:last-child{color:var(--muted);text-align:right}.footer{margin-top:28px;color:#607687;font-size:11px}.hidden{display:none!important}.error{border:1px solid #5c3d20;background:#21170e;color:#ffd166;border-radius:12px;padding:10px 12px;font-size:12px;margin-top:12px;display:none}
+@media(max-width:600px){h1{font-size:27px}.pick{grid-template-columns:34px 1fr}.pickright{grid-column:2;text-align:left;display:flex;gap:7px;align-items:center;flex-wrap:wrap}.stock{grid-template-columns:1fr}.stockright{text-align:left}}
 </style></head><body><main class="wrap">
-<div class="top"><div><div class="brand">MINGO INVESTMENT OS</div><div class="sub">2026-09-30 기준 · 리서치/차트 신호</div></div><button id="refreshBtn" class="refresh">↻ 최신</button></div>
-<section class="hero"><h1>오늘 뭐 살까?</h1><div class="sub"><b>기업점수</b>와 <b>현재매수점수</b>를 분리한다. 현재매수점수는 가격·밸류·RS·차트 위치가 바뀌면 다시 계산되어야 한다.</div></section>
-<div class="score-note">⚠️ 현재매수점수는 <b>자동 실시간 시세 연동 전</b>이라 마지막 분석 가격 기준이다. 기업점수(F/E)는 느리게 변하고, Valuation·Price/RS·매수순위는 현재 가격에 따라 다시 계산해야 한다.</div><div class="market"><span class="chip">KOSPI 6,838 · -0.48%</span><span class="chip">KOSDAQ 855.9 · +0.72%</span><span class="chip">레짐: 개별 실적·RS 선별</span></div>
+<div class="top"><div><div class="brand">MINGO INVESTMENT OS</div><div id="updated" class="sub">시장 데이터 불러오는 중…</div></div><button id="refreshBtn" class="refresh">↻ 최신 계산</button></div>
+<section><h1>오늘 뭐 살까?</h1><div class="sub"><b>기업점수(F/E)</b>는 천천히, <b>현재매수점수(V/Price·RS)</b>는 가격에 따라 움직인다. TOP5는 현재매수점수 기준 자동 정렬.</div></section>
+<div class="market"><span class="chip live">AUTO · 장중 30분</span><span class="chip">09:07~15:37 KST</span><span class="chip">16:10 종가 재계산</span></div>
+<div id="error" class="error"></div>
 
-<div class="sectionhead"><h2>🔥 현재매수 TOP 5 · 마지막 계산 기준</h2><span class="hint">가격 민감 · 주가 갱신 시 재계산</span></div>
-<section class="focus"><a class="pick" href="stocks/worldex.html">
-<div class="rank">#1</div><div class="pickmain"><div class="pickname">월덱스</div><div class="reason">실적·밸류·거래량이 동시에 붙는 구간</div></div>
-<div class="pickright"><span class="badge buy">매수 후보</span><div class="zone">31~32K</div><div class="trigger">↑ 32.3K 돌파</div></div></a><a class="pick" href="stocks/dnautomotive.html">
-<div class="rank">#2</div><div class="pickmain"><div class="pickname">DN오토모티브</div><div class="reason">저평가 + 실적 + RS 균형</div></div>
-<div class="pickright"><span class="badge buy">눌림 추세매수</span><div class="zone">47~49K</div><div class="trigger">↑ 51K 돌파</div></div></a><a class="pick" href="stocks/sebo.html">
-<div class="rank">#3</div><div class="pickmain"><div class="pickname">세보엠이씨</div><div class="reason">실적 급증 대비 낮은 밸류</div></div>
-<div class="pickright"><span class="badge buy">눌림 매수</span><div class="zone">22~23K</div><div class="trigger">↑ 24.5K 회복</div></div></a><a class="pick" href="stocks/mkelectron.html">
-<div class="rank">#4</div><div class="pickmain"><div class="pickname">엠케이전자</div><div class="reason">반도체 소재 업황 + RS 강도</div></div>
-<div class="pickright"><span class="badge buy">조건부 매수</span><div class="zone">16~16.5K</div><div class="trigger">↑ 17.35K 돌파</div></div></a><a class="pick" href="stocks/hdenergy.html">
-<div class="rank">#5</div><div class="pickmain"><div class="pickname">HD현대에너지솔루션</div><div class="reason">실적 모멘텀 + 강한 추세</div></div>
-<div class="pickright"><span class="badge buy">추세추종</span><div class="zone">124~127K</div><div class="trigger">↑ 132.2K 돌파</div></div></a></section>
+<div class="sectionhead"><h2>🔥 현재매수 TOP 5</h2><span class="hint">현재 가격 기준</span></div>
+<section id="top5" class="focus"><div class="sub">계산값 로딩 중…</div></section>
 
-<div class="sectionhead"><h2>현재매수 실행 보드</h2><span class="hint">가격/RS 기준 · 탭으로 필터</span></div>
-<div class="tabs"><button class="tab active" data-filter="green">🟢 지금 가능</button><button class="tab" data-filter="yellow">🟡 조건부</button><button class="tab" data-filter="all">전체</button></div>
+<div class="sectionhead"><h2>현재매수 실행 보드</h2><span id="count" class="hint"></span></div>
+<div class="tabs"><button class="tab active" data-filter="green">🟢 지금 가능</button><button class="tab" data-filter="yellow">🟡 조건부</button><button class="tab" data-filter="red">🔴 보류</button><button class="tab" data-filter="all">전체</button></div>
 <input id="search" class="search" placeholder="종목 검색">
-<div id="stockList" class="list"><a class="stock green" data-state="green" data-name="월덱스" href="stocks/worldex.html">
-<div><b>월덱스</b> <span class="ticker">101160</span><div class="desc">식각 소모품 · 실적+저평가+거래량</div></div>
-<div class="stockright"><span class="badge buy">🟢 지금 가능</span><div class="factors">F94 · E90 · V95 · RS88</div><div class="trigger">31~32K 지지 / 32.3K 돌파</div></div></a><a class="stock green" data-state="green" data-name="dn오토모티브" href="stocks/dnautomotive.html">
-<div><b>DN오토모티브</b> <span class="ticker">007340</span><div class="desc">DN솔루션즈 · 공작기계 업사이클 · 저평가</div></div>
-<div class="stockright"><span class="badge buy">🟢 지금 가능</span><div class="factors">F95 · E94 · V95 · RS90</div><div class="trigger">47~49K 지지 / 51K 돌파</div></div></a><a class="stock green" data-state="green" data-name="세보엠이씨" href="stocks/sebo.html">
-<div><b>세보엠이씨</b> <span class="ticker">011560</span><div class="desc">반도체/DC 설비 · 실적 급증 · 저평가</div></div>
-<div class="stockright"><span class="badge buy">🟢 지금 가능</span><div class="factors">F95 · E93 · V96 · RS76</div><div class="trigger">22~23K 지지 / 24.5K 회복</div></div></a><a class="stock green" data-state="green" data-name="엠케이전자" href="stocks/mkelectron.html">
-<div><b>엠케이전자</b> <span class="ticker">033160</span><div class="desc">반도체 소재 · 실적+RS</div></div>
-<div class="stockright"><span class="badge buy">🟢 지금 가능</span><div class="factors">F90 · E91 · V88 · RS91</div><div class="trigger">16~16.5K 지지 / 17.35K 돌파</div></div></a><a class="stock green" data-state="green" data-name="hd현대에너지솔루션" href="stocks/hdenergy.html">
-<div><b>HD현대에너지솔루션</b> <span class="ticker">322000</span><div class="desc">미국 태양광 · 강한 실적/추세</div></div>
-<div class="stockright"><span class="badge buy">🟢 지금 가능</span><div class="factors">F96 · E95 · V67 · RS94</div><div class="trigger">124~127K 지지 / 132.2K 돌파</div></div></a><a class="stock green" data-state="green" data-name="이오테크닉스" href="stocks/eotechnics.html">
-<div><b>이오테크닉스</b> <span class="ticker">039030</span><div class="desc">레이저 장비 · AI/HBM CAPEX</div></div>
-<div class="stockright"><span class="badge buy">🟢 조건부</span><div class="factors">F96 · E96 · V55 · RS92</div><div class="trigger">490~505K / 526K 돌파</div></div></a><a class="stock green" data-state="green" data-name="gst" href="stocks/gst.html">
-<div><b>GST</b> <span class="ticker">083450</span><div class="desc">스크러버·칠러 + 액침냉각 옵션</div></div>
-<div class="stockright"><span class="badge buy">🟢 모멘텀</span><div class="factors">F89 · E90 · V72 · RS92</div><div class="trigger">50~52K / 54K 돌파</div></div></a><a class="stock green" data-state="green" data-name="비츠로셀" href="stocks/vitzrocell.html">
-<div><b>비츠로셀</b> <span class="ticker">082920</span><div class="desc">고온전지·방산 · 박스 스윙</div></div>
-<div class="stockright"><span class="badge buy">🟢 스윙</span><div class="factors">F94 · E91 · V76 · RS72</div><div class="trigger">27~28K / 30.4K 돌파</div></div></a><a class="stock green" data-state="green" data-name="동진쎄미켐" href="stocks/dongjin.html">
-<div><b>동진쎄미켐</b> <span class="ticker">005290</span><div class="desc">PR·반도체 소재 · 추세복귀</div></div>
-<div class="stockright"><span class="badge buy">🟢 조건부</span><div class="factors">F93 · E90 · V75 · RS84</div><div class="trigger">46~47K / 49.5~50K 돌파</div></div></a><a class="stock green" data-state="green" data-name="심텍" href="stocks/simmtech.html">
-<div><b>심텍</b> <span class="ticker">222800</span><div class="desc">기판 · 타이트닝</div></div>
-<div class="stockright"><span class="badge buy">🟢 추세</span><div class="factors">F90 · E88 · V62 · RS80</div><div class="trigger">148~150K / 156.6K 돌파</div></div></a><a class="stock green" data-state="green" data-name="하나마이크론" href="stocks/hanamicron.html">
-<div><b>하나마이크론</b> <span class="ticker">067310</span><div class="desc">OSAT · 베트남 Full CAPA</div></div>
-<div class="stockright"><span class="badge buy">🟢 모멘텀</span><div class="factors">F95 · E92 · V82 · RS68</div><div class="trigger">46~47K / 48.5K 돌파</div></div></a><a class="stock yellow" data-state="yellow" data-name="지엔씨에너지" href="stocks/gncenergy.html">
-<div><b>지엔씨에너지</b> <span class="ticker">119850</span><div class="desc">AI 데이터센터 비상발전기</div></div>
-<div class="stockright"><span class="badge wait">🟡 대기</span><div class="factors">F92 · E94 · V65 · RS94</div><div class="trigger">55~56K / 59K 돌파</div></div></a><a class="stock yellow" data-state="yellow" data-name="프로텍" href="stocks/protec.html">
-<div><b>프로텍</b> <span class="ticker">053610</span><div class="desc">Advanced Packaging</div></div>
-<div class="stockright"><span class="badge wait">🟡 대기</span><div class="factors">F95 · E94 · V72 · RS89</div><div class="trigger">72~74K / 78~80K</div></div></a><a class="stock yellow" data-state="yellow" data-name="엘티씨" href="stocks/ltc.html">
-<div><b>엘티씨</b> <span class="ticker">170920</span><div class="desc">세정장비+고선택비인산</div></div>
-<div class="stockright"><span class="badge wait">🟡 대기</span><div class="factors">F93 · E94 · V66 · RS88</div><div class="trigger">40~41K / 43.2K 돌파</div></div></a><a class="stock yellow" data-state="yellow" data-name="비에이치아이" href="stocks/bhi.html">
-<div><b>비에이치아이</b> <span class="ticker">083650</span><div class="desc">HRSG·원전 · F/E 최상위</div></div>
-<div class="stockright"><span class="badge wait">🟡 반등 확인</span><div class="factors">F98 · E97 · V55 · RS63</div><div class="trigger">57~59K + 62K 회복</div></div></a><a class="stock yellow" data-state="yellow" data-name="엘앤씨바이오" href="stocks/lncbio.html">
-<div><b>엘앤씨바이오</b> <span class="ticker">290650</span><div class="desc">리투오 CAPA</div></div>
-<div class="stockright"><span class="badge wait">🟡 확인</span><div class="factors">F91 · E92 · V62 · RS68</div><div class="trigger">48~50K / 52K 안착</div></div></a><a class="stock yellow" data-state="yellow" data-name="로보티즈" href="stocks/robotis.html">
-<div><b>로보티즈</b> <span class="ticker">108490</span><div class="desc">휴머노이드 액추에이터 · 초고밸류</div></div>
-<div class="stockright"><span class="badge wait">🟡 확인</span><div class="factors">F97 · E96 · V25 · RS78</div><div class="trigger">280~285K + 300K 회복</div></div></a><a class="stock yellow" data-state="yellow" data-name="사피엔반도체" href="stocks/sapien.html">
-<div><b>사피엔반도체</b> <span class="ticker">452430</span><div class="desc">Micro-LED DDIC · 양산 확인</div></div>
-<div class="stockright"><span class="badge wait">🟡 확인</span><div class="factors">F84 · E94 · V35 · RS82</div><div class="trigger">38~39K + 40.2K 돌파</div></div></a><a class="stock yellow" data-state="yellow" data-name="카페24" href="stocks/cafe24.html">
-<div><b>카페24</b> <span class="ticker">042000</span><div class="desc">GMV·AI커머스</div></div>
-<div class="stockright"><span class="badge wait">🟡 대기</span><div class="factors">F82 · E70 · V72 · RS78</div><div class="trigger">17.5~18K / 19.6K</div></div></a><a class="stock yellow" data-state="yellow" data-name="토모큐브" href="stocks/tomocube.html">
-<div><b>토모큐브</b> <span class="ticker">475960</span><div class="desc">HT · 고위험 이벤트</div></div>
-<div class="stockright"><span class="badge wait">🟡 관찰</span><div class="factors">F62 · E75 · V35 · RS70</div><div class="trigger">29~30K / 32.6K</div></div></a><a class="stock yellow" data-state="yellow" data-name="현대해상" href="stocks/hyundaimarine.html">
-<div><b>현대해상</b> <span class="ticker">001450</span><div class="desc">보험 정상화·배당</div></div>
-<div class="stockright"><span class="badge wait">🟡 스윙</span><div class="factors">F91 · E90 · V90 · RS52</div><div class="trigger">47K + 50~50.5K 회복</div></div></a><a class="stock yellow" data-state="yellow" data-name="현대건설" href="stocks/hyundaiec.html">
-<div><b>현대건설</b> <span class="ticker">000720</span><div class="desc">원전·해외EPC</div></div>
-<div class="stockright"><span class="badge wait">🟡 대기</span><div class="factors">F87 · E91 · V64 · RS58</div><div class="trigger">115~118K + 123K</div></div></a><a class="stock yellow" data-state="yellow" data-name="gs건설" href="stocks/gsconst.html">
-<div><b>GS건설</b> <span class="ticker">006360</span><div class="desc">주택 원가율 정상화</div></div>
-<div class="stockright"><span class="badge wait">🟡 스윙</span><div class="factors">F72 · E76 · V82 · RS52</div><div class="trigger">33~34K / 35.5~36K</div></div></a><a class="stock yellow" data-state="yellow" data-name="오로라" href="stocks/aurora.html">
-<div><b>오로라</b> <span class="ticker">039830</span><div class="desc">IP 소비재 · 저평가</div></div>
-<div class="stockright"><span class="badge wait">🟡 스윙</span><div class="factors">F93 · E91 · V96 · RS48</div><div class="trigger">15~15.5K / 17.2K</div></div></a><a class="stock yellow" data-state="yellow" data-name="sgc에너지" href="stocks/sgcenergy.html">
-<div><b>SGC에너지</b> <span class="ticker">005090</span><div class="desc">발전+AI DC 옵션</div></div>
-<div class="stockright"><span class="badge wait">🟡 반등 확인</span><div class="factors">F94 · E92 · V94 · RS38</div><div class="trigger">47~48K + 50K 회복</div></div></a><a class="stock yellow" data-state="yellow" data-name="지투파워" href="stocks/g2power.html">
-<div><b>지투파워</b> <span class="ticker">388050</span><div class="desc">원전·배전반·ESS</div></div>
-<div class="stockright"><span class="badge wait">🟡 바닥 확인</span><div class="factors">F76 · E82 · V58 · RS40</div><div class="trigger">9.3~9.6K + 10.3K</div></div></a><a class="stock yellow" data-state="yellow" data-name="에이팩트" href="stocks/apact.html">
-<div><b>에이팩트</b> <span class="ticker">200470</span><div class="desc">SOCAMM2 · OSAT</div></div>
-<div class="stockright"><span class="badge wait">🟡 과열 대기</span><div class="factors">F/E 강함</div><div class="trigger">8.2~8.5K / 9.4K</div></div></a></div>
+<div id="stockList" class="list"><div class="stock">시장 데이터 불러오는 중…</div></div>
 
-<details><summary>📊 4팩터 종합 랭킹 보기</summary><div class="inside">
-<div class="minirow"><b>1 DN오토모티브</b><span>F95 · E94 · V95 · RS90</span></div>
-<div class="minirow"><b>2 세보엠이씨</b><span>F95 · E93 · V96 · RS76</span></div>
-<div class="minirow"><b>3 월덱스</b><span>F94 · E90 · V95 · RS88</span></div>
-<div class="minirow"><b>4 HD현대에너지솔루션</b><span>F96 · E95 · V67 · RS94</span></div>
-<div class="minirow"><b>5 엠케이전자</b><span>F90 · E91 · V88 · RS91</span></div>
-<div class="minirow"><b>6 이오테크닉스</b><span>F96 · E96 · V55 · RS92</span></div>
-<div class="minirow"><b>7 BHI</b><span>F98 · E97 · V55 · RS63</span></div>
-<div class="minirow"><b>8 비츠로셀</b><span>F94 · E91 · V76 · RS72</span></div>
-<div class="minirow"><b>9 프로텍</b><span>F95 · E94 · V72 · RS89</span></div>
-<div class="minirow"><b>10 동진쎄미켐</b><span>F93 · E90 · V75 · RS84</span></div>
+<details><summary>📊 현재매수 점수 TOP 10 보기</summary><div id="rank10" class="inside"></div></details>
+<details><summary>🧠 점수 계산 방식</summary><div class="inside">
+<div class="minirow"><b>Fundamental 18%</b><span>실적·사업 구조 · 분석 갱신 시 변경</span></div>
+<div class="minirow"><b>Estimate 17%</b><span>컨센서스·추정치 방향 · 분석 갱신 시 변경</span></div>
+<div class="minirow"><b>Valuation 25%</b><span>기준가격 대비 현재가격 변화로 자동 조정</span></div>
+<div class="minirow"><b>Price / RS 40%</b><span>20·50·200일선, RSI, 상대수익률, 거래량, 과열도</span></div>
+<div class="minirow"><b>실행 분류</b><span>🟢 지금 가능 / 🟡 조건부 / 🔴 보류 자동 분류</span></div>
 </div></details>
-
-<details><summary>👀 핵심 Watchlist 보기</summary><div class="inside">
-<div class="minirow"><b>BHI</b><span>62K 회복 · HRSG/원전 수주</span></div>
-<div class="minirow"><b>SGC에너지</b><span>50~52K 회복 · SMP/AIDC</span></div>
-<div class="minirow"><b>지엔씨에너지</b><span>59K · 데이터센터 신규수주</span></div>
-<div class="minirow"><b>로보티즈</b><span>300K · 액추에이터 출하/CAPA</span></div>
-<div class="minirow"><b>사피엔반도체</b><span>40.2K · 빅테크 양산매출</span></div>
-</div></details>
-
-<details><summary>🧠 산업 딥다이브 보기</summary><div class="inside">
-<div class="minirow"><b>AI 메모리 / 후공정</b><span>HBM · SOCAMM2 · OSAT</span></div>
-<div class="minirow"><b>패키지 기판</b><span>심텍 중심 밸류체인</span></div>
-<div class="minirow"><b>AI 전력 인프라</b><span>HRSG · 발전 · DC</span></div>
-</div></details>
-
-<div class="footer">MINGO OS · 실행 우선형 대시보드 · 종목 상세는 각 행을 탭하면 이동</div>
+<div class="footer">시세는 Yahoo Finance 기반으로 지연될 수 있음 · 투자 판단용 보조지표이며 자동 주문 기능은 없음.</div>
 </main>
 <script>
-const tabs=[...document.querySelectorAll('.tab')], items=[...document.querySelectorAll('.stock')], q=document.getElementById('search');
-let filter='green';
+let DATA=null,filter='green';
+const fmt=n=>n==null?'—':Math.round(n).toLocaleString('ko-KR');
+const badgeClass=s=>s==='green'?'buy':s==='red'?'stop':'wait';
+function row(s){
+ const stale=s.data_status&&s.data_status!=='live';
+ const zone=s.buy_zone&&s.buy_zone[0]!=null?(fmt(s.buy_zone[0])+'~'+fmt(s.buy_zone[1])):'—';
+ return '<a class="stock" data-state="'+s.state+'" data-name="'+s.name.toLowerCase()+'" href="stocks/'+s.page+'"><div><b>'+s.name+'</b> <span class="ticker">'+s.code+'</span><div class="desc">'+s.theme+'</div><div class="mini">현재 '+fmt(s.price)+'원 · '+(s.change_pct>=0?'+':'')+(s.change_pct??0)+'% · RSI '+(s.rsi14??'—')+(stale?' · <span class="stale">STALE</span>':'')+'</div></div><div class="stockright"><span class="badge '+badgeClass(s.state)+'">'+s.label+'</span><div class="scorebig">'+s.buy_score+'</div><div class="factors">F '+s.F+' · E '+s.E+' · V '+s.dynamic_V+' · P/RS '+s.pr_score+'</div><div class="trigger">'+s.setup+' · '+zone+'</div></div></a>';
+}
+function render(d){
+ DATA=d;
+ document.getElementById('updated').textContent='마지막 자동 계산 · '+d.updated_at_label;
+ document.getElementById('count').textContent=d.stocks.length+'종목 · 점수 자동 재정렬';
+ const top=d.stocks.slice(0,5);
+ document.getElementById('top5').innerHTML=top.map((s,i)=>'<a class="pick" href="stocks/'+s.page+'"><div class="rank">#'+(i+1)+'</div><div><div class="pickname">'+s.name+'</div><div class="reason">'+s.theme+' · '+s.setup+'</div></div><div class="pickright"><span class="badge '+badgeClass(s.state)+'">'+s.label+'</span><div class="scorebig">'+s.buy_score+'점</div><div class="price">'+fmt(s.price)+'원 <span class="mini">'+(s.change_pct>=0?'+':'')+s.change_pct+'%</span></div><div class="trigger">트리거 '+fmt(s.trigger)+' · 방어 '+fmt(s.stop)+'</div></div></a>').join('');
+ document.getElementById('stockList').innerHTML=d.stocks.map(row).join('');
+ document.getElementById('rank10').innerHTML=d.stocks.slice(0,10).map((s,i)=>'<div class="minirow"><b>'+(i+1)+' · '+s.name+'</b><span>'+s.buy_score+'점 · F'+s.F+' E'+s.E+' V'+s.dynamic_V+' P/RS'+s.pr_score+'</span></div>').join('');
+ apply();
+ const err=document.getElementById('error');
+ if(d.errors&&d.errors.length){err.style.display='block';err.textContent='일부 종목 데이터 지연: '+d.errors.length+'건. 해당 종목은 마지막 정상값을 유지한다.'}else err.style.display='none';
+}
 function apply(){
- const term=q.value.trim().toLowerCase();
- items.forEach(el=>{
-   const okFilter=filter==='all'||el.dataset.state===filter;
-   const okSearch=!term||el.dataset.name.includes(term)||el.textContent.toLowerCase().includes(term);
-   el.classList.toggle('hidden',!(okFilter&&okSearch));
+ if(!DATA)return;
+ const term=document.getElementById('search').value.trim().toLowerCase();
+ document.querySelectorAll('.stock[data-state]').forEach(el=>{
+   const ok=(filter==='all'||el.dataset.state===filter)&&(!term||el.dataset.name.includes(term)||el.textContent.toLowerCase().includes(term));
+   el.classList.toggle('hidden',!ok);
  });
 }
-tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;apply()}));
-q.addEventListener('input',apply);apply();
-document.getElementById('refreshBtn').addEventListener('click',()=>location.replace(location.origin+location.pathname+'?refresh='+Date.now()));
+async function refreshScores(){
+ const b=document.getElementById('refreshBtn');b.disabled=true;b.textContent='↻ 불러오는 중';
+ try{const r=await fetch('data/live_scores.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);render(await r.json());}
+ catch(e){const x=document.getElementById('error');x.style.display='block';x.textContent='자동 점수 파일을 아직 불러오지 못했다. 첫 계산 워크플로 배포 중일 수 있다.';}
+ finally{b.disabled=false;b.textContent='↻ 최신 계산';}
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;apply()}));
+document.getElementById('search').addEventListener('input',apply);
+document.getElementById('refreshBtn').addEventListener('click',refreshScores);
+refreshScores();setInterval(refreshScores,300000);
 </script></body></html>
