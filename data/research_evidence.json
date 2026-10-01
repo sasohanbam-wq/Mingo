@@ -1913,6 +1913,59 @@
       },
       "provisional_research_score": null,
       "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
+    },
+    "128940": {
+      "name": "한미약품",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "basis": [
+          "Q2매출4672억/OP1311억은Lilly기술료일시인식포함.정상화반복OP미검증.북경한미매출607억(-29.9%)."
+        ],
+        "sources": [
+          "https://hanmi.co.kr/about/news-media/press/detail-4842.hm",
+          "https://www.hanmi.co.kr/file/admin/result/1785227442860.pdf"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "basis": [
+          "동일연도EPS1/3개월수정표미확인."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "partial",
+        "basis": [
+          "조건부딜최대가치와upfront분리.정상화이익·SOTP/피어미검증."
+        ],
+        "sources": [
+          "https://hanmi.co.kr/about/news-media/press/detail-4842.hm",
+          "https://www.hanmi.co.kr/file/admin/result/1785227442860.pdf"
+        ]
+      },
+      "research_score": null,
+      "provisional_research_score": null,
+      "review_note": "research/research/hanmi-2026-10-01.md",
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T12:56:00+09:00",
+        "research_note": "research/research/hanmi-2026-10-01.md",
+        "execution_note": "확인당시KRX509000원,지금/1차보류.이벤트·파이프라인옵션/추격주의.오늘수급·완전차트미확인으로수치트리거N/A.현재매수신호아님.",
+        "sources": [
+          "https://stock.naver.com/domestic/stock/128940/price"
+        ]
+      },
+      "next_check": [
+        "HM17321전체1상완료아님;사람체성분PoC",
+        "에페품목허가/가격/실제처방",
+        "3QIR원본/반복OP",
+        "종가차트/거래량/당일수급"
+      ],
+      "score_note": "미완료팩터는N/A.가격점수/매수게이트불변."
     }
   }
 }
