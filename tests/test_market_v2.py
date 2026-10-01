@@ -179,3 +179,50 @@ def test_manual_snapshot_reprices_without_replacing_completed_indicators():
     assert result["execution_score"] == 78
     assert result["quote_as_of"] == "2026-09-30"
     assert result["price_mode"] == "manual_snapshot"
+
+
+def test_manual_snapshot_cannot_lift_overheated_red():
+    row = {
+        "quote_as_of": "2026-09-30", "execution_score": 60,
+        "ma20": 95, "state": "red", "label": "🔴 보류",
+        "evidence_status": "legacy_unverified", "research_score": None,
+        "overheated": True, "invalidated": False,
+    }
+    context = {"calculated_at": "2026-10-01T12:00:00+09:00"}
+    result = m.apply_manual_snapshot(
+        row, 105, "2026-10-01T11:59:00+09:00",
+        {"buy": [100, 110], "trigger": 120, "stop": 90}, context
+    )
+    assert result["price"] == 105
+    assert result["state"] == "red"
+
+
+def test_manual_snapshot_cannot_lift_invalidated_red():
+    row = {
+        "quote_as_of": "2026-09-30", "execution_score": 40,
+        "ma20": 95, "state": "red", "label": "🔴 보류",
+        "evidence_status": "legacy_unverified", "research_score": None,
+        "overheated": False, "invalidated": True,
+    }
+    context = {"calculated_at": "2026-10-01T12:00:00+09:00"}
+    result = m.apply_manual_snapshot(
+        row, 105, "2026-10-01T11:59:00+09:00",
+        {"buy": [100, 110], "trigger": 120, "stop": 90}, context
+    )
+    assert result["state"] == "red"
+
+
+def test_manual_snapshot_trigger_beyond_8pct_is_not_a_pass():
+    row = {
+        "quote_as_of": "2026-09-30", "execution_score": 70,
+        "ma20": 95, "state": "yellow", "label": "대기",
+        "evidence_status": "legacy_unverified", "research_score": None,
+        "overheated": False, "invalidated": False,
+    }
+    context = {"calculated_at": "2026-10-01T12:00:00+09:00"}
+    result = m.apply_manual_snapshot(
+        row, 131, "2026-10-01T11:59:00+09:00",
+        {"buy": [100, 110], "trigger": 120, "stop": 90}, context
+    )
+    assert result["state"] == "yellow"
+    assert result["live_triggered"] is False

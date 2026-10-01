@@ -403,23 +403,41 @@ def classify(data_valid, gate, evidence_status, research_score, technical_score)
 
 
 def apply_manual_snapshot(row, price, price_timestamp, setup, context):
-    """Overlay the latest Yahoo price without pretending an unfinished candle is final."""
+    """Overlay the latest Yahoo price without pretending an unfinished candle is final.
+
+    Muse fix 2026-10-01: the manual overlay may never lift a completed-session
+    gate block. If the daily gate invalidated the stock or flagged it overheated,
+    an intraday price inside the buy zone (or above the trigger) must not flip it
+    back to blue/green. A bare trigger touch is also not a breakout: the daily
+    rule requires a close cross with volume and price within 8% of the trigger.
+    """
     price = float(price)
     low, high = map(float, setup["buy"])
-    stop = float(setup["stop"])
-    trigger = float(setup["trigger"])
+    stop = setup.get("stop")
+    trigger = setup.get("trigger")
     ma20 = row.get("ma20")
     in_zone = low <= price <= high
-    invalidated = price <= stop
-    triggered = price >= trigger
+    invalidated = stop is not None and price <= float(stop)
+    triggered = (
+        trigger is not None
+        and price >= float(trigger)
+        and price <= float(trigger) * 1.08
+    )
     above_ma20 = ma20 is None or price >= float(ma20)
     delta = (8 if in_zone else 0) + (5 if triggered else 0)
     delta -= 10 if not above_ma20 else 0
     delta -= 25 if invalidated else 0
     row["execution_score"] = round(clamp(float(row["execution_score"]) + delta), 1)
-    if invalidated:
+    if invalidated or row.get("invalidated"):
         row["state"], row["label"] = "red", "🔴 현재가 손절선 이탈"
-        reason = "수동 조회 현재가가 손절선 이하"
+        reason = (
+            "수동 조회 현재가가 손절선 이하"
+            if invalidated
+            else "완료세션 무효화 상태 — 장중 가격으로 해제 불가"
+        )
+    elif row.get("overheated"):
+        row["state"], row["label"] = "red", "🔴 보류"
+        reason = "완료세션 과열/이격 과다 — 장중 가격으로 해제 불가"
     elif not above_ma20:
         row["state"], row["label"] = "yellow", "🟡 현재가 MA20 하회"
         reason = "수동 조회 현재가가 완료세션 MA20 아래"

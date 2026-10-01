@@ -300,18 +300,21 @@
       "setup": {
         "type": "trend",
         "buy": [
-          148000,
-          150000
+          140000,
+          144500
         ],
-        "trigger": 156600,
-        "stop": 144500
+        "trigger": 153500,
+        "stop": 138400
       },
       "evidence": {
         "status": "legacy_unverified",
         "notes": [
+          "셋업 구간은 Muse 2026-09-30 검증 플랜으로 정정: 눌림 140,000~144,500 / 돌파 153,500 / 무효화 138,400 (기존 GPT 구간 148,000~150,000·트리거 156,600·손절 144,500 폐기)",
           "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
         ],
-        "sources": []
+        "sources": [
+          "https://github.com/sasohanbam-wq/YB/blob/main/docs/cases/SIMMTECH.md"
+        ]
       }
     },
     {
@@ -818,15 +821,17 @@
       "setup": {
         "type": "trend",
         "buy": [
-          8200,
-          8500
+          3200,
+          3800
         ],
-        "trigger": 9400,
-        "stop": 8000
+        "trigger": null,
+        "stop": 2900
       },
       "evidence": {
         "status": "legacy_unverified",
         "notes": [
+          "셋업 구간은 Muse 2026-09-30 딥다이브 밸류에이션으로 정정: Bear 2,900 / Base 3,500 / Bull 6,400, 진입 검토 3,200~3,800 (기존 GPT 구간 8,200~8,500은 Bull 목표가보다 높아 폐기)",
+          "가격 트리거 없음 — 상향 트리거는 3Q OPM 7% 이상·SOCAMM2 매출 구체화 등 실적 이벤트 기준",
           "구조화된 F/E/V 근거·날짜·출처 재검증 필요"
         ],
         "sources": []
