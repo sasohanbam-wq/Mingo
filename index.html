@@ -85,6 +85,11 @@ a{color:inherit}
 .pick:hover .pickname{color:var(--mint)}
 .pickname{font-size:16.5px;font-weight:880;transition:.15s}
 .reason{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.55}
+.pos52{margin-top:7px;max-width:300px}
+.pos52 .pbar{position:relative;height:5px;border-radius:3px;background:linear-gradient(90deg,#4f8ff7,#3d5a75 55%,#ff5c5c)}
+.pos52 .pdot{position:absolute;top:50%;width:11px;height:11px;border-radius:50%;background:#edf5f9;border:2px solid #0b1622;transform:translate(-50%,-50%)}
+.pos52 .plab{display:flex;justify-content:space-between;font-size:10.5px;color:#5f748c;margin-top:4px;font-variant-numeric:tabular-nums}
+.mflow{display:flex;gap:10px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin-top:7px;font-variant-numeric:tabular-nums}
 .pickright{text-align:right;min-width:118px}
 .price{font-size:14px;font-weight:900;margin-top:5px;font-variant-numeric:tabular-nums}
 .scorebig{font-size:13.5px;font-weight:900;color:var(--blue);font-variant-numeric:tabular-nums}
@@ -311,6 +316,12 @@ function provisionalLabel(s){
  return '<div class="meta">잠정 종합 '+e.provisional+' · 전체검증 아님</div>';
 }
 /* ---------- market strip ---------- */
+function flowAmt(v){return v==null?'—':(v>0?'+':v<0?'-':'')+Math.abs(v).toLocaleString('ko-KR')+'억'}
+function flowLine(mf){
+ if(!mf||mf.foreign==null)return '';
+ const one=(lab,v)=>'<span>'+lab+' <b class="'+chgCls(v)+'">'+flowAmt(v)+'</b></span>';
+ return '<div class="mflow"><span style="color:#5f748c">수급</span>'+one('외국인',mf.foreign)+one('기관',mf.institution)+one('개인',mf.individual)+(mf.status==='stale_fallback'?'<span style="color:#5f748c">(직전 값)</span>':'')+'</div>';
+}
 function renderStrip(d){
  const rg=d.market_regime||{}, idx=rg.indices||{}, ser=d.index_series||{};
  const card=(label,key,fallback)=>{
@@ -339,7 +350,8 @@ function renderStrip(d){
  const third='<div class="mcard"><div class="mk"><span>오늘의 시장 · 워치 '+valid.length+'종목 기준</span><span style="color:'+sCol+'">'+sLabel+'</span></div>'
   +'<div class="gaugeWrap">'+gauge+'<div class="gaugeTxt">시장 레짐 <b>'+(rg.label||'—')+'</b> · 워치 평균 <b class="'+chgCls(avg)+'">'+fpct(avg)+'</b><br>상승 '+up+' · 하락 '+dn+' · 보합 '+fl+'<br>지수 MA20 이격 '+(rg.index_extension_ma20_pct==null?'—':fpct(rg.index_extension_ma20_pct))+'</div></div>'
   +'<div class="breadth"><i style="width:'+(valid.length?up/valid.length*100:0)+'%;background:#ff5c5c"></i><i style="width:'+(valid.length?fl/valid.length*100:0)+'%;background:#3d5a75"></i><i style="width:'+(valid.length?dn/valid.length*100:0)+'%;background:#4f8ff7"></i></div>'
-  +'<div class="breadthLab"><span>▲ 상승 '+up+'</span><span>하락 '+dn+' ▼</span></div></div>';
+  +'<div class="breadthLab"><span>▲ 상승 '+up+'</span><span>하락 '+dn+' ▼</span></div>'
+  +flowLine(d.market_flow)+'</div>';
  document.getElementById('mstrip').innerHTML=card('코스피','KOSPI')+card('코스닥','KOSDAQ')+third;
  document.querySelectorAll('#mstrip .mv[data-cu]').forEach(el=>{const v=parseFloat(el.dataset.cu);if(!isNaN(v)){const t0=performance.now();const step=t=>{const p=Math.min(1,(t-t0)/800),e=1-Math.pow(1-p,3);el.textContent=(v*e).toLocaleString('ko-KR',{minimumFractionDigits:2,maximumFractionDigits:2});if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}});
 }
@@ -417,7 +429,11 @@ function render(d){
  countUp(document.getElementById('greenCount'),counts.green,'개');countUp(document.getElementById('blueCount'),counts.blue,'개');countUp(document.getElementById('yellowCount'),counts.yellow,'개');countUp(document.getElementById('redCount'),counts.red,'개');countUp(document.getElementById('holdCount'),d.stocks.filter(s=>TAGS[s.code]&&TAGS[s.code].holding).length,'개');
  document.getElementById('verdict').innerHTML=counts.green?'<b>오늘 매수 검토 가능한 종목은 '+counts.green+'개입니다.</b> 그래도 종목 상세의 리스크와 손절선을 확인하세요.':'<b>현재 매수 검토 가능한 종목은 0개입니다.</b> 🔵 '+counts.blue+'개는 가격만 조건을 충족했을 뿐 기업 검증이 끝나지 않았으므로 매수 후보가 아닙니다.';
  renderStrip(d); renderMarquee(d); renderFeat(d); renderThemes(d);
- const card=s=>'<a class="pick" href="'+(s.research_note?'https://github.com/sasohanbam-wq/Mingo/blob/main/'+s.research_note:'stocks/'+s.page)+'">'+avatar(s)+'<div><div class="pickname"'+s.name+holdBadge(s)+rsBadge(s)+'</div>'+(tagChips(s)?'<div style="margin:5px 0 1px">'+tagChips(s)+'</div>':'')+'<div class="reason">'+s.setup_reason+'</div></div>'+sparkSVG(closes(s,30),86,32,s.change_pct>=0?'#ff5c5c':'#4f8ff7','spark')+'<div class="pickright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="scorebig">가격점수 '+s.execution_score+'</div><div class="price">'+fmt(s.price)+'원 <span class="'+chgCls(s.change_pct)+'">'+fpct(s.change_pct)+'</span></div><div class="trigger">구간 '+fmt(s.buy_zone?.[0])+'~'+fmt(s.buy_zone?.[1])+' · 트리거 '+fmt(s.trigger)+'</div></div></a>';
+function pos52bar(s){
+ if(s.se_pos52==null)return '';
+ return '<div class="pos52"><div class="pbar"><span class="pdot" style="left:'+Math.max(0,Math.min(100,s.se_pos52))+'%"></span></div><div class="plab"><span>52주 저 '+fmt(s.se_low52)+'</span><span>현재 위치 '+s.se_pos52+'%</span><span>고 '+fmt(s.se_high52)+'</span></div></div>';
+}
+ const card=s=>'<a class="pick" href="'+(s.research_note?'https://github.com/sasohanbam-wq/Mingo/blob/main/'+s.research_note:'stocks/'+s.page)+'">'+avatar(s)+'<div><div class="pickname"'+s.name+holdBadge(s)+rsBadge(s)+'</div>'+(tagChips(s)?'<div style="margin:5px 0 1px">'+tagChips(s)+'</div>':'')+'<div class="reason">'+s.setup_reason+'</div>'+pos52bar(s)+'</div>'+sparkSVG(closes(s,30),86,32,s.change_pct>=0?'#ff5c5c':'#4f8ff7','spark')+'<div class="pickright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="scorebig">가격점수 '+s.execution_score+'</div><div class="price">'+fmt(s.price)+'원 <span class="'+chgCls(s.change_pct)+'">'+fpct(s.change_pct)+'</span></div><div class="trigger">구간 '+fmt(s.buy_zone?.[0])+'~'+fmt(s.buy_zone?.[1])+' · 트리거 '+fmt(s.trigger)+'</div></div></a>';
  const approved=d.stocks.filter(s=>s.quote_valid&&s.state==='green').slice(0,5);
  const watch=d.stocks.filter(s=>s.quote_valid&&s.state==='blue').slice(0,5);
  document.getElementById('top5').innerHTML=approved.length?approved.map(card).join(''):'<div class="sub" style="padding:12px 2px"><b>현재 0개.</b> 억지로 매수 후보를 만들지 않습니다.</div>';

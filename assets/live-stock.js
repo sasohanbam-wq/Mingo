@@ -114,7 +114,7 @@
     snapshot.style.borderColor='#304454';
   }
 
-  const RAW=new URL('../',document.currentScript?.src||location.href).href; // Deployed same-origin data avoids stale raw CDN snapshots.
+  const RAW='https://raw.githubusercontent.com/sasohanbam-wq/Mingo/main/';
   let s=null, regime=null, calcLabel=null, ev=null;
   try{
     const r=await fetch(RAW+'data/live_scores.json?t='+Date.now(),{cache:'no-store'});
@@ -447,6 +447,29 @@
     +'<div class="mx-note">옛 고정 팩터 숫자는 제거했습니다. RS는 출처자체 기간·날짜를 표시하며 상대수익과 별개입니다.</div>'
     +(s.provisional_research_score!=null?'<div class="mx-pos">잠정 종합 <b>'+s.provisional_research_score+'</b> · 전체검증완료 점수와 구분, 매수게이트 승격 없음</div>':'');
 
+  // ---------- 5b) STOCKEASY SUMMARY (display only) ----------
+  if(s.se_status){
+    const won=v=>v==null?'—':Number(v).toLocaleString('ko-KR')+'억';
+    html+='<div class="mx-h">🏢 스탁이지 요약 <span class="mx-sub">표시 전용 · 출처 stockeasy.intellio.kr 종목 요약'+(s.se_status==='stale_fallback'?' · ⚠️ 갱신 실패로 직전 값':'')+'</span></div>'
+      +'<div class="mx-grid">'
+      +'<div class="mx-kv"><div class="mx-k">시가총액</div><div class="mx-v">'+esc(s.se_market_cap||'—')+'</div></div>'
+      +'<div class="mx-kv"><div class="mx-k">52주 구간 내 위치</div><div class="mx-v">'+(s.se_pos52==null?'—':s.se_pos52+'%')+'</div>'
+      +(s.se_pos52!=null?'<div class="mx-gtrack"><div class="mx-gmark" style="left:'+Math.max(0,Math.min(100,s.se_pos52))+'%"></div></div><div class="mx-glab"><span>저가 '+fmt(s.se_low52)+'</span><span>고가 '+fmt(s.se_high52)+'</span></div>':'')
+      +'</div>'
+      +(s.se_sectors&&s.se_sectors.length?'<div class="mx-kv"><div class="mx-k">업종 (스탁이지)</div><div class="mx-v" style="font-size:15px">'+s.se_sectors.map(esc).join(' · ')+'</div></div>':'')
+      +'</div>';
+    if(s.se_quarterly&&s.se_quarterly.length){
+      html+='<div class="mx-h" style="font-size:14px">최근 분기 실적 (회사 공시 기준 · 억원)</div><table class="mx-tbl"><tr><td>분기</td><td>매출액</td><td>영업이익</td><td>순이익</td><td>영업이익률</td></tr>';
+      for(const q of s.se_quarterly){
+        const m=(q.revenue&&q.op!=null)?(q.op/q.revenue*100).toFixed(1)+'%':'—';
+        html+='<tr><td>'+esc(q.q)+'</td><td>'+won(q.revenue)+'</td><td>'+won(q.op)+'</td><td>'+won(q.net)+'</td><td>'+m+'</td></tr>';
+      }
+      html+='</table>';
+    }
+    if(s.se_disclosures&&s.se_disclosures.length){
+      html+='<div class="mx-h" style="font-size:14px">최근 공시</div><ul>'+s.se_disclosures.map(x=>'<li>'+esc(x.title)+' <span class="mx-sub">'+esc(x.date||'')+'</span></li>').join('')+'</ul>';
+    }
+  }
   if(s.flow_summary){
     html+='<div class="mx-h">수급 · 완료세션 순매수 (주)</div><table class="mx-tbl"><tr><td>기간</td><td>외국인</td><td>기관</td><td>개인</td></tr>';
     for(const n of [5,20]){const f=s.flow_summary[n];if(f)html+='<tr><td>'+n+'거래일</td><td>'+fmt(f.foreign_shares)+'</td><td>'+fmt(f.institution_shares)+'</td><td>'+fmt(f.individual_shares)+'</td></tr>';}
