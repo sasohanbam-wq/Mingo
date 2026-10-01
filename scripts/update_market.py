@@ -696,7 +696,27 @@ def process_stock(stock, bench_df, context, research_map, intraday_snapshot=Fals
     return row
 
 
-def main(now=None, intraday_snapshot=False):
+def should_auto_snapshot(now_kst, explicit_snapshot=False, completed_only=False):
+    """Decide the intraday overlay for plain (unflagged) runs.
+
+    Muse 2026-10-01: the GitHub App cannot edit workflow files in this repo,
+    so the market-hours decision lives here instead of the workflow YAML.
+    Plain runs on weekdays 09:00-15:40 KST overlay live prices automatically —
+    the board stays fresh without anyone clicking through the Actions page.
+    Explicit flags always win; the 16:10 scheduled run lands after 15:40 and
+    therefore finalizes completed-session closes.
+    """
+    if explicit_snapshot:
+        return True
+    if completed_only:
+        return False
+    if now_kst.weekday() >= 5:
+        return False
+    hm = now_kst.hour * 100 + now_kst.minute
+    return 900 <= hm <= 1540
+
+
+def main(now=None, intraday_snapshot=False, completed_only=False):
     with open(CFG, encoding="utf-8") as f:
         cfg = json.load(f)
     research_map = {}
@@ -705,6 +725,11 @@ def main(now=None, intraday_snapshot=False):
             research_map = json.load(f).get("stocks", {})
 
     context = market_context(now)
+    snapshot_auto = False
+    if not intraday_snapshot and not completed_only:
+        if should_auto_snapshot(datetime.fromisoformat(context["calculated_at"])):
+            intraday_snapshot = True
+            snapshot_auto = True
     bench = {}
     errors = []
     old = {}
@@ -776,6 +801,7 @@ def main(now=None, intraday_snapshot=False):
         "market_regime": regime,
         "source": SOURCE,
         "price_mode": "manual_snapshot" if intraday_snapshot else "completed_session",
+        "snapshot_auto": snapshot_auto,
         "notes": [
             "completed regular-session daily data only",
             "stale/error/fallback can never produce green",
@@ -795,5 +821,6 @@ def main(now=None, intraday_snapshot=False):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--intraday-snapshot", action="store_true")
+    parser.add_argument("--completed-only", action="store_true")
     args = parser.parse_args()
-    main(intraday_snapshot=args.intraday_snapshot)
+    main(intraday_snapshot=args.intraday_snapshot, completed_only=args.completed_only)

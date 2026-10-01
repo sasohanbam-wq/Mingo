@@ -392,3 +392,21 @@ def test_manual_snapshot_rejects_stale_timestamp():
     assert result["price"] == 100.0
     assert result.get("price_mode") != "manual_snapshot"
     assert result["snapshot_status"].startswith("rejected")
+
+
+def test_auto_snapshot_market_hours_matrix():
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    kst = ZoneInfo("Asia/Seoul")
+    at = lambda day, hm: datetime(2026, 10, day, hm // 100, hm % 100, tzinfo=kst)
+    # 2026-10-01 is a Thursday; 2026-10-03 is a Saturday
+    assert m.should_auto_snapshot(at(1, 1000)) is True
+    assert m.should_auto_snapshot(at(1, 900)) is True
+    assert m.should_auto_snapshot(at(1, 1540)) is True
+    assert m.should_auto_snapshot(at(1, 859)) is False
+    assert m.should_auto_snapshot(at(1, 1541)) is False
+    assert m.should_auto_snapshot(at(1, 1610)) is False
+    assert m.should_auto_snapshot(at(3, 1000)) is False  # weekend
+    # explicit flags always win
+    assert m.should_auto_snapshot(at(3, 1000), explicit_snapshot=True) is True
+    assert m.should_auto_snapshot(at(1, 1000), completed_only=True) is False
