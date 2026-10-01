@@ -609,3 +609,5 @@ def test_parse_stockeasy_sector_flow_slims_payload():
     assert out["inflow"] == [{"sector": "반도체", "change": 43.8}]
     assert m.parse_stockeasy_sector_flow({"success": False}) is None
     assert m.parse_stockeasy_sector_flow(None) is None
+
+# retrigger 2026-10-01: signals rollout regeneration
