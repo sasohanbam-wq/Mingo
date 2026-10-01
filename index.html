@@ -164,6 +164,10 @@ summary{cursor:pointer;padding:15px 16px;font-weight:850}
 #styleSel{background:#111827;color:var(--text);border:1px solid var(--line);border-radius:999px;padding:8px 10px;font-weight:700;font-size:12px;cursor:pointer}
 .summary .holdb{border-color:rgba(255,209,102,.35)!important;background:rgba(255,209,102,.07)}
 .summary .holdb small,.summary .holdb b{color:var(--gold)}
+.jline{font-size:11.5px;font-weight:700;margin-top:5px;padding:6px 9px;border-radius:9px;line-height:1.45}
+.jline.trend{background:rgba(56,150,255,.09);color:#a8cdf5}
+.jline.value{background:rgba(52,225,160,.08);color:#9fe8c8}
+.jline.event{background:rgba(167,139,250,.1);color:#d3bdf5}
 </style></head><body>
 <div class="aurora"><i></i><i></i><i></i></div>
 <main class="wrap">
@@ -235,6 +239,37 @@ const AVHUES=[164,210,262,18,96,330,196,44,288,130,230,0,76,308,178,20,244,150,2
 function avatar(s,i){const h=AVHUES[(i==null?s.code.split('').reduce((a,c)=>a+c.charCodeAt(0),0):i)%AVHUES.length];return '<div class="avatar" style="background:linear-gradient(135deg,hsl('+h+',85%,68%),hsl('+((h+40)%360)+',80%,52%))">'+s.name.slice(0,1)+'</div>'}
 function tagChips(s){const t=TAGS[s.code];if(!t||!t.style)return '';const cls=t.style==='추세추종'?'trend':t.style==='가치투자'?'value':'event';return '<span class="schip '+cls+'">'+t.style+'</span>'+(t.horizon?'<span class="schip hor">'+t.horizon+'</span>':'')}
 function holdBadge(s){return TAGS[s.code]&&TAGS[s.code].holding?'<span class="holdbadge">💼 보유</span>':''}
+function judgeLine(s){
+ const t=TAGS[s.code];if(!t||!t.style)return '';
+ const P=s.price;if(P==null)return '';
+ const pc=(a,b)=>b?((a/b-1)*100):null;
+ const f1=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%';
+ if(t.style==='추세추종'){
+  const parts=[];
+  if(s.rs_score!=null)parts.push('RS '+s.rs_score);
+  if(s.extension_ma20_pct!=null)parts.push('MA20 '+(s.above_ma20?'위':'아래')+' '+f1(s.extension_ma20_pct));
+  if(s.live_triggered)parts.push('트리거 '+fmt(s.trigger)+' 터치 — 종가 확인 중');
+  else if(s.trigger)parts.push('트리거 '+fmt(s.trigger)+'까지 '+f1(pc(s.trigger,P)));
+  if(s.invalidation)parts.push('이탈선 '+fmt(s.invalidation)+' ('+f1(pc(s.invalidation,P))+')');
+  return parts.length?'<div class="jline trend">📈 추세 판정 — '+parts.join(' · ')+'</div>':'';
+ }
+ if(t.style==='가치투자'){
+  const parts=[];const z=s.buy_zone;
+  if(z&&z[0]&&z[1]){
+   if(P<z[0])parts.push('구간 '+fmt(z[0])+'~'+fmt(z[1])+' 아래 — 더 싸게 대기 중');
+   else if(P<=z[1]){const pos=Math.round((P-z[0])/(z[1]-z[0])*100);parts.push('구간 안 '+pos+'% 지점 · '+(pos<=40?'하단권 — 살 만한 자리':pos>=75?'상단권 — 안전마진 얇음':'중간 지점'));}
+   else parts.push('구간 '+fmt(z[0])+'~'+fmt(z[1])+' 위 — 싸게 사는 자리는 아님');
+  }
+  if(s.invalidation)parts.push('무효화까지 '+f1(pc(s.invalidation,P)));
+  if(s.trigger)parts.push('트리거 '+fmt(s.trigger)+'까지 '+f1(pc(s.trigger,P)));
+  return parts.length?'<div class="jline value">💎 가격 판정 — '+parts.join(' · ')+'</div>':'';
+ }
+ const parts=[];
+ if(s.live_triggered)parts.push('트리거 터치 — 종가 확인 중');
+ else if(s.trigger)parts.push('트리거 '+fmt(s.trigger)+'까지 '+f1(pc(s.trigger,P)));
+ if(s.invalidation)parts.push('무효화 '+fmt(s.invalidation)+' ('+f1(pc(s.invalidation,P))+')');
+ return parts.length?'<div class="jline event">🎯 촉매 판정 — '+parts.join(' · ')+'</div>':'';
+}
 function rsBadge(s){if(s.rs_score==null)return '';const c=s.rs_score>=90?'rsS':s.rs_score>=70?'rsA':s.rs_score>=50?'rsB':'rsC';return ' <span class="rsbadge '+c+'" title="스탁이지 종합 RS · 기준 '+(s.rs_basis_date||'—')+'">RS '+s.rs_score+'</span>'}
 function closes(s,n){const ch=(s.chart||[]).map(x=>x.c).filter(x=>x!=null);return n?ch.slice(-n):ch}
 function sparkSVG(vals,w,h,color,cls){
@@ -363,7 +398,7 @@ function row(s,i){
  const vals=closes(s,30), col=s.change_pct>=0?'#ff5c5c':'#4f8ff7';
  const tg=TAGS[s.code]||{};
  return '<a class="stock" data-state="'+s.state+'" data-theme="'+bucketOf(s)+'" data-name="'+s.name.toLowerCase()+'" data-holding="'+(tg.holding?1:0)+'" data-style="'+(tg.style||'')+'" href="'+(s.research_note?'https://github.com/sasohanbam-wq/Mingo/blob/main/'+s.research_note:'stocks/'+s.page)+'">'+avatar(s,i)
- +'<div><b>'+s.name+'</b>'+holdBadge(s)+' <span class="ticker">'+s.code+'</span>'+rsBadge(s)+'<div class="desc">'+s.theme+'</div><div class="meta">'+priceLabel+' '+fmt(s.price)+'원 · '+timeLabel+' · <span class="'+chgCls(s.change_pct)+'">'+chgArrow(s.change_pct)+' '+fpct(s.change_pct)+'</span> · RSI '+(s.rsi14_wilder??'—')+'</div>'+(tagChips(s)?'<div style="margin:5px 0 1px">'+tagChips(s)+'</div>':'')+'<div class="meta">'+s.setup_reason+'</div></div>'
+ +'<div><b>'+s.name+'</b>'+holdBadge(s)+' <span class="ticker">'+s.code+'</span>'+rsBadge(s)+'<div class="desc">'+s.theme+'</div><div class="meta">'+priceLabel+' '+fmt(s.price)+'원 · '+timeLabel+' · <span class="'+chgCls(s.change_pct)+'">'+chgArrow(s.change_pct)+' '+fpct(s.change_pct)+'</span> · RSI '+(s.rsi14_wilder??'—')+'</div>'+(tagChips(s)?'<div style="margin:5px 0 1px">'+tagChips(s)+'</div>':'')+'<div class="meta">'+s.setup_reason+'</div>'+judgeLine(s)+'</div>'
  +sparkSVG(vals,86,32,col,'spark')
  +'<div class="stockright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="meta" style="margin-top:6px">'+priceLabel+' <b style="color:var(--text)">'+fmt(s.price)+'원</b></div><div class="meta '+(ev==='verified'?'':'warn')+'">'+researchStatus(s)+' · 연구 '+completeResearchScore(s)+'</div>'+provisionalLabel(s)+evBadge(s)+'</div>'
  +ringSVG(s.execution_score)+'</a>';
