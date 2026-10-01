@@ -97,6 +97,19 @@ def load_history(symbol):
     return prepare_history(df)
 
 
+def load_current_price(symbol):
+    bars = yf.Ticker(symbol).history(period="1d", interval="1m", auto_adjust=False)
+    if bars is None or bars.empty or bars["Close"].dropna().empty:
+        raise RuntimeError("no current minute price")
+    series = bars["Close"].dropna()
+    timestamp = pd.Timestamp(series.index[-1])
+    if timestamp.tzinfo is None:
+        timestamp = timestamp.tz_localize(KST)
+    else:
+        timestamp = timestamp.tz_convert(KST)
+    return float(series.iloc[-1]), timestamp.isoformat()
+
+
 def select_completed(df, expected_session):
     eligible = df[df["_session_date"] <= expected_session].copy()
     if eligible.empty:
@@ -389,15 +402,9 @@ def classify(data_valid, gate, evidence_status, research_score, technical_score)
     return "yellow", "🟡 조건부/대기"
 
 
-def apply_manual_snapshot(row, raw, setup, context):
+def apply_manual_snapshot(row, price, price_timestamp, setup, context):
     """Overlay the latest Yahoo price without pretending an unfinished candle is final."""
-    if raw is None or raw.empty:
-        return row
-    latest = raw.iloc[-1]
-    price = float(latest["Close"])
-    latest_date = str(latest["_session_date"])
-    if latest_date <= str(row.get("quote_as_of") or ""):
-        return row
+    price = float(price)
     low, high = map(float, setup["buy"])
     stop = float(setup["stop"])
     trigger = float(setup["trigger"])
@@ -427,8 +434,7 @@ def apply_manual_snapshot(row, raw, setup, context):
         "price": price,
         "setup_reason": reason,
         "price_mode": "manual_snapshot",
-        "price_timestamp": context["calculated_at"],
-        "snapshot_session_date": latest_date,
+        "price_timestamp": price_timestamp or context["calculated_at"],
         "live_in_buy_zone": in_zone,
         "live_triggered": triggered,
         "live_invalidated": invalidated,
@@ -513,7 +519,13 @@ def process_stock(stock, bench_df, context, research_map, intraday_snapshot=Fals
         "state": state,
         "label": label,
     }
-    return apply_manual_snapshot(row, raw, stock["setup"], context) if intraday_snapshot else row
+    if intraday_snapshot:
+        try:
+            current_price, price_timestamp = load_current_price(symbol)
+            return apply_manual_snapshot(row, current_price, price_timestamp, stock["setup"], context)
+        except Exception as exc:
+            row["snapshot_status"] = f"unavailable: {type(exc).__name__}"
+    return row
 
 
 def main(now=None, intraday_snapshot=False):

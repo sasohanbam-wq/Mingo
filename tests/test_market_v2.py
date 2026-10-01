@@ -164,8 +164,6 @@ def test_setup_pass_with_verified_research_at_70_can_be_green():
 
 
 def test_manual_snapshot_reprices_without_replacing_completed_indicators():
-    raw = frame([100, 105])
-    raw.loc[raw.index[-1], "_session_date"] = "2026-10-01"
     row = {
         "quote_as_of": "2026-09-30", "execution_score": 70,
         "ma20": 95, "state": "yellow", "label": "대기",
@@ -173,7 +171,8 @@ def test_manual_snapshot_reprices_without_replacing_completed_indicators():
     }
     context = {"calculated_at": "2026-10-01T12:00:00+09:00"}
     result = m.apply_manual_snapshot(
-        row, raw, {"buy": [100, 110], "trigger": 120, "stop": 90}, context
+        row, 105, "2026-10-01T11:59:00+09:00",
+        {"buy": [100, 110], "trigger": 120, "stop": 90}, context
     )
     assert result["price"] == 105
     assert result["state"] == "blue"
