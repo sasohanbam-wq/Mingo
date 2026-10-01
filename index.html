@@ -6,7 +6,7 @@
 </style></head><body><main class="wrap">
 <div class="top"><div><div class="brand">MINGO INVESTMENT OS · V2</div><div id="updated" class="sub">데이터 불러오는 중…</div></div><div><a class="refresh" style="text-decoration:none;display:inline-block" href="https://github.com/sasohanbam-wq/Mingo/actions/workflows/market-refresh.yml" target="_blank" rel="noopener">⚡ 지금 가격으로 재계산</a> <button id="refreshBtn" class="refresh">↻ 결과 확인</button></div></div>
 <section><h1>오늘 뭐 살까?</h1><div class="sub"><b>🔵 셋업 통과</b>는 현재 가격·차트가 살 자리라는 뜻이다. <b>🟢 검증 완료</b>는 셋업 통과에 더해 기업의 펀더멘털(F)·실적(E)·밸류에이션(V) 근거까지 검증됐다는 뜻이다.</div></section>
-<div class="chips"><span class="chip live">Gate-first</span><span id="liveChip" class="chip">실시간 연결 확인중</span><span id="sessionChip" class="chip">세션 확인중</span><span id="asofChip" class="chip">가격 기준일 확인중</span></div>
+<div class="chips"><span class="chip live">Gate-first</span><span class="chip">⚡ 무료 수동 현재가</span><span id="sessionChip" class="chip">세션 확인중</span><span id="asofChip" class="chip">가격 기준일 확인중</span></div>
 <div class="notice"><b>⚡ 수동 갱신:</b> 위 버튼 → GitHub의 <b>Run workflow</b> 실행 → 약 1~3분 뒤 이 화면의 <b>결과 확인</b>. 🔵는 가격 타이밍만 통과, 🟢는 가격 타이밍과 기업 근거를 모두 통과한 종목이다.</div>
 <div id="error" class="error"></div>
 
@@ -29,10 +29,10 @@
 </div></details>
 
 <details><summary>🧾 기업점수 검증 현황</summary><div id="evidenceList" class="inside"></div></details>
-<div class="footer">실시간 현재가는 토스증권 Open API 체결 기준 · RSI·이동평균·거래량은 최근 완료 정규세션 기준 · 자동 주문 없음 · 검증된 수익예측 모델로 표현하지 않음.</div>
+<div class="footer">수동 현재가는 Yahoo Finance 1분 가격 조회 기준 · RSI·이동평균·거래량은 최근 완료 정규세션 기준 · 자동 주문 없음 · 검증된 수익예측 모델로 표현하지 않음.</div>
 </main>
-<script src="assets/live-market.js"></script><script>
-let DATA=null,BASE_DATA=null,filter='blue',liveTimer=null;
+<script>
+let DATA=null,BASE_DATA=null,filter='blue';
 const fmt=n=>n==null?'—':Math.round(n).toLocaleString('ko-KR');
 function badgeClass(s){return ['green','blue','yellow','red','gray'].includes(s)?s:'gray'}
 function row(s){
@@ -51,7 +51,7 @@ function render(d){
  document.getElementById('sessionChip').textContent='시장 '+(d.market_state||'—');
  document.getElementById('asofChip').textContent='완료세션 '+(d.expected_completed_session||'—');
  document.getElementById('count').textContent=d.stocks.length+'종목';
- const pass=d.stocks.filter(s=>s.quote_valid&&s.setup_pass&&(s.state==='blue'||s.state==='green')).slice(0,5);
+ const pass=d.stocks.filter(s=>s.quote_valid&&(s.setup_pass||s.live_in_buy_zone||s.live_triggered)&&(s.state==='blue'||s.state==='green')).slice(0,5);
  document.getElementById('top5').innerHTML=pass.length?pass.map((s,i)=>'<a class="pick" href="stocks/'+s.page+'"><div class="rank">#'+(i+1)+'</div><div><div class="pickname">'+s.name+'</div><div class="reason">'+s.setup_reason+'</div></div><div class="pickright"><span class="badge '+badgeClass(s.state)+'">'+s.label+'</span><div class="scorebig">'+s.execution_score+'점</div><div class="price">'+fmt(s.price)+'원</div><div class="trigger">구간 '+fmt(s.buy_zone?.[0])+'~'+fmt(s.buy_zone?.[1])+' · 트리거 '+fmt(s.trigger)+'</div></div></a>').join(''):'<div class="sub">현재 V2 셋업 Gate를 통과한 종목이 없다. 억지로 TOP5를 채우지 않는다.</div>';
  document.getElementById('stockList').innerHTML=d.stocks.map(row).join('');
  document.getElementById('evidenceList').innerHTML=[...d.stocks].sort((a,b)=>(b.research_score??-1)-(a.research_score??-1)).map(s=>'<div class="minirow"><b>'+s.name+'</b><span>F '+(s.research_F??'N/A')+' · E '+(s.research_E??'N/A')+' · V '+(s.research_V??'N/A')+' · 연구 '+(s.research_score??'N/A')+' · '+s.evidence_status+'</span></div>').join('');
@@ -74,32 +74,13 @@ async function refreshScores(){
    if(!r.ok)throw new Error('HTTP '+r.status);
    const d=await r.json();
    if(d.version!==2)throw new Error('v2 score snapshot not ready');
-   BASE_DATA=d; render(d); await refreshLive();
+   BASE_DATA=d; render(d);
  }catch(e){
    const x=document.getElementById('error');x.style.display='block';x.textContent='V2 점수 스냅샷 생성/배포 중: '+e.message;
  }finally{b.disabled=false;b.textContent='↻ 최신 데이터'}
 }
-async function refreshLive(){
- const chip=document.getElementById('liveChip');
- try{
-   if(!BASE_DATA)return;
-   const result=await MingoLive.fetchQuotes();
-   if(!result.enabled){chip.textContent='실시간 서버 설정 필요';chip.classList.remove('live');return}
-   const payload=result.data, now=payload.server_time||Math.floor(Date.now()/1000);
-   const quotes=payload.quotes||{};
-   const stocks=BASE_DATA.stocks.map(s=>{
-     const q=quotes[s.code];
-     if(!q||!q.received_at||now-q.received_at>MingoLive.maxAgeSeconds)return s;
-     return MingoLive.evaluate(s,q);
-   });
-   const count=stocks.filter(s=>s.live).length;
-   render(Object.assign({},BASE_DATA,{stocks}));
-   chip.textContent=(payload.connected?'● ':'○ ')+'실시간 '+count+'/'+stocks.length;
-   chip.classList.toggle('live',payload.connected&&count>0);
- }catch(e){chip.textContent='실시간 연결 안 됨';chip.classList.remove('live')}
-}
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;apply()}));
 document.getElementById('search').addEventListener('input',apply);
 document.getElementById('refreshBtn').addEventListener('click',refreshScores);
-refreshScores();setInterval(refreshScores,300000);liveTimer=setInterval(refreshLive,3000);
+refreshScores();setInterval(refreshScores,300000);
 </script></body></html>
