@@ -1,26 +1,197 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MINGO v2 · 오늘 뭐 살까?</title>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MINGO · 오늘 뭐 살까?</title>
 <style>
-:root{--bg:#071019;--card:#0d1924;--line:#1d3040;--text:#edf5f9;--muted:#8da4b5;--mint:#5ee6c4;--amber:#ffd166;--red:#ff7373;--blue:#73b7ff;--gray:#8495a4}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#061018,#09131c);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Segoe UI",sans-serif}.wrap{max-width:920px;margin:auto;padding:18px 14px 56px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--mint)}h1{font-size:30px;margin:8px 0 4px}.sub{font-size:13px;color:var(--muted);line-height:1.55}.refresh{border:1px solid var(--mint);background:#102b28;color:var(--mint);font-weight:800;border-radius:10px;padding:10px 12px;cursor:pointer}.chips{display:flex;gap:8px;overflow:auto;margin:14px 0}.chip{white-space:nowrap;border:1px solid var(--line);background:var(--card);padding:7px 10px;border-radius:999px;font-size:12px;color:var(--muted)}.chip.live{color:var(--mint);border-color:#245c50}.notice{border:1px solid #34506a;background:#0d1b28;color:#b8d7f3;border-radius:14px;padding:12px 14px;font-size:12px;line-height:1.6}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}.summary button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:14px;padding:12px 8px;text-align:left;cursor:pointer}.summary b{display:block;font-size:22px;margin-top:5px}.summary small{color:var(--muted)}.summary .go{border-color:#245c50}.summary .watch{border-color:#244d70}.sectionhead{display:flex;justify-content:space-between;align-items:end;margin:24px 0 10px}.sectionhead h2{margin:0;font-size:21px}.hint{font-size:12px;color:var(--muted)}.focus{border:1px solid #34506a;background:linear-gradient(145deg,#0b1825,#0d1924);border-radius:20px;padding:14px}.pick{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;color:inherit;text-decoration:none;padding:13px 4px;border-bottom:1px solid var(--line)}.pick:last-child{border-bottom:0}.pickname{font-size:17px;font-weight:850}.reason{font-size:12px;color:var(--muted);margin-top:4px}.pickright{text-align:right}.price{font-size:14px;font-weight:900;margin-top:6px}.scorebig{font-size:14px;font-weight:900;color:var(--blue)}.trigger{font-size:11px;color:var(--muted);margin-top:3px}.evbadge{display:inline-block;margin-top:5px;padding:4px 8px;border-radius:8px;font-size:11px;font-weight:850;background:#12291f;color:var(--mint);border:1px solid #245c50;text-decoration:none}.badge{display:inline-block;padding:5px 8px;border-radius:8px;font-size:11px;font-weight:850}.green{background:#10322c;color:var(--mint)}.blue{background:#11293f;color:var(--blue)}.yellow{background:#332c16;color:var(--amber)}.red{background:#321919;color:var(--red)}.gray{background:#1d2730;color:#aebbc6}.tabs{display:flex;gap:7px;position:sticky;top:0;z-index:5;background:rgba(7,16,25,.94);backdrop-filter:blur(8px);padding:10px 0;overflow:auto}.tab{white-space:nowrap;border:1px solid var(--line);background:#0d1924;color:var(--muted);border-radius:999px;padding:8px 11px;font-weight:800;font-size:12px;cursor:pointer}.tab.active{border-color:var(--blue);color:var(--blue)}.search{width:100%;margin:4px 0 8px;border:1px solid var(--line);background:#0b1620;color:var(--text);padding:12px 13px;border-radius:12px;outline:none}.list{border:1px solid var(--line);border-radius:16px;overflow:hidden}.stock{display:grid;grid-template-columns:1fr auto;gap:12px;color:inherit;text-decoration:none;padding:13px 14px;border-bottom:1px solid var(--line);background:rgba(13,25,36,.75)}.stock:last-child{border-bottom:0}.stockright{text-align:right}.ticker,.desc,.factors,.meta{color:var(--muted);font-size:11px}.desc{margin-top:4px}.factors,.meta{margin-top:5px}.warn{color:var(--amber)}details{margin-top:18px;border:1px solid var(--line);border-radius:16px;background:#0d1924}summary{cursor:pointer;padding:15px 16px;font-weight:850}.inside{padding:0 14px 14px}.minirow{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:11px 2px;font-size:13px}.minirow span:last-child{color:var(--muted);text-align:right}.footer{margin-top:28px;color:#607687;font-size:11px}.hidden{display:none!important}.error{border:1px solid #5c3d20;background:#21170e;color:#ffd166;border-radius:12px;padding:10px 12px;font-size:12px;margin-top:12px;display:none}
-@media(max-width:600px){h1{font-size:27px}.top{align-items:flex-start}.top>div:last-child{display:grid;gap:6px}.summary{grid-template-columns:repeat(2,1fr)}.pick{grid-template-columns:1fr}.pickright{text-align:left;display:flex;gap:7px;align-items:center;flex-wrap:wrap}.stock{grid-template-columns:1fr}.stockright{text-align:left}}
-</style></head><body><main class="wrap">
-<div class="top"><div><div class="brand">MINGO INVESTMENT OS · V2</div><div id="updated" class="sub">데이터 불러오는 중…</div></div><div><button id="refreshBtn" class="refresh">↻ 결과 확인</button></div></div>
-<section><h1>오늘의 판단</h1><div class="sub">점수가 높아도 바로 사는 것이 아니다. <b>가격 조건과 기업 검증을 모두 통과한 🟢만 매수 검토 대상</b>이며, 🔵는 가격만 맞는 관찰 종목이다.</div></section>
-<div class="chips"><span class="chip live">Gate-first</span><span class="chip">⚡ 무료 수동 현재가</span><span id="sessionChip" class="chip">세션 확인중</span><span id="asofChip" class="chip">가격 기준일 확인중</span><span id="regimeChip" class="chip">시장 레짐 확인중</span></div>
-<div id="verdict" class="notice">판단을 계산하는 중…</div>
-<div class="summary"><button class="go" data-jump="green"><small>🟢 매수 검토 가능</small><b id="greenCount">—</b></button><button class="watch" data-jump="blue"><small>🔵 가격관찰만</small><b id="blueCount">—</b></button><button data-jump="yellow"><small>🟡 기다림</small><b id="yellowCount">—</b></button><button data-jump="red"><small>🔴 제외/보류</small><b id="redCount">—</b></button></div>
+:root{--bg:#050b12;--card:#0d1924;--card2:#0a141f;--line:#1d3040;--text:#edf5f9;--muted:#8da4b5;--mint:#5ee6c4;--amber:#ffd166;--red:#ff7373;--up:#ff5c5c;--down:#4f8ff7;--blue:#73b7ff;--gray:#8495a4;--violet:#b49aff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Segoe UI",sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:
+ radial-gradient(900px 480px at 12% -8%,rgba(94,230,196,.14),transparent 60%),
+ radial-gradient(820px 520px at 88% -12%,rgba(115,183,255,.13),transparent 60%),
+ radial-gradient(700px 600px at 55% 115%,rgba(180,154,255,.10),transparent 60%),
+ linear-gradient(180deg,#06121d,#050b12 340px)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background:
+ linear-gradient(rgba(120,170,220,.045) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(120,170,220,.045) 1px,transparent 1px);
+ background-size:44px 44px;
+ mask-image:radial-gradient(ellipse 90% 480px at 50% 0,black 30%,transparent 78%)}
+.aurora{position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:1100px;height:420px;pointer-events:none;filter:blur(70px);opacity:.55;z-index:0}
+.aurora i{position:absolute;border-radius:50%;mix-blend-mode:screen}
+.aurora i:nth-child(1){width:420px;height:260px;left:6%;top:30px;background:#0f766e;animation:drift 13s ease-in-out infinite alternate}
+.aurora i:nth-child(2){width:380px;height:240px;right:8%;top:0;background:#1d4ed8;animation:drift 17s ease-in-out infinite alternate-reverse}
+.aurora i:nth-child(3){width:300px;height:200px;left:38%;top:90px;background:#6d28d9;animation:drift 21s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,26px) scale(1.13)}}
+.wrap{max-width:960px;margin:auto;padding:0 14px 60px;position:relative;z-index:1}
+a{color:inherit}
+/* header */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 2px 0}
+.brand{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:900;letter-spacing:.16em;color:var(--mint)}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.6}}
+.clock{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.refresh{border:1px solid rgba(94,230,196,.55);background:rgba(16,43,40,.75);color:var(--mint);font-weight:800;border-radius:11px;padding:9px 13px;cursor:pointer;transition:.2s}
+.refresh:hover{box-shadow:0 0 18px rgba(94,230,196,.35);transform:translateY(-1px)}
+.refresh:disabled{opacity:.55;cursor:wait}
+/* hero */
+.hero{padding:26px 2px 4px;text-align:left}
+.hero h1{font-size:clamp(34px,6.4vw,54px);line-height:1.08;margin:0 0 10px;font-weight:950;letter-spacing:-.02em}
+.hero h1 .grad{background:linear-gradient(92deg,#5ee6c4 5%,#73b7ff 48%,#b49aff 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-size:14px;color:#b9cbda;line-height:1.65;max-width:640px}
+.hero .sub b{color:#fff}
+.chips{display:flex;gap:8px;overflow:auto;margin:16px 0 4px;padding-bottom:2px}
+.chip{white-space:nowrap;border:1px solid var(--line);background:rgba(13,25,36,.8);padding:7px 11px;border-radius:999px;font-size:12px;color:var(--muted);backdrop-filter:blur(6px)}
+.chip.live{color:var(--mint);border-color:rgba(94,230,196,.5)}
+.chip.hot{color:var(--amber);border-color:rgba(255,209,102,.45)}
+/* market strip */
+.mstrip{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:10px;margin:16px 0 4px}
+.mcard{position:relative;border:1px solid var(--line);border-radius:18px;padding:15px 16px 12px;background:linear-gradient(160deg,rgba(19,34,50,.92),rgba(9,18,28,.94));overflow:hidden}
+.mcard::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(140,200,255,.5),transparent)}
+.mcard .mk{font-size:12px;color:var(--muted);font-weight:800;letter-spacing:.08em;display:flex;justify-content:space-between;align-items:center}
+.mcard .mv{font-size:30px;font-weight:950;margin:5px 0 1px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.mcard .mc{font-size:13px;font-weight:800;font-variant-numeric:tabular-nums}
+.mcard .mmeta{display:flex;gap:10px;margin-top:7px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.mcard svg.spark{position:absolute;right:0;bottom:0;width:62%;height:52px;opacity:.9}
+.up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--gray)}
+.gaugeWrap{display:flex;gap:12px;align-items:center;margin-top:6px}
+.gaugeTxt{font-size:12px;color:var(--muted);line-height:1.75}
+.gaugeTxt b{color:var(--text);font-size:13px}
+.breadth{display:flex;height:9px;border-radius:99px;overflow:hidden;background:#132233;margin-top:9px}
+.breadth i{display:block;height:100%}
+.breadthLab{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:5px;font-variant-numeric:tabular-nums}
+/* marquee */
+.marquee{margin:14px 0 2px;border:1px solid var(--line);border-radius:13px;background:rgba(10,20,31,.75);overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent)}
+.mqTrack{display:flex;gap:0;width:max-content;animation:mq 46s linear infinite;padding:8px 0}
+.marquee:hover .mqTrack{animation-play-state:paused}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq{display:inline-flex;gap:7px;align-items:baseline;padding:0 16px;font-size:12.5px;white-space:nowrap;border-right:1px solid rgba(29,48,64,.7)}
+.mq b{font-weight:850}.mq .p{color:var(--muted);font-variant-numeric:tabular-nums}.mq .c{font-weight:800;font-variant-numeric:tabular-nums}
+/* verdict + summary */
+.notice{border:1px solid #34506a;background:linear-gradient(120deg,rgba(16,36,56,.9),rgba(11,25,40,.9));color:#cfe6fa;border-radius:16px;padding:14px 16px;font-size:13.5px;line-height:1.65;margin-top:14px}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:12px 0 2px}
+.summary button{position:relative;border:1px solid var(--line);background:linear-gradient(165deg,rgba(17,30,45,.95),rgba(10,19,29,.95));color:var(--text);border-radius:16px;padding:13px 12px;text-align:left;cursor:pointer;transition:.2s;overflow:hidden}
+.summary button:hover{transform:translateY(-2px);border-color:#33506e;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.summary b{display:block;font-size:25px;margin-top:4px;font-variant-numeric:tabular-nums}
+.summary small{color:var(--muted);font-size:12px}
+.summary .go{border-color:rgba(94,230,196,.45)} .summary .go b{color:var(--mint)}
+.summary .watch{border-color:rgba(115,183,255,.4)} .summary .watch b{color:var(--blue)}
+.summary .wait b{color:var(--amber)} .summary .no b{color:var(--red)}
+/* sections */
+.sectionhead{display:flex;justify-content:space-between;align-items:end;margin:28px 0 11px}
+.sectionhead h2{margin:0;font-size:21px;font-weight:920;letter-spacing:-.01em}
+.sectionhead h2 .em{font-size:19px}
+.hint{font-size:12px;color:var(--muted)}
+.focus{border:1px solid #2a4358;background:linear-gradient(150deg,rgba(13,27,41,.96),rgba(9,17,27,.96));border-radius:20px;padding:8px 14px}
+.pick{display:grid;grid-template-columns:auto 1fr auto auto;gap:13px;align-items:center;color:inherit;text-decoration:none;padding:13px 2px;border-bottom:1px solid var(--line)}
+.pick:last-child{border-bottom:0}
+.pick:hover .pickname{color:var(--mint)}
+.pickname{font-size:16.5px;font-weight:880;transition:.15s}
+.reason{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.55}
+.pickright{text-align:right;min-width:118px}
+.price{font-size:14px;font-weight:900;margin-top:5px;font-variant-numeric:tabular-nums}
+.scorebig{font-size:13.5px;font-weight:900;color:var(--blue);font-variant-numeric:tabular-nums}
+.trigger{font-size:11px;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums}
+/* avatar + badges */
+.avatar{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:17px;color:#06121d;flex:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25),0 4px 12px rgba(0,0,0,.3)}
+.badge{display:inline-block;padding:5px 8px;border-radius:8px;font-size:11px;font-weight:850;white-space:nowrap}
+.green{background:#10322c;color:var(--mint)}.blue{background:#11293f;color:var(--blue)}.yellow{background:#332c16;color:var(--amber)}.red{background:#321919;color:var(--red)}.gray{background:#1d2730;color:#aebbc6}
+.rsbadge{display:inline-block;padding:3px 7px;border-radius:7px;font-size:11px;font-weight:900;font-variant-numeric:tabular-nums;border:1px solid}
+.rsS{color:#5ee6c4;border-color:rgba(94,230,196,.5);background:rgba(94,230,196,.09)}
+.rsA{color:#73b7ff;border-color:rgba(115,183,255,.45);background:rgba(115,183,255,.08)}
+.rsB{color:#ffd166;border-color:rgba(255,209,102,.4);background:rgba(255,209,102,.07)}
+.rsC{color:#ff9d9d;border-color:rgba(255,115,115,.4);background:rgba(255,115,115,.07)}
+.evbadge{display:inline-block;margin-top:5px;padding:4px 8px;border-radius:8px;font-size:11px;font-weight:850;background:#12291f;color:var(--mint);border:1px solid #245c50;text-decoration:none;cursor:pointer}
+/* feature cards */
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.fcard{position:relative;border-radius:18px;padding:14px 14px 11px;text-decoration:none;color:inherit;overflow:hidden;border:1px solid var(--line);background:linear-gradient(165deg,rgba(18,32,48,.97),rgba(9,17,27,.97));transition:.2s}
+.fcard:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.fcard::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--ac,#5ee6c4)}
+.fcard .fk{font-size:11.5px;font-weight:900;letter-spacing:.05em;color:var(--ac,#5ee6c4)}
+.fcard .fn{font-size:18px;font-weight:920;margin:8px 0 1px}
+.fcard .fstat{font-size:23px;font-weight:950;font-variant-numeric:tabular-nums;margin:2px 0}
+.fcard .freason{font-size:11.5px;color:var(--muted);line-height:1.55;min-height:34px}
+.fcard svg{display:block;margin-top:6px;width:100%;height:38px}
+/* theme map */
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:9px}
+.theme{border:1px solid var(--line);border-radius:15px;padding:11px 12px;cursor:pointer;text-align:left;color:var(--text);transition:.18s;font-family:inherit}
+.theme:hover{transform:translateY(-2px)}
+.theme.on{outline:2px solid var(--blue);outline-offset:1px}
+.theme .tn{font-size:13.5px;font-weight:880;display:flex;justify-content:space-between;gap:6px}
+.theme .tm{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.6}
+.theme .tm b{font-variant-numeric:tabular-nums}
+/* board */
+.tabs{display:flex;gap:7px;position:sticky;top:0;z-index:5;background:rgba(5,11,18,.92);backdrop-filter:blur(10px);padding:10px 0;overflow:auto}
+.tab{white-space:nowrap;border:1px solid var(--line);background:#0d1924;color:var(--muted);border-radius:999px;padding:8px 12px;font-weight:800;font-size:12px;cursor:pointer;font-family:inherit}
+.tab.active{border-color:var(--blue);color:var(--blue);box-shadow:0 0 14px rgba(115,183,255,.25)}
+.search{width:100%;margin:4px 0 9px;border:1px solid var(--line);background:#0b1620;color:var(--text);padding:12px 13px;border-radius:12px;outline:none;font-size:14px}
+.search:focus{border-color:var(--blue)}
+.list{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(10,19,29,.6)}
+.stock{display:grid;grid-template-columns:auto 1fr auto auto;gap:13px;align-items:center;color:inherit;text-decoration:none;padding:12px 14px;border-bottom:1px solid var(--line);background:rgba(13,25,36,.72);transition:.15s}
+.stock:hover{background:rgba(20,36,54,.85)}
+.stock:last-child{border-bottom:0}
+.stock .avatar{width:38px;height:38px;border-radius:11px;font-size:15px}
+.stockright{text-align:right}
+.stock svg.spark{flex:none}
+.ticker,.desc,.factors,.meta{color:var(--muted);font-size:11px}
+.desc{margin-top:3px}.factors,.meta{margin-top:4px;line-height:1.5}
+.warn{color:var(--amber)}
+.ringwrap{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:52px}
+.ringwrap .rl{font-size:9.5px;color:var(--muted);font-weight:800;letter-spacing:.04em}
+details{margin-top:18px;border:1px solid var(--line);border-radius:16px;background:#0d1924}
+summary{cursor:pointer;padding:15px 16px;font-weight:850}
+.inside{padding:0 14px 14px}
+.minirow{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:11px 2px;font-size:13px}
+.minirow span:last-child{color:var(--muted);text-align:right}
+.footer{margin-top:28px;color:#607687;font-size:11px;line-height:1.7}
+.hidden{display:none!important}
+.error{border:1px solid #5c3d20;background:#21170e;color:#ffd166;border-radius:12px;padding:10px 12px;font-size:12px;margin-top:12px;display:none}
+/* skeleton */
+.sk{border-radius:14px;background:linear-gradient(100deg,rgba(23,40,58,.65) 40%,rgba(46,74,102,.85) 50%,rgba(23,40,58,.65) 60%);background-size:200% 100%;animation:shim 1.25s linear infinite}
+@keyframes shim{from{background-position:180% 0}to{background-position:-20% 0}}
+.skrow{display:flex;gap:12px;align-items:center;padding:13px 4px;border-bottom:1px solid var(--line)}
+.skrow:last-child{border-bottom:0}
+.fadeup{animation:fu .55s cubic-bezier(.2,.8,.25,1) both}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:760px){.mstrip{grid-template-columns:1fr 1fr}.mstrip .mcard:last-child{grid-column:1/-1}.feat{grid-template-columns:1fr 1fr}.summary{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.pick{grid-template-columns:auto 1fr}.pick .spark,.pickright{display:none}.pickright.mshow{display:block}.stock{grid-template-columns:auto 1fr auto}.stock .spark,.stock .ringwrap{display:none}.feat{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001s!important;transition-duration:.001s!important}}
+</style></head><body>
+<div class="aurora"><i></i><i></i><i></i></div>
+<main class="wrap">
+<div class="topbar"><div class="brand"><span class="dot"></span>MINGO INVESTMENT OS · V2</div><div style="display:flex;gap:10px;align-items:center"><span id="clock" class="clock">—</span><button id="refreshBtn" class="refresh">↻ 최신 데이터</button></div></div>
+
+<section class="hero fadeup">
+<h1>오늘 뭐 살까?<br><span class="grad">데이터가 먼저 답합니다.</span></h1>
+<div class="sub">점수가 높아도 바로 사는 게 아니다. <b>가격 조건과 기업 검증을 모두 통과한 🟢만 매수 검토 대상</b>이며, 🔵는 가격만 맞는 관찰 종목이다. <span id="updated">데이터 불러오는 중…</span></div>
+<div class="chips"><span class="chip live">● Gate-first</span><span class="chip">⚡ 무료 수동 현재가</span><span id="sessionChip" class="chip">세션 확인중</span><span id="asofChip" class="chip">가격 기준일 확인중</span><span id="regimeChip" class="chip hot">시장 레짐 확인중</span></div>
+</section>
+
+<section class="mstrip fadeup" id="mstrip">
+  <div class="mcard"><div class="sk" style="height:14px;width:44%"></div><div class="sk" style="height:32px;width:72%;margin-top:10px"></div><div class="sk" style="height:13px;width:55%;margin-top:8px"></div></div>
+  <div class="mcard"><div class="sk" style="height:14px;width:44%"></div><div class="sk" style="height:32px;width:72%;margin-top:10px"></div><div class="sk" style="height:13px;width:55%;margin-top:8px"></div></div>
+  <div class="mcard"><div class="sk" style="height:14px;width:52%"></div><div class="sk" style="height:32px;width:64%;margin-top:10px"></div><div class="sk" style="height:13px;width:80%;margin-top:8px"></div></div>
+</section>
+
+<div class="marquee fadeup" id="marquee" style="display:none"><div class="mqTrack" id="mqTrack"></div></div>
+
+<div id="verdict" class="notice fadeup">판단을 계산하는 중…</div>
+<div class="summary fadeup"><button class="go" data-jump="green"><small>🟢 매수 검토 가능</small><b id="greenCount">—</b></button><button class="watch" data-jump="blue"><small>🔵 가격관찰만</small><b id="blueCount">—</b></button><button class="wait" data-jump="yellow"><small>🟡 기다림</small><b id="yellowCount">—</b></button><button class="no" data-jump="red"><small>🔴 제외/보류</small><b id="redCount">—</b></button></div>
 <div id="error" class="error"></div>
 
+<div class="sectionhead"><h2><span class="em">🔥</span> 오늘의 특징주</h2><span class="hint">급등 · RS · 거래량 · 트리거 — 데이터로 자동 선정</span></div>
+<section class="feat" id="feat"><div class="sk" style="height:172px"></div><div class="sk" style="height:172px"></div><div class="sk" style="height:172px"></div><div class="sk" style="height:172px"></div></section>
+
+<div class="sectionhead"><h2><span class="em">🗺️</span> 테마 지도</h2><span class="hint">테마를 누르면 해당 종목만 추려서 보여줍니다</span></div>
+<section class="themes" id="themes"><div class="sk" style="height:76px"></div><div class="sk" style="height:76px"></div><div class="sk" style="height:76px"></div><div class="sk" style="height:76px"></div></section>
+
 <div class="sectionhead"><h2>🟢 매수 검토 가능</h2><span class="hint">가격 + 기업 검증 모두 통과</span></div>
-<section id="top5" class="focus"><div class="sub">계산값 로딩 중…</div></section>
+<section id="top5" class="focus"><div class="skrow"><div class="sk" style="width:42px;height:42px;border-radius:13px"></div><div style="flex:1"><div class="sk" style="height:15px;width:34%"></div><div class="sk" style="height:11px;width:62%;margin-top:7px"></div></div></div><div class="skrow"><div class="sk" style="width:42px;height:42px;border-radius:13px"></div><div style="flex:1"><div class="sk" style="height:15px;width:28%"></div><div class="sk" style="height:11px;width:55%;margin-top:7px"></div></div></div></section>
 
 <div class="sectionhead"><h2>🔵 가격관찰 목록</h2><span class="hint">매수 후보 아님 · 기업 검증 필요</span></div>
-<section id="watch5" class="focus"><div class="sub">계산값 로딩 중…</div></section>
+<section id="watch5" class="focus"><div class="skrow"><div class="sk" style="width:42px;height:42px;border-radius:13px"></div><div style="flex:1"><div class="sk" style="height:15px;width:34%"></div><div class="sk" style="height:11px;width:62%;margin-top:7px"></div></div></div></section>
 
 <div class="sectionhead"><h2>실행 보드</h2><span id="count" class="hint"></span></div>
 <div class="tabs"><button class="tab active" data-filter="all">전체</button><button class="tab" data-filter="green">🟢 매수 검토</button><button class="tab" data-filter="blue">🔵 가격관찰</button><button class="tab" data-filter="yellow">🟡 기다림</button><button class="tab" data-filter="red">🔴 제외/보류</button><button class="tab" data-filter="gray">⚪ 데이터 오류</button></div>
 <input id="search" class="search" placeholder="종목 검색">
-<div id="stockList" class="list"><div class="stock">시장 데이터 불러오는 중…</div></div>
+<div id="stockList" class="list"><div class="skrow" style="padding:14px"><div class="sk" style="width:38px;height:38px;border-radius:11px"></div><div style="flex:1"><div class="sk" style="height:14px;width:30%"></div><div class="sk" style="height:11px;width:58%;margin-top:7px"></div></div></div><div class="skrow" style="padding:14px"><div class="sk" style="width:38px;height:38px;border-radius:11px"></div><div style="flex:1"><div class="sk" style="height:14px;width:26%"></div><div class="sk" style="height:11px;width:50%;margin-top:7px"></div></div></div><div class="skrow" style="padding:14px"><div class="sk" style="width:38px;height:38px;border-radius:11px"></div><div style="flex:1"><div class="sk" style="height:14px;width:33%"></div><div class="sk" style="height:11px;width:64%;margin-top:7px"></div></div></div></div>
 
 <details><summary>📐 V2 점수/게이트 방식</summary><div class="inside">
 <div class="minirow"><b>가격 유효성</b><span>KRX 최근 완료 정규세션 필수. 벤치마크 날짜가 다르면 초과수익만 N/A</span></div>
@@ -29,51 +200,141 @@
 <div class="minirow"><b>회복형</b><span>회복 트리거 + MA20 회복 + 반전 확인</span></div>
 <div class="minirow"><b>가치스윙</b><span>별도 상태로 분리; 추세매수와 동일 라벨 사용 금지</span></div>
 <div class="minirow"><b>기술점수</b><span>추세 45% · 지수 초과수익 30% · Wilder RSI 15% · 거래량 10%</span></div>
+<div class="minirow"><b>RS (상대강도)</b><span>스탁이지(stockeasy.intellio.kr) 종합 RS를 매 계산마다 가져와 표시. 점수 산식에는 미반영</span></div>
 <div class="minirow"><b>F/E/V</b><span>F 37.5% · E 37.5% · V 25%. 세 요인이 모두 verified일 때만 연구점수 생성</span></div><div class="minirow"><b>확정 🟢</b><span>셋업 Gate 통과 + 연구점수 70 이상 + 가격 데이터 유효</span></div>
 <div class="minirow"><b>시장 레짐</b><span>코스피·코스닥의 MA20/MA60 위치와 20일 수익률로 공격/중립/방어 판정. 과열은 절대 이격이 아니라 지수 대비 상대 이격으로 측정, 실행점수에 레짐 보정(공격 +10 · 방어 −10), 방어 국면에선 돌파 셋업 비활성화·눌림은 구간 하단에서만 허용. 손절 무효화와 기업 검증 기준은 레짐과 무관하게 유지됨</span></div>
 </div></details>
 
 <details><summary>🧾 기업점수 검증 현황</summary><div id="evidenceList" class="inside"></div></details>
-<div class="footer">수동 현재가는 Yahoo Finance 1분 가격 조회 기준 · RSI·이동평균·거래량은 최근 완료 정규세션 기준 · 자동 주문 없음 · 검증된 수익예측 모델로 표현하지 않음.</div>
+<div class="footer">수동 현재가는 Yahoo Finance 1분 가격 조회 기준 · RSI·이동평균·거래량은 최근 완료 정규세션 기준 · RS는 스탁이지 종합 RS · 자동 주문 없음 · 검증된 수익예측 모델로 표현하지 않음.</div>
 </main>
 <script>
-let DATA=null,BASE_DATA=null,EV=null,filter='all';
+let DATA=null,EV=null,filter='all',themeFilter=null;
 const EV_INDEX='https://github.com/sasohanbam-wq/Mingo/blob/main/research/README.md';
 const fmt=n=>n==null?'—':Math.round(n).toLocaleString('ko-KR');
+const fpct=n=>n==null?'—':(n>0?'+':'')+Number(n).toFixed(2)+'%';
+const chgCls=n=>n==null?'flat':n>0?'up':n<0?'down':'flat';
+const chgArrow=n=>n==null?'':n>0?'▲':n<0?'▼':'·';
 function badgeClass(s){return ['green','blue','yellow','red','gray'].includes(s)?s:'gray'}
 function actionText(s){return s.state==='green'?'매수 검토 가능':s.state==='blue'?'가격관찰만 · 매수 아님':s.state==='yellow'?'기다림':s.state==='red'?'제외/보류':'데이터 확인'}
 function stLabel(st){return st==='verified'?'완료':st==='partial'?'부분':'N/A'}
+const AVHUES=[164,210,262,18,96,330,196,44,288,130,230,0,76,308,178,20,244,150,200,340,110,270,30,190,220,160,300];
+function avatar(s,i){const h=AVHUES[(i==null?s.code.split('').reduce((a,c)=>a+c.charCodeAt(0),0):i)%AVHUES.length];return '<div class="avatar" style="background:linear-gradient(135deg,hsl('+h+',85%,68%),hsl('+((h+40)%360)+',80%,52%))">'+s.name.slice(0,1)+'</div>'}
+function rsBadge(s){if(s.rs_score==null)return '';const c=s.rs_score>=90?'rsS':s.rs_score>=70?'rsA':s.rs_score>=50?'rsB':'rsC';return ' <span class="rsbadge '+c+'" title="스탁이지 종합 RS · 기준 '+(s.rs_basis_date||'—')+'">RS '+s.rs_score+'</span>'}
+function closes(s,n){const ch=(s.chart||[]).map(x=>x.c).filter(x=>x!=null);return n?ch.slice(-n):ch}
+function sparkSVG(vals,w,h,color,cls){
+ if(!vals||vals.length<2)return '';
+ const mn=Math.min(...vals),mx=Math.max(...vals),rg=(mx-mn)||1;
+ const px=i=>(i/(vals.length-1)*w).toFixed(1), py=v=>(h-3-((v-mn)/rg)*(h-6)).toFixed(1);
+ const pts=vals.map((v,i)=>px(i)+','+py(v)).join(' ');
+ const area='M0,'+h+' L'+vals.map((v,i)=>px(i)+','+py(v)).join(' L')+' L'+w+','+h+' Z';
+ return '<svg class="'+(cls||'spark')+'" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none"><path d="'+area+'" fill="'+color+'" opacity="0.13"/><polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+}
+function ringSVG(score){
+ if(score==null)return '<div class="ringwrap"><div style="font-size:15px;font-weight:900;color:var(--gray)">—</div><div class="rl">가격점수</div></div>';
+ const r=15.5,c=2*Math.PI*r,off=(c*(1-Math.max(0,Math.min(100,score))/100)).toFixed(1);
+ const col=score>=70?'#5ee6c4':score>=50?'#73b7ff':score>=35?'#ffd166':'#ff7373';
+ return '<div class="ringwrap"><svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="'+r+'" fill="none" stroke="#1b2f45" stroke-width="4"/><circle cx="20" cy="20" r="'+r+'" fill="none" stroke="'+col+'" stroke-width="4" stroke-linecap="round" stroke-dasharray="'+c.toFixed(1)+'" stroke-dashoffset="'+off+'" transform="rotate(-90 20 20)"/><text x="20" y="24.5" text-anchor="middle" font-size="12.5" font-weight="900" fill="#edf5f9">'+Math.round(score)+'</text></svg><div class="rl">가격점수</div></div>';
+}
+function countUp(el,val,suffix){if(val==null){el.textContent='—';return}const t0=performance.now(),dur=750;const step=t=>{const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=Math.round(val*e)+(suffix||'');if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}
 function evBadge(s){
  const e=EV&&EV[s.code];
  if(!e)return '';
- const detail=e.kind==='evidence'?('F '+(e.F_score??'N/A')+'('+stLabel(e.F)+') · E '+(e.E_score??'N/A')+'('+stLabel(e.E)+') · V '+(e.V_score??'N/A')+'('+stLabel(e.V)+')'):('사실검증 '+(e.review==='facts_partially_verified'?'부분확인':(e.review||'—')));
- return '<div><span class="evbadge" title="'+detail+'">✓ 근거 확인됨 · '+detail+'</span></div>';
+ const detail=e.kind==='evidence'?('F '+stLabel(e.F)+' · E '+stLabel(e.E)+' · V '+stLabel(e.V)):('사실검증 '+(e.review==='facts_partially_verified'?'부분확인':(e.review||'—')));
+ return '<div><span class="evbadge" data-evlink="1" title="'+detail+'">✓ 근거 확인됨</span></div>';
 }
-function researchStatus(s){
- const e=EV&&EV[s.code];
- if(e&&e.kind==='evidence')return ['F','E','V'].every(k=>e[k]==='verified')?'기업검증 완료':'근거 부분확인 · 전체검증 미완료';
- if(e)return '사실근거 확인 · 전체검증 미완료';
- return '기업검증 '+(s.evidence_status==='verified'?'완료':'미완료');
+document.addEventListener('click',e=>{const t=e.target.closest('[data-evlink]');if(t){e.preventDefault();e.stopPropagation();window.open(EV_INDEX,'_blank','noopener')}});
+/* ---------- market strip ---------- */
+function renderStrip(d){
+ const rg=d.market_regime||{}, idx=rg.indices||{}, ser=d.index_series||{};
+ const card=(label,key,fallback)=>{
+  const s=ser[key], f=idx[key]||{};
+  const close=s?s.close:f.close, chg=s?s.change_pct:null;
+  const vals=s?s.series.map(x=>x.c):null;
+  const col=chg==null?(f.return_20d_pct>=0?'#ff5c5c':'#4f8ff7'):(chg>=0?'#ff5c5c':'#4f8ff7');
+  return '<div class="mcard"><div class="mk"><span>'+label+'</span><span>'+(f.as_of||rg.as_of||'')+' 종가</span></div>'
+   +'<div class="mv" data-cu="'+(close==null?'':close)+'" data-dec="2">'+(close==null?'—':Number(close).toLocaleString('ko-KR',{minimumFractionDigits:2,maximumFractionDigits:2}))+'</div>'
+   +'<div class="mc '+chgCls(chg)+'">'+(chg==null?'20일 '+fpct(f.return_20d_pct):chgArrow(chg)+' '+fpct(chg))+'</div>'
+   +'<div class="mmeta"><span>MA20 이격 '+fpct(f.extension_ma20_pct)+'</span><span>20일 '+fpct(f.return_20d_pct)+'</span><span>레짐 '+f.points+'/3점</span></div>'
+   +(vals&&vals.length>1?sparkSVG(vals,260,52,col,'spark'):'')+'</div>';
+ };
+ const valid=d.stocks.filter(s=>s.change_pct!=null);
+ const up=valid.filter(s=>s.change_pct>0).length, dn=valid.filter(s=>s.change_pct<0).length, fl=valid.length-up-dn;
+ const avg=valid.length?valid.reduce((a,s)=>a+s.change_pct,0)/valid.length:0;
+ const breadthScore=valid.length?up/valid.length*100:50;
+ const regimeScore=rg.points_avg==null?50:rg.points_avg/3*100;
+ const senti=Math.round(regimeScore*0.55+breadthScore*0.45);
+ const sLabel=senti>=68?'좋아요 😊':senti>=45?'보통 😐':senti>=30?'조심해요 🥺':'위험해요 😨';
+ const sCol=senti>=68?'#5ee6c4':senti>=45?'#73b7ff':senti>=30?'#ffd166':'#ff7373';
+ const arc=2*Math.PI*26, arcOn=(arc*(0.25+0.5*Math.min(100,Math.max(0,senti))/100)).toFixed(1);
+ const gauge='<svg width="66" height="66" viewBox="0 0 66 66"><circle cx="33" cy="33" r="26" fill="none" stroke="#1b2f45" stroke-width="6"/><circle cx="33" cy="33" r="26" fill="none" stroke="'+sCol+'" stroke-width="6" stroke-linecap="round" stroke-dasharray="'+arc.toFixed(1)+'" stroke-dashoffset="'+(arc-arcOn).toFixed(1)+'" transform="rotate(135 33 33)"/><text x="33" y="38" text-anchor="middle" font-size="15" font-weight="950" fill="#edf5f9">'+senti+'</text></svg>';
+ const third='<div class="mcard"><div class="mk"><span>오늘의 시장 · 워치 '+valid.length+'종목 기준</span><span style="color:'+sCol+'">'+sLabel+'</span></div>'
+  +'<div class="gaugeWrap">'+gauge+'<div class="gaugeTxt">시장 레짐 <b>'+(rg.label||'—')+'</b> · 워치 평균 <b class="'+chgCls(avg)+'">'+fpct(avg)+'</b><br>상승 '+up+' · 하락 '+dn+' · 보합 '+fl+'<br>지수 MA20 이격 '+(rg.index_extension_ma20_pct==null?'—':fpct(rg.index_extension_ma20_pct))+'</div></div>'
+  +'<div class="breadth"><i style="width:'+(valid.length?up/valid.length*100:0)+'%;background:#ff5c5c"></i><i style="width:'+(valid.length?fl/valid.length*100:0)+'%;background:#3d5a75"></i><i style="width:'+(valid.length?dn/valid.length*100:0)+'%;background:#4f8ff7"></i></div>'
+  +'<div class="breadthLab"><span>▲ 상승 '+up+'</span><span>하락 '+dn+' ▼</span></div></div>';
+ document.getElementById('mstrip').innerHTML=card('코스피','KOSPI')+card('코스닥','KOSDAQ')+third;
+ document.querySelectorAll('#mstrip .mv[data-cu]').forEach(el=>{const v=parseFloat(el.dataset.cu);if(!isNaN(v)){const t0=performance.now();const step=t=>{const p=Math.min(1,(t-t0)/800),e=1-Math.pow(1-p,3);el.textContent=(v*e).toLocaleString('ko-KR',{minimumFractionDigits:2,maximumFractionDigits:2});if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}});
 }
-function completeResearchScore(s){
- const e=EV&&EV[s.code];
- if(e&&e.kind==='evidence'&&!['F','E','V'].every(k=>e[k]==='verified'))return 'N/A';
- return s.research_score??'N/A';
+/* ---------- marquee ---------- */
+function renderMarquee(d){
+ const items=d.stocks.map(s=>'<span class="mq"><b>'+s.name+'</b><span class="p">'+fmt(s.price)+'원</span><span class="c '+chgCls(s.change_pct)+'">'+chgArrow(s.change_pct)+' '+fpct(s.change_pct)+'</span>'+(s.rs_score!=null?'<span class="rsbadge '+(s.rs_score>=90?'rsS':s.rs_score>=70?'rsA':s.rs_score>=50?'rsB':'rsC')+'">RS '+s.rs_score+'</span>':'')+'</span>').join('');
+ document.getElementById('mqTrack').innerHTML=items+items;
+ document.getElementById('marquee').style.display='block';
 }
-function provisionalLabel(s){
- const e=EV&&EV[s.code];
- if(!e||e.kind!=='evidence')return '';
- return '<div class="meta">잠정 종합 '+(e.provisional??'N/A')+' · 전체검증 아님</div>';
+/* ---------- feature picks ---------- */
+function featCard(tag,ac,s,stat,statCls,reason){
+ const vals=closes(s,30), col=s.change_pct>=0?'#ff5c5c':'#4f8ff7';
+ return '<a class="fcard fadeup" style="--ac:'+ac+'" href="stocks/'+s.page+'"><div class="fk">'+tag+'</div><div class="fn">'+s.name+' <span class="ticker">'+s.code+'</span></div><div class="fstat '+(statCls||'')+'">'+stat+'</div><div class="freason">'+reason+'</div>'+sparkSVG(vals,220,38,col,'')+'</a>';
 }
-function row(s){
+function renderFeat(d){
+ const v=d.stocks.filter(s=>s.quote_valid&&s.price!=null);
+ if(!v.length)return;
+ const by=(fn)=>[...v].sort((a,b)=>(fn(b)??-1e9)-(fn(a)??-1e9))[0];
+ const gainer=by(s=>s.change_pct), rsTop=by(s=>s.rs_score), volTop=by(s=>s.volume_ratio);
+ let trig=v.find(s=>s.setup_pass)||v.find(s=>s.live_triggered);
+ if(!trig){const cand=v.filter(s=>s.trigger&&s.price&&s.price<s.trigger);if(cand.length)trig=cand.sort((a,b)=>((a.trigger-a.price)/a.price)-((b.trigger-b.price)/b.price))[0]}
+ let trigCard='';
+ if(trig){const dist=trig.trigger&&trig.price?((trig.trigger-trig.price)/trig.price*100):0;
+  trigCard=featCard(trig.setup_pass?'🎯 셋업 통과':(trig.live_triggered?'🎯 트리거 터치':'🎯 트리거 임박'),'#ffd166',trig,trig.setup_pass?'돌파 확인 ✓':(trig.live_triggered?'장중 터치':'-'+Math.abs(dist).toFixed(1)+'%'),'',(trig.setup_pass||trig.live_triggered?'게이트를 통과했어요. 상세에서 손절선까지 확인하세요.':'트리거 '+fmt(trig.trigger)+'원까지 '+Math.abs(dist).toFixed(1)+'% — '+(trig.setup_reason||'')));}
+ document.getElementById('feat').innerHTML=
+  featCard('🔥 오늘의 급등','#ff5c5c',gainer,fpct(gainer.change_pct),'up','완료세션 종가 '+fmt(gainer.price)+'원 · '+(gainer.theme||''))
+ +featCard('💪 RS 최강 · 스탁이지','#5ee6c4',rsTop,'RS '+rsTop.rs_score,'','상대강도 상위권. 20일 초과수익 '+fpct(rsTop.excess_return_20d_pct)+' · 60일 '+fpct(rsTop.excess_return_60d_pct))
+ +featCard('📊 거래량 폭발','#73b7ff',volTop,Number(volTop.volume_ratio).toFixed(2)+'배','','20일 평균 대비 거래량. RSI '+(volTop.rsi14_wilder??'—')+' · '+(volTop.setup_reason||''))
+ +trigCard;
+}
+/* ---------- themes ---------- */
+const BUCKETS=[
+ ['AI 데이터센터·전력',/비상발전|배전반|ESS|AI DC/],
+ ['원전·발전 설비',/원전|HRSG|발전·SMP/],
+ ['태양광·신재생',/태양광/],
+ ['반도체 장비·소재',/스크러버|레이저|식각|세정장비|반도체 소재|기계설비|고선택비/],
+ ['기판·패키징·OSAT',/기판|Packaging|OSAT|본딩와이어|솔더볼|SoCAMM|SOCAMM/],
+ ['로봇·기계',/휴머노이드|공작기계/],
+ ['바이오·의료기기',/리투오|ECM|홀로토모그래피/],
+ ['디스플레이',/Micro-LED|DDIC/],
+ ['방산·특수전지',/고온전지|방산/]
+];
+function bucketOf(s){for(const [name,re] of BUCKETS){if(re.test(s.theme||''))return name}return '소비·금융·기타'}
+function themeColor(avg){return avg>=2?'rgba(255,92,92,.16)':avg>=0.5?'rgba(255,92,92,.08)':avg<=-1?'rgba(79,143,247,.15)':avg<0?'rgba(79,143,247,.07)':'rgba(61,90,117,.12)'}
+function renderThemes(d){
+ const g={};
+ d.stocks.forEach(s=>{const h=bucketOf(s);(g[h]=g[h]||[]).push(s)});
+ const arr=Object.entries(g).map(([h,ss])=>{const vv=ss.filter(s=>s.change_pct!=null);const avg=vv.length?vv.reduce((a,s)=>a+s.change_pct,0)/vv.length:0;const top=[...ss].sort((a,b)=>(b.rs_score??-1)-(a.rs_score??-1))[0];return{h,ss,avg,top}}).sort((a,b)=>b.avg-a.avg);
+ document.getElementById('themes').innerHTML=arr.map(t=>'<button class="theme'+(themeFilter===t.h?' on':'')+'" data-theme="'+t.h.replace(/"/g,'&quot;')+'" style="background:'+themeColor(t.avg)+'"><div class="tn"><span>'+t.h+'</span><span class="'+chgCls(t.avg)+'">'+fpct(t.avg)+'</span></div><div class="tm">'+t.ss.length+'종목 · 평균 등락<br>RS 톱 <b>'+t.top.name+' '+(t.top.rs_score??'—')+'</b></div></button>').join('');
+ document.querySelectorAll('.theme').forEach(b=>b.addEventListener('click',()=>{themeFilter=themeFilter===b.dataset.theme?null:b.dataset.theme;document.querySelectorAll('.theme').forEach(x=>x.classList.toggle('on',x.dataset.theme===themeFilter));apply();document.getElementById('stockList').scrollIntoView({behavior:'smooth',block:'start'})}));
+}
+/* ---------- board ---------- */
+function row(s,i){
  const ev=s.evidence_status||'legacy_unverified';
- const research='새 F '+(s.research_F??'N/A')+' · E '+(s.research_E??'N/A')+' · V '+(s.research_V??'N/A');
- const statuses='F '+(s.research_F_status??'—')+' / E '+(s.research_E_status??'—')+' / V '+(s.research_V_status??'—');
- const legacy='기존 '+(s.legacy_F??'—')+'/'+(s.legacy_E??'—')+'/'+(s.legacy_V??'—');
  const snap=s.price_mode==='manual_snapshot';
  const priceLabel=s.live?'실시간':(snap?'수동조회':'완료세션');
  const timeLabel=s.live?(s.live_timestamp||'방금'):(snap?(s.price_timestamp||'방금'):(s.quote_as_of||'—'));
- return '<a class="stock" data-state="'+s.state+'" data-name="'+s.name.toLowerCase()+'" href="stocks/'+s.page+'"><div><b>'+s.name+'</b> <span class="ticker">'+s.code+'</span><div class="desc">'+s.theme+'</div><div class="meta">'+priceLabel+' '+fmt(s.price)+'원 · '+timeLabel+' · RSI '+(s.rsi14_wilder??'—')+' · RS '+(s.rs_score??'—')+'</div><div class="meta">'+s.setup_reason+'</div></div><div class="stockright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="scorebig">가격점수 '+(s.execution_score??'—')+((s.regime_adjustment)?' <span class="meta">레짐 '+(s.regime_adjustment>0?'+':'')+s.regime_adjustment+'</span>':'')+'</div><div class="meta '+(ev==='verified'?'':'warn')+'">'+researchStatus(s)+' · 연구 '+completeResearchScore(s)+'</div>'+provisionalLabel(s)+evBadge(s)+'</div></a>';
+ const vals=closes(s,30), col=s.change_pct>=0?'#ff5c5c':'#4f8ff7';
+ return '<a class="stock" data-state="'+s.state+'" data-theme="'+bucketOf(s)+'" data-name="'+s.name.toLowerCase()+'" href="stocks/'+s.page+'">'+avatar(s,i)
+ +'<div><b>'+s.name+'</b> <span class="ticker">'+s.code+'</span>'+rsBadge(s)+'<div class="desc">'+s.theme+'</div><div class="meta">'+priceLabel+' '+fmt(s.price)+'원 · '+timeLabel+' · <span class="'+chgCls(s.change_pct)+'">'+chgArrow(s.change_pct)+' '+fpct(s.change_pct)+'</span> · RSI '+(s.rsi14_wilder??'—')+'</div><div class="meta">'+s.setup_reason+'</div></div>'
+ +sparkSVG(vals,86,32,col,'spark')
+ +'<div class="stockright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="meta" style="margin-top:6px">'+priceLabel+' <b style="color:var(--text)">'+fmt(s.price)+'원</b></div><div class="meta '+(ev==='verified'?'':'warn')+'">기업검증 '+(ev==='verified'?'완료':'미완료')+' · 연구 '+(s.research_score??'N/A')+'</div>'+evBadge(s)+'</div>'
+ +ringSVG(s.execution_score)+'</a>';
 }
 function render(d){
  DATA=d;
@@ -81,18 +342,19 @@ function render(d){
  document.getElementById('sessionChip').textContent='시장 '+(d.market_state||'—');
  document.getElementById('asofChip').textContent='완료세션 '+(d.expected_completed_session||'—');
  const rg=d.market_regime;
- document.getElementById('regimeChip').textContent=(!rg||rg.level==='unknown'||rg.index_extension_ma20_pct==null)?'시장 레짐 판정 불가':('시장 레짐 '+rg.label+' · 지수 MA20 이격 '+(rg.index_extension_ma20_pct>=0?'+':'')+rg.index_extension_ma20_pct+'% · 실행 보정 '+(rg.execution_adjustment>0?'+':'')+(rg.execution_adjustment??0));
+ document.getElementById('regimeChip').textContent=(!rg||rg.level==='unknown'||rg.index_extension_ma20_pct==null)?'시장 레짐 판정 불가':('시장 레짐 '+rg.label+' · 지수 MA20 이격 '+fpct(rg.index_extension_ma20_pct)+' · 실행 보정 '+(rg.execution_adjustment>0?'+':'')+(rg.execution_adjustment??0));
  document.getElementById('count').textContent=d.stocks.length+'종목';
  const counts=Object.fromEntries(['green','blue','yellow','red'].map(x=>[x,d.stocks.filter(s=>s.state===x).length]));
- Object.entries(counts).forEach(([k,v])=>document.getElementById(k+'Count').textContent=v+'개');
+ countUp(document.getElementById('greenCount'),counts.green,'개');countUp(document.getElementById('blueCount'),counts.blue,'개');countUp(document.getElementById('yellowCount'),counts.yellow,'개');countUp(document.getElementById('redCount'),counts.red,'개');
  document.getElementById('verdict').innerHTML=counts.green?'<b>오늘 매수 검토 가능한 종목은 '+counts.green+'개입니다.</b> 그래도 종목 상세의 리스크와 손절선을 확인하세요.':'<b>현재 매수 검토 가능한 종목은 0개입니다.</b> 🔵 '+counts.blue+'개는 가격만 조건을 충족했을 뿐 기업 검증이 끝나지 않았으므로 매수 후보가 아닙니다.';
- const card=s=>'<a class="pick" href="stocks/'+s.page+'"><div><div class="pickname">'+s.name+'</div><div class="reason">'+s.setup_reason+'</div></div><div class="pickright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="scorebig">가격점수 '+s.execution_score+'</div><div class="price">'+fmt(s.price)+'원</div><div class="trigger">구간 '+fmt(s.buy_zone?.[0])+'~'+fmt(s.buy_zone?.[1])+' · 트리거 '+fmt(s.trigger)+'</div></div></a>';
+ renderStrip(d); renderMarquee(d); renderFeat(d); renderThemes(d);
+ const card=s=>'<a class="pick" href="stocks/'+s.page+'">'+avatar(s)+'<div><div class="pickname">'+s.name+rsBadge(s)+'</div><div class="reason">'+s.setup_reason+'</div></div>'+sparkSVG(closes(s,30),86,32,s.change_pct>=0?'#ff5c5c':'#4f8ff7','spark')+'<div class="pickright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="scorebig">가격점수 '+s.execution_score+'</div><div class="price">'+fmt(s.price)+'원 <span class="'+chgCls(s.change_pct)+'">'+fpct(s.change_pct)+'</span></div><div class="trigger">구간 '+fmt(s.buy_zone?.[0])+'~'+fmt(s.buy_zone?.[1])+' · 트리거 '+fmt(s.trigger)+'</div></div></a>';
  const approved=d.stocks.filter(s=>s.quote_valid&&s.state==='green').slice(0,5);
  const watch=d.stocks.filter(s=>s.quote_valid&&s.state==='blue').slice(0,5);
- document.getElementById('top5').innerHTML=approved.length?approved.map(card).join(''):'<div class="sub"><b>현재 0개.</b> 억지로 매수 후보를 만들지 않습니다.</div>';
- document.getElementById('watch5').innerHTML=watch.length?watch.map(card).join(''):'<div class="sub">가격관찰 종목이 없습니다.</div>';
+ document.getElementById('top5').innerHTML=approved.length?approved.map(card).join(''):'<div class="sub" style="padding:12px 2px"><b>현재 0개.</b> 억지로 매수 후보를 만들지 않습니다.</div>';
+ document.getElementById('watch5').innerHTML=watch.length?watch.map(card).join(''):'<div class="sub" style="padding:12px 2px">가격관찰 종목이 없습니다.</div>';
  document.getElementById('stockList').innerHTML=d.stocks.map(row).join('');
- document.getElementById('evidenceList').innerHTML='<div class="minirow"><b>📚 연구 근거 목록</b><span><a href="https://github.com/sasohanbam-wq/Mingo/blob/main/research/README.md" target="_blank" rel="noopener" style="color:var(--mint)">research/README.md 열기</a></span></div>'+[...d.stocks].sort((a,b)=>(b.research_score??-1)-(a.research_score??-1)).map(s=>'<div class="minirow"><b>'+s.name+'</b><span>F '+(EV?.[s.code]?.F_score??s.research_F??'N/A')+' · E '+(EV?.[s.code]?.E_score??s.research_E??'N/A')+' · V '+(EV?.[s.code]?.V_score??s.research_V??'N/A')+' · 연구 '+completeResearchScore(s)+' · '+researchStatus(s)+' · 잠정종합 '+(EV?.[s.code]?.provisional??'N/A')+(EV&&EV[s.code]&&EV[s.code].kind==='evidence'?' · 근거 상태 F '+stLabel(EV[s.code].F)+' / E '+stLabel(EV[s.code].E)+' / V '+stLabel(EV[s.code].V):'')+'</span></div>').join('');
+ document.getElementById('evidenceList').innerHTML='<div class="minirow"><b>📚 연구 근거 목록</b><span><a href="https://github.com/sasohanbam-wq/Mingo/blob/main/research/README.md" target="_blank" rel="noopener" style="color:var(--mint)">research/README.md 열기</a></span></div>'+[...d.stocks].sort((a,b)=>(b.research_score??-1)-(a.research_score??-1)).map(s=>'<div class="minirow"><b>'+s.name+'</b><span>F '+(s.research_F??'N/A')+' · E '+(s.research_E??'N/A')+' · V '+(s.research_V??'N/A')+' · 연구 '+(s.research_score??'N/A')+' · '+s.evidence_status+'</span></div>').join('');
  apply();
  const err=document.getElementById('error');
  if(d.errors&&d.errors.length){err.style.display='block';err.textContent='데이터/계산 오류 '+d.errors.length+'건. 해당 종목은 자동으로 평가 보류된다.'}else err.style.display='none';
@@ -101,7 +363,7 @@ function apply(){
  if(!DATA)return;
  const term=document.getElementById('search').value.trim().toLowerCase();
  document.querySelectorAll('.stock[data-state]').forEach(el=>{
-   const ok=(filter==='all'||el.dataset.state===filter)&&(!term||el.dataset.name.includes(term)||el.textContent.toLowerCase().includes(term));
+   const ok=(filter==='all'||el.dataset.state===filter)&&(!themeFilter||el.dataset.theme===themeFilter)&&(!term||el.dataset.name.includes(term)||el.textContent.toLowerCase().includes(term));
    el.classList.toggle('hidden',!ok);
  });
 }
@@ -115,13 +377,15 @@ async function refreshScores(){
    const evP=get('research_evidence.json'),cvP=get('content_verification_2026-10-01.json');
    const ev=await evP,cv=await cvP;
    EV={};
-   if(ev&&ev.stocks)Object.entries(ev.stocks).forEach(([code,s])=>{EV[code]={kind:'evidence',name:s.name,F:s.F&&s.F.status,E:s.E&&s.E.status,V:s.V&&s.V.status,F_score:s.F&&s.F.score,E_score:s.E&&s.E.score,V_score:s.V&&s.V.score,provisional:s.provisional_research_score,overall:s.overall_status};});
+   if(ev&&ev.stocks)Object.entries(ev.stocks).forEach(([code,s])=>{EV[code]={kind:'evidence',name:s.name,F:s.F&&s.F.status,E:s.E&&s.E.status,V:s.V&&s.V.status,overall:s.overall_status};});
    if(cv&&cv.stocks)cv.stocks.forEach(s=>{if(s.code&&!EV[s.code])EV[s.code]={kind:'factcheck',name:s.name,review:s.review_status};});
-   BASE_DATA=d; render(d);
+   render(d);
  }catch(e){
    const x=document.getElementById('error');x.style.display='block';x.textContent='V2 점수 스냅샷 생성/배포 중: '+e.message;
  }finally{b.disabled=false;b.textContent='↻ 최신 데이터'}
 }
+function tickClock(){try{document.getElementById('clock').textContent=new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul',month:'numeric',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false})}catch(e){}}
+setInterval(tickClock,1000);tickClock();
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;apply()}));
 document.getElementById('search').addEventListener('input',apply);
 document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>{document.querySelector('.tab[data-filter="'+b.dataset.jump+'"]').click();document.getElementById('stockList').scrollIntoView({behavior:'smooth'})}));

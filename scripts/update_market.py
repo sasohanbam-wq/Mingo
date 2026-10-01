@@ -182,6 +182,40 @@ def chart_series(hist, n=60):
     return out
 
 
+def build_index_series(bench, n=60, completed_session=None):
+    """Compact close series for the two benchmark indices (board sparklines).
+
+    bench maps exchange code ("KS"/"KQ") to a prepared history DataFrame.
+    When completed_session ("YYYY-MM-DD") is given, rows after it (e.g. a
+    partial intraday bar) are excluded so the series matches the regime.
+    Returns {"KOSPI": {...}, "KOSDAQ": {...}}; missing data yields {}.
+    """
+    out = {}
+    for ex, label in (("KS", "KOSPI"), ("KQ", "KOSDAQ")):
+        df = (bench or {}).get(ex)
+        if df is None or len(df) == 0 or "Close" not in df.columns:
+            continue
+        if completed_session is not None and "_session_date" in df.columns:
+            df = df[df["_session_date"] <= completed_session]
+        closes = pd.Series(df["Close"].values, dtype=float).dropna()
+        if len(closes) < 2:
+            continue
+        tail = df.tail(n)
+        series = [
+            {"d": str(r["_session_date"])[5:], "c": round(float(r["Close"]), 2)}
+            for _, r in tail.iterrows()
+            if not pd.isna(r["Close"])
+        ]
+        last = float(closes.iloc[-1])
+        prev = float(closes.iloc[-2])
+        out[label] = {
+            "close": round(last, 2),
+            "change_pct": None if prev == 0 else round((last / prev - 1) * 100, 2),
+            "series": series,
+        }
+    return out
+
+
 def trailing_return(series, n):
     s = pd.Series(series, dtype=float).dropna()
     if len(s) <= n:
@@ -882,6 +916,7 @@ def main(now=None, intraday_snapshot=False, completed_only=False):
         "market_state": context["market_state"],
         "expected_completed_session": context["expected_completed_session"],
         "market_regime": regime,
+        "index_series": build_index_series(bench, completed_session=context["expected_completed_session"]),
         "source": SOURCE,
         "price_mode": "manual_snapshot" if intraday_snapshot else "completed_session",
         "snapshot_auto": snapshot_auto,

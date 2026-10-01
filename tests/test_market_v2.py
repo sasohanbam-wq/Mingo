@@ -427,3 +427,29 @@ def test_parse_stockeasy_rs_missing_or_empty_returns_none():
     assert m.parse_stockeasy_rs("") is None
     assert m.parse_stockeasy_rs("<html>no rs here</html>") is None
     assert m.parse_stockeasy_rs(None) is None
+
+
+def test_build_index_series_shape_and_change():
+    import pandas as pd
+    df = pd.DataFrame({
+        "Close": [100.0, 101.0, 103.0],
+        "_session_date": ["2026-09-28", "2026-09-29", "2026-09-30"],
+    })
+    out = m.build_index_series({"KS": df, "KQ": None})
+    assert set(out) == {"KOSPI"}
+    assert out["KOSPI"]["close"] == 103.0
+    assert out["KOSPI"]["change_pct"] == round((103.0 / 101.0 - 1) * 100, 2)
+    assert out["KOSPI"]["series"][-1] == {"d": "09-30", "c": 103.0}
+    assert m.build_index_series({}) == {}
+    assert m.build_index_series({"KS": None}) == {}
+
+
+def test_build_index_series_excludes_partial_bar():
+    import pandas as pd
+    df = pd.DataFrame({
+        "Close": [100.0, 101.0, 999.0],
+        "_session_date": ["2026-09-28", "2026-09-29", "2026-10-01"],
+    })
+    out = m.build_index_series({"KS": df}, completed_session="2026-09-29")
+    assert out["KOSPI"]["close"] == 101.0
+    assert out["KOSPI"]["series"][-1]["d"] == "09-29"
