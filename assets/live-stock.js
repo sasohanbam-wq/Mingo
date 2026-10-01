@@ -357,17 +357,17 @@
   html+='<div class="mx-h">🗺️ 가격 맵 — 구간 · 트리거 · 무효화</div>'
     +priceMap(s)
     +'<table class="mx-tbl">'
-    +'<tr><td>셋업 유형</td><td>'+esc(setupNames[s.setup_type]||s.setup_type||'—')+'</td></tr>'
+    +'<tr><td>셋업 유형</td><td>'+esc(s.analysis_pending?'분석검증중 (셋업 미확정)':setupNames[s.setup_type]||s.setup_type||'—')+'</td></tr>'
     +'<tr><td>매수구간</td><td>'+zone+'</td></tr>'
     +'<tr><td>돌파 트리거</td><td>'+fmt(s.trigger)+'원'+(dTrig!=null?' <span class="mx-sub">(현재가에서 '+fp(dTrig)+')</span>':'')+'</td></tr>'
     +'<tr><td>무효화</td><td>'+fmt(s.invalidation)+'원'+(dInv!=null?' <span class="mx-sub">(여유 '+fp(dInv)+')</span>':'')+'</td></tr>'
     +'</table>'
     +(chartHtml?'<div class="mx-h">📈 실제 차트 — 캔들 · MA20/50 · 거래량</div>'+chartHtml:'')
-    +'<div class="mx-h">실행점수 구성</div>'
+    +'<div class="mx-h">'+(s.analysis_pending?'계산 가능한 기술점수 구성':'실행점수 구성')+'</div>'
     +scoreBar('기술',s.technical_score)
     +scoreBar('추세',s.trend_score)
     +scoreBar('상대수익',s.relative_return_score)
-    +'<div class="mx-note">레짐 보정 '+(s.regime_adjustment>=0?'+':'')+(s.regime_adjustment??'—')+' ('+esc(s.regime_label||'')+') 포함 → 실행점수 <b style="color:#edf4ff">'+(s.execution_score??'—')+'</b></div>'
+    +(s.analysis_pending?'<div class="mx-note">완료세션 기술산식만 계산. 실행점수/매수게이트 미확정.</div>':'<div class="mx-note">레짐 보정 '+(s.regime_adjustment>=0?'+':'')+(s.regime_adjustment??'—')+' ('+esc(s.regime_label||'')+') 포함 → 실행점수 <b style="color:#edf4ff">'+(s.execution_score??'—')+'</b></div>')
     +scenarioHtml+(s.scenario_note?'<div class="mx-note">'+esc(s.scenario_note)+'</div>':'');
 
   // ---------- 3) GATE checklist ----------
@@ -476,7 +476,7 @@
       +'<div class="mx-reg">'+cards+'</div>';
   }
 
-  html+='<div class="mx-note" style="margin-top:16px">이 패널은 data/live_scores.json / analyzed_stocks.json + 최신 research_evidence.json 기준으로 자동 생성됩니다 (계산: '+esc(calcLabel||'—')+'). 고정 텍스트가 아니며, 데이터 출처: '+esc(s.source||'—')+'</div>';
+  html+='<div class="mx-note" style="margin-top:16px">데이터: 일봉/수급 완료세션과 현재가 조회시각 분리. 근거표는 최신 확인분 반영 (시장 스냅샷: '+esc(calcLabel||'—')+'). 고정 텍스트가 아니며, 데이터 출처: '+esc(s.source||'—')+'</div>';
 
   // ---------- mount ----------
   let box;
