@@ -46,7 +46,7 @@ function stLabel(st){return st==='verified'?'완료':st==='partial'?'부분':'N/
 function evBadge(s){
  const e=EV&&EV[s.code];
  if(!e)return '';
- const detail=e.kind==='evidence'?('F '+stLabel(e.F)+' · E '+stLabel(e.E)+' · V '+stLabel(e.V)):('사실검증 '+(e.review==='facts_partially_verified'?'부분확인':(e.review||'—')));
+ const detail=e.kind==='evidence'?('F '+(e.F_score??'N/A')+'('+stLabel(e.F)+') · E '+(e.E_score??'N/A')+'('+stLabel(e.E)+') · V '+(e.V_score??'N/A')+'('+stLabel(e.V)+')'):('사실검증 '+(e.review==='facts_partially_verified'?'부분확인':(e.review||'—')));
  return '<div><span class="evbadge" title="'+detail+'">✓ 근거 확인됨 · '+detail+'</span></div>';
 }
 function researchStatus(s){
@@ -54,6 +54,16 @@ function researchStatus(s){
  if(e&&e.kind==='evidence')return ['F','E','V'].every(k=>e[k]==='verified')?'기업검증 완료':'근거 부분확인 · 전체검증 미완료';
  if(e)return '사실근거 확인 · 전체검증 미완료';
  return '기업검증 '+(s.evidence_status==='verified'?'완료':'미완료');
+}
+function completeResearchScore(s){
+ const e=EV&&EV[s.code];
+ if(e&&e.kind==='evidence'&&!['F','E','V'].every(k=>e[k]==='verified'))return 'N/A';
+ return s.research_score??'N/A';
+}
+function provisionalLabel(s){
+ const e=EV&&EV[s.code];
+ if(!e||e.kind!=='evidence')return '';
+ return '<div class="meta">잠정 종합 '+(e.provisional??'N/A')+' · 전체검증 아님</div>';
 }
 function row(s){
  const ev=s.evidence_status||'legacy_unverified';
@@ -63,7 +73,7 @@ function row(s){
  const snap=s.price_mode==='manual_snapshot';
  const priceLabel=s.live?'실시간':(snap?'수동조회':'완료세션');
  const timeLabel=s.live?(s.live_timestamp||'방금'):(snap?(s.price_timestamp||'방금'):(s.quote_as_of||'—'));
- return '<a class="stock" data-state="'+s.state+'" data-name="'+s.name.toLowerCase()+'" href="stocks/'+s.page+'"><div><b>'+s.name+'</b> <span class="ticker">'+s.code+'</span><div class="desc">'+s.theme+'</div><div class="meta">'+priceLabel+' '+fmt(s.price)+'원 · '+timeLabel+' · RSI '+(s.rsi14_wilder??'—')+'</div><div class="meta">'+s.setup_reason+'</div></div><div class="stockright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="scorebig">가격점수 '+(s.execution_score??'—')+((s.regime_adjustment)?' <span class="meta">레짐 '+(s.regime_adjustment>0?'+':'')+s.regime_adjustment+'</span>':'')+'</div><div class="meta '+(ev==='verified'?'':'warn')+'">'+researchStatus(s)+' · 연구 '+(s.research_score??'N/A')+'</div>'+evBadge(s)+'</div></a>';
+ return '<a class="stock" data-state="'+s.state+'" data-name="'+s.name.toLowerCase()+'" href="stocks/'+s.page+'"><div><b>'+s.name+'</b> <span class="ticker">'+s.code+'</span><div class="desc">'+s.theme+'</div><div class="meta">'+priceLabel+' '+fmt(s.price)+'원 · '+timeLabel+' · RSI '+(s.rsi14_wilder??'—')+'</div><div class="meta">'+s.setup_reason+'</div></div><div class="stockright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="scorebig">가격점수 '+(s.execution_score??'—')+((s.regime_adjustment)?' <span class="meta">레짐 '+(s.regime_adjustment>0?'+':'')+s.regime_adjustment+'</span>':'')+'</div><div class="meta '+(ev==='verified'?'':'warn')+'">'+researchStatus(s)+' · 연구 '+completeResearchScore(s)+'</div>'+provisionalLabel(s)+evBadge(s)+'</div></a>';
 }
 function render(d){
  DATA=d;
@@ -82,7 +92,7 @@ function render(d){
  document.getElementById('top5').innerHTML=approved.length?approved.map(card).join(''):'<div class="sub"><b>현재 0개.</b> 억지로 매수 후보를 만들지 않습니다.</div>';
  document.getElementById('watch5').innerHTML=watch.length?watch.map(card).join(''):'<div class="sub">가격관찰 종목이 없습니다.</div>';
  document.getElementById('stockList').innerHTML=d.stocks.map(row).join('');
- document.getElementById('evidenceList').innerHTML='<div class="minirow"><b>📚 연구 근거 목록</b><span><a href="https://github.com/sasohanbam-wq/Mingo/blob/main/research/README.md" target="_blank" rel="noopener" style="color:var(--mint)">research/README.md 열기</a></span></div>'+[...d.stocks].sort((a,b)=>(b.research_score??-1)-(a.research_score??-1)).map(s=>'<div class="minirow"><b>'+s.name+'</b><span>F '+(s.research_F??'N/A')+' · E '+(s.research_E??'N/A')+' · V '+(s.research_V??'N/A')+' · 연구 '+(s.research_score??'N/A')+' · '+researchStatus(s)+(EV&&EV[s.code]&&EV[s.code].kind==='evidence'?' · 근거 상태 F '+stLabel(EV[s.code].F)+' / E '+stLabel(EV[s.code].E)+' / V '+stLabel(EV[s.code].V):'')+'</span></div>').join('');
+ document.getElementById('evidenceList').innerHTML='<div class="minirow"><b>📚 연구 근거 목록</b><span><a href="https://github.com/sasohanbam-wq/Mingo/blob/main/research/README.md" target="_blank" rel="noopener" style="color:var(--mint)">research/README.md 열기</a></span></div>'+[...d.stocks].sort((a,b)=>(b.research_score??-1)-(a.research_score??-1)).map(s=>'<div class="minirow"><b>'+s.name+'</b><span>F '+(s.research_F??'N/A')+' · E '+(s.research_E??'N/A')+' · V '+(s.research_V??'N/A')+' · 연구 '+completeResearchScore(s)+' · '+researchStatus(s)+' · 잠정종합 '+(EV?.[s.code]?.provisional??'N/A')+(EV&&EV[s.code]&&EV[s.code].kind==='evidence'?' · 근거 상태 F '+stLabel(EV[s.code].F)+' / E '+stLabel(EV[s.code].E)+' / V '+stLabel(EV[s.code].V):'')+'</span></div>').join('');
  apply();
  const err=document.getElementById('error');
  if(d.errors&&d.errors.length){err.style.display='block';err.textContent='데이터/계산 오류 '+d.errors.length+'건. 해당 종목은 자동으로 평가 보류된다.'}else err.style.display='none';
@@ -105,7 +115,7 @@ async function refreshScores(){
    const evP=get('research_evidence.json'),cvP=get('content_verification_2026-10-01.json');
    const ev=await evP,cv=await cvP;
    EV={};
-   if(ev&&ev.stocks)Object.entries(ev.stocks).forEach(([code,s])=>{EV[code]={kind:'evidence',name:s.name,F:s.F&&s.F.status,E:s.E&&s.E.status,V:s.V&&s.V.status,overall:s.overall_status};});
+   if(ev&&ev.stocks)Object.entries(ev.stocks).forEach(([code,s])=>{EV[code]={kind:'evidence',name:s.name,F:s.F&&s.F.status,E:s.E&&s.E.status,V:s.V&&s.V.status,F_score:s.F&&s.F.score,E_score:s.E&&s.E.score,V_score:s.V&&s.V.score,provisional:s.provisional_research_score,overall:s.overall_status};});
    if(cv&&cv.stocks)cv.stocks.forEach(s=>{if(s.code&&!EV[s.code])EV[s.code]={kind:'factcheck',name:s.name,review:s.review_status};});
    BASE_DATA=d; render(d);
  }catch(e){
