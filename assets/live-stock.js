@@ -114,7 +114,7 @@
     snapshot.style.borderColor='#304454';
   }
 
-  const RAW='https://raw.githubusercontent.com/sasohanbam-wq/Mingo/main/';
+  const RAW=new URL('../',document.currentScript?.src||location.href).href; // Deployed same-origin data avoids stale raw CDN snapshots.
   let s=null, regime=null, calcLabel=null, ev=null;
   try{
     const r=await fetch(RAW+'data/live_scores.json?t='+Date.now(),{cache:'no-store'});
