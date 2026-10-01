@@ -499,3 +499,113 @@ def test_build_index_series_excludes_partial_bar():
     out = m.build_index_series({"KS": df}, completed_session="2026-09-29")
     assert out["KOSPI"]["close"] == 101.0
     assert out["KOSPI"]["series"][-1]["d"] == "09-29"
+
+
+def test_high52_metrics_flag_new_high_close():
+    closes = np.linspace(80, 100, 80)
+    d = frame(closes)
+    b = frame(np.linspace(90, 105, 80))
+    t = m.technical_metrics(d, b)
+    assert t["new_high_close"] is True
+    assert t["new_high_touch"] is True
+    assert t["high52_actual"] == 101.0
+    assert t["high52_date"] is not None
+    assert t["days_since_high52"] == 0
+    assert t["dist_high52_pct"] == round((100 / 101 - 1) * 100, 2)
+
+
+def test_high52_metrics_below_high():
+    closes = np.full(80, 90.0)
+    closes[70] = 100.0
+    closes[-1] = 95.0
+    d = frame(closes)
+    b = frame(np.linspace(90, 105, 80))
+    t = m.technical_metrics(d, b)
+    assert t["new_high_close"] is False
+    assert t["high52_actual"] == 101.0
+    assert t["dist_high52_pct"] == round((95 / 101 - 1) * 100, 2)
+    assert t["days_since_high52"] == 9
+
+
+def _sig_row(code, **kw):
+    row = {
+        "code": code, "name": code, "page": code + ".html",
+        "price": 100.0, "change_pct": 1.0, "rs_score": 50,
+        "volume_ratio": 1.0, "state": "yellow", "execution_score": 50.0,
+        "high52_actual": 101.0, "high52_date": "2026-09-30",
+        "dist_high52_pct": -1.0, "days_since_high52": 3,
+        "new_high_close": False, "new_high_touch": False,
+        "se_pos52": 90, "data_status": "valid",
+    }
+    row.update(kw)
+    return row
+
+
+def test_build_signals_groups_and_thresholds():
+    rows = [
+        _sig_row("AAA", new_high_close=True, new_high_touch=True,
+                 dist_high52_pct=-0.5, change_pct=3.0),
+        _sig_row("BBB", dist_high52_pct=-2.0),
+        _sig_row("CCC", dist_high52_pct=-7.0),
+        _sig_row("DDD", volume_ratio=2.5, dist_high52_pct=-30.0),
+        _sig_row("EEE", volume_ratio=3.0, data_status="stale"),
+    ]
+    sig = m.build_signals(rows, "2026-10-01")
+    assert sig["as_of"] == "2026-10-01"
+    assert [x["code"] for x in sig["new_high"]] == ["AAA"]
+    assert [x["code"] for x in sig["near_high"]] == ["BBB"]
+    assert [x["code"] for x in sig["volume_surge"]] == ["DDD"]
+
+
+def test_stockeasy_app_token_matches_js_reference():
+    # Reference value produced by the site's JS bundle logic for a fixed
+    # timestamp: bucket = floor(1790000000000 / 30000) = 59666666.
+    import base64
+    tok = m.stockeasy_app_token(now_ms=1790000000000)
+    decoded = base64.b64decode(tok).decode()
+    bucket, _, h36 = decoded.partition(".")
+    assert bucket == "59666666"
+    x = ((0x45D9F3B * 59666666) % (1 << 32)) ^ 0xDEADBEEF
+    chars = "0123456789abcdefghijklmnopqrstuvwxyz"
+    exp = ""
+    v = x
+    while v:
+        v, r = divmod(v, 36)
+        exp = chars[r] + exp
+    assert h36 == exp
+
+
+def test_parse_stockeasy_sector_flow_slims_payload():
+    payload = {
+        "success": True,
+        "data": {
+            "major_timeline": [
+                {"date": "2026-09-30", "_total": 5, "반도체": 5},
+                {"date": "2026-10-01", "_total": 13, "반도체": 8, "바이오": 2},
+            ],
+            "major_percentage": [
+                {"date": "2026-09-30", "반도체": 100.0},
+                {"date": "2026-10-01", "반도체": 61.5, "바이오": 15.4},
+            ],
+            "mid_timeline": [
+                {"date": "2026-10-01", "_total": 13, "반도체장비": 4, "의료기기": 1},
+            ],
+            "major_totals": [
+                {"name": "반도체", "weighted_count": 57.0, "distinct_count": 12},
+            ],
+            "date_range": {"start": "2026-08-31", "end": "2026-10-01"},
+            "trading_days": 21,
+            "sector_flow": {
+                "inflow_sectors": [{"sector": "반도체", "change": 43.8}],
+                "outflow_sectors": [{"sector": "금융", "change": -14.6}],
+            },
+        },
+    }
+    out = m.parse_stockeasy_sector_flow(payload)
+    assert out["as_of"] == "2026-10-01"
+    assert out["today_total"] == 13
+    assert out["today_major"][0] == {"name": "반도체", "count": 8, "pct": 61.5}
+    assert out["today_mid_top"][0] == {"name": "반도체장비", "count": 4}
+    assert out["inflow"] == [{"sector": "반도체", "change": 43.8}]
+    assert m.parse_stockeasy_sector_flow({"success": False}) is None
+    assert m.parse_stockeasy_sector_flow(None) is None

@@ -177,6 +177,111 @@ def fetch_stockeasy_market(timeout=10):
         return None
 
 
+STOCKEASY_SECTOR_FLOW_URL = (
+    "https://stockeasy.intellio.kr/stockdata/api/v1/high52/sector-flow"
+)
+STOCKEASY_SECTOR_FLOW_SOURCE = (
+    "StockEasy (stockeasy.intellio.kr) 52주 신고가 섹터 흐름"
+)
+
+
+def stockeasy_app_token(now_ms=None):
+    """Time-bucketed app token the StockEasy web client sends as X-App-Token
+    (recovered from the site's public JS bundle): base64 of
+    "<bucket>.<hash36>" where bucket = floor(now_ms / 30000) and the hash is
+    ((0x45d9f3b * bucket) ^ 0xdeadbeef) as an unsigned 32-bit value in base 36.
+    Used only for the public sector-flow endpoint; the per-stock dashboard
+    endpoint additionally requires a login session and is not collected.
+    """
+    import base64
+    import time
+
+    if now_ms is None:
+        now_ms = int(time.time() * 1000)
+    bucket = now_ms // 30000
+    x = ((0x45D9F3B * bucket) % (1 << 32)) ^ 0xDEADBEEF
+    chars = "0123456789abcdefghijklmnopqrstuvwxyz"
+    if x == 0:
+        h36 = "0"
+    else:
+        h36 = ""
+        while x:
+            x, r = divmod(x, 36)
+            h36 = chars[r] + h36
+    return base64.b64encode(f"{bucket}.{h36}".encode()).decode()
+
+
+def parse_stockeasy_sector_flow(payload):
+    """Slim market-wide 52-week new-high sector context from the StockEasy
+    sector-flow payload. Display/context only."""
+    if not payload or not payload.get("success"):
+        return None
+    data = payload.get("data") or {}
+    timeline = data.get("major_timeline") or []
+    if not timeline:
+        return None
+    last = timeline[-1]
+    pct = (data.get("major_percentage") or [{}])[-1]
+    today_major = []
+    for name, count in last.items():
+        if name in ("date", "_total"):
+            continue
+        today_major.append(
+            {"name": name, "count": count, "pct": pct.get(name)}
+        )
+    today_major.sort(key=lambda x: -x["count"])
+    mid_last = (data.get("mid_timeline") or [{}])[-1]
+    today_mid = [
+        {"name": k, "count": v}
+        for k, v in mid_last.items()
+        if k not in ("date", "_total")
+    ]
+    today_mid.sort(key=lambda x: -x["count"])
+    totals = [
+        {
+            "name": t["name"],
+            "weighted": t.get("weighted_count"),
+            "distinct": t.get("distinct_count"),
+        }
+        for t in (data.get("major_totals") or [])[:5]
+    ]
+    flow = data.get("sector_flow") or {}
+    slim_flow = lambda items: [
+        {"sector": i["sector"], "change": i.get("change")}
+        for i in (items or [])[:3]
+    ]
+    return {
+        "as_of": last.get("date"),
+        "today_total": last.get("_total"),
+        "today_major": today_major,
+        "today_mid_top": today_mid[:5],
+        "period_start": (data.get("date_range") or {}).get("start"),
+        "period_end": (data.get("date_range") or {}).get("end"),
+        "trading_days": data.get("trading_days"),
+        "period_major_top": totals,
+        "inflow": slim_flow(flow.get("inflow_sectors")),
+        "outflow": slim_flow(flow.get("outflow_sectors")),
+    }
+
+
+def fetch_stockeasy_sector_flow(timeout=10):
+    """Best-effort sector-flow fetch; returns None on any failure."""
+    try:
+        req = urllib.request.Request(
+            STOCKEASY_SECTOR_FLOW_URL,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Mingo dashboard sync)",
+                "X-App-Token": stockeasy_app_token(),
+                "Accept": "application/json",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            payload = json.loads(resp.read().decode("utf-8", "ignore"))
+        return parse_stockeasy_sector_flow(payload)
+    except Exception:
+        return None
+
+
 def clamp(x, lo=0.0, hi=100.0):
     return max(lo, min(hi, x))
 
@@ -492,6 +597,26 @@ def technical_metrics(df, bench_df=None, relative_valid=True):
     technical_score = round(sum(v * w for v, w in parts) / weight_sum, 1)
     extension = None if ma20 is None else (p / ma20 - 1) * 100
 
+    # 52-week high context from completed-session history (display only —
+    # feeds the signals tab, never execution or research scores).
+    win = df.tail(252)
+    if len(win):
+        hi_s = win["High"].astype(float)
+        high52 = float(hi_s.max())
+        hi_pos = int(hi_s.values.argmax())
+        high52_date = (
+            str(win["_session_date"].iloc[hi_pos]) if "_session_date" in win else None
+        )
+        days_since_high52 = int(len(win) - 1 - hi_pos)
+        close52 = float(win["Close"].astype(float).max())
+    else:
+        high52 = close52 = None
+        high52_date = None
+        days_since_high52 = None
+    new_high_close = bool(close52 is not None and p >= close52)
+    new_high_touch = bool(high52 is not None and float(h.iloc[-1]) >= high52)
+    dist_high52 = None if not high52 else round((p / high52 - 1) * 100, 2)
+
     return {
         "price": round(p, 2),
         "change_pct": round((p / prev - 1) * 100, 2) if prev else 0.0,
@@ -504,6 +629,12 @@ def technical_metrics(df, bench_df=None, relative_valid=True):
         "excess_return_20d_pct": None if rel20 is None else round(rel20, 1),
         "excess_return_60d_pct": None if rel60 is None else round(rel60, 1),
         "volume_ratio": None if volume_ratio is None else round(volume_ratio, 2),
+        "high52_actual": None if high52 is None else round(high52, 2),
+        "high52_date": high52_date,
+        "new_high_close": new_high_close,
+        "new_high_touch": new_high_touch,
+        "dist_high52_pct": dist_high52,
+        "days_since_high52": days_since_high52,
         "extension_ma20_pct": None if extension is None else round(extension, 1),
         "technical_score": technical_score,
         "trend_score": round(trend, 1),
@@ -971,6 +1102,69 @@ def should_auto_snapshot(now_kst, explicit_snapshot=False, completed_only=False)
     return 900 <= hm <= 1540
 
 
+def build_signals(rows, as_of, market_context=None):
+    """Display-only signal lists built from completed-session row metrics.
+
+    new_high: 종가 기준 52주 신고가 경신 (last completed close is the highest
+    close of the trailing 252 sessions). near_high: 신고가까지 -5% 이내
+    (경신 종목 제외, 장중 터치 포함 표시). volume_surge: 거래량이 직전 20일
+    평균의 1.8배 이상. Tracked stocks only; signals never feed execution or
+    research scores.
+    """
+    valid = [
+        r
+        for r in rows
+        if r.get("data_status") == "valid" and r.get("price") is not None
+    ]
+
+    def slim(r):
+        return {
+            "code": r["code"],
+            "name": r["name"],
+            "page": r.get("page"),
+            "price": r.get("price"),
+            "change_pct": r.get("change_pct"),
+            "rs_score": r.get("rs_score"),
+            "volume_ratio": r.get("volume_ratio"),
+            "state": r.get("state"),
+            "execution_score": r.get("execution_score"),
+            "high52": r.get("high52_actual"),
+            "high52_date": r.get("high52_date"),
+            "dist_high52_pct": r.get("dist_high52_pct"),
+            "days_since_high52": r.get("days_since_high52"),
+            "new_high_close": bool(r.get("new_high_close")),
+            "new_high_touch": bool(r.get("new_high_touch")),
+            "se_pos52": r.get("se_pos52"),
+        }
+
+    new_high = sorted(
+        (slim(r) for r in valid if r.get("new_high_close")),
+        key=lambda x: (-(x["change_pct"] or 0), -(x["rs_score"] or 0)),
+    )
+    near_high = sorted(
+        (
+            slim(r)
+            for r in valid
+            if not r.get("new_high_close")
+            and r.get("dist_high52_pct") is not None
+            and r["dist_high52_pct"] >= -5.0
+        ),
+        key=lambda x: -x["dist_high52_pct"],
+    )
+    volume_surge = sorted(
+        (slim(r) for r in valid if (r.get("volume_ratio") or 0) >= 1.8),
+        key=lambda x: -x["volume_ratio"],
+    )
+    return {
+        "as_of": as_of,
+        "new_high": new_high,
+        "near_high": near_high,
+        "volume_surge": volume_surge,
+        "market_context": market_context,
+        "source": "Mingo tracked stocks · completed-session daily data (display only)",
+    }
+
+
 def main(now=None, intraday_snapshot=False, completed_only=False):
     with open(CFG, encoding="utf-8") as f:
         cfg = json.load(f)
@@ -1102,6 +1296,30 @@ def main(now=None, intraday_snapshot=False, completed_only=False):
     else:
         market_flow_out = {"status": "unavailable"}
 
+    # Market-wide 52-week new-high sector flow from StockEasy (public
+    # sector-flow endpoint; the per-stock dashboard endpoint needs a login
+    # session, so market-wide stock lists are linked, not collected).
+    sector_flow = fetch_stockeasy_sector_flow()
+    prev_ctx = {}
+    if os.path.exists(OUT):
+        try:
+            with open(OUT, encoding="utf-8") as f:
+                prev_ctx = (
+                    (json.load(f).get("signals") or {}).get("market_context") or {}
+                )
+        except Exception:
+            prev_ctx = {}
+    if sector_flow is not None:
+        sector_ctx = {
+            **sector_flow,
+            "source": STOCKEASY_SECTOR_FLOW_SOURCE,
+            "status": "live",
+        }
+    elif prev_ctx.get("today_total") is not None:
+        sector_ctx = {**prev_ctx, "status": "stale_fallback"}
+    else:
+        sector_ctx = {"status": "unavailable"}
+
     priority = {"green": 0, "blue": 1, "yellow": 2, "red": 3, "gray": 4}
     rows.sort(
         key=lambda x: (
@@ -1122,6 +1340,9 @@ def main(now=None, intraday_snapshot=False, completed_only=False):
         "market_regime": regime,
         "index_series": index_series,
         "market_flow": market_flow_out,
+        "signals": build_signals(
+            rows, context["expected_completed_session"], sector_ctx
+        ),
         "source": SOURCE,
         "price_mode": "manual_snapshot" if intraday_snapshot else "completed_session",
         "snapshot_auto": snapshot_auto,
@@ -1135,6 +1356,7 @@ def main(now=None, intraday_snapshot=False, completed_only=False):
             "index cards may carry a display-only live value (live_close/live_change_pct) next to the completed-session close during snapshot runs; the market regime and all gates never use it",
             "RS (rs_score) is the 종합 RS published by StockEasy (stockeasy.intellio.kr) per-stock summary pages, fetched each run; on fetch failure the previous value is kept with rs_status=stale_fallback. RS is display/context only and does not enter execution or research scores",
             "StockEasy summary extras (se_* fields: market cap, 52w high/low and position, last reported quarters, latest disclosures, sector tags) and market_flow (외국인/기관/개인 net buying) are display/context only, refreshed on the same cadence; they never enter execution or research scores",
+            "signals (52w new-high / near-high within -5% / volume surge >= 1.8x) are computed from completed-session daily data for tracked stocks only and are display/context only; they never enter execution or research scores",
         ],
         "errors": errors,
         "stocks": rows,
