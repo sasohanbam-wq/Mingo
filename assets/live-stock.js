@@ -97,7 +97,7 @@
     +'.mx-chart-wrap{position:relative;margin:4px 0 2px}'
     +'.mx-tt{position:absolute;display:none;pointer-events:none;background:rgba(10,22,38,.96);border:1px solid #2b4a6e;border-radius:10px;padding:7px 10px;font-size:11.5px;line-height:1.6;color:#dbe7f7;z-index:6;box-shadow:0 10px 24px rgba(0,0,0,.45);white-space:nowrap}'
     +'.mx-rrbar{display:flex;height:9px;border-radius:99px;overflow:hidden;background:#101d30;margin:7px 0 9px}'
-    +'@media(max-width:640px){.mx-price{font-size:29px}.mx-dbar{grid-template-columns:74px 1fr 104px}.mx-tr{gap:10px}}';
+    +'@media(max-width:640px){.mx-sticky{font-size:11px;white-space:nowrap;overflow:hidden}.mx-state{font-size:19px}.mx-price{font-size:29px}.mx-dbar{grid-template-columns:74px 1fr 104px}.mx-tr{gap:10px}}';
     document.head.appendChild(st);
   }
 
@@ -408,7 +408,7 @@
     +'<div class="mx-kv"><div class="mx-k">20일 구간 내 위치</div><div class="mx-v">'+(rangePos==null?'—':rangePos.toFixed(0)+'%')+'</div>'
     +(rangePos!=null?'<div class="mx-gtrack flat"><div class="mx-gmark" style="left:'+rangePos.toFixed(1)+'%"></div></div><div class="mx-glab"><span>저가 '+fmt(s.low20_actual)+'</span><span>고가 '+fmt(s.high20_actual)+'</span></div>':'')
     +'</div>'
-    +'<div class="mx-kv"><div class="mx-k">MA20 이격</div><div class="mx-v">'+fp(s.extension_ma20_pct)+'</div><div class="mx-note">지수 대비 상대 이격 '+fp(s.excess_extension_ma20_pct)+'</div></div>'
+    +'<div class="mx-kv"><div class="mx-k">MA20 이격 (완료세션 종가)</div><div class="mx-v">'+fp(s.extension_ma20_pct)+'</div><div class="mx-note">지수 대비 상대 이격 '+fp(s.excess_extension_ma20_pct)+'</div></div>'
     +'<div class="mx-kv"><div class="mx-k">종합 RS · 스탁이지</div><div class="mx-v">'+(s.rs_score??'—')+'</div>'
     +(s.rs_score!=null?'<div class="mx-minibar"><div style="width:'+Math.max(0,Math.min(100,s.rs_score))+'%;background:#5ee6c4"></div></div><div class="mx-note">기준 '+(s.rs_basis_date||'—')+' 종가 '+fmt(s.rs_basis_price)+'원'+(s.rs_status==='stale_fallback'?' · ⚠️ 갱신 실패로 직전 값':'')+' · 출처 stockeasy.intellio.kr</div>':'<div class="mx-note">스탁이지 RS를 아직 가져오지 못했습니다.</div>')
     +'</div>'
