@@ -505,13 +505,35 @@ def classify(data_valid, gate, evidence_status, research_score, technical_score)
 def apply_manual_snapshot(row, price, price_timestamp, setup, context):
     """Overlay the latest Yahoo price without pretending an unfinished candle is final.
 
-    Muse fix 2026-10-01: the manual overlay may never lift a completed-session
-    gate block. If the daily gate invalidated the stock or flagged it overheated,
-    an intraday price inside the buy zone (or above the trigger) must not flip it
-    back to blue/green. A bare trigger touch is also not a breakout: the daily
-    rule requires a close cross with volume and price within 8% of the trigger.
+    Muse fix 2026-10-01 (extended): the overlay is a display/downgrade tool
+    only — it may never upgrade a verdict beyond the completed-session
+    classification:
+    - a live tick inside the buy zone (or touching the trigger) does NOT
+      promote a stock whose daily gate failed: intraday there is no
+      reversal/trend/volume confirmation, so the touch is annotated on the
+      card, not promoted to blue/green;
+    - gate-passed stocks keep their state while the live price confirms, and
+      are downgraded when the live price breaks the completed-session MA20
+      or the invalidation price;
+    - stale daily data is never overridden by a live price;
+    - implausible ticks (beyond the KRX +/-30% daily limit vs the completed
+      close) and stale feed timestamps are rejected outright.
     """
     price = float(price)
+    ref = row.get("price")
+    if price <= 0 or (ref and (price > float(ref) * 1.30 or price < float(ref) * 0.70)):
+        row["snapshot_status"] = "rejected: implausible live price vs completed close"
+        return row
+    expected = (context or {}).get("expected_completed_session")
+    if expected and price_timestamp:
+        try:
+            ts_date = datetime.fromisoformat(str(price_timestamp)).date().isoformat()
+        except ValueError:
+            ts_date = None
+        if ts_date is not None and ts_date < expected:
+            row["snapshot_status"] = "rejected: stale live-price timestamp"
+            return row
+
     low, high = map(float, setup["buy"])
     stop = setup.get("stop")
     trigger = setup.get("trigger")
@@ -524,10 +546,20 @@ def apply_manual_snapshot(row, price, price_timestamp, setup, context):
         and price <= float(trigger) * 1.08
     )
     above_ma20 = ma20 is None or price >= float(ma20)
-    delta = (8 if in_zone else 0) + (5 if triggered else 0)
-    delta -= 10 if not above_ma20 else 0
-    delta -= 25 if invalidated else 0
+    gate_passed = bool(row.get("setup_pass"))
+    data_valid = bool(row.get("quote_valid"))
+
+    delta = 0
+    if gate_passed and in_zone:
+        delta += 8
+    if gate_passed and triggered:
+        delta += 5
+    if not above_ma20:
+        delta -= 10
+    if invalidated:
+        delta -= 25
     row["execution_score"] = round(clamp(float(row["execution_score"]) + delta), 1)
+
     if invalidated or row.get("invalidated"):
         row["state"], row["label"] = "red", "🔴 현재가 손절선 이탈"
         reason = (
@@ -538,14 +570,20 @@ def apply_manual_snapshot(row, price, price_timestamp, setup, context):
     elif row.get("overheated"):
         row["state"], row["label"] = "red", "🔴 보류"
         reason = "완료세션 과열/이격 과다 — 장중 가격으로 해제 불가"
+    elif not data_valid:
+        reason = "일봉 데이터 stale — 현재가로 판정을 바꾸지 않음"
     elif not above_ma20:
-        row["state"], row["label"] = "yellow", "🟡 현재가 MA20 하회"
-        reason = "수동 조회 현재가가 완료세션 MA20 아래"
-    elif in_zone or triggered:
-        verified = row.get("evidence_status") == "verified" and (row.get("research_score") or 0) >= 70
-        row["state"] = "green" if verified else "blue"
-        row["label"] = "🟢 셋업+기업 검증 완료" if verified else "🔵 현재가 셋업 통과"
-        reason = "수동 조회 현재가가 매수구간 안" if in_zone else "수동 조회 현재가가 트리거 이상"
+        if row.get("state") in ("green", "blue"):
+            row["state"], row["label"] = "yellow", "🟡 현재가 MA20 하회"
+        reason = "수동 조회 현재가가 완료세션 MA20 아래 — 종가 확인 필요"
+    elif gate_passed and (in_zone or triggered):
+        reason = "현재가로 일봉 셋업 통과 유지 확인 · 종가는 미확정"
+    elif gate_passed:
+        reason = "일봉 셋업 통과 유지 · 현재가는 구간/트리거 밖 — 종가 재확인 필요"
+    elif in_zone:
+        reason = "현재가 매수구간 진입 — 일봉 셋업 미통과라 종가 확인 전 승격 안 함"
+    elif triggered:
+        reason = "현재가 트리거 터치 — 종가 돌파가 아니라 승격 안 함"
     else:
         reason = "수동 조회 현재가 반영 · 일봉 지표는 완료세션 기준"
     row.update({
@@ -647,11 +685,14 @@ def process_stock(stock, bench_df, context, research_map, intraday_snapshot=Fals
         "label": label,
     }
     if intraday_snapshot:
-        try:
-            current_price, price_timestamp = load_current_price(symbol)
-            return apply_manual_snapshot(row, current_price, price_timestamp, stock["setup"], context)
-        except Exception as exc:
-            row["snapshot_status"] = f"unavailable: {type(exc).__name__}"
+        if not data_valid:
+            row["snapshot_status"] = "skipped: stale daily data is never overridden by a live price"
+        else:
+            try:
+                current_price, price_timestamp = load_current_price(symbol)
+                return apply_manual_snapshot(row, current_price, price_timestamp, stock["setup"], context)
+            except Exception as exc:
+                row["snapshot_status"] = f"unavailable: {type(exc).__name__}"
     return row
 
 
@@ -741,6 +782,7 @@ def main(now=None, intraday_snapshot=False):
             "legacy F/E/V are audit-only until structured evidence is re-verified",
             "price decline alone does not increase valuation score",
             "market regime (KOSPI/KOSDAQ vs MA20/MA60 + 20d return) modulates execution only: relative-overheat yardstick, bounded +/-10 execution adjustment, defense-mode setup blocks; invalidation and research verification are regime-independent",
+            "manual intraday snapshot never upgrades a verdict beyond the completed-session classification: it annotates zone/trigger touches, downgrades on MA20/invalidation breaks, and rejects implausible or stale ticks",
         ],
         "errors": errors,
         "stocks": rows,

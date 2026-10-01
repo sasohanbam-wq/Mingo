@@ -164,10 +164,14 @@ def test_setup_pass_with_verified_research_at_70_can_be_green():
 
 
 def test_manual_snapshot_reprices_without_replacing_completed_indicators():
+    # Production shape: the completed-session gate already passed, so classify
+    # made the row blue; the snapshot only confirms it with the live price.
     row = {
         "quote_as_of": "2026-09-30", "execution_score": 70,
-        "ma20": 95, "state": "yellow", "label": "대기",
+        "ma20": 95, "state": "blue", "label": "🔵 셋업 통과 · F/E/V 검증중",
         "evidence_status": "legacy_unverified", "research_score": None,
+        "setup_pass": True, "quote_valid": True,
+        "overheated": False, "invalidated": False,
     }
     context = {"calculated_at": "2026-10-01T12:00:00+09:00"}
     result = m.apply_manual_snapshot(
@@ -312,3 +316,79 @@ def test_defense_regime_pullback_only_in_lower_half():
     })
     assert defense["setup_pass"] is False
     assert defense["regime_blocked"] == "pullback_upper_half"
+
+
+def _snap_row(**over):
+    row = {
+        "quote_as_of": "2026-09-30", "execution_score": 70, "price": 100.0,
+        "ma20": 95, "state": "yellow", "label": "🟡 조건부/대기",
+        "evidence_status": "legacy_unverified", "research_score": None,
+        "setup_pass": False, "quote_valid": True,
+        "overheated": False, "invalidated": False,
+    }
+    row.update(over)
+    return row
+
+
+_SNAP_CTX = {
+    "calculated_at": "2026-10-01T12:00:00+09:00",
+    "expected_completed_session": "2026-09-30",
+}
+_SNAP_SETUP = {"buy": [100, 110], "trigger": 120, "stop": 90}
+
+
+def test_manual_snapshot_does_not_promote_gate_failed_stock_in_zone():
+    result = m.apply_manual_snapshot(
+        _snap_row(), 105, "2026-10-01T11:59:00+09:00", _SNAP_SETUP, _SNAP_CTX
+    )
+    assert result["price"] == 105
+    assert result["state"] == "yellow"
+    assert result["live_in_buy_zone"] is True
+    assert result["execution_score"] == 70  # no intraday zone-touch bonus
+    assert "승격 안 함" in result["setup_reason"]
+
+
+def test_manual_snapshot_trigger_touch_is_not_a_promotion():
+    result = m.apply_manual_snapshot(
+        _snap_row(), 121, "2026-10-01T11:59:00+09:00", _SNAP_SETUP, _SNAP_CTX
+    )
+    assert result["state"] == "yellow"
+    assert result["live_triggered"] is True
+    assert "승격 안 함" in result["setup_reason"]
+
+
+def test_manual_snapshot_downgrades_gate_passed_stock_below_ma20():
+    row = _snap_row(state="blue", label="🔵 셋업 통과 · F/E/V 검증중", setup_pass=True)
+    result = m.apply_manual_snapshot(
+        row, 94, "2026-10-01T11:59:00+09:00", _SNAP_SETUP, _SNAP_CTX
+    )
+    assert result["state"] == "yellow"
+    assert result["execution_score"] == 60
+
+
+def test_manual_snapshot_never_promotes_stale_data():
+    row = _snap_row(state="gray", label="⚪ 데이터 확인 필요", setup_pass=True, quote_valid=False)
+    result = m.apply_manual_snapshot(
+        row, 105, "2026-10-01T11:59:00+09:00", _SNAP_SETUP, _SNAP_CTX
+    )
+    assert result["state"] == "gray"
+
+
+def test_manual_snapshot_rejects_implausible_price():
+    row = _snap_row()
+    result = m.apply_manual_snapshot(
+        row, 200, "2026-10-01T11:59:00+09:00", _SNAP_SETUP, _SNAP_CTX
+    )
+    assert result["price"] == 100.0
+    assert result["state"] == "yellow"
+    assert result["snapshot_status"].startswith("rejected")
+
+
+def test_manual_snapshot_rejects_stale_timestamp():
+    row = _snap_row()
+    result = m.apply_manual_snapshot(
+        row, 105, "2026-09-29T15:30:00+09:00", _SNAP_SETUP, _SNAP_CTX
+    )
+    assert result["price"] == 100.0
+    assert result.get("price_mode") != "manual_snapshot"
+    assert result["snapshot_status"].startswith("rejected")
