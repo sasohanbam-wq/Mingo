@@ -126,6 +126,13 @@ a{color:inherit}
 .tabs{display:flex;gap:7px;position:sticky;top:0;z-index:5;background:rgba(5,11,18,.92);backdrop-filter:blur(10px);padding:10px 0;overflow:auto}
 .tab{white-space:nowrap;border:1px solid var(--line);background:#0d1924;color:var(--muted);border-radius:999px;padding:8px 12px;font-weight:800;font-size:12px;cursor:pointer;font-family:inherit}
 .tab.active{border-color:var(--blue);color:var(--blue);box-shadow:0 0 14px rgba(115,183,255,.25)}
+.siggroup{margin:16px 0 2px;font-weight:900;font-size:14.5px}
+.siggroup span{color:var(--muted);font-size:12px;font-weight:700}
+.sigrow{display:grid;grid-template-columns:auto 1fr auto auto;gap:13px;align-items:center;color:inherit;text-decoration:none;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(13,25,36,.72);margin-top:8px}
+.sigrow .avatar{width:38px;height:38px;border-radius:11px;font-size:15px}
+.sigstat{text-align:right;font-variant-numeric:tabular-nums;min-width:86px}
+.sigstat b{font-size:15px}
+@media(max-width:600px){.sigrow{grid-template-columns:auto 1fr auto}.sigstat{display:none}}
 .search{width:100%;margin:4px 0 9px;border:1px solid var(--line);background:#0b1620;color:var(--text);padding:12px 13px;border-radius:12px;outline:none;font-size:14px}
 .search:focus{border-color:var(--blue)}
 .list{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(10,19,29,.6)}
@@ -209,9 +216,14 @@ summary{cursor:pointer;padding:15px 16px;font-weight:850}
 <section id="watch5" class="focus"><div class="skrow"><div class="sk" style="width:42px;height:42px;border-radius:13px"></div><div style="flex:1"><div class="sk" style="height:15px;width:34%"></div><div class="sk" style="height:11px;width:62%;margin-top:7px"></div></div></div></section>
 
 <div class="sectionhead"><h2>실행 보드</h2><span id="count" class="hint"></span></div>
-<div class="tabs"><button class="tab active" data-filter="all">전체</button><button class="tab" data-filter="green">🟢 매수 검토</button><button class="tab" data-filter="blue">🔵 가격관찰</button><button class="tab" data-filter="yellow">🟡 기다림</button><button class="tab" data-filter="red">🔴 제외/보류</button><button class="tab" data-filter="gray">⚪ 데이터 오류</button></div>
+<div class="tabs"><button class="tab active" data-filter="all">전체</button><button class="tab" data-filter="green">🟢 매수 검토</button><button class="tab" data-filter="blue">🔵 가격관찰</button><button class="tab" data-filter="yellow">🟡 기다림</button><button class="tab" data-filter="red">🔴 제외/보류</button><button class="tab" data-filter="gray">⚪ 데이터 오류</button><button class="tab" data-filter="signals">🚀 시그널</button></div>
 <input id="search" class="search" placeholder="종목 검색">
-<div style="display:flex;gap:8px;margin-top:8px"><button id="holdBtn" type="button">💼 보유만</button><select id="styleSel"><option value="">스타일 전체</option><option>추세추종</option><option>가치투자</option><option>이벤트</option></select></div>
+<div id="boardControls" style="display:flex;gap:8px;margin-top:8px"><button id="holdBtn" type="button">💼 보유만</button><select id="styleSel"><option value="">스타일 전체</option><option>추세추종</option><option>가치투자</option><option>이벤트</option></select></div>
+<section id="signalsView" style="display:none">
+<div class="sub" style="margin-top:10px;line-height:1.6">추적 종목 기준 · 완료세션 종가로 판정하는 표시 전용 시그널입니다 (실행·연구점수 미반영). 시장 전체 신고가 종목 목록은 <a href="https://stockeasy.intellio.kr/stock-analysis/new-high" target="_blank" rel="noopener" style="color:var(--mint)">스탁이지 52주 신고가</a>에서 확인하세요.</div>
+<div id="sigCtx"></div>
+<div id="sigBody"></div>
+</section>
 <div id="stockList" class="list"><div class="skrow" style="padding:14px"><div class="sk" style="width:38px;height:38px;border-radius:11px"></div><div style="flex:1"><div class="sk" style="height:14px;width:30%"></div><div class="sk" style="height:11px;width:58%;margin-top:7px"></div></div></div><div class="skrow" style="padding:14px"><div class="sk" style="width:38px;height:38px;border-radius:11px"></div><div style="flex:1"><div class="sk" style="height:14px;width:26%"></div><div class="sk" style="height:11px;width:50%;margin-top:7px"></div></div></div><div class="skrow" style="padding:14px"><div class="sk" style="width:38px;height:38px;border-radius:11px"></div><div style="flex:1"><div class="sk" style="height:14px;width:33%"></div><div class="sk" style="height:11px;width:64%;margin-top:7px"></div></div></div></div>
 
 <details><summary>📐 V2 점수/게이트 방식</summary><div class="inside">
@@ -222,6 +234,7 @@ summary{cursor:pointer;padding:15px 16px;font-weight:850}
 <div class="minirow"><b>가치스윙</b><span>별도 상태로 분리; 추세매수와 동일 라벨 사용 금지</span></div>
 <div class="minirow"><b>기술점수</b><span>추세 45% · 지수 초과수익 30% · Wilder RSI 15% · 거래량 10%</span></div>
 <div class="minirow"><b>RS (상대강도)</b><span>스탁이지(stockeasy.intellio.kr) 종합 RS를 매 계산마다 가져와 표시. 점수 산식에는 미반영</span></div>
+<div class="minirow"><b>🚀 시그널 탭</b><span>추적 종목의 52주 신고가 경신(종가 기준)·신고가 근접(-5% 이내)·거래량 폭발(20일 평균 1.8배 이상)과 스탁이지 시장 전체 신고가 섹터 흐름. 모두 표시 전용으로 점수에 미반영</span></div>
 <div class="minirow"><b>F/E/V</b><span>F 37.5% · E 37.5% · V 25%. 세 요인이 모두 verified일 때만 연구점수 생성</span></div><div class="minirow"><b>확정 🟢</b><span>셋업 Gate 통과 + 연구점수 70 이상 + 가격 데이터 유효</span></div>
 <div class="minirow"><b>시장 레짐</b><span>코스피·코스닥의 MA20/MA60 위치와 20일 수익률로 공격/중립/방어 판정. 과열은 절대 이격이 아니라 지수 대비 상대 이격으로 측정, 실행점수에 레짐 보정(공격 +10 · 방어 −10), 방어 국면에선 돌파 셋업 비활성화·눌림은 구간 하단에서만 허용. 손절 무효화와 기업 검증 기준은 레짐과 무관하게 유지됨</span></div>
 </div></details>
@@ -428,7 +441,7 @@ function render(d){
  const counts=Object.fromEntries(['green','blue','yellow','red'].map(x=>[x,d.stocks.filter(s=>s.state===x).length]));
  countUp(document.getElementById('greenCount'),counts.green,'개');countUp(document.getElementById('blueCount'),counts.blue,'개');countUp(document.getElementById('yellowCount'),counts.yellow,'개');countUp(document.getElementById('redCount'),counts.red,'개');countUp(document.getElementById('holdCount'),d.stocks.filter(s=>TAGS[s.code]&&TAGS[s.code].holding).length,'개');
  document.getElementById('verdict').innerHTML=counts.green?'<b>오늘 매수 검토 가능한 종목은 '+counts.green+'개입니다.</b> 그래도 종목 상세의 리스크와 손절선을 확인하세요.':'<b>현재 매수 검토 가능한 종목은 0개입니다.</b> 🔵 '+counts.blue+'개는 가격만 조건을 충족했을 뿐 기업 검증이 끝나지 않았으므로 매수 후보가 아닙니다.';
- renderStrip(d); renderMarquee(d); renderFeat(d); renderThemes(d);
+ renderStrip(d); renderMarquee(d); renderFeat(d); renderThemes(d); renderSignals(d); switchView();
 function pos52bar(s){
  if(s.se_pos52==null)return '';
  return '<div class="pos52"><div class="pbar"><span class="pdot" style="left:'+Math.max(0,Math.min(100,s.se_pos52))+'%"></span></div><div class="plab"><span>52주 저 '+fmt(s.se_low52)+'</span><span>현재 위치 '+s.se_pos52+'%</span><span>고 '+fmt(s.se_high52)+'</span></div></div>';
@@ -444,8 +457,56 @@ function pos52bar(s){
  const err=document.getElementById('error');
  if(d.errors&&d.errors.length){err.style.display='block';err.textContent='데이터/계산 오류 '+d.errors.length+'건. 해당 종목은 자동으로 평가 보류된다.'}else err.style.display='none';
 }
+/* ---------- signals tab ---------- */
+function sigRow(x,kind){
+ const stat=kind==='vol'?'<b style="color:#73b7ff">'+Number(x.volume_ratio).toFixed(2)+'배</b><div class="meta">20일 평균 대비 거래량</div>'
+  :kind==='new'?'<b style="color:#ff5c5c">신고가 경신</b><div class="meta">'+(x.high52_date||'')+' 고가 '+fmt(x.high52)+'</div>'
+  :'<b>'+fpct(x.dist_high52_pct)+'</b><div class="meta">신고가 '+fmt(x.high52)+'까지</div>';
+ return '<a class="sigrow" href="stocks/'+x.page+'">'+avatar(x)
+ +'<div><b>'+x.name+'</b>'+holdBadge(x)+' <span class="ticker">'+x.code+'</span>'+rsBadge(x)
+ +'<div class="meta">'+fmt(x.price)+'원 · <span class="'+chgCls(x.change_pct)+'">'+chgArrow(x.change_pct)+' '+fpct(x.change_pct)+'</span> · 거래량 '+(x.volume_ratio==null?'—':Number(x.volume_ratio).toFixed(2)+'배')+(x.new_high_touch&&!x.new_high_close?' · 장중 신고가 터치':'')+(x.days_since_high52!=null?' · 신고가 '+x.days_since_high52+'거래일 전':'')+'</div></div>'
+ +'<span class="badge '+badgeClass(x.state)+'">'+actionText(x)+'</span>'
+ +'<div class="sigstat">'+stat+'</div></a>';
+}
+function deriveSignals(d){
+ const v=d.stocks.filter(s=>s.data_status==='valid'&&s.price!=null);
+ const sl=s=>({code:s.code,name:s.name,page:s.page,price:s.price,change_pct:s.change_pct,rs_score:s.rs_score,rs_basis_date:s.rs_basis_date,volume_ratio:s.volume_ratio,state:s.state,high52:s.high52_actual,high52_date:s.high52_date,dist_high52_pct:s.dist_high52_pct,days_since_high52:s.days_since_high52,new_high_close:s.new_high_close,new_high_touch:s.new_high_touch});
+ return {new_high:v.filter(s=>s.new_high_close).map(sl),
+  near_high:v.filter(s=>!s.new_high_close&&s.dist_high52_pct!=null&&s.dist_high52_pct>=-5).map(sl).sort((a,b)=>b.dist_high52_pct-a.dist_high52_pct),
+  volume_surge:v.filter(s=>(s.volume_ratio||0)>=1.8).map(sl).sort((a,b)=>b.volume_ratio-a.volume_ratio)};
+}
+function renderSignals(d){
+ const sig=d.signals&&d.signals.new_high?d.signals:deriveSignals(d);
+ const ctx=sig.market_context;
+ if(ctx&&ctx.today_total!=null){
+  const majors=(ctx.today_major||[]).map(m=>m.name+' '+m.count+'종목'+(m.pct!=null?' ('+m.pct+'%)':'')).join(' · ');
+  const mids=(ctx.today_mid_top||[]).map(m=>m.name+' '+m.count).join(' · ');
+  const inflow=(ctx.inflow||[]).map(i=>i.sector+' '+(i.change>0?'+':'')+i.change+'%p').join(', ');
+  const outflow=(ctx.outflow||[]).map(i=>i.sector+' '+i.change+'%p').join(', ');
+  document.getElementById('sigCtx').innerHTML='<div class="siggroup">📊 시장 전체 신고가 흐름 <span>스탁이지 · '+(ctx.as_of||'')+' 기준'+(ctx.status==='stale_fallback'?' · 직전 값':'')+'</span></div>'
+   +'<div class="sub" style="line-height:1.7">시장 전체 52주 신고가 <b style="color:var(--text)">'+ctx.today_total+'종목</b> — '+majors+(mids?'<br>중분류: '+mids:'')
+   +(ctx.period_major_top&&ctx.period_major_top.length?'<br>최근 '+(ctx.trading_days||'')+'거래일 누적: '+ctx.period_major_top.map(t=>t.name+' '+t.weighted).join(' · '):'')
+   +(inflow?'<br>비중 확대: '+inflow:'')+(outflow?' · 비중 축소: '+outflow:'')
+   +'<br><a href="https://stockeasy.intellio.kr/stock-analysis/new-high" target="_blank" rel="noopener" style="color:var(--mint)">시장 전체 신고가·근접 종목 전체 목록 (스탁이지) →</a></div>';
+ } else {
+  document.getElementById('sigCtx').innerHTML='';
+ }
+ const grp=(title,arr,kind,empty)=>'<div class="siggroup">'+title+' <span>'+arr.length+'종목</span></div>'+(arr.length?arr.map(x=>sigRow(x,kind)).join(''):'<div class="sub" style="padding:8px 2px">'+empty+'</div>');
+ document.getElementById('sigBody').innerHTML=
+   grp('🔥 52주 신고가 경신 (종가 기준)',sig.new_high||[],'new','완료세션 종가로 신고가를 경신한 추적 종목이 없습니다.')
+  +grp('🎯 신고가 근접 (신고가까지 -5% 이내)',sig.near_high||[],'near','신고가 5% 이내에 근접한 추적 종목이 없습니다.')
+  +grp('💥 거래량 폭발 (20일 평균 1.8배 이상)',sig.volume_surge||[],'vol','거래량이 크게 터진 추적 종목이 없습니다.');
+}
+function switchView(){
+ const sig=filter==='signals';
+ document.getElementById('signalsView').style.display=sig?'block':'none';
+ document.getElementById('stockList').style.display=sig?'none':'';
+ document.getElementById('search').style.display=sig?'none':'';
+ document.getElementById('boardControls').style.display=sig?'none':'flex';
+}
 function apply(){
  if(!DATA)return;
+ if(filter==='signals')return;
  const term=document.getElementById('search').value.trim().toLowerCase();
  const holdOnly=document.getElementById('holdBtn').classList.contains('on');
  const styleF=document.getElementById('styleSel').value;
@@ -475,11 +536,11 @@ async function refreshScores(){
 }
 function tickClock(){try{document.getElementById('clock').textContent=new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul',month:'numeric',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false})}catch(e){}}
 setInterval(tickClock,1000);tickClock();
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;apply()}));
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;switchView();apply()}));
 document.getElementById('search').addEventListener('input',apply);
 document.getElementById('holdBtn').addEventListener('click',e=>{e.currentTarget.classList.toggle('on');apply()});
 document.getElementById('styleSel').addEventListener('change',apply);
-document.getElementById('holdJump').addEventListener('click',()=>{const b=document.getElementById('holdBtn');if(!b.classList.contains('on'))b.click();document.getElementById('stockList').scrollIntoView({behavior:'smooth',block:'start'})});
+document.getElementById('holdJump').addEventListener('click',()=>{if(filter==='signals')document.querySelector('.tab[data-filter="all"]').click();const b=document.getElementById('holdBtn');if(!b.classList.contains('on'))b.click();document.getElementById('stockList').scrollIntoView({behavior:'smooth',block:'start'})});
 document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>{document.querySelector('.tab[data-filter="'+b.dataset.jump+'"]').click();document.getElementById('stockList').scrollIntoView({behavior:'smooth'})}));
 document.getElementById('refreshBtn').addEventListener('click',refreshScores);
 refreshScores();setInterval(refreshScores,300000);
