@@ -429,6 +429,52 @@ def test_parse_stockeasy_rs_missing_or_empty_returns_none():
     assert m.parse_stockeasy_rs(None) is None
 
 
+def test_parse_stockeasy_summary_extracts_display_fields():
+    html = (
+        '<dl><div><dt class="text-xs">시가총액</dt><dd>5.9조 원</dd></div>'
+        '<div><dt>52주 고가</dt><dd>164,200원</dd></div>'
+        '<div><dt>52주 저가</dt><dd>32,000원</dd></div>'
+        '<div><dt>52주 구간 내 위치</dt><dd>96%</dd></div></dl>'
+        '<section aria-labelledby="kr-summary-quarterly"><table><tbody>'
+        '<tr><th scope="row">26.2Q</th><td>5,146</td><td>629</td><td>-1,168</td></tr>'
+        '</tbody></table></section>'
+        '<section aria-labelledby="kr-summary-disclosures"><ul>'
+        '<li><p class="text-sm text-fg">신규시설투자등</p>'
+        '<time dateTime="2026-08-25">26.08.25</time></li></ul></section>'
+        '<section aria-labelledby="kr-summary-sector"><ul><li>반도체</li><li>반도체소재</li></ul></section>'
+    )
+    parsed = m.parse_stockeasy_summary(html)
+    assert parsed["market_cap"] == "5.9조 원"
+    assert parsed["high52"] == 164200 and parsed["low52"] == 32000
+    assert parsed["pos52"] == 96
+    assert parsed["quarterly"] == [
+        {"q": "26.2Q", "revenue": 5146, "op": 629, "net": -1168}
+    ]
+    assert parsed["disclosures"] == [{"title": "신규시설투자등", "date": "2026-08-25"}]
+    assert parsed["sectors"] == ["반도체", "반도체소재"]
+    assert m.parse_stockeasy_summary("") is None
+    assert m.parse_stockeasy_summary("<html>nothing</html>") is None
+    assert m.parse_stockeasy_summary(None) is None
+
+
+def test_parse_stockeasy_market_extracts_investor_flows():
+    html = (
+        '<span class="text-fg-muted whitespace-nowrap">외국인</span>'
+        '<div class="bar"></div>'
+        '<span class="font-semibold tabular-nums text-right whitespace-nowrap text-stock-down">-23<!-- -->억</span>'
+        '<span class="text-fg-muted whitespace-nowrap">기관</span>'
+        '<div class="bar"></div>'
+        '<span class="font-semibold tabular-nums text-right whitespace-nowrap text-stock-up">+10,001<!-- -->억</span>'
+        '<span class="text-fg-muted whitespace-nowrap">개인</span>'
+        '<div class="bar"></div>'
+        '<span class="font-semibold tabular-nums text-right whitespace-nowrap text-stock-down">-26,124<!-- -->억</span>'
+    )
+    parsed = m.parse_stockeasy_market(html)
+    assert parsed == {"foreign": -23, "institution": 10001, "individual": -26124}
+    assert m.parse_stockeasy_market("") is None
+    assert m.parse_stockeasy_market(None) is None
+
+
 def test_build_index_series_shape_and_change():
     import pandas as pd
     df = pd.DataFrame({

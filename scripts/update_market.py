@@ -36,16 +36,143 @@ def parse_stockeasy_rs(html):
     }
 
 
-def fetch_stockeasy_rs(code, timeout=10):
-    """Best-effort RS fetch; returns None on any failure (never raises)."""
+def fetch_stockeasy_page(code, timeout=10):
+    """Fetch a StockEasy summary page once; returns HTML text or None (never raises)."""
     try:
         req = urllib.request.Request(
             STOCKEASY_RS_URL.format(code=code),
             headers={"User-Agent": "Mozilla/5.0 (Mingo dashboard RS sync)"},
         )
         with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return resp.read().decode("utf-8", "ignore")
+    except Exception:
+        return None
+
+
+def fetch_stockeasy_rs(code, timeout=10):
+    """Best-effort RS fetch; returns None on any failure (never raises)."""
+    html = fetch_stockeasy_page(code, timeout=timeout)
+    return parse_stockeasy_rs(html) if html else None
+
+
+def _se_int(text):
+    if text is None:
+        return None
+    text = text.replace(",", "").replace("+", "").strip()
+    if text in ("", "-", "—"):
+        return None
+    try:
+        return int(text)
+    except ValueError:
+        try:
+            return int(float(text))
+        except ValueError:
+            return None
+
+
+def parse_stockeasy_summary(html):
+    """Extract display-only extras from a StockEasy summary page.
+
+    Pulls the 주요 지표 block (market cap, 52w high/low, position within the
+    52w range), the last four reported quarters, the latest disclosures and
+    the sector tags. Everything here is context/display only, mirroring the
+    RS treatment: it never feeds execution or research scores.
+    """
+    if not html:
+        return None
+    out = {}
+    metrics = dict(
+        re.findall(
+            r"<dt[^>]*>([^<]+)</dt><dd[^>]*>([^<]+)</dd>", html
+        )
+    )
+    if metrics.get("시가총액"):
+        out["market_cap"] = metrics["시가총액"].strip()
+    hi = _se_int((metrics.get("52주 고가") or "").replace("원", ""))
+    lo = _se_int((metrics.get("52주 저가") or "").replace("원", ""))
+    if hi is not None:
+        out["high52"] = hi
+    if lo is not None:
+        out["low52"] = lo
+    pos = _se_int((metrics.get("52주 구간 내 위치") or "").replace("%", ""))
+    if pos is not None:
+        out["pos52"] = pos
+    qm = re.search(
+        r'aria-labelledby="kr-summary-quarterly".*?<tbody>(.*?)</tbody>',
+        html,
+        re.S,
+    )
+    if qm:
+        quarters = []
+        for row_html in re.findall(r"<tr[^>]*>(.*?)</tr>", qm.group(1), re.S):
+            cells = re.findall(r"<t[hd][^>]*>([^<]*)</t[hd]>", row_html)
+            if len(cells) >= 4:
+                quarters.append(
+                    {
+                        "q": cells[0].strip(),
+                        "revenue": _se_int(cells[1]),
+                        "op": _se_int(cells[2]),
+                        "net": _se_int(cells[3]),
+                    }
+                )
+        if quarters:
+            out["quarterly"] = quarters[:4]
+    dm = re.search(
+        r'aria-labelledby="kr-summary-disclosures".*?</section>', html, re.S
+    )
+    if dm:
+        discs = []
+        for title, date in re.findall(
+            r'<p class="text-sm text-fg">([^<]+)</p><time[^>]*dateTime="([\d-]+)"',
+            dm.group(0),
+        ):
+            discs.append({"title": title.strip(), "date": date})
+        if discs:
+            out["disclosures"] = discs[:3]
+    sm = re.search(
+        r'aria-labelledby="kr-summary-sector".*?</section>', html, re.S
+    )
+    if sm:
+        tags = [
+            t.strip()
+            for t in re.findall(r"<li[^>]*>([^<]+)</li>", sm.group(0))
+            if t.strip()
+        ]
+        if tags:
+            out["sectors"] = tags
+    return out or None
+
+
+STOCKEASY_MAIN_URL = "https://stockeasy.intellio.kr/"
+STOCKEASY_FLOW_SOURCE = "StockEasy (stockeasy.intellio.kr) 메인 투자자별 순매수"
+
+
+def parse_stockeasy_market(html):
+    """Investor net buying (억원) from the StockEasy main page header block."""
+    if not html:
+        return None
+    flows = {}
+    for name, key in (("외국인", "foreign"), ("기관", "institution"), ("개인", "individual")):
+        m = re.search(
+            r">" + name + r"</span>(?:(?!</span>).){0,2000}?>([+-]?[\d,]+)<!-- -->억</span>",
+            html,
+            re.S,
+        )
+        if m:
+            flows[key] = _se_int(m.group(1))
+    return flows or None
+
+
+def fetch_stockeasy_market(timeout=10):
+    """Best-effort market flow fetch; returns None on any failure (never raises)."""
+    try:
+        req = urllib.request.Request(
+            STOCKEASY_MAIN_URL,
+            headers={"User-Agent": "Mozilla/5.0 (Mingo dashboard RS sync)"},
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
             html = resp.read().decode("utf-8", "ignore")
-        return parse_stockeasy_rs(html)
+        return parse_stockeasy_market(html)
     except Exception:
         return None
 
@@ -913,10 +1040,16 @@ def main(now=None, intraday_snapshot=False, completed_only=False):
             }
         rows.append(row)
 
-    # RS (종합) comes from StockEasy summary pages, refreshed every run.
-    # On fetch failure, fall back to the previous run's value marked stale.
+    # RS (종합) and the summary extras come from StockEasy summary pages,
+    # refreshed every run from a single fetch per stock. On fetch failure,
+    # fall back to the previous run's values marked stale.
+    se_fields = (
+        "se_market_cap", "se_high52", "se_low52", "se_pos52",
+        "se_quarterly", "se_disclosures", "se_sectors",
+    )
     for row in rows:
-        rs = fetch_stockeasy_rs(row["code"])
+        page = fetch_stockeasy_page(row["code"])
+        rs = parse_stockeasy_rs(page) if page else None
         if rs is not None:
             row["rs_score"] = rs["score"]
             row["rs_source"] = STOCKEASY_RS_SOURCE
@@ -930,6 +1063,44 @@ def main(now=None, intraday_snapshot=False, completed_only=False):
             row["rs_basis_date"] = prev.get("rs_basis_date")
             row["rs_basis_price"] = prev.get("rs_basis_price")
             row["rs_status"] = "stale_fallback" if prev.get("rs_score") is not None else "unavailable"
+        summ = parse_stockeasy_summary(page) if page else None
+        prev = old.get(row["code"], {})
+        if summ is not None:
+            row["se_market_cap"] = summ.get("market_cap")
+            row["se_high52"] = summ.get("high52")
+            row["se_low52"] = summ.get("low52")
+            row["se_pos52"] = summ.get("pos52")
+            row["se_quarterly"] = summ.get("quarterly")
+            row["se_disclosures"] = summ.get("disclosures")
+            row["se_sectors"] = summ.get("sectors")
+            row["se_status"] = "live"
+        else:
+            for field in se_fields:
+                row[field] = prev.get(field)
+            row["se_status"] = (
+                "stale_fallback" if prev.get("se_status") else "unavailable"
+            )
+
+    # Market-wide investor flow (외국인/기관/개인 순매수) from the StockEasy
+    # main page; display-only context for the board header.
+    market_flow = fetch_stockeasy_market()
+    prev_flow = {}
+    if os.path.exists(OUT):
+        try:
+            with open(OUT, encoding="utf-8") as f:
+                prev_flow = (json.load(f).get("market_flow") or {})
+        except Exception:
+            prev_flow = {}
+    if market_flow is not None:
+        market_flow_out = {
+            **market_flow,
+            "source": STOCKEASY_FLOW_SOURCE,
+            "status": "live",
+        }
+    elif prev_flow.get("foreign") is not None:
+        market_flow_out = {**prev_flow, "status": "stale_fallback"}
+    else:
+        market_flow_out = {"status": "unavailable"}
 
     priority = {"green": 0, "blue": 1, "yellow": 2, "red": 3, "gray": 4}
     rows.sort(
@@ -950,6 +1121,7 @@ def main(now=None, intraday_snapshot=False, completed_only=False):
         "expected_completed_session": context["expected_completed_session"],
         "market_regime": regime,
         "index_series": index_series,
+        "market_flow": market_flow_out,
         "source": SOURCE,
         "price_mode": "manual_snapshot" if intraday_snapshot else "completed_session",
         "snapshot_auto": snapshot_auto,
@@ -962,6 +1134,7 @@ def main(now=None, intraday_snapshot=False, completed_only=False):
             "manual intraday snapshot never upgrades a verdict beyond the completed-session classification: it annotates zone/trigger touches, downgrades on MA20/invalidation breaks, and rejects implausible or stale ticks",
             "index cards may carry a display-only live value (live_close/live_change_pct) next to the completed-session close during snapshot runs; the market regime and all gates never use it",
             "RS (rs_score) is the 종합 RS published by StockEasy (stockeasy.intellio.kr) per-stock summary pages, fetched each run; on fetch failure the previous value is kept with rs_status=stale_fallback. RS is display/context only and does not enter execution or research scores",
+            "StockEasy summary extras (se_* fields: market cap, 52w high/low and position, last reported quarters, latest disclosures, sector tags) and market_flow (외국인/기관/개인 net buying) are display/context only, refreshed on the same cadence; they never enter execution or research scores",
         ],
         "errors": errors,
         "stocks": rows,
