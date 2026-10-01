@@ -133,6 +133,15 @@
     if(r2.ok){ const ed=await r2.json(); ev=(ed.stocks||{})[code]||null; }
   }catch(e){ /* evidence detail optional */ }
 
+  // --- patch the static score line's RS number with the live StockEasy RS ---
+  if(s.rs_score!=null){
+    document.querySelectorAll('.score').forEach(el=>{
+      if(/RS\s*\d+/.test(el.textContent||'')){
+        el.textContent=el.textContent.replace(/RS\s*\d+/,'RS '+s.rs_score);
+      }
+    });
+  }
+
   const stateColor=s.state==='green'?'#63e6be':s.state==='blue'?'#73b7ff':s.state==='red'?'#ff7b7b':'#ffd166';
   const setupNames={trend:'추세추종',pullback:'눌림',breakout:'돌파',recovery:'회복 확인형',value_swing:'가치 스윙'};
   const scoreColor=v=>v==null?'#5f748c':v>=70?'#63e6be':v>=50?'#ffd166':'#ff9d7b';
@@ -385,6 +394,9 @@
     +(rangePos!=null?'<div class="mx-gtrack flat"><div class="mx-gmark" style="left:'+rangePos.toFixed(1)+'%"></div></div><div class="mx-glab"><span>저가 '+fmt(s.low20_actual)+'</span><span>고가 '+fmt(s.high20_actual)+'</span></div>':'')
     +'</div>'
     +'<div class="mx-kv"><div class="mx-k">MA20 이격</div><div class="mx-v">'+fp(s.extension_ma20_pct)+'</div><div class="mx-note">지수 대비 상대 이격 '+fp(s.excess_extension_ma20_pct)+'</div></div>'
+    +'<div class="mx-kv"><div class="mx-k">종합 RS · 스탁이지</div><div class="mx-v">'+(s.rs_score??'—')+'</div>'
+    +(s.rs_score!=null?'<div class="mx-minibar"><div style="width:'+Math.max(0,Math.min(100,s.rs_score))+'%;background:#5ee6c4"></div></div><div class="mx-note">기준 '+(s.rs_basis_date||'—')+' 종가 '+fmt(s.rs_basis_price)+'원'+(s.rs_status==='stale_fallback'?' · ⚠️ 갱신 실패로 직전 값':'')+' · 출처 stockeasy.intellio.kr</div>':'<div class="mx-note">스탁이지 RS를 아직 가져오지 못했습니다.</div>')
+    +'</div>'
     +'</div>'
     +'<div class="mx-h">이동평균 대비 위치</div>'
     +devBar('MA20',rel(s.price,s.ma20),fmt(s.ma20)+'원 · '+fp(rel(s.price,s.ma20)),30)
@@ -417,7 +429,7 @@
     +((s.evidence_sources&&s.evidence_sources.length)
       ?'<div style="margin-top:8px">'+s.evidence_sources.map((u,i)=>'<a class="mx-src" href="'+esc(u)+'" target="_blank" rel="noopener">📎 근거 문서 '+(i+1)+'</a>').join('')+'</div>'
       :'')
-    +'<div class="mx-note" style="margin-top:8px">기존 F/E/V(F '+(s.legacy_F??'—')+' · E '+(s.legacy_E??'—')+' · V '+(s.legacy_V??'—')+' · PR '+(s.legacy_PR??'—')+')는 감사용 구값입니다.</div>';
+    +'<div class="mx-note" style="margin-top:8px">기존 F/E/V(F '+(s.legacy_F??'—')+' · E '+(s.legacy_E??'—')+' · V '+(s.legacy_V??'—')+' · PR '+(s.legacy_PR??'—')+')는 감사용 구값입니다. RS는 스탁이지 종합 RS를 가져와 표시합니다.</div>';
 
   // ---------- 6) NEXT CHECKS ----------
   html+='<div class="mx-h">🔭 다음에 확인할 것</div>'
