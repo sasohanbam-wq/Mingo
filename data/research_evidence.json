@@ -8,21 +8,22 @@
       "C": "independent news / disclosure summary",
       "D": "blog / unsourced number / internal scenario"
     },
-    "rule": "N/A is not zero. Incomplete names are excluded from confirmed research ranking."
+    "rule": "N/A is not zero. Incomplete names are excluded from confirmed research ranking.",
+    "reviewed_at": "2026-10-01",
+    "factor_scoring": "잠정분석자0~100팩터평가.전체기업완료점수/예측확률아님.상세research/scoring-2026-10-01.md. E는EPS1/3개월수정계산, F와V는명시한구간표에따른판단.부분근거는partial유지,종합은모든F/E/Vverified때만."
   },
   "stocks": {
     "101160": {
       "name": "월덱스",
       "overall_status": "incomplete",
       "F": {
-        "score": 88,
-        "status": "verified",
-        "grade": "A",
-        "as_of": "2026-08-14",
+        "score": 85,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
         "basis": [
-          "2Q26 revenue 75.4bn, OP 16.5bn, OPM 21.9%",
-          "net cash 206.7bn, debt ratio 22.1%",
-          "profitability improvement is visible beyond a single revenue spike"
+          "2Q 매출754억/OP165억,전년OP84억 대비회복.순현금·마진확인.사업전체현금흐름심화검증은남음",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
           "https://www.disclo.co.kr/c/101160/"
@@ -32,47 +33,65 @@
         "score": null,
         "status": "N/A",
         "grade": null,
-        "as_of": "2026-10-01",
+        "as_of": "2026-09-30",
         "basis": [
-          "No reproducible 30/90d revenue/OP/EPS estimate-revision series verified",
-          "2030 investment/value-up plan is not treated as estimate revision"
+          "현재/1개월/3개월동일연간EPS비교기저부족.빈칸/0추정은미커버리지이며0성장이나약한기업으로평가하지않음.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
         "sources": [
-          "https://kind.krx.co.kr/external/2026/06/17/000209/20260617000632/72101.htm"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=101160&cn="
         ]
       },
       "V": {
-        "score": 82,
-        "status": "partial",
-        "grade": "C",
-        "as_of": "2026-09-28",
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-09-30",
         "basis": [
-          "PER about 6.6x, PBR about 1.37x and net-cash balance sheet support valuation",
-          "peer/historical multiple range not yet cross-verified, so not fully verified"
+          "최신동일범위forwardEPS·정상화밸류·피어기준미확인.과거/다른기준PER로현재저평가점수채우지않음."
         ],
         "sources": [
-          "https://www.disclo.co.kr/c/101160/"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=101160&cn="
         ]
       },
       "next_check": [
         "30/90d consensus revision history",
         "peer/historical valuation range"
-      ]
+      ],
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": 88,
+          "status": "verified"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": 82,
+          "status": "partial"
+        }
+      },
+      "provisional_research_score": null,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "005290": {
       "name": "동진쎄미켐",
       "overall_status": "incomplete",
       "F": {
-        "score": 78,
-        "status": "partial",
-        "grade": "A",
-        "as_of": "2026-08-14",
+        "score": null,
+        "status": "N/A",
+        "grade": "B",
+        "as_of": "2026-10-01",
         "basis": [
-          "2Q26 revenue 346.874bn, OP 59.291bn, OPM 17.09%",
-          "QoQ OPM fell from 20.30% to 17.09%",
-          "prior-year comparison has filing-version/reclassification conflict, so growth rate is not used as settled fact"
+          "2Q OP593억절대값은같으나전년비+38.9%/-8.1%및전년OP538억이충돌.정정/동일범위기저확인전성장팩터점수보류",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260814002890",
           "https://sujuradar.com/company/00118804",
           "https://comp.wisereport.co.kr/bridgefn/company/c1010001.aspx?cmp_cd=005290"
         ]
@@ -81,123 +100,160 @@
         "score": null,
         "status": "N/A",
         "grade": null,
-        "as_of": "2026-10-01",
+        "as_of": "2026-09-30",
         "basis": [
-          "No recent 3-month analyst consensus coverage in WiseReport",
-          "company IR is not substituted for estimate-revision evidence"
+          "현재/1개월/3개월동일연간EPS비교기저부족.빈칸/0추정은미커버리지이며0성장이나약한기업으로평가하지않음.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
         "sources": [
-          "https://comp.wisereport.co.kr/bridgefn/company/c1010001.aspx?cmp_cd=005290",
-          "https://www.dongjin.com/investment/announcement_view.php?page=1&seq=154"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=005290&cn="
         ]
       },
       "V": {
-        "score": 55,
-        "status": "partial",
-        "grade": "C",
+        "score": null,
+        "status": "N/A",
+        "grade": null,
         "as_of": "2026-09-30",
         "basis": [
-          "market data around PER 25.8x, PBR 2.2x, ROE 8.5% does not support a deep-value label",
-          "peer/historical bands not yet verified"
+          "최신동일범위forwardEPS·정상화밸류·피어기준미확인.과거/다른기준PER로현재저평가점수채우지않음."
         ],
         "sources": [
-          "https://maedong.kr/compare?codes=214150%2C263750%2C347850%2C005290%2C083650%2C030530"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=005290&cn="
         ]
       },
       "next_check": [
         "restated 2Q25 comparable base",
         "peer/historical valuation bands",
         "analyst estimate revision series"
-      ]
+      ],
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": 78,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": 55,
+          "status": "partial"
+        }
+      },
+      "provisional_research_score": null,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "083450": {
       "name": "GST",
       "overall_status": "incomplete",
       "F": {
-        "score": 75,
+        "score": 55,
         "status": "partial",
-        "grade": "A",
-        "as_of": "2026-08-14",
+        "grade": "B",
+        "as_of": "2026-10-01",
         "basis": [
-          "2Q26 revenue about 99.2bn, OP 15.5bn",
-          "1Q26 revenue 115.9bn, OP 20.2bn",
-          "YoY comparison differs across secondary sources; absolute figures are used, growth percentages withheld"
+          "2Q매출992억/OP약155억vs1Q1159억/202억,분기마진둔화.전년비기저는집계마다달라성장가속확정아님",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260814001221",
           "https://www.bosoop.com/stocks/083450/",
           "https://www.awakeplus.co.kr/data/view/20260511000226"
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 51,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "No reproducible 30/90d consensus revision series verified",
-          "immersion/liquid cooling validation is separated from commercial order and earnings"
+          "FnGuide2026/09/30연간EPS:현재3404/1개월전3462/3개월전3288.수정률1m-1.68%/3m+3.53%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
         "sources": [
-          "https://www.kharn.kr/news/article.html?no=31596"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=083450&cn="
         ]
       },
       "V": {
-        "score": 52,
+        "score": 55,
         "status": "partial",
-        "grade": "C",
+        "grade": "B",
         "as_of": "2026-09-30",
         "basis": [
-          "PER about 20.8x, PBR about 3.03x, ROE about 15% at 51,000 KRW",
-          "commercial cooling optionality is not capitalized as proven earnings"
+          "FnGuide9/30 2026E PER14.98/PBR2.58/ROE19.18%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
         "sources": [
-          "https://www.bosoop.com/stocks/083450/"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=083450&cn="
         ]
       },
       "next_check": [
         "2Q YoY base reconciliation",
         "liquid-cooling commercial order disclosure",
         "consensus revision history"
-      ]
+      ],
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": 75,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": 52,
+          "status": "partial"
+        }
+      },
+      "provisional_research_score": 53.5,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "033160": {
       "name": "엠케이전자",
       "overall_status": "incomplete",
       "F": {
-        "score": 80,
-        "status": "verified",
-        "grade": "A",
-        "as_of": "2026-08-13",
+        "score": null,
+        "status": "N/A",
+        "grade": "B",
+        "as_of": "2026-10-01",
         "basis": [
-          "1H26 revenue 915.4bn, OP 41.5bn, net income 44.7bn",
-          "earnings improved sharply, but leverage and business mix prevent a 90s score",
-          "legal/cartel risk is tracked separately and not assumed fully priced"
+          "H1 OP414.5억vs집계403.87억범위충돌.법인/임직원기소는유죄확정아님.범위·지배EPS·법률진행재검증전F보류",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
           "https://dartbrief.com/disclosures/20260813000602"
         ]
       },
       "E": {
+        "score": 28,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide2026/09/30연간EPS:현재1168/1개월전1459/3개월전1459.수정률1m-19.95%/3m-19.95%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=033160&cn="
+        ]
+      },
+      "V": {
         "score": null,
         "status": "N/A",
         "grade": null,
-        "as_of": "2026-10-01",
-        "basis": [
-          "No reproducible 30/90d OP/EPS estimate-revision series verified"
-        ],
-        "sources": []
-      },
-      "V": {
-        "score": 70,
-        "status": "partial",
-        "grade": "C",
         "as_of": "2026-09-30",
         "basis": [
-          "reported market multiples around PER 13.5x and PBR 0.48x are inexpensive",
-          "legal risk and earnings mix require discount; normalized peer range not yet verified"
+          "최신동일범위forwardEPS·정상화밸류·피어기준미확인.과거/다른기준PER로현재저평가점수채우지않음."
         ],
         "sources": [
-          "https://alphasquare.co.kr/home/stock-summary?code=033160"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=033160&cn="
         ]
       },
       "risks": [
@@ -207,20 +263,38 @@
         "legal proceeding update",
         "normalized attributable EPS",
         "peer/historical valuation"
-      ]
+      ],
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": 80,
+          "status": "verified"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": 70,
+          "status": "partial"
+        }
+      },
+      "provisional_research_score": null,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "005090": {
       "name": "SGC에너지",
-      "overall_status": "verified",
+      "overall_status": "incomplete",
       "F": {
-        "score": 80,
-        "status": "verified",
-        "grade": "A",
-        "as_of": "2026-07-23",
+        "score": 75,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
         "basis": [
-          "2Q26 revenue 577.0bn (-6.7% YoY), OP 44.8bn (+31.9% YoY)",
-          "1H OP 80.6bn (+56.3% YoY), net income returned to profit",
-          "attributable earnings remain much smaller than OP, so OP growth is not mapped one-for-one to equity value"
+          "2Q매출5770억(-6.7%)/OP448억(+31.9%).발전원가개선·순익흑전,주주귀속이익은작음.60MW1단계와240MW후속구분",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
           "https://etfshopping.com/stock/005090/earnings",
@@ -228,53 +302,67 @@
         ]
       },
       "E": {
-        "score": 40,
+        "score": 26,
         "status": "verified",
         "grade": "B",
-        "as_of": "2026-09-23",
+        "as_of": "2026-09-30",
         "basis": [
-          "2026 OP consensus 162.1bn 3m ago → 164.4bn current: small improvement",
-          "2026 EPS consensus 1,945 → 1,140 and net income 28.0bn → 16.4bn: material downward revision",
-          "therefore prior E92 is not reproducible"
+          "FnGuide2026/09/30연간EPS:현재1145/1개월전1140/3개월전1945.수정률1m+0.44%/3m-41.13%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
         "sources": [
           "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=005090&cn="
         ]
       },
       "V": {
-        "score": 55,
-        "status": "verified",
+        "score": 35,
+        "status": "partial",
         "grade": "B",
-        "as_of": "2026-09-23",
+        "as_of": "2026-09-30",
         "basis": [
-          "2026 consensus PBR about 1.0x but PER about 42.9x due weak attributable EPS",
-          "AIDC is treated as option value, not as recurring generation profit",
-          "60MW first phase and later 240MW expansion are separated"
+          "FnGuide9/30 2026E PER41.92/PBR0.99/ROE2.35%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
         "sources": [
-          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=005090&cn=",
-          "https://www.newspim.com/news/view/20260929000577",
-          "https://www.hankyung.com/article/202606156101i"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=005090&cn="
         ]
       },
       "next_check": [
         "3Q attributable EPS",
         "AIDC 1st phase asset-sale economics",
         "2nd phase contractual status"
-      ]
+      ],
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": 80,
+          "status": "verified"
+        },
+        "E": {
+          "score": 40,
+          "status": "verified"
+        },
+        "V": {
+          "score": 55,
+          "status": "verified"
+        }
+      },
+      "provisional_research_score": 46.6,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "006360": {
       "name": "GS건설",
-      "overall_status": "verified",
+      "overall_status": "incomplete",
       "F": {
-        "score": 55,
-        "status": "verified",
-        "grade": "A",
-        "as_of": "2026-07-29",
+        "score": 40,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
         "basis": [
-          "2Q26 revenue 2.779tn (-13% YoY), OP 91.4bn (-43.6% YoY), OPM 3.3%",
-          "housing gross margin improved, but large provisions/plant losses and low attributable profit reduce earnings quality",
-          "one-off label does not imply zero recurrence risk"
+          "2Q매출2.779조/OP914억(-43.6%).충당금·플랜트손실/낮은귀속이익.일회성이라는명칭으로재발위험제거하지않음",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
           "https://www.disclo.co.kr/c/006360/",
@@ -282,104 +370,139 @@
         ]
       },
       "E": {
-        "score": 35,
+        "score": 27,
         "status": "verified",
         "grade": "B",
-        "as_of": "2026-09-23",
+        "as_of": "2026-09-30",
         "basis": [
-          "2026 OP consensus 473.4bn 3m ago → 412.8bn current",
-          "EPS 2,710 → 1,751 over 3m; clear downward revision",
-          "latest 3Q preview still forecasts YoY declines"
+          "FnGuide2026/09/30연간EPS:현재1730/1개월전1766/3개월전2710.수정률1m-2.04%/3m-36.16%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
         "sources": [
-          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=006360",
-          "https://www.newspim.com/news/view/20260930000593"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=006360&cn="
         ]
       },
       "V": {
-        "score": 60,
-        "status": "verified",
+        "score": 40,
+        "status": "partial",
         "grade": "B",
-        "as_of": "2026-09-29",
+        "as_of": "2026-09-30",
         "basis": [
-          "2026 consensus PBR about 0.6x looks optically low",
-          "PER about 20x and ROE about 3% limit the meaning of low PBR",
-          "valuation is not scored as deep value until ROE and cash-flow quality improve"
+          "FnGuide9/30 2026E PER19.63/PBR0.58/ROE3.04%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
         "sources": [
-          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=006360",
-          "https://markets.hankyung.com/stock/006360/consensus"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=006360&cn="
         ]
       },
       "next_check": [
         "3Q provision recurrence",
         "net debt/cash flow",
         "housing margin durability"
-      ]
+      ],
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": 55,
+          "status": "verified"
+        },
+        "E": {
+          "score": 35,
+          "status": "verified"
+        },
+        "V": {
+          "score": 60,
+          "status": "verified"
+        }
+      },
+      "provisional_research_score": 35.1,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "222800": {
       "name": "심텍",
-      "overall_status": "verified",
+      "overall_status": "incomplete",
       "F": {
         "score": 90,
-        "status": "verified",
-        "grade": "A",
-        "as_of": "2026-09-30",
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
         "basis": [
-          "2025 revenue 1.676tn KRW, OP 147.1bn (OPM 8.8%) per DART filings",
-          "2Q26 revenue 572.1bn, OP 80.8bn (OPM 14.1%) — earnings surprise",
-          "cross-verified by Muse on 2026-09-30 against DART filings; audit trail in YB docs/cases/SIMMTECH.md"
+          "2Q매출5146억/OP629억(vs전년3408억/55억),OPM12.2%.수주·고부가믹스실적반영.기존5721억/808억은출처불일치라삭제",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260813001430",
           "https://github.com/sasohanbam-wq/YB/blob/main/docs/cases/SIMMTECH.md"
         ]
       },
       "E": {
-        "score": 88,
+        "score": 76,
         "status": "verified",
         "grade": "B",
         "as_of": "2026-09-30",
         "basis": [
-          "2026 consensus revenue 2.296tn, OP 368.9bn (FnGuide)",
-          "3-month consensus revisions: revenue +60.4%, OP +141.4% — strong upward revision trend",
-          "cross-verified by Muse on 2026-09-30; audit trail in YB docs/cases/SIMMTECH.md"
+          "FnGuide2026/09/30연간EPS:현재5145/1개월전5119/3개월전3586.수정률1m+0.51%/3m+43.47%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
         "sources": [
-          "https://github.com/sasohanbam-wq/YB/blob/main/docs/cases/SIMMTECH.md"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=222800&cn="
         ]
       },
       "V": {
-        "score": 62,
-        "status": "verified",
+        "score": 45,
+        "status": "partial",
         "grade": "B",
         "as_of": "2026-09-30",
         "basis": [
-          "2026E PER 12.9x, PBR 3.68x at 147,500 KRW (2026-09-29 close)",
-          "multiple at the upper end of the historical band — fair-to-full, not cheap; price merit is limited",
-          "cross-verified by Muse on 2026-09-30; audit trail in YB docs/cases/SIMMTECH.md"
+          "FnGuide9/30 2026E PER29.22/PBR7.60/ROE29.12%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함). 2027E PER17.45,2026E29.22.기존12.9배삭제.",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
         "sources": [
-          "https://github.com/sasohanbam-wq/YB/blob/main/docs/cases/SIMMTECH.md"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=222800&cn="
         ]
       },
       "next_check": [
         "3Q26 results — OPM holding near the 2Q26 level",
         "consensus revision trend continuation",
         "valuation band re-check after 3Q"
-      ]
+      ],
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": 90,
+          "status": "verified"
+        },
+        "E": {
+          "score": 88,
+          "status": "verified"
+        },
+        "V": {
+          "score": 62,
+          "status": "verified"
+        }
+      },
+      "correction": "기존F실적5721억/808억,2025실적16760억/1471억,E3m+141.4%,V2026PER12.9는인용YB원문과불일치.공시요약·회사배포교보리포트·현재FnGuide로5146억/629억및EPS3m+43.47%,OP3m+51.30%,PER29.22를다시확인.",
+      "provisional_research_score": 73.5,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "042000": {
       "name": "카페24",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 45,
         "status": "partial",
-        "grade": "C",
+        "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "이전 검증의 2Q OP 약82억원/YoY -26.7%는 집계자료와 부합."
+          "2Q매출834억(+5%)/OP82억(-26.7%),수수료·인건비·마케팅/AI비용부담.매출성장과OP가속불일치",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
+          "https://www.yna.co.kr/view/AKR20260806127400527",
           "https://stockeasy.intellio.kr/stock-analysis/stock-info/042000"
         ]
       },
@@ -387,21 +510,26 @@
         "score": null,
         "status": "N/A",
         "grade": null,
-        "as_of": "2026-10-01",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "현재/1개월/3개월동일연간EPS비교기저부족.빈칸/0추정은미커버리지이며0성장이나약한기업으로평가하지않음.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=042000&cn="
+        ]
       },
       "V": {
         "score": null,
         "status": "N/A",
         "grade": null,
-        "as_of": "2026-10-01",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "최신동일범위forwardEPS·정상화밸류·피어기준미확인.과거/다른기준PER로현재저평가점수채우지않음."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=042000&cn="
+        ]
       },
       "next_check": [
         "공식 재무 원문 대조 및 비용레버리지 회복 실현 여부 미완료.",
@@ -411,44 +539,70 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": null,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "039030": {
       "name": "이오테크닉스",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 85,
         "status": "partial",
-        "grade": "C",
+        "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "안성 신규공장 완공시 생산능력 약2배 계획. 기존 공장이 이미2배 가동한다는 뜻이 아님.",
-          "이전 검증 2Q OP390.88억원은 집계자료와 부합."
+          "2Q매출1278억/OP390.88억(+51.3%),OPM30.6%.CAPA2배는안성공장완공계획,현재전사실적2배아님",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260814001118",
           "https://zdnet.co.kr/view/?no=20260331161227",
           "https://stockeasy.intellio.kr/stock-analysis/stock-info/039030"
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 47,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "FnGuide2026/09/30연간EPS:현재9351/1개월전9351/3개월전9787.수정률1m+0.00%/3m-4.45%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=039030&cn="
+        ]
       },
       "V": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 30,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "FnGuide9/30 2026E PER55.61/PBR8.16/ROE15.64%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=039030&cn="
+        ]
       },
       "next_check": [
         "현재 공사/장비반입/가동률 및 매출전환 시점 확인 필요.",
@@ -458,19 +612,38 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": 57.0,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "322000": {
       "name": "HD현대에너지솔루션",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 80,
         "status": "partial",
-        "grade": "C",
+        "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "2Q 매출1,650억원/OP361억원은 7/27 증권사 인용 기사와 부합.",
-          "앙골라 프로젝트 종료 이후 분기 전망을 별도로 제시. 종료분을 반복 신규 촉매로 취급하면 안 됨."
+          "2Q매출1650억/OP361억.수익성개선실현,앙골라종료분은새반복촉매아님.국내프리미엄지속성확인필요",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
           "https://www.sidae.com/article/2026072708265342935",
@@ -478,24 +651,30 @@
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 65,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "FnGuide2026/09/30연간EPS:현재10214/1개월전10214/3개월전8134.수정률1m+0.00%/3m+25.57%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=322000&cn="
+        ]
       },
       "V": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 60,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "FnGuide9/30 2026E PER12.56/PBR2.70/ROE24.09%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=322000&cn="
+        ]
       },
       "next_check": [
         "경상OP306억원은 증권사 추정이지 공식 확정 세부수치가 아님.",
@@ -505,42 +684,69 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": 69.4,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "170920": {
       "name": "엘티씨",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 85,
         "status": "partial",
-        "grade": "C",
+        "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "연결 영업이익과 지배주주 순이익/EPS의 구분이 필요."
+          "2Q매출1409억/OP232억vs전년613억/49억,1Q988억/181억.연결성장강하나OPM전분기둔화·지배순익분리필요",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260813001364",
           "https://stockeasy.intellio.kr/stock-analysis/stock-info/170920"
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 64,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "FnGuide2026/09/30연간EPS:현재2774/1개월전2774/3개월전2262.수정률1m+0.00%/3m+22.63%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=170920&cn="
+        ]
       },
       "V": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 60,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "FnGuide9/30 2026E PER14.85/PBR2.73/ROE20.55%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=170920&cn="
+        ]
       },
       "next_check": [
         "자회사 비지배지분 때문에 연결OP 성장을 지배EPS 성장으로 그대로 사용하지 않기.",
@@ -550,42 +756,69 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": 70.9,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "053610": {
       "name": "프로텍",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 85,
         "status": "partial",
-        "grade": "C",
+        "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "디스펜서 본업과 PMT 등 자회사 실적 회복의 연결이익 기여를 구분해야 함."
+          "2Q매출773억/OP231억vs전년645억/98억.이익증가가매출보다빠름.순익349억은OP보다커비영업및자회사기여분리필요",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260814000560",
           "https://stockeasy.intellio.kr/stock-analysis/stock-info/053610"
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 55,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "FnGuide2026/09/30연간EPS:현재7158/1개월전7158/3개월전6572.수정률1m+0.00%/3m+8.92%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=053610&cn="
+        ]
       },
       "V": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 65,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "FnGuide9/30 2026E PER11.34/PBR1.77/ROE18.12%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=053610&cn="
+        ]
       },
       "next_check": [
         "각 부문/자회사 영업기여 공식 자료 대조, 최근 추정치 변화 및 밸류 미완료."
@@ -594,18 +827,38 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": 68.8,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "011560": {
       "name": "세보엠이씨",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 80,
         "status": "partial",
-        "grade": "C",
+        "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "반기보고서 공시요약:2Q 매출약2,898억원/OP181억원/순익151억원."
+          "2Q매출2898억/OP181억/순익151억.반도체설비공사수주·인식회복.프로젝트/고객집중위험은별도",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
           "https://www.awakeplus.co.kr/data/view/20260814000801",
@@ -613,24 +866,30 @@
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 55,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "FnGuide2026/09/30연간EPS:현재4622/1개월전4622/3개월전4249.수정률1m+0.00%/3m+8.78%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=011560&cn="
+        ]
       },
       "V": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 65,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "FnGuide9/30 2026E PER5.12/PBR0.76/ROE16.16%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=011560&cn="
+        ]
       },
       "next_check": [
         "원 재무표 전체감사 아님. 순현금358억원 기준 재무상태표 미확인.",
@@ -640,19 +899,38 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": 66.9,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "039830": {
       "name": "오로라",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 70,
         "status": "partial",
-        "grade": "C",
+        "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "2Q 매출약912억원/OP122억원은 기존 집계 검증과 부합.",
-          "사옥매각은 추진 단계로 부채상환 완료와 다름."
+          "2Q매출912억/OP122억.본업성장과사옥매각추진분리.채무상환완료로처리하지않음",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
           "https://www.thinkpool.com/stockDiscuss/039830/cont/11904907",
@@ -664,21 +942,26 @@
         "score": null,
         "status": "N/A",
         "grade": null,
-        "as_of": "2026-10-01",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "현재/1개월/3개월동일연간EPS비교기저부족.빈칸/0추정은미커버리지이며0성장이나약한기업으로평가하지않음.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=039830&cn="
+        ]
       },
       "V": {
         "score": null,
         "status": "N/A",
         "grade": null,
-        "as_of": "2026-10-01",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "최신동일범위forwardEPS·정상화밸류·피어기준미확인.과거/다른기준PER로현재저평가점수채우지않음."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=039830&cn="
+        ]
       },
       "next_check": [
         "2026E 매출/OP 전망 출처·날짜 상이. 현재 컨센서스로 확정하지 않기."
@@ -687,43 +970,69 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": null,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "452430": {
       "name": "사피엔반도체",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 65,
         "status": "partial",
-        "grade": "C",
+        "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "2Q 매출약72.15억원/OP약3.12억원 흑자전환.",
-          "8/4 보도 공동개발·공급72억원 계약기간2026/7~2027/10."
+          "2Q매출72억/OP3억vs전년20억/-17억.흑전이나절대이익작고NRE계약을양산매출로바꾸지않음",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260812000701",
           "http://www.dailyinvest.kr/news/articleView.html?idxno=72114"
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 10,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "FnGuide2026/09/30연간EPS:현재146/1개월전285/3개월전419.수정률1m-48.77%/3m-65.16%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=452430&cn="
+        ]
       },
       "V": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 20,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "FnGuide9/30 2026E PER266.54/PBR21.94/ROE8.74%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=452430&cn="
+        ]
       },
       "next_check": [
         "NRE/개발 계약을 당기양산 매출로 동일시하지 않기.",
@@ -733,42 +1042,69 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": 33.1,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "108490": {
       "name": "로보티즈",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 55,
         "status": "partial",
         "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "한국투자8/18 보고서의 출하량·생산 확대 전망은 실현 결과와 구분."
+          "2Q매출154억/OP20억회복vs1QOP-118억.액추에이터성장과주식보상·자회사적자분리,전사안정흑자로확정못함",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260814003380",
           "https://securities.koreainvestment.com/main/research/research/StrategyDetail.jsp?id=158402&jkGubun=6"
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 15,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "현재EPS적자전환.양수기저수정표확인.적자전환점수15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=108490&cn="
+        ]
       },
       "V": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 15,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "FnGuide9/30 2026E PERN/A/PBR12.58/ROE-0.46%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).현재EPS적자,PER로저평가판정불가.높은PBR·미래흑자이행위험.",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=108490&cn="
+        ]
       },
       "next_check": [
         "상반기약20만대/하반기30만대는 보고서 추정·전망. 현재완료 생산능력으로 쓰지 않기.",
@@ -778,42 +1114,68 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": 30.0,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "000720": {
       "name": "현대건설",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 65,
         "status": "partial",
-        "grade": "C",
+        "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "보도:2Q OP2,618억원(+20.7%), H1 4,427억원(+2.8%), 수주잔고103.98조원."
+          "2QOP2618억(+20.7%),H1OP4427억(+2.8%),H1매출-13.5%.잔고103.98조·원가회복,수주를즉시이익으로환산금지",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
           "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=AKR20260731089751527"
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 45,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "FnGuide2026/09/30연간EPS:현재4511/1개월전4573/3개월전4824.수정률1m-1.36%/3m-6.49%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=000720&cn="
+        ]
       },
       "V": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 35,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "FnGuide9/30 2026E PER26.05/PBR1.45/ROE5.84%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=000720&cn="
+        ]
       },
       "next_check": [
         "원전옵션은 실제계약·진행률·마진으로 검증. 그룹전체 사업을즉시 해당회사EPS로 만들지 않기."
@@ -822,42 +1184,68 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": 50.0,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "388050": {
       "name": "지투파워",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 45,
         "status": "partial",
-        "grade": "C",
+        "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "반기공시요약에서2Q 약104억원/OP약4억원, H1 약296억원/OP27억원."
+          "2Q매출104억/OP4억vs전년142억/6억,1Q192억/23억.계절성/납품시차와현재실적약화구분",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
           "https://www.awakeplus.co.kr/data/view/20260814000447"
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 50,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "FnGuide2026/09/30연간EPS:현재540/1개월전540/3개월전540.수정률1m+0.00%/3m+0.00%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=388050&cn="
+        ]
       },
       "V": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 50,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "FnGuide9/30 2026E PER18.41/PBR3.70/ROE21.93%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=388050&cn="
+        ]
       },
       "next_check": [
         "2026E1,050억원/133억원은 신뢰가능 컨센서스 원문 미확인.",
@@ -867,43 +1255,68 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": 48.1,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "083650": {
       "name": "비에이치아이",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 90,
         "status": "partial",
-        "grade": "A",
+        "grade": "B",
         "as_of": "2026-10-01",
         "basis": [
-          "회사공식:2Q 연결매출2,963억원/OP455억원, YoY약+75%/+123.1%.",
-          "기존수주 프로젝트의 매출인식 및 고마진 프로젝트 믹스 개선."
+          "회사공식2Q매출2963억(+75%)/OP455억(+123.1%),OPM15.4%.기존수주인식·마진개선실현,향후인식지연위험별도",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
           "https://www.bhi.co.kr/notice/2770"
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 57,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+          "FnGuide2026/09/30연간EPS:현재3127/1개월전3257/3개월전2705.수정률1m-3.99%/3m+15.60%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=083650&cn="
+        ]
       },
       "V": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 55,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+          "FnGuide9/30 2026E PER19.19/PBR6.69/ROE42.50%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=083650&cn="
+        ]
       },
       "next_check": [
         "2026E1.2조/OP1,463억원 최신기관컨센서스 원문 미확인.",
@@ -913,7 +1326,26 @@
         "status": "facts_partially_verified",
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": 68.9,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     },
     "356860": {
       "name": "티엘비",
@@ -968,14 +1400,13 @@
       "name": "지엔씨에너지",
       "overall_status": "incomplete",
       "F": {
-        "score": null,
+        "score": 60,
         "status": "partial",
         "grade": "A",
         "as_of": "2026-10-01",
         "basis": [
-          "반기 연결 매출1219.23억원/OP145.64억원/순익264.20억원. H1 OP-46.44%,2Q OP101.60억원(-16.76%). 금융수익223.64억원: 순익증가를 본업성장으로 동일시하지 않음.",
-          "6/30 별도수주잔고4147억원. SGC군산755.09억원 및LG파주468.60억원 계약 원문 확인.",
-          "NDR의점유율70%/가스터빈90%,금액CAPA5000억원은회사설명수준. 독립통계·확정매출·확정수주가이던스아님."
+          "H1 OP145.64억(-46.44%)/2Q101.60억(-16.76%).별도잔고4147억/SGC·LG계약은향후인식근거.금융수익223.64억을본업가속으로보지않음",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
         ],
         "sources": [
           "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001483",
@@ -984,26 +1415,30 @@
         ]
       },
       "E": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 54,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "NH9/28의2027OP750억원/2028OP1023억원은증권사추정. 최신EPS수정시계열·인식시점검증미완료."
+          "FnGuide9/30:1개월EPS2535→2635(+3.94%),OP425→453(+6.59%).1개월만평가한잠정E54=50+1×3.94반올림.3개월EPS기저없어전체Everified아님.3개월없는것을0성장으로채우지않음.",
+          "단일증권사NHOP전망과컨센서스를구분.참여증권사수미검증."
         ],
         "sources": [
-          "https://www.g-enews.com/article/Securities/2026/09/20260928091121420544093b5d4e_1"
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=119850&cn="
         ]
       },
       "V": {
-        "score": null,
-        "status": "N/A",
-        "grade": null,
-        "as_of": "2026-10-01",
+        "score": 45,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
         "basis": [
-          "정상화EPS·순차입금·동일기준피어밸류미완료. 옛가격기준PER8.9배를현재저평가로복사하지않음."
+          "FnGuide9/30 2026E PER21.70/PBR3.61/ROE18.09%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
         ],
-        "sources": []
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=119850&cn="
+        ]
       },
       "next_check": [
         "삼성물산국가AI센터계약공시내359.6099억원/959.6099억원충돌:USD+KRW산식및13.7%는359.6억원지지. 정정확인전959.6억원확정합산금지.",
@@ -1018,7 +1453,466 @@
         "sources": [
           "https://stock.naver.com/domestic/stock/119850/price"
         ]
-      }
+      },
+      "review_note": "research/scoring-2026-10-01.md",
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": "partial"
+        },
+        "E": {
+          "score": null,
+          "status": "N/A"
+        },
+        "V": {
+          "score": null,
+          "status": "N/A"
+        }
+      },
+      "provisional_research_score": 54.0,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
+    },
+    "007340": {
+      "name": "DN오토모티브",
+      "next_check": [],
+      "overall_status": "incomplete",
+      "review_note": "research/scoring-2026-10-01.md",
+      "F": {
+        "score": 85,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
+        "basis": [
+          "2Q매출12493억/OP2054억vs전년9096억/1216억및1Q10177억/1446억.성장가속확인,DN솔루션즈인수·부채/사이클위험별도",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
+        ],
+        "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260814001265"
+        ]
+      },
+      "E": {
+        "score": 68,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide2026/09/30연간EPS:현재6974/1개월전6974/3개월전5355.수정률1m+0.00%/3m+30.23%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=007340&cn="
+        ]
+      },
+      "V": {
+        "score": 65,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide9/30 2026E PER6.98/PBR1.05/ROE18.51%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=007340&cn="
+        ]
+      },
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": null
+        },
+        "E": {
+          "score": null,
+          "status": null
+        },
+        "V": {
+          "score": null,
+          "status": null
+        }
+      },
+      "provisional_research_score": 73.6,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
+    },
+    "082920": {
+      "name": "비츠로셀",
+      "next_check": [],
+      "overall_status": "incomplete",
+      "review_note": "research/scoring-2026-10-01.md",
+      "F": {
+        "score": 75,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
+        "basis": [
+          "확정반기요약2Q매출762억/OP188억vs전년565억/161억,1Q683억/203억.7월잠정195.64억을확정188억으로정정,마진QoQ둔화",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
+        ],
+        "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260812000200"
+        ]
+      },
+      "E": {
+        "score": 49,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide2026/09/30연간EPS:현재1711/1개월전1737/3개월전1718.수정률1m-1.50%/3m-0.41%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=082920&cn="
+        ]
+      },
+      "V": {
+        "score": 55,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide9/30 2026E PER16.45/PBR3.19/ROE21.33%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=082920&cn="
+        ]
+      },
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": null
+        },
+        "E": {
+          "score": null,
+          "status": null
+        },
+        "V": {
+          "score": null,
+          "status": null
+        }
+      },
+      "provisional_research_score": 60.2,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
+    },
+    "067310": {
+      "name": "하나마이크론",
+      "next_check": [],
+      "overall_status": "incomplete",
+      "review_note": "research/scoring-2026-10-01.md",
+      "F": {
+        "score": 90,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
+        "basis": [
+          "2Q매출6832억/OP1423억vs전년3402억/302억,1Q5077억/720억.수요·레버리지강함,지배귀속·CAPEX·차입분리필요",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
+        ],
+        "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260814003753"
+        ]
+      },
+      "E": {
+        "score": 82,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide2026/09/30연간EPS:현재3574/1개월전3306/3개월전2435.수정률1m+8.11%/3m+46.78%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=067310&cn="
+        ]
+      },
+      "V": {
+        "score": 60,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide9/30 2026E PER13.25/PBR4.78/ROE44.93%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=067310&cn="
+        ]
+      },
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": null
+        },
+        "E": {
+          "score": null,
+          "status": null
+        },
+        "V": {
+          "score": null,
+          "status": null
+        }
+      },
+      "provisional_research_score": 79.5,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
+    },
+    "290650": {
+      "name": "엘앤씨바이오",
+      "next_check": [],
+      "overall_status": "incomplete",
+      "review_note": "research/scoring-2026-10-01.md",
+      "F": {
+        "score": 75,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
+        "basis": [
+          "2Q매출387.85억/OP85.8억흑전,리투오146억.다만NI-281.23억·증설유증/희석·투자손익위험으로본업OP와분리",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
+        ],
+        "sources": [
+          "https://www.digitaltoday.co.kr/news/articleView.html?idxno=691976"
+        ]
+      },
+      "E": {
+        "score": 30,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide2026/09/30연간EPS:현재799/1개월전857/3개월전1098.수정률1m-6.77%/3m-27.23%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=290650&cn="
+        ]
+      },
+      "V": {
+        "score": 30,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide9/30 2026E PER64.84/PBR6.62/ROE9.90%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=290650&cn="
+        ]
+      },
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": null
+        },
+        "E": {
+          "score": null,
+          "status": null
+        },
+        "V": {
+          "score": null,
+          "status": null
+        }
+      },
+      "provisional_research_score": 46.9,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
+    },
+    "475960": {
+      "name": "토모큐브",
+      "next_check": [],
+      "overall_status": "incomplete",
+      "review_note": "research/scoring-2026-10-01.md",
+      "F": {
+        "score": 55,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
+        "basis": [
+          "2Q매출49.6억(+58%)/OP-5.9억.매출성장·손실축소는있지만영업흑자지속은미확인",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
+        ],
+        "sources": [
+          "https://m.thinkpool.com/stockDiscuss/475960/cont/11904212"
+        ]
+      },
+      "E": {
+        "score": 15,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "현재EPS적자전환.양수기저수정표확인.적자전환점수15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=475960&cn="
+        ]
+      },
+      "V": {
+        "score": 20,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide9/30 2026E PERN/A/PBR12.58/ROE-3.41%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).현재EPS적자,PER로저평가판정불가.높은PBR·미래흑자이행위험.",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=475960&cn="
+        ]
+      },
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": null
+        },
+        "E": {
+          "score": null,
+          "status": null
+        },
+        "V": {
+          "score": null,
+          "status": null
+        }
+      },
+      "provisional_research_score": 31.2,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
+    },
+    "001450": {
+      "name": "현대해상",
+      "next_check": [],
+      "overall_status": "incomplete",
+      "review_note": "research/scoring-2026-10-01.md",
+      "F": {
+        "score": 65,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
+        "basis": [
+          "H1NI6151억(+36.4%)/OP8143억(+29.5%),보험손익+81.6%,CSM9.894조/KICS209%.가정변경환입·자동차적자/투자손익감소로정상화점검필요",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
+        ],
+        "sources": [
+          "https://www.insnews.co.kr/news/articleView.html?idxno=92305"
+        ]
+      },
+      "E": {
+        "score": 71,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide2026/09/30연간EPS:현재11616/1개월전11494/3개월전8609.수정률1m+1.06%/3m+34.93%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=001450&cn="
+        ]
+      },
+      "V": {
+        "score": 70,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "FnGuide9/30 2026E PER4.12/PBR0.58/ROE17.57%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
+          "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=001450&cn="
+        ]
+      },
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": null
+        },
+        "E": {
+          "score": null,
+          "status": null
+        },
+        "V": {
+          "score": null,
+          "status": null
+        }
+      },
+      "provisional_research_score": 68.5,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
+    },
+    "200470": {
+      "name": "에이팩트",
+      "next_check": [],
+      "overall_status": "incomplete",
+      "review_note": "research/scoring-2026-10-01.md",
+      "F": {
+        "score": 55,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
+        "basis": [
+          "2Q별도매출452억(+69%)/OP11.1억(+19%),OPM2.5%.전분기흑전이나매출증가보다이익가속약함.과거SOCAMM출하주장규모미검증",
+          "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님."
+        ],
+        "sources": [
+          "https://www.thinkpool.com/item/200470/news/16913580"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-09-30",
+        "basis": [
+          "현재/1개월/3개월동일연간EPS비교기저부족.빈칸/0추정은미커버리지이며0성장이나약한기업으로평가하지않음.",
+          "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=200470&cn="
+        ]
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-09-30",
+        "basis": [
+          "최신동일범위forwardEPS·정상화밸류·피어기준미확인.과거/다른기준PER로현재저평가점수채우지않음."
+        ],
+        "sources": [
+          "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=200470&cn="
+        ]
+      },
+      "research_score": null,
+      "score_note": "팩터별잠정점수와완료검증을구분.현재종합연구점수N/A:모든F/E/Vverified조건미충족.가격점수·매수게이트불변.",
+      "prior_score_audit": {
+        "F": {
+          "score": null,
+          "status": null
+        },
+        "E": {
+          "score": null,
+          "status": null
+        },
+        "V": {
+          "score": null,
+          "status": null
+        }
+      },
+      "provisional_research_score": null,
+      "provisional_score_note": "잠정분석자종합.전체검증완료점수아님.가격점수/매수게이트변경없음."
     }
   }
 }
