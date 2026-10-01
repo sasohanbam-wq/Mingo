@@ -351,7 +351,7 @@
     +donut(s.execution_score,'실행점수')
     +donut(s.research_score,'연구점수'+(s.research_score==null?' (미생성)':''))
     +'</div></div>'
-    +'<div class="mx-pos'+(s.invalidated?' warn':'')+'"><b>현재 위치:</b> '+esc(positionText(s))+'<br><b>판정 이유:</b> '+esc(s.setup_reason||'—')+'</div>';
+    +'<div class="mx-pos'+(s.invalidated?' warn':'')+'"><b>현재 위치:</b> '+esc(s.analysis_pending?'아래 가격은 연구 시나리오이며 매수 허가가 아닙니다.':positionText(s))+'<br><b>판정 이유:</b> '+esc(s.setup_reason||'—')+'</div>';
 
   // ---------- 2) PRICE MAP + setup ----------
   html+='<div class="mx-h">🗺️ 가격 맵 — 구간 · 트리거 · 무효화</div>'
