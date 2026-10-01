@@ -1,0 +1,436 @@
+{
+  "version": 1,
+  "as_of": "2026-10-01",
+  "purpose": "기업 분석 근거와 미해결 검증 분리. 가격/실행코드 불변.",
+  "stocks": [
+    {
+      "code": "033160",
+      "name": "엠케이전자",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "2026-08-13 보도: 법인 및 임직원 불구속기소, 가격·거래조건 담합 혐의. 기소는 유죄 확정이 아님."
+      ],
+      "unresolved": [
+        "상반기 OP 원문414.5억 vs 집계 분기합403.87억 회계범위 미해결.",
+        "이미 공개된 악재라는 사실과 주가에 전부 반영됐다는 주장은 다름.",
+        "최근 법원 진행상태와 정밀 F/E/V 재검증 필요."
+      ],
+      "sources": [
+        "https://www.asiae.co.kr/article/2026081316313005834",
+        "https://biz.heraldcorp.com/article/10889368",
+        "https://stockeasy.intellio.kr/stock-analysis/stock-info/033160"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "042000",
+      "name": "카페24",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "이전 검증의 2Q OP 약82억원/YoY -26.7%는 집계자료와 부합."
+      ],
+      "unresolved": [
+        "공식 재무 원문 대조 및 비용레버리지 회복 실현 여부 미완료.",
+        "단기 주가 반등은 실적 회복 완료와 다름."
+      ],
+      "sources": [
+        "https://stockeasy.intellio.kr/stock-analysis/stock-info/042000"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "039030",
+      "name": "이오테크닉스",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "안성 신규공장 완공시 생산능력 약2배 계획. 기존 공장이 이미2배 가동한다는 뜻이 아님.",
+        "이전 검증 2Q OP390.88억원은 집계자료와 부합."
+      ],
+      "unresolved": [
+        "현재 공사/장비반입/가동률 및 매출전환 시점 확인 필요.",
+        "전사 추정치 변화·정상화 EPS·가치평가 미완료."
+      ],
+      "sources": [
+        "https://zdnet.co.kr/view/?no=20260331161227",
+        "https://stockeasy.intellio.kr/stock-analysis/stock-info/039030"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "322000",
+      "name": "HD현대에너지솔루션",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "2Q 매출1,650억원/OP361억원은 7/27 증권사 인용 기사와 부합.",
+        "앙골라 프로젝트 종료 이후 분기 전망을 별도로 제시. 종료분을 반복 신규 촉매로 취급하면 안 됨."
+      ],
+      "unresolved": [
+        "경상OP306억원은 증권사 추정이지 공식 확정 세부수치가 아님.",
+        "일회성·고마진 프로젝트 분해와 후속 수주 재현성 확인 필요."
+      ],
+      "sources": [
+        "https://www.sidae.com/article/2026072708265342935",
+        "https://zdnet.co.kr/view/?no=20260724170453"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "170920",
+      "name": "엘티씨",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "연결 영업이익과 지배주주 순이익/EPS의 구분이 필요."
+      ],
+      "unresolved": [
+        "자회사 비지배지분 때문에 연결OP 성장을 지배EPS 성장으로 그대로 사용하지 않기.",
+        "공식 반기표 및 정상화 이익/주식수 재검증 필요."
+      ],
+      "sources": [
+        "https://stockeasy.intellio.kr/stock-analysis/stock-info/170920"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "053610",
+      "name": "프로텍",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "디스펜서 본업과 PMT 등 자회사 실적 회복의 연결이익 기여를 구분해야 함."
+      ],
+      "unresolved": [
+        "각 부문/자회사 영업기여 공식 자료 대조, 최근 추정치 변화 및 밸류 미완료."
+      ],
+      "sources": [
+        "https://stockeasy.intellio.kr/stock-analysis/stock-info/053610"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "005090",
+      "name": "SGC에너지",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "현대엔지니어링 공식: 군산60MW 데이터센터1단계, 사업규모약8,700억원.",
+        "240MW는 후속 추진 예정으로 우선협상권 확보 기대 단계."
+      ],
+      "unresolved": [
+        "총300MW를 모두 완료·가동 확정으로 표시하지 않기.",
+        "프로젝트 총규모는 SGC 매출/영업이익이 아님. LP투자·준공후매각·발전공급 이익은 분리."
+      ],
+      "sources": [
+        "https://www.hyundaimotorgroup.com/ko/news/hyundai-engineering-gunsan-ai-data-center-project"
+      ],
+      "evidence_grade": "A",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "101160",
+      "name": "월덱스",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "반기보고서 공시요약:2Q 매출754억원/OP165억원/순익150억원. 전년2Q 667/84/-141억원."
+      ],
+      "unresolved": [
+        "이번 검수는 공시요약 재확인으로 원 재무표 전체감사 아님.",
+        "순현금2,067억원/부채비율22.1% 기준일·정의 원문확인 미완료. 기존다른작성자 검증점수와별도."
+      ],
+      "sources": [
+        "https://www.awakeplus.co.kr/data/view/20260814001597"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "005290",
+      "name": "동진쎄미켐",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "2Q 매출3,469억원/OP593억원 절대값은 보도간 부합."
+      ],
+      "unresolved": [
+        "연합뉴스 YoY +17.5/+38.9% vs 씽크풀 -24/-8.1%로 상충. DART 전년비교표 회계범위 최종대조 필요.",
+        "다른기간·연결/별도 혼동 해결전 높은 E점수 보증불가."
+      ],
+      "sources": [
+        "https://www.yna.co.kr/view/AKR20260806087700527",
+        "https://www.thinkpool.com/stockDiscuss/005290/cont/11900990"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "083450",
+      "name": "GST",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "2Q 약992억원/OP155억원, H1 약2,151억원/OP357억원 보도.",
+        "H200 실부하 액침냉각 검증은 레퍼런스/기술검증이며 상용 매출급증 확정 아님."
+      ],
+      "unresolved": [
+        "YoY 비교 보도 -0.2/-10.6% vs 다른공시요약 +1.9/-14.6~-15% 충돌 미해결.",
+        "액침 사업의 실제 수주·매출·마진 확인 필요."
+      ],
+      "sources": [
+        "https://www.kharn.kr/news/article.html?no=31596",
+        "https://www.thinkpool.com/item/083450/disclosures/major/16914317"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "011560",
+      "name": "세보엠이씨",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "반기보고서 공시요약:2Q 매출약2,898억원/OP181억원/순익151억원."
+      ],
+      "unresolved": [
+        "원 재무표 전체감사 아님. 순현금358억원 기준 재무상태표 미확인.",
+        "기계설비공사 이익률과 소프트웨어형 수익성을 혼동하지 않기."
+      ],
+      "sources": [
+        "https://www.awakeplus.co.kr/data/view/20260814000801",
+        "https://www.sebomec.com/kor/customer/finance.php"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "006360",
+      "name": "GS건설",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "2Q 매출2.7799조/OP914억원(-43.6%) 및 대손약1,000억원/소각로운영손실약500억원 증권사인용 기사."
+      ],
+      "unresolved": [
+        "일회성이라고 명명돼도 다음분기 재발없음이 보장되지 않음.",
+        "데이터센터 수주가능성을 계약확정·수익으로 앞당기지 않기."
+      ],
+      "sources": [
+        "https://www.hankyung.com/article/2026073044636",
+        "https://www.yna.co.kr/view/AKR20260729042600003"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "039830",
+      "name": "오로라",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "2Q 매출약912억원/OP122억원은 기존 집계 검증과 부합.",
+        "사옥매각은 추진 단계로 부채상환 완료와 다름."
+      ],
+      "unresolved": [
+        "2026E 매출/OP 전망 출처·날짜 상이. 현재 컨센서스로 확정하지 않기."
+      ],
+      "sources": [
+        "https://www.thinkpool.com/stockDiscuss/039830/cont/11904907",
+        "https://www.etoday.co.kr/news/view/2628265",
+        "https://www.etoday.co.kr/news/view/2594277"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "452430",
+      "name": "사피엔반도체",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "2Q 매출약72.15억원/OP약3.12억원 흑자전환.",
+        "8/4 보도 공동개발·공급72억원 계약기간2026/7~2027/10."
+      ],
+      "unresolved": [
+        "NRE/개발 계약을 당기양산 매출로 동일시하지 않기.",
+        "대형고객 양산확대는 전망. PER276.5 vs Fwd32.1의 기준 미확인."
+      ],
+      "sources": [
+        "http://www.dailyinvest.kr/news/articleView.html?idxno=72114"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "108490",
+      "name": "로보티즈",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "한국투자8/18 보고서의 출하량·생산 확대 전망은 실현 결과와 구분."
+      ],
+      "unresolved": [
+        "상반기약20만대/하반기30만대는 보고서 추정·전망. 현재완료 생산능력으로 쓰지 않기.",
+        "본업OP와 투자손익, 정상화EPS 검증 필요."
+      ],
+      "sources": [
+        "https://securities.koreainvestment.com/main/research/research/StrategyDetail.jsp?id=158402&jkGubun=6"
+      ],
+      "evidence_grade": "B",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "000720",
+      "name": "현대건설",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "보도:2Q OP2,618억원(+20.7%), H1 4,427억원(+2.8%), 수주잔고103.98조원."
+      ],
+      "unresolved": [
+        "원전옵션은 실제계약·진행률·마진으로 검증. 그룹전체 사업을즉시 해당회사EPS로 만들지 않기."
+      ],
+      "sources": [
+        "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=AKR20260731089751527"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "388050",
+      "name": "지투파워",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "반기공시요약에서2Q 약104억원/OP약4억원, H1 약296억원/OP27억원."
+      ],
+      "unresolved": [
+        "2026E1,050억원/133억원은 신뢰가능 컨센서스 원문 미확인.",
+        "하반기 집중인식·매출과 이익전달 위험 검증 필요."
+      ],
+      "sources": [
+        "https://www.awakeplus.co.kr/data/view/20260814000447"
+      ],
+      "evidence_grade": "C",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    },
+    {
+      "code": "083650",
+      "name": "비에이치아이",
+      "review_status": "facts_partially_verified",
+      "reviewed_at": "2026-10-01T10:58:00+09:00",
+      "financial_period": "2026Q2 unless stated",
+      "confirmed_facts": [
+        "회사공식:2Q 연결매출2,963억원/OP455억원, YoY약+75%/+123.1%.",
+        "기존수주 프로젝트의 매출인식 및 고마진 프로젝트 믹스 개선."
+      ],
+      "unresolved": [
+        "2026E1.2조/OP1,463억원 최신기관컨센서스 원문 미확인.",
+        "분기믹스가 연중 지속되는지, 정상화EPS/현금흐름/밸류 재검증 필요."
+      ],
+      "sources": [
+        "https://www.bhi.co.kr/notice/2770"
+      ],
+      "evidence_grade": "A",
+      "F_score": null,
+      "E_score": null,
+      "V_score": null,
+      "score_note": "부분 사실 검증은 F/E/V 총점 검증과 다름. 점수 산식/근거 미완료는 N/A.",
+      "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+    }
+  ]
+}
