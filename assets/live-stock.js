@@ -409,7 +409,7 @@
     +(rangePos!=null?'<div class="mx-gtrack flat"><div class="mx-gmark" style="left:'+rangePos.toFixed(1)+'%"></div></div><div class="mx-glab"><span>저가 '+fmt(s.low20_actual)+'</span><span>고가 '+fmt(s.high20_actual)+'</span></div>':'')
     +'</div>'
     +'<div class="mx-kv"><div class="mx-k">MA20 이격 (완료세션 종가)</div><div class="mx-v">'+fp(s.extension_ma20_pct)+'</div><div class="mx-note">'+(s.excess_extension_ma20_pct==null?'지수 MA20 이격 원자료 미확인': '지수 대비 상대 이격 '+fp(s.excess_extension_ma20_pct))+'</div></div>'
-    +'<div class="mx-kv"><div class="mx-k">종합 RS · 스탁이지</div><div class="mx-v">'+(s.rs_score??'—')+'</div>'
+    +'<div class="mx-kv"><div class="mx-k">'+(s.stockeasy_rs?'12개월 RS · 스탁이지':'종합 RS · 스탁이지')+'</div><div class="mx-v">'+(s.rs_score??'—')+'</div>'
     +(s.rs_score!=null?'<div class="mx-minibar"><div style="width:'+Math.max(0,Math.min(100,s.rs_score))+'%;background:#5ee6c4"></div></div><div class="mx-note">기준 '+(s.rs_basis_date||'—')+' 종가 '+fmt(s.rs_basis_price)+'원'+(s.rs_status==='stale_fallback'?' · ⚠️ 갱신 실패로 직전 값':'')+' · 출처 stockeasy.intellio.kr</div>':'<div class="mx-note">스탁이지 RS를 아직 가져오지 못했습니다.</div>')
     +'</div>'
     +'</div>'
@@ -444,7 +444,7 @@
     +((s.evidence_sources&&s.evidence_sources.length)
       ?'<div style="margin-top:8px">'+s.evidence_sources.map((u,i)=>'<a class="mx-src" href="'+esc(u)+'" target="_blank" rel="noopener">📎 근거 문서 '+(i+1)+'</a>').join('')+'</div>'
       :'')
-    +'<div class="mx-note">옛 고정 팩터 숫자는 제거했습니다. RS는 출처자체 기준가격/날짜를 표시하며 상대수익과 별개입니다.</div>'
+    +'<div class="mx-note">옛 고정 팩터 숫자는 제거했습니다. RS는 출처자체 기간·날짜를 표시하며 상대수익과 별개입니다.</div>'
     +(s.provisional_research_score!=null?'<div class="mx-pos">잠정 종합 <b>'+s.provisional_research_score+'</b> · 전체검증완료 점수와 구분, 매수게이트 승격 없음</div>':'');
 
   if(s.flow_summary){
