@@ -92,6 +92,11 @@
     +'.mx-rcard{background:#0e1a2c;border:1px solid #22344e;border-radius:16px;padding:14px}'
     +'.mx-dots{font-size:15px;letter-spacing:3px;color:#63e6be}'
     +'.mx-dots i{color:#2c4258;font-style:normal}'
+    +'.mx-sticky{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:9px;padding:9px 14px;background:rgba(9,19,33,.92);backdrop-filter:blur(10px);border-bottom:1px solid #22344e;color:#edf4ff;font-size:13.5px;transform:translateY(-110%);transition:transform .3s ease;font-variant-numeric:tabular-nums;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif}'
+    +'.mx-sticky.on{transform:none}'
+    +'.mx-chart-wrap{position:relative;margin:4px 0 2px}'
+    +'.mx-tt{position:absolute;display:none;pointer-events:none;background:rgba(10,22,38,.96);border:1px solid #2b4a6e;border-radius:10px;padding:7px 10px;font-size:11.5px;line-height:1.6;color:#dbe7f7;z-index:6;box-shadow:0 10px 24px rgba(0,0,0,.45);white-space:nowrap}'
+    +'.mx-rrbar{display:flex;height:9px;border-radius:99px;overflow:hidden;background:#101d30;margin:7px 0 9px}'
     +'@media(max-width:640px){.mx-price{font-size:29px}.mx-dbar{grid-template-columns:74px 1fr 104px}.mx-tr{gap:10px}}';
     document.head.appendChild(st);
   }
@@ -184,6 +189,91 @@
     return '<div class="mx-map"><svg viewBox="0 0 720 100" style="width:100%;height:auto;display:block" role="img" aria-label="가격 위치 맵">'+g+'</svg></div>';
   }
 
+  // ---------- v4: real candle chart ----------
+  let chartGeom=null;
+  function chartSVG(s){
+    const bars=(s.chart||[]).filter(b=>b&&b.c!=null);
+    if(bars.length<10)return '';
+    const W=720,X0=6,X1=662,PT=10,PB=228,VT=238,VB=278;
+    let lo=Infinity,hi=-Infinity,vmax=0;
+    bars.forEach(b=>{ lo=Math.min(lo,b.l); hi=Math.max(hi,b.h); if(b.v&&b.v>vmax)vmax=b.v; });
+    const span0=(hi-lo)||hi*0.05||1;
+    const near=v=>v!=null&&v>=lo-span0*0.55&&v<=hi+span0*0.55;
+    [s.trigger,s.invalidation].forEach(v=>{ if(near(v)){ lo=Math.min(lo,v); hi=Math.max(hi,v); } });
+    if(s.buy_zone&&near(s.buy_zone[0])&&near(s.buy_zone[1])){ lo=Math.min(lo,s.buy_zone[0]); hi=Math.max(hi,s.buy_zone[1]); }
+    if(near(s.price)){ lo=Math.min(lo,s.price); hi=Math.max(hi,s.price); }
+    const pad=(hi-lo)*0.05||1; lo-=pad; hi+=pad;
+    const Y=v=>PT+(hi-v)/(hi-lo)*(PB-PT);
+    const n=bars.length,step=(X1-X0)/n,bw=Math.max(3,Math.min(9,step*0.62));
+    const cx=i=>X0+step*(i+0.5);
+    let g='';
+    for(let i=0;i<=4;i++){
+      const v=lo+(hi-lo)*i/4,y=Y(v);
+      g+='<line x1="'+X0+'" y1="'+y.toFixed(1)+'" x2="'+X1+'" y2="'+y.toFixed(1)+'" stroke="rgba(120,160,220,.1)"/>'
+        +'<text x="'+(X1+8)+'" y="'+(y+3.5).toFixed(1)+'" font-size="10" fill="#5f748c">'+fmt(v)+'</text>';
+    }
+    if(s.buy_zone&&s.buy_zone[0]!=null&&s.buy_zone[1]!=null){
+      const y1=Y(Math.min(s.buy_zone[1],hi)),y2=Y(Math.max(s.buy_zone[0],lo));
+      if(y2>y1)g+='<rect x="'+X0+'" y="'+y1.toFixed(1)+'" width="'+(X1-X0)+'" height="'+(y2-y1).toFixed(1)+'" fill="rgba(99,230,190,.07)"/>'
+        +'<line x1="'+X0+'" y1="'+y1.toFixed(1)+'" x2="'+X1+'" y2="'+y1.toFixed(1)+'" stroke="rgba(99,230,190,.4)" stroke-dasharray="2 4"/>'
+        +'<line x1="'+X0+'" y1="'+y2.toFixed(1)+'" x2="'+X1+'" y2="'+y2.toFixed(1)+'" stroke="rgba(99,230,190,.4)" stroke-dasharray="2 4"/>'
+        +'<text x="'+(X0+4)+'" y="'+(y1+11).toFixed(1)+'" font-size="9.5" fill="rgba(99,230,190,.9)">매수구간</text>';
+    }
+    const hline=(v,color,label)=>{
+      if(v==null||v<lo||v>hi)return '';
+      const y=Y(v);
+      return '<line x1="'+X0+'" y1="'+y.toFixed(1)+'" x2="'+X1+'" y2="'+y.toFixed(1)+'" stroke="'+color+'" stroke-width="1.3" stroke-dasharray="6 4" opacity=".85"/>'
+        +'<text x="'+(X1+8)+'" y="'+(y-4).toFixed(1)+'" font-size="9.5" font-weight="700" fill="'+color+'">'+label+'</text>';
+    };
+    g+=hline(s.trigger,'#73b7ff','트리거');
+    g+=hline(s.invalidation,'#ff7b7b','무효화');
+    const maPath=key=>{
+      let d='',pen=false;
+      bars.forEach((b,i)=>{ const v=b[key]; if(v==null){ pen=false; return; } d+=(pen?'L':'M')+cx(i).toFixed(1)+' '+Y(v).toFixed(1); pen=true; });
+      return d;
+    };
+    const d50=maPath('ma50'),d20=maPath('ma20');
+    if(d50)g+='<path d="'+d50+'" fill="none" stroke="#b18cff" stroke-width="1.1" opacity=".8"/>';
+    if(d20)g+='<path d="'+d20+'" fill="none" stroke="#ffd166" stroke-width="1.3" opacity=".9"/>';
+    if(vmax>0){
+      bars.forEach((b,i)=>{
+        if(!b.v)return;
+        const h=(b.v/vmax)*(VB-VT);
+        g+='<rect x="'+(cx(i)-bw/2).toFixed(1)+'" y="'+(VB-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="'+(b.c>=b.o?'rgba(255,92,92,.5)':'rgba(79,143,247,.5)')+'"/>';
+      });
+    }
+    bars.forEach((b,i)=>{
+      const up=b.c>=b.o,col=up?'#ff5c5c':'#4f8ff7',x=cx(i);
+      g+='<line x1="'+x.toFixed(1)+'" y1="'+Y(b.h).toFixed(1)+'" x2="'+x.toFixed(1)+'" y2="'+Y(b.l).toFixed(1)+'" stroke="'+col+'"/>'
+        +'<rect x="'+(x-bw/2).toFixed(1)+'" y="'+Y(Math.max(b.o,b.c)).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+Math.max(1,Math.abs(Y(b.o)-Y(b.c))).toFixed(1)+'" fill="'+col+'"/>';
+    });
+    const last=bars[n-1];
+    g+='<line x1="'+X0+'" y1="'+Y(last.c).toFixed(1)+'" x2="'+X1+'" y2="'+Y(last.c).toFixed(1)+'" stroke="rgba(237,244,255,.45)" stroke-dasharray="2 4"/>'
+      +'<circle cx="'+cx(n-1).toFixed(1)+'" cy="'+Y(last.c).toFixed(1)+'" r="3.2" fill="#edf4ff"/>';
+    for(let i=0;i<n;i+=12){
+      g+='<text x="'+cx(i).toFixed(1)+'" y="294" text-anchor="middle" font-size="9.5" fill="#5f748c">'+esc(bars[i].d)+'</text>';
+    }
+    chartGeom={X0,step,n,bars,lo,hi,PT,PB};
+    return '<div class="mx-chart-wrap" id="mx-chart-wrap"><svg id="mx-chart" viewBox="0 0 720 300" style="width:100%;height:auto;display:block" role="img" aria-label="60일 가격 차트">'
+      +g
+      +'<g id="mx-xh" style="display:none"><line id="mx-xhl" y1="'+PT+'" y2="'+VB+'" stroke="rgba(237,244,255,.4)"/><circle id="mx-xhc" r="3.6" fill="none" stroke="#edf4ff" stroke-width="1.6"/></g>'
+      +'<rect id="mx-hover" x="'+X0+'" y="'+PT+'" width="'+(X1-X0)+'" height="'+(VB-PT)+'" fill="transparent"/></svg>'
+      +'<div class="mx-tt" id="mx-tt"></div></div>'
+      +'<div class="mx-glab" style="margin-top:2px"><span><span style="color:#ffd166">—</span> MA20 · <span style="color:#b18cff">—</span> MA50 · <span style="color:#ff5c5c">■</span> 상승 <span style="color:#4f8ff7">■</span> 하락</span><span>완료세션 '+n+'일 · 차트에 마우스를 올려보세요</span></div>';
+  }
+
+  // ---------- v4: risk/reward scenario card ----------
+  function rrCard(title,entry,target,stop,targetLabel){
+    if(entry==null||target==null||stop==null)return '';
+    const gain=target-entry,loss=entry-stop;
+    if(gain<=0||loss<=0)return '';
+    const r=gain/loss,gp=gain/entry*100,lp=loss/entry*100,tot=gp+lp;
+    return '<div class="mx-fcard" style="text-align:left"><div class="mx-fname">'+title+'</div>'
+      +'<div style="font-size:22px;font-weight:900;margin:4px 0">손익비 1 : '+r.toFixed(1)+'</div>'
+      +'<div class="mx-rrbar"><div style="width:'+(lp/tot*100).toFixed(1)+'%;background:#ff7b7b"></div><div style="width:'+(gp/tot*100).toFixed(1)+'%;background:#63e6be"></div></div>'
+      +'<div class="mx-note">진입 '+fmt(entry)+'원 → 목표 '+fmt(target)+'원 ('+targetLabel+', <span style="color:#63e6be">+'+gp.toFixed(1)+'%</span>) · 손절 '+fmt(stop)+'원 (<span style="color:#ff7b7b">−'+lp.toFixed(1)+'%</span>)</div></div>';
+  }
+
   function devBar(label,pct,valText,cap){
     if(pct==null)return '<div class="mx-dbar"><div>'+label+'</div><div class="mx-dbt"><div class="mx-dbc"></div></div><div class="mx-dbv">—</div></div>';
     const w=Math.min(Math.abs(pct)/cap*50,50);
@@ -218,6 +308,17 @@
 
   let html='';
 
+  // ---------- v4 blocks (chart + scenarios), computed once ----------
+  const chartHtml=chartSVG(s);
+  const zoneMid=(s.buy_zone&&s.buy_zone[0]!=null&&s.buy_zone[1]!=null)?(s.buy_zone[0]+s.buy_zone[1])/2:null;
+  const boIsHigh=(s.trigger!=null&&s.high20_actual!=null&&s.high20_actual>s.trigger);
+  const boTarget=s.trigger==null?null:(boIsHigh?s.high20_actual:Math.round(s.trigger*1.1));
+  const cardBO=rrCard('🚀 돌파 시나리오',s.trigger,boTarget,s.invalidation,boIsHigh?'20일 고가':'트리거 +10%');
+  const cardPB=rrCard('🧲 눌림 시나리오',zoneMid,s.trigger,s.invalidation,'돌파 트리거');
+  const scenarioHtml=(cardBO||cardPB)
+    ?'<div class="mx-h">🎯 진입 시나리오 손익비</div><div class="mx-fev">'+cardBO+cardPB+'</div><div class="mx-note">셋업 수치 기준의 기계적 계산입니다 — 실제 진입은 종가 확인과 근거 검증이 우선입니다.</div>'
+    :'';
+
   // ---------- 1) LIVE GATE header ----------
   html+='<div class="mx-top"><div>'
     +'<div class="mx-h" style="margin:0">MINGO V2 · LIVE GATE<span class="mx-live">● LIVE</span></div>'
@@ -239,11 +340,13 @@
     +'<tr><td>돌파 트리거</td><td>'+fmt(s.trigger)+'원'+(dTrig!=null?' <span class="mx-sub">(현재가에서 '+fp(dTrig)+')</span>':'')+'</td></tr>'
     +'<tr><td>무효화</td><td>'+fmt(s.invalidation)+'원'+(dInv!=null?' <span class="mx-sub">(여유 '+fp(dInv)+')</span>':'')+'</td></tr>'
     +'</table>'
+    +(chartHtml?'<div class="mx-h">📈 실제 차트 — 캔들 · MA20/50 · 거래량</div>'+chartHtml:'')
     +'<div class="mx-h">실행점수 구성</div>'
     +scoreBar('기술',s.technical_score)
     +scoreBar('추세',s.trend_score)
     +scoreBar('상대수익',s.relative_return_score)
-    +'<div class="mx-note">레짐 보정 '+(s.regime_adjustment>=0?'+':'')+(s.regime_adjustment??'—')+' ('+esc(s.regime_label||'')+') 포함 → 실행점수 <b style="color:#edf4ff">'+(s.execution_score??'—')+'</b></div>';
+    +'<div class="mx-note">레짐 보정 '+(s.regime_adjustment>=0?'+':'')+(s.regime_adjustment??'—')+' ('+esc(s.regime_label||'')+') 포함 → 실행점수 <b style="color:#edf4ff">'+(s.execution_score??'—')+'</b></div>'
+    +scenarioHtml;
 
   // ---------- 3) GATE checklist ----------
   const checks=[
@@ -358,4 +461,61 @@
     (thesis||h1||document.body).insertAdjacentElement('afterend',box);
   }
   box.innerHTML=html;
+
+  // ---------- v4: sticky mini bar ----------
+  const sb=document.createElement('div');
+  sb.className='mx-sticky';
+  sb.innerHTML='<span class="mx-dot" style="background:'+stateColor+'"></span><b>'+esc(s.name||'')+'</b><span>'+fmt(s.price)+'원</span><span class="mx-chg '+(s.change_pct>=0?'up':'dn')+'">'+fp(s.change_pct)+'</span><span style="margin-left:auto;font-weight:800;color:'+stateColor+'">'+esc(s.label||'')+'</span>';
+  document.body.appendChild(sb);
+  addEventListener('scroll',()=>{ sb.classList.toggle('on',scrollY>430); },{passive:true});
+
+  // ---------- v4: count-up on the two header donuts ----------
+  box.querySelectorAll('.mx-tr .mx-donut text').forEach(t=>{
+    const target=parseFloat(t.textContent);
+    if(isNaN(target))return;
+    const dec=(t.textContent.split('.')[1]||'').length;
+    const t0=performance.now();
+    const tick=now=>{
+      const p=Math.min(1,(now-t0)/800),e=1-Math.pow(1-p,3);
+      t.textContent=(target*e).toFixed(dec);
+      if(p<1)requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+
+  // ---------- v4: chart hover crosshair + tooltip ----------
+  const wrap=document.getElementById('mx-chart-wrap');
+  if(wrap&&chartGeom){
+    const svg=document.getElementById('mx-chart'),tt=document.getElementById('mx-tt'),
+      xh=document.getElementById('mx-xh'),xhl=document.getElementById('mx-xhl'),
+      xhc=document.getElementById('mx-xhc'),hov=document.getElementById('mx-hover');
+    const G=chartGeom,Y=v=>G.PT+(G.hi-v)/(G.hi-G.lo)*(G.PB-G.PT);
+    const show=i=>{
+      const b=G.bars[i]; if(!b)return;
+      const x=G.X0+G.step*(i+0.5);
+      xh.style.display='';
+      xhl.setAttribute('x1',x); xhl.setAttribute('x2',x);
+      xhc.setAttribute('cx',x); xhc.setAttribute('cy',Y(b.c));
+      const chg=b.o?((b.c/b.o-1)*100):null;
+      tt.innerHTML='<b>'+esc(b.d)+'</b> · 종가 <b>'+fmt(b.c)+'</b>'+(chg!=null?' <span style="color:'+(chg>=0?'#ff8f8f':'#8fb8ff')+'">'+fp(chg)+'</span>':'')
+        +'<br>시 '+fmt(b.o)+' · 고 '+fmt(b.h)+' · 저 '+fmt(b.l)
+        +'<br>거래량 '+(b.v!=null?Math.round(b.v).toLocaleString('ko-KR')+'주':'—');
+      tt.style.display='block';
+      const wr=wrap.getBoundingClientRect();
+      let lx=(x/720)*wr.width+12;
+      if(lx>wr.width-160)lx=Math.max(0,(x/720)*wr.width-160);
+      tt.style.left=lx+'px'; tt.style.top='6px';
+    };
+    const hide=()=>{ xh.style.display='none'; tt.style.display='none'; };
+    const idxFromEvent=e=>{
+      const r=svg.getBoundingClientRect();
+      const px=((e.touches?e.touches[0].clientX:e.clientX)-r.left);
+      const vx=px/r.width*720;
+      return Math.max(0,Math.min(G.n-1,Math.floor((vx-G.X0)/G.step)));
+    };
+    hov.addEventListener('mousemove',e=>show(idxFromEvent(e)));
+    hov.addEventListener('mouseleave',hide);
+    hov.addEventListener('touchstart',e=>show(idxFromEvent(e)),{passive:true});
+    hov.addEventListener('touchmove',e=>show(idxFromEvent(e)),{passive:true});
+  }
 })();

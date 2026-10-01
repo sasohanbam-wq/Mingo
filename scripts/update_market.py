@@ -118,6 +118,37 @@ def select_completed(df, expected_session):
     return eligible, latest, (latest == expected_session)
 
 
+def chart_series(hist, n=60):
+    """Compact completed-session OHLCV tail for the stock detail page chart.
+
+    Muse 2026-10-01: detail pages draw a real candle chart (with MA20/MA50
+    overlays) from this field. Additive only; whole-won rounding keeps the
+    payload small. MA values are computed on the full history, then aligned
+    to the displayed tail.
+    """
+    if hist is None or len(hist) == 0:
+        return []
+    closes = pd.Series(hist["Close"].values, dtype=float)
+    ma20 = closes.rolling(20).mean()
+    ma50 = closes.rolling(50).mean()
+    tail = hist.tail(n)
+    base = len(hist) - len(tail)
+
+    def _v(x):
+        return None if x is None or pd.isna(x) else int(round(float(x)))
+
+    out = []
+    for j, (_, r) in enumerate(tail.iterrows()):
+        i = base + j
+        out.append({
+            "d": str(r["_session_date"])[5:],
+            "o": _v(r["Open"]), "h": _v(r["High"]), "l": _v(r["Low"]),
+            "c": _v(r["Close"]), "v": _v(r["Volume"]),
+            "ma20": _v(ma20.iloc[i]), "ma50": _v(ma50.iloc[i]),
+        })
+    return out
+
+
 def trailing_return(series, n):
     s = pd.Series(series, dtype=float).dropna()
     if len(s) <= n:
@@ -648,6 +679,7 @@ def process_stock(stock, bench_df, context, research_map, intraday_snapshot=Fals
         "benchmark_status": "aligned" if benchmark_aligned else "stale_or_unavailable",
         "expected_completed_session": context["expected_completed_session"],
         "session": context["market_state"],
+        "chart": chart_series(hist),
         "calculated_at": context["calculated_at"],
         "data_status": "valid" if data_valid else "stale",
         "quote_valid": data_valid,
