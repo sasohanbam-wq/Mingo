@@ -138,7 +138,7 @@
   if(ev){
     for(const k of ['F','E','V']){s['research_'+k]=ev[k]?.score??null;s['research_'+k+'_status']=ev[k]?.status||'unverified';}
     s.evidence_notes=['F','E','V'].flatMap(k=>ev[k]?.basis||[]);
-    s.evidence_sources=[...new Set(['F','E','V'].flatMap(k=>ev[k]?.sources||[]))];
+    s.evidence_sources=[...new Set(['F','E','V'].flatMap(k=>ev[k]?.sources||[]).concat(Object.values(s.market_sources||{}),s.rs_score!=null?['https://stockeasy.intellio.kr/stock-analysis/stock-info/'+code]:[]))];
     s.research_next_check=ev.next_check||[];
     s.provisional_research_score=ev.provisional_research_score;
     if(!['F','E','V'].every(k=>ev[k]?.status==='verified'))s.research_score=null;
@@ -408,7 +408,7 @@
     +'<div class="mx-kv"><div class="mx-k">20일 구간 내 위치</div><div class="mx-v">'+(rangePos==null?'—':rangePos.toFixed(0)+'%')+'</div>'
     +(rangePos!=null?'<div class="mx-gtrack flat"><div class="mx-gmark" style="left:'+rangePos.toFixed(1)+'%"></div></div><div class="mx-glab"><span>저가 '+fmt(s.low20_actual)+'</span><span>고가 '+fmt(s.high20_actual)+'</span></div>':'')
     +'</div>'
-    +'<div class="mx-kv"><div class="mx-k">MA20 이격 (완료세션 종가)</div><div class="mx-v">'+fp(s.extension_ma20_pct)+'</div><div class="mx-note">지수 대비 상대 이격 '+fp(s.excess_extension_ma20_pct)+'</div></div>'
+    +'<div class="mx-kv"><div class="mx-k">MA20 이격 (완료세션 종가)</div><div class="mx-v">'+fp(s.extension_ma20_pct)+'</div><div class="mx-note">'+(s.excess_extension_ma20_pct==null?'지수 MA20 이격 원자료 미확인': '지수 대비 상대 이격 '+fp(s.excess_extension_ma20_pct))+'</div></div>'
     +'<div class="mx-kv"><div class="mx-k">종합 RS · 스탁이지</div><div class="mx-v">'+(s.rs_score??'—')+'</div>'
     +(s.rs_score!=null?'<div class="mx-minibar"><div style="width:'+Math.max(0,Math.min(100,s.rs_score))+'%;background:#5ee6c4"></div></div><div class="mx-note">기준 '+(s.rs_basis_date||'—')+' 종가 '+fmt(s.rs_basis_price)+'원'+(s.rs_status==='stale_fallback'?' · ⚠️ 갱신 실패로 직전 값':'')+' · 출처 stockeasy.intellio.kr</div>':'<div class="mx-note">스탁이지 RS를 아직 가져오지 못했습니다.</div>')
     +'</div>'
