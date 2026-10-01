@@ -153,6 +153,17 @@ summary{cursor:pointer;padding:15px 16px;font-weight:850}
 @media(max-width:760px){.mstrip{grid-template-columns:1fr 1fr}.mstrip .mcard:last-child{grid-column:1/-1}.feat{grid-template-columns:1fr 1fr}.summary{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.pick{grid-template-columns:auto 1fr}.pick .spark,.pickright{display:none}.pickright.mshow{display:block}.stock{grid-template-columns:auto 1fr auto}.stock .spark,.stock .ringwrap{display:none}.feat{grid-template-columns:1fr 1fr}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.001s!important;transition-duration:.001s!important}}
+.holdbadge{display:inline-block;background:linear-gradient(135deg,#ffd166,#f59e0b);color:#231a04;font-size:10px;font-weight:900;border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+.schip{display:inline-block;font-size:10px;font-weight:800;border-radius:999px;padding:2px 8px;margin-right:4px;border:1px solid}
+.schip.trend{color:#7dd3fc;border-color:rgba(125,211,252,.4);background:rgba(56,150,255,.1)}
+.schip.value{color:#6ee7b7;border-color:rgba(110,231,183,.35);background:rgba(52,225,160,.08)}
+.schip.event{color:#d8b4fe;border-color:rgba(216,180,254,.35);background:rgba(167,139,250,.1)}
+.schip.hor{color:var(--sub);border-color:var(--line);background:rgba(255,255,255,.03)}
+#holdBtn{border:1px solid var(--line);background:#111827;color:var(--sub);border-radius:999px;padding:8px 13px;font-weight:800;cursor:pointer;font-size:12px}
+#holdBtn.on{background:linear-gradient(135deg,#ffd166,#f59e0b);color:#231a04;border-color:transparent}
+#styleSel{background:#111827;color:var(--text);border:1px solid var(--line);border-radius:999px;padding:8px 10px;font-weight:700;font-size:12px;cursor:pointer}
+.summary .holdb{border-color:rgba(255,209,102,.35)!important;background:rgba(255,209,102,.07)}
+.summary .holdb small,.summary .holdb b{color:var(--gold)}
 </style></head><body>
 <div class="aurora"><i></i><i></i><i></i></div>
 <main class="wrap">
@@ -173,7 +184,7 @@ summary{cursor:pointer;padding:15px 16px;font-weight:850}
 <div class="marquee fadeup" id="marquee" style="display:none"><div class="mqTrack" id="mqTrack"></div></div>
 
 <div id="verdict" class="notice fadeup">판단을 계산하는 중…</div>
-<div class="summary fadeup"><button class="go" data-jump="green"><small>🟢 매수 검토 가능</small><b id="greenCount">—</b></button><button class="watch" data-jump="blue"><small>🔵 가격관찰만</small><b id="blueCount">—</b></button><button class="wait" data-jump="yellow"><small>🟡 기다림</small><b id="yellowCount">—</b></button><button class="no" data-jump="red"><small>🔴 제외/보류</small><b id="redCount">—</b></button></div>
+<div class="summary fadeup"><button class="go" data-jump="green"><small>🟢 매수 검토 가능</small><b id="greenCount">—</b></button><button class="watch" data-jump="blue"><small>🔵 가격관찰만</small><b id="blueCount">—</b></button><button class="wait" data-jump="yellow"><small>🟡 기다림</small><b id="yellowCount">—</b></button><button class="no" data-jump="red"><small>🔴 제외/보류</small><b id="redCount">—</b></button><button class="holdb" id="holdJump"><small>💼 보유</small><b id="holdCount">—</b></button></div>
 <div id="error" class="error"></div>
 
 <div class="sectionhead"><h2><span class="em">🔥</span> 오늘의 특징주</h2><span class="hint">급등 · RS · 거래량 · 트리거 — 데이터로 자동 선정</span></div>
@@ -191,6 +202,7 @@ summary{cursor:pointer;padding:15px 16px;font-weight:850}
 <div class="sectionhead"><h2>실행 보드</h2><span id="count" class="hint"></span></div>
 <div class="tabs"><button class="tab active" data-filter="all">전체</button><button class="tab" data-filter="green">🟢 매수 검토</button><button class="tab" data-filter="blue">🔵 가격관찰</button><button class="tab" data-filter="yellow">🟡 기다림</button><button class="tab" data-filter="red">🔴 제외/보류</button><button class="tab" data-filter="gray">⚪ 데이터 오류</button></div>
 <input id="search" class="search" placeholder="종목 검색">
+<div style="display:flex;gap:8px;margin-top:8px"><button id="holdBtn" type="button">💼 보유만</button><select id="styleSel"><option value="">스타일 전체</option><option>추세추종</option><option>가치투자</option><option>이벤트</option></select></div>
 <div id="stockList" class="list"><div class="skrow" style="padding:14px"><div class="sk" style="width:38px;height:38px;border-radius:11px"></div><div style="flex:1"><div class="sk" style="height:14px;width:30%"></div><div class="sk" style="height:11px;width:58%;margin-top:7px"></div></div></div><div class="skrow" style="padding:14px"><div class="sk" style="width:38px;height:38px;border-radius:11px"></div><div style="flex:1"><div class="sk" style="height:14px;width:26%"></div><div class="sk" style="height:11px;width:50%;margin-top:7px"></div></div></div><div class="skrow" style="padding:14px"><div class="sk" style="width:38px;height:38px;border-radius:11px"></div><div style="flex:1"><div class="sk" style="height:14px;width:33%"></div><div class="sk" style="height:11px;width:64%;margin-top:7px"></div></div></div></div>
 
 <details><summary>📐 V2 점수/게이트 방식</summary><div class="inside">
@@ -210,6 +222,7 @@ summary{cursor:pointer;padding:15px 16px;font-weight:850}
 </main>
 <script>
 let DATA=null,EV=null,filter='all',themeFilter=null;
+let TAGS={};
 const EV_INDEX='https://github.com/sasohanbam-wq/Mingo/blob/main/research/README.md';
 const fmt=n=>n==null?'—':Math.round(n).toLocaleString('ko-KR');
 const fpct=n=>n==null?'—':(n>0?'+':'')+Number(n).toFixed(2)+'%';
@@ -220,6 +233,8 @@ function actionText(s){return s.analysis_pending?'대기/검증중':s.state==='g
 function stLabel(st){return st==='verified'?'완료':st==='partial'?'부분':'N/A'}
 const AVHUES=[164,210,262,18,96,330,196,44,288,130,230,0,76,308,178,20,244,150,200,340,110,270,30,190,220,160,300];
 function avatar(s,i){const h=AVHUES[(i==null?s.code.split('').reduce((a,c)=>a+c.charCodeAt(0),0):i)%AVHUES.length];return '<div class="avatar" style="background:linear-gradient(135deg,hsl('+h+',85%,68%),hsl('+((h+40)%360)+',80%,52%))">'+s.name.slice(0,1)+'</div>'}
+function tagChips(s){const t=TAGS[s.code];if(!t||!t.style)return '';const cls=t.style==='추세추종'?'trend':t.style==='가치투자'?'value':'event';return '<span class="schip '+cls+'">'+t.style+'</span>'+(t.horizon?'<span class="schip hor">'+t.horizon+'</span>':'')}
+function holdBadge(s){return TAGS[s.code]&&TAGS[s.code].holding?'<span class="holdbadge">💼 보유</span>':''}
 function rsBadge(s){if(s.rs_score==null)return '';const c=s.rs_score>=90?'rsS':s.rs_score>=70?'rsA':s.rs_score>=50?'rsB':'rsC';return ' <span class="rsbadge '+c+'" title="스탁이지 종합 RS · 기준 '+(s.rs_basis_date||'—')+'">RS '+s.rs_score+'</span>'}
 function closes(s,n){const ch=(s.chart||[]).map(x=>x.c).filter(x=>x!=null);return n?ch.slice(-n):ch}
 function sparkSVG(vals,w,h,color,cls){
@@ -346,8 +361,9 @@ function row(s,i){
  const priceLabel=s.live?'실시간':(snap?'수동조회':'완료세션');
  const timeLabel=s.live?(s.live_timestamp||'방금'):(snap?(s.price_timestamp||'방금'):(s.quote_as_of||'—'));
  const vals=closes(s,30), col=s.change_pct>=0?'#ff5c5c':'#4f8ff7';
- return '<a class="stock" data-state="'+s.state+'" data-theme="'+bucketOf(s)+'" data-name="'+s.name.toLowerCase()+'" href="'+(s.research_note?'https://github.com/sasohanbam-wq/Mingo/blob/main/'+s.research_note:'stocks/'+s.page)+'">'+avatar(s,i)
- +'<div><b>'+s.name+'</b> <span class="ticker">'+s.code+'</span>'+rsBadge(s)+'<div class="desc">'+s.theme+'</div><div class="meta">'+priceLabel+' '+fmt(s.price)+'원 · '+timeLabel+' · <span class="'+chgCls(s.change_pct)+'">'+chgArrow(s.change_pct)+' '+fpct(s.change_pct)+'</span> · RSI '+(s.rsi14_wilder??'—')+'</div><div class="meta">'+s.setup_reason+'</div></div>'
+ const tg=TAGS[s.code]||{};
+ return '<a class="stock" data-state="'+s.state+'" data-theme="'+bucketOf(s)+'" data-name="'+s.name.toLowerCase()+'" data-holding="'+(tg.holding?1:0)+'" data-style="'+(tg.style||'')+'" href="'+(s.research_note?'https://github.com/sasohanbam-wq/Mingo/blob/main/'+s.research_note:'stocks/'+s.page)+'">'+avatar(s,i)
+ +'<div><b>'+s.name+'</b>'+holdBadge(s)+' <span class="ticker">'+s.code+'</span>'+rsBadge(s)+'<div class="desc">'+s.theme+'</div><div class="meta">'+priceLabel+' '+fmt(s.price)+'원 · '+timeLabel+' · <span class="'+chgCls(s.change_pct)+'">'+chgArrow(s.change_pct)+' '+fpct(s.change_pct)+'</span> · RSI '+(s.rsi14_wilder??'—')+'</div>'+(tagChips(s)?'<div style="margin:5px 0 1px">'+tagChips(s)+'</div>':'')+'<div class="meta">'+s.setup_reason+'</div></div>'
  +sparkSVG(vals,86,32,col,'spark')
  +'<div class="stockright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="meta" style="margin-top:6px">'+priceLabel+' <b style="color:var(--text)">'+fmt(s.price)+'원</b></div><div class="meta '+(ev==='verified'?'':'warn')+'">'+researchStatus(s)+' · 연구 '+completeResearchScore(s)+'</div>'+provisionalLabel(s)+evBadge(s)+'</div>'
  +ringSVG(s.execution_score)+'</a>';
@@ -361,10 +377,10 @@ function render(d){
  document.getElementById('regimeChip').textContent=(!rg||rg.level==='unknown'||rg.index_extension_ma20_pct==null)?'시장 레짐 판정 불가':('시장 레짐 '+rg.label+' · 지수 MA20 이격 '+fpct(rg.index_extension_ma20_pct)+' · 실행 보정 '+(rg.execution_adjustment>0?'+':'')+(rg.execution_adjustment??0));
  document.getElementById('count').textContent=d.stocks.length+'종목';
  const counts=Object.fromEntries(['green','blue','yellow','red'].map(x=>[x,d.stocks.filter(s=>s.state===x).length]));
- countUp(document.getElementById('greenCount'),counts.green,'개');countUp(document.getElementById('blueCount'),counts.blue,'개');countUp(document.getElementById('yellowCount'),counts.yellow,'개');countUp(document.getElementById('redCount'),counts.red,'개');
+ countUp(document.getElementById('greenCount'),counts.green,'개');countUp(document.getElementById('blueCount'),counts.blue,'개');countUp(document.getElementById('yellowCount'),counts.yellow,'개');countUp(document.getElementById('redCount'),counts.red,'개');countUp(document.getElementById('holdCount'),d.stocks.filter(s=>TAGS[s.code]&&TAGS[s.code].holding).length,'개');
  document.getElementById('verdict').innerHTML=counts.green?'<b>오늘 매수 검토 가능한 종목은 '+counts.green+'개입니다.</b> 그래도 종목 상세의 리스크와 손절선을 확인하세요.':'<b>현재 매수 검토 가능한 종목은 0개입니다.</b> 🔵 '+counts.blue+'개는 가격만 조건을 충족했을 뿐 기업 검증이 끝나지 않았으므로 매수 후보가 아닙니다.';
  renderStrip(d); renderMarquee(d); renderFeat(d); renderThemes(d);
- const card=s=>'<a class="pick" href="'+(s.research_note?'https://github.com/sasohanbam-wq/Mingo/blob/main/'+s.research_note:'stocks/'+s.page)+'">'+avatar(s)+'<div><div class="pickname">'+s.name+rsBadge(s)+'</div><div class="reason">'+s.setup_reason+'</div></div>'+sparkSVG(closes(s,30),86,32,s.change_pct>=0?'#ff5c5c':'#4f8ff7','spark')+'<div class="pickright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="scorebig">가격점수 '+s.execution_score+'</div><div class="price">'+fmt(s.price)+'원 <span class="'+chgCls(s.change_pct)+'">'+fpct(s.change_pct)+'</span></div><div class="trigger">구간 '+fmt(s.buy_zone?.[0])+'~'+fmt(s.buy_zone?.[1])+' · 트리거 '+fmt(s.trigger)+'</div></div></a>';
+ const card=s=>'<a class="pick" href="'+(s.research_note?'https://github.com/sasohanbam-wq/Mingo/blob/main/'+s.research_note:'stocks/'+s.page)+'">'+avatar(s)+'<div><div class="pickname"'+s.name+holdBadge(s)+rsBadge(s)+'</div>'+(tagChips(s)?'<div style="margin:5px 0 1px">'+tagChips(s)+'</div>':'')+'<div class="reason">'+s.setup_reason+'</div></div>'+sparkSVG(closes(s,30),86,32,s.change_pct>=0?'#ff5c5c':'#4f8ff7','spark')+'<div class="pickright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="scorebig">가격점수 '+s.execution_score+'</div><div class="price">'+fmt(s.price)+'원 <span class="'+chgCls(s.change_pct)+'">'+fpct(s.change_pct)+'</span></div><div class="trigger">구간 '+fmt(s.buy_zone?.[0])+'~'+fmt(s.buy_zone?.[1])+' · 트리거 '+fmt(s.trigger)+'</div></div></a>';
  const approved=d.stocks.filter(s=>s.quote_valid&&s.state==='green').slice(0,5);
  const watch=d.stocks.filter(s=>s.quote_valid&&s.state==='blue').slice(0,5);
  document.getElementById('top5').innerHTML=approved.length?approved.map(card).join(''):'<div class="sub" style="padding:12px 2px"><b>현재 0개.</b> 억지로 매수 후보를 만들지 않습니다.</div>';
@@ -378,8 +394,10 @@ function render(d){
 function apply(){
  if(!DATA)return;
  const term=document.getElementById('search').value.trim().toLowerCase();
+ const holdOnly=document.getElementById('holdBtn').classList.contains('on');
+ const styleF=document.getElementById('styleSel').value;
  document.querySelectorAll('.stock[data-state]').forEach(el=>{
-   const ok=(filter==='all'||el.dataset.state===filter)&&(!themeFilter||el.dataset.theme===themeFilter)&&(!term||el.dataset.name.includes(term)||el.textContent.toLowerCase().includes(term));
+   const ok=(filter==='all'||el.dataset.state===filter)&&(!themeFilter||el.dataset.theme===themeFilter)&&(!term||el.dataset.name.includes(term)||el.textContent.toLowerCase().includes(term))&&(!holdOnly||el.dataset.holding==='1')&&(!styleF||el.dataset.style===styleF);
    el.classList.toggle('hidden',!ok);
  });
 }
@@ -390,8 +408,9 @@ async function refreshScores(){
  try{
    const d=await get('live_scores.json');
    if(!d||d.version!==2)throw new Error('v2 score snapshot not ready');
-   const evP=get('research_evidence.json'),cvP=get('content_verification_2026-10-01.json'),anP=get('analyzed_stocks.json');
-   const ev=await evP,cv=await cvP,an=await anP;
+   const evP=get('research_evidence.json'),cvP=get('content_verification_2026-10-01.json'),anP=get('analyzed_stocks.json'),tgP=get('stock_tags.json');
+   const ev=await evP,cv=await cvP,an=await anP,tg=await tgP;
+   if(tg&&tg.tags)TAGS=tg.tags;
    if(an&&Array.isArray(an.stocks)){const present=new Set(d.stocks.map(s=>s.code));an.stocks.forEach(s=>{if(!present.has(s.code)){d.stocks.push({...s,analysis_pending:true,state:'yellow',quote_valid:false,setup_pass:false,research_score:null,execution_score:null});present.add(s.code)}})}
    EV={};
    if(ev&&ev.stocks)Object.entries(ev.stocks).forEach(([code,s])=>{EV[code]={kind:'evidence',name:s.name,F:s.F&&s.F.status,E:s.E&&s.E.status,V:s.V&&s.V.status,F_score:s.F&&s.F.score,E_score:s.E&&s.E.score,V_score:s.V&&s.V.score,provisional:s.provisional_research_score,overall:s.overall_status};});
@@ -405,6 +424,9 @@ function tickClock(){try{document.getElementById('clock').textContent=new Date()
 setInterval(tickClock,1000);tickClock();
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;apply()}));
 document.getElementById('search').addEventListener('input',apply);
+document.getElementById('holdBtn').addEventListener('click',e=>{e.currentTarget.classList.toggle('on');apply()});
+document.getElementById('styleSel').addEventListener('change',apply);
+document.getElementById('holdJump').addEventListener('click',()=>{const b=document.getElementById('holdBtn');if(!b.classList.contains('on'))b.click();document.getElementById('stockList').scrollIntoView({behavior:'smooth',block:'start'})});
 document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>{document.querySelector('.tab[data-filter="'+b.dataset.jump+'"]').click();document.getElementById('stockList').scrollIntoView({behavior:'smooth'})}));
 document.getElementById('refreshBtn').addEventListener('click',refreshScores);
 refreshScores();setInterval(refreshScores,300000);

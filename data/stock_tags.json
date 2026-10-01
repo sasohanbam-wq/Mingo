@@ -1,0 +1,199 @@
+{
+ "version": 1,
+ "updated_at": "2026-10-01T13:25:00+09:00",
+ "note": "뮤즈 관리 태그 파일. update_market.py·지피티 파일과 무관하게 유지됨. holding=보유 여부(2026-09-28 보유 10종 ∪ 2026-10-01 노션 보유 5종표 합집합 중 보드 종목), style=추세추종/가치투자/이벤트, horizon=단기/중장기/장기. 초안 — 사용자 확인 후 조정.",
+ "tags": {
+  "222800": {
+   "name": "심텍",
+   "holding": false,
+   "style": "추세추종",
+   "horizon": "중장기"
+  },
+  "039030": {
+   "name": "이오테크닉스",
+   "holding": true,
+   "style": "추세추종",
+   "horizon": "중장기"
+  },
+  "067310": {
+   "name": "하나마이크론",
+   "holding": true,
+   "style": "추세추종",
+   "horizon": "중장기"
+  },
+  "200470": {
+   "name": "에이팩트",
+   "holding": false,
+   "style": "이벤트",
+   "horizon": "단기"
+  },
+  "053610": {
+   "name": "프로텍",
+   "holding": false,
+   "style": "추세추종",
+   "horizon": "중장기"
+  },
+  "083450": {
+   "name": "GST",
+   "holding": false,
+   "style": "가치투자",
+   "horizon": "중장기"
+  },
+  "101160": {
+   "name": "월덱스",
+   "holding": false,
+   "style": "가치투자",
+   "horizon": "중장기"
+  },
+  "005290": {
+   "name": "동진쎄미켐",
+   "holding": false,
+   "style": "가치투자",
+   "horizon": "중장기"
+  },
+  "452430": {
+   "name": "사피엔반도체",
+   "holding": false,
+   "style": "추세추종",
+   "horizon": "단기"
+  },
+  "119850": {
+   "name": "지엔씨에너지",
+   "holding": false,
+   "style": "가치투자",
+   "horizon": "중장기"
+  },
+  "005090": {
+   "name": "SGC에너지",
+   "holding": true,
+   "style": "가치투자",
+   "horizon": "중장기"
+  },
+  "322000": {
+   "name": "HD현대에너지솔루션",
+   "holding": true,
+   "style": "이벤트",
+   "horizon": "중장기"
+  },
+  "083650": {
+   "name": "비에이치아이",
+   "holding": false,
+   "style": "이벤트",
+   "horizon": "중장기"
+  },
+  "388050": {
+   "name": "지투파워",
+   "holding": false,
+   "style": "추세추종",
+   "horizon": "단기"
+  },
+  "011560": {
+   "name": "세보엠이씨",
+   "holding": false,
+   "style": "가치투자",
+   "horizon": "중장기"
+  },
+  "000720": {
+   "name": "현대건설",
+   "holding": false,
+   "style": "가치투자",
+   "horizon": "중장기"
+  },
+  "006360": {
+   "name": "GS건설",
+   "holding": false,
+   "style": "가치투자",
+   "horizon": "중장기"
+  },
+  "007340": {
+   "name": "DN오토모티브",
+   "holding": true,
+   "style": "가치투자",
+   "horizon": "중장기"
+  },
+  "033160": {
+   "name": "엠케이전자",
+   "holding": true,
+   "style": "가치투자",
+   "horizon": "중장기"
+  },
+  "082920": {
+   "name": "비츠로셀",
+   "holding": false,
+   "style": "추세추종",
+   "horizon": "중장기"
+  },
+  "108490": {
+   "name": "로보티즈",
+   "holding": true,
+   "style": "추세추종",
+   "horizon": "장기"
+  },
+  "170920": {
+   "name": "엘티씨",
+   "holding": false,
+   "style": "추세추종",
+   "horizon": "단기"
+  },
+  "039830": {
+   "name": "오로라",
+   "holding": false,
+   "style": "가치투자",
+   "horizon": "단기"
+  },
+  "475960": {
+   "name": "토모큐브",
+   "holding": false,
+   "style": "이벤트",
+   "horizon": "단기"
+  },
+  "290650": {
+   "name": "엘앤씨바이오",
+   "holding": false,
+   "style": "추세추종",
+   "horizon": "중장기"
+  },
+  "042000": {
+   "name": "카페24",
+   "holding": false,
+   "style": "가치투자",
+   "horizon": "단기"
+  },
+  "001450": {
+   "name": "현대해상",
+   "holding": false,
+   "style": "가치투자",
+   "horizon": "장기"
+  },
+  "128940": {
+   "name": "한미약품",
+   "holding": false,
+   "style": "이벤트",
+   "horizon": "중장기"
+  },
+  "192820": {
+   "name": "코스맥스",
+   "holding": false,
+   "style": "추세추종",
+   "horizon": "중장기"
+  },
+  "003160": {
+   "name": "디아이",
+   "holding": false,
+   "style": "추세추종",
+   "horizon": "중장기"
+  },
+  "131290": {
+   "name": "티에스이",
+   "holding": false,
+   "style": "추세추종",
+   "horizon": "중장기"
+  },
+  "010120": {
+   "name": "LS ELECTRIC",
+   "holding": false,
+   "style": "추세추종",
+   "horizon": "중장기"
+  }
+ }
+}
