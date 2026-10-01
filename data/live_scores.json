@@ -1,9 +1,9 @@
 {
   "version": 2,
   "model": "MINGO v2 gate-first",
-  "calculated_at": "2026-10-01T15:10:45+09:00",
-  "calculated_at_label": "2026-10-01 15:10 KST",
-  "market_state": "open",
+  "calculated_at": "2026-10-01T15:30:28+09:00",
+  "calculated_at_label": "2026-10-01 15:30 KST",
+  "market_state": "closing_grace",
   "expected_completed_session": "2026-09-30",
   "market_regime": {
     "level": "attack",
@@ -278,7 +278,10 @@
           "d": "09-30",
           "c": 6838.04
         }
-      ]
+      ],
+      "live_close": 6950.3,
+      "live_change_pct": 1.64,
+      "live_timestamp": "2026-10-01T14:59:00+09:00"
     },
     "KOSDAQ": {
       "close": 855.91,
@@ -524,7 +527,10 @@
           "d": "09-30",
           "c": 855.91
         }
-      ]
+      ],
+      "live_close": 891.57,
+      "live_change_pct": 4.17,
+      "live_timestamp": "2026-10-01T14:59:00+09:00"
     }
   },
   "source": "Yahoo Finance daily OHLCV via yfinance (completed regular session only)",
@@ -537,6 +543,7 @@
     "price decline alone does not increase valuation score",
     "market regime (KOSPI/KOSDAQ vs MA20/MA60 + 20d return) modulates execution only: relative-overheat yardstick, bounded +/-10 execution adjustment, defense-mode setup blocks; invalidation and research verification are regime-independent",
     "manual intraday snapshot never upgrades a verdict beyond the completed-session classification: it annotates zone/trigger touches, downgrades on MA20/invalidation breaks, and rejects implausible or stale ticks",
+    "index cards may carry a display-only live value (live_close/live_change_pct) next to the completed-session close during snapshot runs; the market regime and all gates never use it",
     "RS (rs_score) is the 종합 RS published by StockEasy (stockeasy.intellio.kr) per-stock summary pages, fetched each run; on fetch failure the previous value is kept with rs_status=stale_fallback. RS is display/context only and does not enter execution or research scores"
   ],
   "errors": [],
@@ -552,7 +559,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -1155,7 +1162,7 @@
           "ma50": 47413
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -1202,7 +1209,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 54700.0,
+      "price": 54600.0,
       "change_pct": 3.06,
       "ma20": 49705.0,
       "ma50": 47413.0,
@@ -1242,7 +1249,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
@@ -1263,7 +1270,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -1866,7 +1873,7 @@
           "ma50": 114138
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -1904,7 +1911,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 158600.0,
+      "price": 159100.0,
       "change_pct": -1.25,
       "ma20": 131825.0,
       "ma50": 114138.0,
@@ -1944,7 +1951,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -1965,7 +1972,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -2568,7 +2575,7 @@
           "ma50": 45314
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -2612,7 +2619,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 54900.0,
+      "price": 55000.0,
       "change_pct": -3.59,
       "ma20": 46167.5,
       "ma50": 45314.0,
@@ -2652,14 +2659,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
       "rs_score": 87,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 55000,
+      "rs_basis_price": 54900,
       "rs_status": "live"
     },
     {
@@ -2673,7 +2680,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -3276,7 +3283,7 @@
           "ma50": 45828
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -3309,7 +3316,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 49800.0,
+      "price": 49750.0,
       "change_pct": -0.81,
       "ma20": 46980.0,
       "ma50": 45828.0,
@@ -3349,14 +3356,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 88,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 49600,
+      "rs_basis_price": 49550,
       "rs_status": "live"
     },
     {
@@ -3370,7 +3377,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -3973,7 +3980,7 @@
           "ma50": 391510
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -4019,7 +4026,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 558000.0,
+      "price": 560000.0,
       "change_pct": 4.94,
       "ma20": 455575.0,
       "ma50": 391510.0,
@@ -4059,14 +4066,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
       "rs_score": 89,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 560000,
+      "rs_basis_price": 561000,
       "rs_status": "live"
     },
     {
@@ -4080,7 +4087,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -4683,7 +4690,7 @@
           "ma50": 29427
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -4721,7 +4728,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 33150.0,
+      "price": 33100.0,
       "change_pct": -1.71,
       "ma20": 30322.5,
       "ma50": 29427.0,
@@ -4761,7 +4768,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -4782,7 +4789,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -5385,7 +5392,7 @@
           "ma50": 30580
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -5422,7 +5429,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 39100.0,
+      "price": 39050.0,
       "change_pct": -1.9,
       "ma20": 36197.5,
       "ma50": 30580.0,
@@ -5462,14 +5469,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 76,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 39400,
+      "rs_basis_price": 39050,
       "rs_status": "live"
     },
     {
@@ -5483,7 +5490,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -6086,7 +6093,7 @@
           "ma50": 37120
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -6163,14 +6170,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
       "rs_score": 89,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 43400,
+      "rs_basis_price": 43950,
       "rs_status": "live"
     },
     {
@@ -6184,7 +6191,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -6787,7 +6794,7 @@
           "ma50": 14927
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -6827,7 +6834,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 18730.0,
+      "price": 18660.0,
       "change_pct": 1.96,
       "ma20": 14388.5,
       "ma50": 14926.8,
@@ -6867,14 +6874,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
       "rs_score": 85,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 18440,
+      "rs_basis_price": 18710,
       "rs_status": "live"
     },
     {
@@ -6888,7 +6895,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -7491,7 +7498,7 @@
           "ma50": 41663
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -7533,7 +7540,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 52800.0,
+      "price": 53000.0,
       "change_pct": 2.25,
       "ma20": 42172.5,
       "ma50": 41663.0,
@@ -7573,14 +7580,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
       "rs_score": 66,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 53200,
+      "rs_basis_price": 52800,
       "rs_status": "live"
     },
     {
@@ -7594,7 +7601,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -8197,7 +8204,7 @@
           "ma50": 16751
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -8236,7 +8243,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 21200.0,
+      "price": 21300.0,
       "change_pct": -0.64,
       "ma20": 16246.0,
       "ma50": 16751.0,
@@ -8276,14 +8283,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 11,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 21150,
+      "rs_basis_price": 21250,
       "rs_status": "live"
     },
     {
@@ -8297,7 +8304,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -8900,7 +8907,7 @@
           "ma50": 256766
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -8937,7 +8944,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 295000.0,
+      "price": 296000.0,
       "change_pct": 0.35,
       "ma20": 296525.0,
       "ma50": 256766.0,
@@ -8977,14 +8984,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 93,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 294500,
+      "rs_basis_price": 295500,
       "rs_status": "live"
     },
     {
@@ -8998,7 +9005,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -9601,7 +9608,7 @@
           "ma50": 45801
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -9634,7 +9641,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 47350.0,
+      "price": 47150.0,
       "change_pct": -4.3,
       "ma20": 50032.5,
       "ma50": 45801.0,
@@ -9674,14 +9681,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": true,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 87,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 47400,
+      "rs_basis_price": 47100,
       "rs_status": "live"
     },
     {
@@ -9695,7 +9702,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -10298,7 +10305,7 @@
           "ma50": 22914
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -10335,7 +10342,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 26100.0,
+      "price": 25900.0,
       "change_pct": 3.05,
       "ma20": 24235.0,
       "ma50": 22913.6,
@@ -10375,14 +10382,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
       "rs_score": 82,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 26000,
+      "rs_basis_price": 25850,
       "rs_status": "live"
     },
     {
@@ -10396,7 +10403,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -10999,7 +11006,7 @@
           "ma50": 52735
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -11032,7 +11039,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 56000.0,
+      "price": 56300.0,
       "change_pct": 9.51,
       "ma20": 48177.56,
       "ma50": 52735.07,
@@ -11068,18 +11075,18 @@
       "market_extension_ma20_pct": 1.8,
       "excess_extension_ma20_pct": 5.7,
       "regime_blocked": null,
-      "setup_reason": "현재가 트리거 터치 — 종가 돌파가 아니라 승격 안 함",
+      "setup_reason": "수동 조회 현재가 반영 · 일봉 지표는 완료세션 기준",
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
-      "live_triggered": true,
+      "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 21,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 56400,
+      "rs_basis_price": 56300,
       "rs_status": "live"
     },
     {
@@ -11093,7 +11100,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -11696,7 +11703,7 @@
           "ma50": 33182
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -11774,14 +11781,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 87,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 32650,
+      "rs_basis_price": 32900,
       "rs_status": "live"
     },
     {
@@ -11795,7 +11802,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -12398,7 +12405,7 @@
           "ma50": 8982
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -12434,7 +12441,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 10010.0,
+      "price": 10030.0,
       "change_pct": 1.84,
       "ma20": 10298.0,
       "ma50": 8982.0,
@@ -12474,14 +12481,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 79,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 10010,
+      "rs_basis_price": 10000,
       "rs_status": "live"
     },
     {
@@ -12495,7 +12502,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -13098,7 +13105,7 @@
           "ma50": 128782
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -13135,7 +13142,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 131300.0,
+      "price": 131100.0,
       "change_pct": 5.77,
       "ma20": 128490.0,
       "ma50": 128782.0,
@@ -13175,14 +13182,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 91,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 131400,
+      "rs_basis_price": 131300,
       "rs_status": "live"
     },
     {
@@ -13196,7 +13203,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -13799,7 +13806,7 @@
           "ma50": 18099
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -13838,7 +13845,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 16140.0,
+      "price": 16240.0,
       "change_pct": -2.71,
       "ma20": 15239.0,
       "ma50": 18098.8,
@@ -13878,14 +13885,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:58:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 52,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 16030,
+      "rs_basis_price": 16130,
       "rs_status": "live"
     },
     {
@@ -13899,7 +13906,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -14502,7 +14509,7 @@
           "ma50": 53193
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -14540,7 +14547,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 48500.0,
+      "price": 48600.0,
       "change_pct": 0.42,
       "ma20": 53815.0,
       "ma50": 53193.0,
@@ -14580,14 +14587,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 92,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 48350,
+      "rs_basis_price": 48450,
       "rs_status": "live"
     },
     {
@@ -14601,7 +14608,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -15204,7 +15211,7 @@
           "ma50": 29586
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -15237,7 +15244,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 28800.0,
+      "price": 28900.0,
       "change_pct": 0.18,
       "ma20": 28255.0,
       "ma50": 29586.0,
@@ -15277,14 +15284,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:48:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 83,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 28800,
+      "rs_basis_price": 28950,
       "rs_status": "live"
     },
     {
@@ -15298,7 +15305,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -15901,7 +15908,7 @@
           "ma50": 114726
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -15936,7 +15943,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 116600.0,
+      "price": 116700.0,
       "change_pct": 0.43,
       "ma20": 124915.0,
       "ma50": 114726.0,
@@ -15976,14 +15983,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": true,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 89,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 116300,
+      "rs_basis_price": 116800,
       "rs_status": "live"
     },
     {
@@ -15997,7 +16004,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -16600,7 +16607,7 @@
           "ma50": 56317
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -16676,14 +16683,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 82,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 59800,
+      "rs_basis_price": 60200,
       "rs_status": "live"
     },
     {
@@ -16697,7 +16704,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -17300,7 +17307,7 @@
           "ma50": 63123
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -17342,7 +17349,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 84800.0,
+      "price": 84900.0,
       "change_pct": 3.44,
       "ma20": 65605.0,
       "ma50": 63123.0,
@@ -17382,14 +17389,14 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
       "rs_score": 90,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 85000,
+      "rs_basis_price": 84700,
       "rs_status": "live"
     },
     {
@@ -17403,7 +17410,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -18006,7 +18013,7 @@
           "ma50": 35900
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -18079,7 +18086,7 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -18100,7 +18107,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -18703,7 +18710,7 @@
           "ma50": 5995
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -18739,7 +18746,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 10150.0,
+      "price": 10160.0,
       "change_pct": 13.8,
       "ma20": 6901.0,
       "ma50": 5994.8,
@@ -18779,14 +18786,14 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 91,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 10080,
+      "rs_basis_price": 10210,
       "rs_status": "live"
     },
     {
@@ -18800,7 +18807,7 @@
       "benchmark_as_of": "2026-09-30",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-09-30",
-      "session": "open",
+      "session": "closing_grace",
       "chart": [
         {
           "d": "07-03",
@@ -19403,7 +19410,7 @@
           "ma50": 31772
         }
       ],
-      "calculated_at": "2026-10-01T15:10:45+09:00",
+      "calculated_at": "2026-10-01T15:30:28+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -19436,7 +19443,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 37350.0,
+      "price": 37400.0,
       "change_pct": 10.06,
       "ma20": 28557.5,
       "ma50": 31772.0,
@@ -19476,14 +19483,14 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T14:49:00+09:00",
+      "price_timestamp": "2026-10-01T14:59:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 31,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 36700,
+      "rs_basis_price": 36900,
       "rs_status": "live"
     }
   ]
