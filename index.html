@@ -322,6 +322,7 @@ function renderStrip(d){
    +'<div class="mv" data-cu="'+(close==null?'':close)+'" data-dec="2">'+(close==null?'—':Number(close).toLocaleString('ko-KR',{minimumFractionDigits:2,maximumFractionDigits:2}))+'</div>'
    +'<div class="mc '+chgCls(chg)+'">'+(chg==null?'20일 '+fpct(f.return_20d_pct):chgArrow(chg)+' '+fpct(chg))+'</div>'
    +'<div class="mmeta"><span>MA20 이격 '+fpct(f.extension_ma20_pct)+'</span><span>20일 '+fpct(f.return_20d_pct)+'</span><span>레짐 '+f.points+'/3점</span></div>'
+   +(s&&s.live_close!=null?'<div style="margin-top:5px;font-size:12.5px;color:#9db4cc">장중 <b style="color:#edf5f9">'+Number(s.live_close).toLocaleString('ko-KR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</b> <span class="'+chgCls(s.live_change_pct)+'">'+chgArrow(s.live_change_pct)+' '+fpct(s.live_change_pct)+'</span> · '+String(s.live_timestamp||'').slice(11,16)+' 기준 <span style="color:#5f748c">(판정 미반영)</span></div>':'')
    +(vals&&vals.length>1?sparkSVG(vals,260,52,col,'spark'):'')+'</div>';
  };
  const valid=d.stocks.filter(s=>s.change_pct!=null);
@@ -363,7 +364,7 @@ function renderFeat(d){
  if(trig){const dist=trig.trigger&&trig.price?((trig.trigger-trig.price)/trig.price*100):0;
   trigCard=featCard(trig.setup_pass?'🎯 셋업 통과':(trig.live_triggered?'🎯 트리거 터치':'🎯 트리거 임박'),'#ffd166',trig,trig.setup_pass?'돌파 확인 ✓':(trig.live_triggered?'장중 터치':'-'+Math.abs(dist).toFixed(1)+'%'),'',(trig.setup_pass||trig.live_triggered?'게이트를 통과했어요. 상세에서 손절선까지 확인하세요.':'트리거 '+fmt(trig.trigger)+'원까지 '+Math.abs(dist).toFixed(1)+'% — '+(trig.setup_reason||'')));}
  document.getElementById('feat').innerHTML=
-  featCard('🔥 오늘의 급등','#ff5c5c',gainer,fpct(gainer.change_pct),'up','완료세션 종가 '+fmt(gainer.price)+'원 · '+(gainer.theme||''))
+  featCard('🔥 오늘의 급등','#ff5c5c',gainer,fpct(gainer.change_pct),'up',(gainer.live?'장중 현재가 ':'완료세션 종가 ')+fmt(gainer.price)+'원 · '+(gainer.theme||''))
  +featCard('💪 RS 최강 · 스탁이지','#5ee6c4',rsTop,'RS '+rsTop.rs_score,'','상대강도 상위권. 20일 초과수익 '+fpct(rsTop.excess_return_20d_pct)+' · 60일 '+fpct(rsTop.excess_return_60d_pct))
  +featCard('📊 거래량 폭발','#73b7ff',volTop,Number(volTop.volume_ratio).toFixed(2)+'배','','20일 평균 대비 거래량. RSI '+(volTop.rsi14_wilder??'—')+' · '+(volTop.setup_reason||''))
  +trigCard;
@@ -439,7 +440,7 @@ function apply(){
 async function refreshScores(){
  const b=document.getElementById('refreshBtn');b.disabled=true;b.textContent='↻ 불러오는 중';
  const RAW='https://raw.githubusercontent.com/sasohanbam-wq/Mingo/main/data/';
- const get=async p=>{for(const base of ['data/',RAW]){try{const r=await fetch(base+p+'?t='+Date.now(),{cache:'no-store'});if(r.ok)return await r.json();}catch(e){}}return null;};
+ const get=p=>fetch(RAW+p+'?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).catch(()=>null);
  try{
    const d=await get('live_scores.json');
    if(!d||d.version!==2)throw new Error('v2 score snapshot not ready');
