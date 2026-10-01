@@ -123,6 +123,7 @@
     s=(d.stocks||[]).find(x=>x.code===code);
     regime=d.market_regime||null;
     calcLabel=d.calculated_at_label||d.calculated_at||null;
+    if(!s){const ar=await fetch(RAW+'data/analyzed_stocks.json?t='+Date.now(),{cache:'no-store'});if(ar.ok){const ad=await ar.json();s=(ad.stocks||[]).find(x=>x.code===code);}}
     if(!s)return;
   }catch(e){
     console.warn('MINGO live data unavailable',e);
@@ -133,6 +134,16 @@
     if(r2.ok){ const ed=await r2.json(); ev=(ed.stocks||{})[code]||null; }
   }catch(e){ /* evidence detail optional */ }
 
+  // Latest evidence is display-only, never a setup gate mutation.
+  if(ev){
+    for(const k of ['F','E','V']){s['research_'+k]=ev[k]?.score??null;s['research_'+k+'_status']=ev[k]?.status||'unverified';}
+    s.evidence_notes=['F','E','V'].flatMap(k=>ev[k]?.basis||[]);
+    s.evidence_sources=[...new Set(['F','E','V'].flatMap(k=>ev[k]?.sources||[]))];
+    s.research_next_check=ev.next_check||[];
+    s.provisional_research_score=ev.provisional_research_score;
+    if(!['F','E','V'].every(k=>ev[k]?.status==='verified'))s.research_score=null;
+    s.analysis_style=ev.analysis_style;s.analysis_style_note=ev.analysis_style_note;
+  }
   // --- patch the static score line's RS number with the live StockEasy RS ---
   if(s.rs_score!=null){
     document.querySelectorAll('.score').forEach(el=>{
@@ -329,6 +340,8 @@
     :'';
 
   // ---------- 1) LIVE GATE header ----------
+  if(s.analysis_style)html+='<div class="mx-pos"><b>분석제안 · '+esc(s.analysis_style)+'</b><br>'+esc(s.analysis_style_note||'사용자 매수명령이나 매수판정이 아닙니다.')+'</div>';
+
   html+='<div class="mx-top"><div>'
     +'<div class="mx-h" style="margin:0">MINGO V2 · LIVE GATE<span class="mx-live">● LIVE</span></div>'
     +'<div class="mx-state" style="color:'+stateColor+'"><span class="mx-dot" style="background:'+stateColor+'"></span>'+esc(s.label||'')+'</div>'
@@ -355,7 +368,7 @@
     +scoreBar('추세',s.trend_score)
     +scoreBar('상대수익',s.relative_return_score)
     +'<div class="mx-note">레짐 보정 '+(s.regime_adjustment>=0?'+':'')+(s.regime_adjustment??'—')+' ('+esc(s.regime_label||'')+') 포함 → 실행점수 <b style="color:#edf4ff">'+(s.execution_score??'—')+'</b></div>'
-    +scenarioHtml;
+    +scenarioHtml+(s.scenario_note?'<div class="mx-note">'+esc(s.scenario_note)+'</div>':'');
 
   // ---------- 3) GATE checklist ----------
   const checks=[
@@ -370,12 +383,14 @@
     [!!s.setup_pass,'셋업 통과']
   ];
   const met=checks.filter(c=>c[0]).length;
-  html+='<div class="mx-h">게이트 조건표 <span style="margin-left:auto;letter-spacing:0" class="mx-pill '+(met===checks.length?'v':'p')+'">'+met+' / '+checks.length+' 충족</span></div>'
+  if(!s.analysis_pending)html+='<div class="mx-h">게이트 조건표 <span style="margin-left:auto;letter-spacing:0" class="mx-pill '+(met===checks.length?'v':'p')+'">'+met+' / '+checks.length+' 충족</span></div>'
     +'<div class="mx-prog"><div class="mx-progf" style="width:'+(met/checks.length*100).toFixed(0)+'%"></div></div>'
     +'<div class="mx-chk">'+checks.map(c=>'<div class="mx-chip'+(c[0]?' on':'')+'">'+(c[0]?'✅':'⬜')+' '+c[1]+'</div>').join('')+'</div>'
     +(s.regime_blocked?'<div class="mx-pos warn"><b>레짐 차단:</b> '+esc(s.regime_blocked)+'</div>':'')
     +(s.live_triggered?'<div class="mx-pos">📌 장중 트리거 터치 기록 있음 (종가 확정 전 승격 아님)</div>':'')
     +(s.live_in_buy_zone&&!s.in_buy_zone?'<div class="mx-pos">📌 장중 매수구간 진입 기록 있음 (완료세션 기준 판정과 별개)</div>':'');
+
+  if(s.analysis_pending)html+='<div class="mx-pos">매수게이트 검증중. 기업 F/V 부분확인, 종가 셋업 미확정으로 실행점수 N/A. 기술점수는 계산 가능해도 게이트 통과를 의미하지 않습니다.</div>';
 
   // ---------- 4) PRICE / TECHNICALS ----------
   const rsi=s.rsi14_wilder;
@@ -418,7 +433,7 @@
     fevCards+='<div class="mx-fcard"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span class="mx-fname">'+fName[k]+'</span><span class="mx-pill '+pillCls(fStatus[k])+'">'+esc(fStatus[k]||'미확인')+'</span></div>'
       +donut(fScore[k],'')
       +'<div class="mx-note">'+(e&&e.grade?'등급 '+esc(e.grade):'')+(e&&e.as_of?' · 기준 '+esc(e.as_of):'')+'</div>'
-      +'<div class="mx-basis">'+esc(e&&e.basis?e.basis:'근거 상세가 아직 등록되지 않았습니다.')+'</div></div>';
+      +'<div class="mx-basis">'+esc(e&&e.basis?(Array.isArray(e.basis)?e.basis.join(' '):e.basis):'근거 상세가 아직 등록되지 않았습니다.')+'</div></div>';
   });
   html+='<div class="mx-h">🧾 기업 근거 F/E/V</div>'
     +'<div class="mx-pos">근거 상태 <b>'+esc(s.evidence_status||'—')+'</b> · 연구점수 <b>'+(s.research_score??'미생성')+'</b> <span class="mx-sub">'+esc(s.research_score_status||'')+'</span><br><span class="mx-sub">세 요인이 모두 verified일 때만 연구점수를 생성하고, 연구점수 70 미만은 셋업이 좋아도 확정 🟢가 되지 않습니다.</span></div>'
@@ -429,8 +444,14 @@
     +((s.evidence_sources&&s.evidence_sources.length)
       ?'<div style="margin-top:8px">'+s.evidence_sources.map((u,i)=>'<a class="mx-src" href="'+esc(u)+'" target="_blank" rel="noopener">📎 근거 문서 '+(i+1)+'</a>').join('')+'</div>'
       :'')
-    +'<div class="mx-note" style="margin-top:8px">기존 F/E/V(F '+(s.legacy_F??'—')+' · E '+(s.legacy_E??'—')+' · V '+(s.legacy_V??'—')+' · PR '+(s.legacy_PR??'—')+')는 감사용 구값입니다. RS는 스탁이지 종합 RS를 가져와 표시합니다.</div>';
+    +'<div class="mx-note">옛 고정 팩터 숫자는 제거했습니다. RS는 출처자체 기준가격/날짜를 표시하며 상대수익과 별개입니다.</div>'
+    +(s.provisional_research_score!=null?'<div class="mx-pos">잠정 종합 <b>'+s.provisional_research_score+'</b> · 전체검증완료 점수와 구분, 매수게이트 승격 없음</div>':'');
 
+  if(s.flow_summary){
+    html+='<div class="mx-h">수급 · 완료세션 순매수 (주)</div><table class="mx-tbl"><tr><td>기간</td><td>외국인</td><td>기관</td><td>개인</td></tr>';
+    for(const n of [5,20]){const f=s.flow_summary[n];if(f)html+='<tr><td>'+n+'거래일</td><td>'+fmt(f.foreign_shares)+'</td><td>'+fmt(f.institution_shares)+'</td><td>'+fmt(f.individual_shares)+'</td></tr>';}
+    html+='</table><div class="mx-note">기준 2026-09-30. 오늘 장중수급 아님. '+esc(s.flow_summary.as_of||'')+'</div>';
+  }
   // ---------- 6) NEXT CHECKS ----------
   html+='<div class="mx-h">🔭 다음에 확인할 것</div>'
     +((s.research_next_check&&s.research_next_check.length)
@@ -455,7 +476,7 @@
       +'<div class="mx-reg">'+cards+'</div>';
   }
 
-  html+='<div class="mx-note" style="margin-top:16px">이 패널은 data/live_scores.json 기준으로 자동 생성됩니다 (계산: '+esc(calcLabel||'—')+'). 고정 텍스트가 아니며, 데이터 출처: '+esc(s.source||'—')+'</div>';
+  html+='<div class="mx-note" style="margin-top:16px">이 패널은 data/live_scores.json / analyzed_stocks.json + 최신 research_evidence.json 기준으로 자동 생성됩니다 (계산: '+esc(calcLabel||'—')+'). 고정 텍스트가 아니며, 데이터 출처: '+esc(s.source||'—')+'</div>';
 
   // ---------- mount ----------
   let box;
