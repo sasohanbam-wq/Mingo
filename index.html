@@ -257,8 +257,8 @@ function completeResearchScore(s){
 }
 function provisionalLabel(s){
  const e=EV&&EV[s.code];
- if(!e||e.kind!=='evidence')return '';
- return '<div class="meta">잠정 종합 '+(e.provisional??'N/A')+' · 전체검증 아님</div>';
+ if(!e||e.kind!=='evidence'||e.provisional==null)return '';
+ return '<div class="meta">잠정 종합 '+e.provisional+' · 전체검증 아님</div>';
 }
 /* ---------- market strip ---------- */
 function renderStrip(d){
@@ -320,13 +320,13 @@ function renderFeat(d){
 }
 /* ---------- themes ---------- */
 const BUCKETS=[
- ['AI 데이터센터·전력',/비상발전|배전반|ESS|AI DC/],
+ ['AI 데이터센터·전력',/비상발전|배전반|ESS|AI DC|전력설비|전력기기/],
  ['원전·발전 설비',/원전|HRSG|발전·SMP/],
  ['태양광·신재생',/태양광/],
- ['반도체 장비·소재',/스크러버|레이저|식각|세정장비|반도체 소재|기계설비|고선택비/],
+ ['반도체 장비·소재',/스크러버|레이저|식각|세정장비|반도체 소재|기계설비|고선택비|검사장비|반도체테스트/],
  ['기판·패키징·OSAT',/기판|Packaging|OSAT|본딩와이어|솔더볼|SoCAMM|SOCAMM/],
  ['로봇·기계',/휴머노이드|공작기계/],
- ['바이오·의료기기',/리투오|ECM|홀로토모그래피/],
+ ['바이오·의료기기',/리투오|ECM|홀로토모그래피|비만|파이프라인|제약/],
  ['디스플레이',/Micro-LED|DDIC/],
  ['방산·특수전지',/고온전지|방산/]
 ];
