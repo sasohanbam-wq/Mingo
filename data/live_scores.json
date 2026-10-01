@@ -1,8 +1,8 @@
 {
   "version": 2,
   "model": "MINGO v2 gate-first",
-  "calculated_at": "2026-10-01T13:47:01+09:00",
-  "calculated_at_label": "2026-10-01 13:47 KST",
+  "calculated_at": "2026-10-01T14:02:16+09:00",
+  "calculated_at_label": "2026-10-01 14:02 KST",
   "market_state": "open",
   "expected_completed_session": "2026-09-30",
   "market_regime": {
@@ -1155,7 +1155,7 @@
           "ma50": 47413
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -1168,20 +1168,27 @@
       "research_next_check": [
         "삼성물산국가AI센터계약공시내359.6099억원/959.6099억원충돌:USD+KRW산식및13.7%는359.6억원지지. 정정확인전959.6억원확정합산금지.",
         "납기/환율조정/헤지의실제마진회복,수주취소·2027인식지연",
-        "당진DC PF·고객확보·보증위험을본업이익과분리"
+        "당진DC PF·고객확보·보증위험을본업이익과분리",
+        "LS2027수주4천억대/700-800MW250대CAPA원리포트확인",
+        "확정프로젝트착공/납기vsIBK9000수주시나리오",
+        "KRX/NXT/통합가격기준분리"
       ],
       "evidence_notes": [
         "H1 OP145.64억(-46.44%)/2Q101.60억(-16.76%).별도잔고4147억/SGC·LG계약은향후인식근거.금융수익223.64억을본업가속으로보지않음",
         "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님.",
+        "9/9IBK추정2027신규수주9000억/2028 1조원은분석자전망,확정PO아님.단일연구소NH/LS/IBK수주·EPS시나리오를컨센서스처럼합치지않음.",
         "FnGuide9/30:1개월EPS2535→2635(+3.94%),OP425→453(+6.59%).1개월만평가한잠정E54=50+1×3.94반올림.3개월EPS기저없어전체Everified아님.3개월없는것을0성장으로채우지않음.",
         "단일증권사NHOP전망과컨센서스를구분.참여증권사수미검증.",
         "FnGuide9/30 2026E PER21.70/PBR3.61/ROE18.09%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
-        "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
+        "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님.",
+        "새Notion9/30 57200원기준NH PER22/14.6/10.9는KRX전일종가56400원과불일치.거래범위확인전KRX현재배수로승인하지않음."
       ],
       "evidence_sources": [
         "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001483",
         "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260803900306",
         "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911900100",
+        "https://www.edaily.co.kr/News/Read?newsId=02669926645578480",
+        "http://www.newsdream.kr/news/articleView.html?idxno=117727",
         "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=119850&cn="
       ],
       "legacy_F": 92,
@@ -1234,14 +1241,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": true,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 96,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 55700,
+      "rs_basis_price": 55000,
       "rs_status": "live"
     },
     {
@@ -1858,7 +1865,7 @@
           "ma50": 114138
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -1896,7 +1903,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 154200.0,
+      "price": 154900.0,
       "change_pct": -1.25,
       "ma20": 131825.0,
       "ma50": 114138.0,
@@ -1936,7 +1943,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -2560,7 +2567,7 @@
           "ma50": 45314
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -2573,20 +2580,25 @@
       "research_next_check": [
         "2Q YoY base reconciliation",
         "liquid-cooling commercial order disclosure",
-        "consensus revision history"
+        "consensus revision history",
+        "OCF/AR/재고다음분기회수/전환확인"
       ],
       "evidence_notes": [
-        "2Q매출992억/OP약155억vs1Q1159억/202억,분기마진둔화.전년비기저는집계마다달라성장가속확정아님",
-        "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님.",
+        "공식H1연결OCF399.27억.현금686.18+단기예금415.42+STFVPL242.34=1343.94억,차입100.85억/리스12.74억.현금등에서차입차감1243.09억,리스포함1230.35억.",
+        "Q2매출992억/OP155억:YoY둔화/QoQ하락.재고715.89억.노트OCF292억은Q1차감검증대기,순현금/EV는범위맞춰구분.",
+        "현재확인범위의부분검증점수.전체재무완료/매수승격아님.",
         "FnGuide2026/09/30연간EPS:현재3404/1개월전3462/3개월전3288.수정률1m-1.68%/3m+3.53%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
         "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증.",
         "FnGuide9/30 2026E PER14.98/PBR2.58/ROE19.18%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
-        "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
+        "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님.",
+        "시총9399-유동성1344=8055억은차입100.85/리스12.74미포함,정식EV아닌현금차감시총.회사의미확인부채를0으로처리하지않음.",
+        "기존밸류표및잠정점수유지,TSMC/CO2/액침은성공확정아닌인증/매출확인옵션."
       ],
       "evidence_sources": [
         "https://www.awakeplus.co.kr/data/view/20260814001221",
         "https://www.bosoop.com/stocks/083450/",
         "https://www.awakeplus.co.kr/data/view/20260511000226",
+        "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001221",
         "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=083450&cn="
       ],
       "legacy_F": 89,
@@ -2599,7 +2611,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 54900.0,
+      "price": 54800.0,
       "change_pct": -3.59,
       "ma20": 46167.5,
       "ma50": 45314.0,
@@ -2639,7 +2651,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -3263,7 +3275,7 @@
           "ma50": 45828
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -3296,7 +3308,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 49400.0,
+      "price": 49550.0,
       "change_pct": -0.81,
       "ma20": 46980.0,
       "ma50": 45828.0,
@@ -3336,7 +3348,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:26:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
@@ -3960,7 +3972,7 @@
           "ma50": 391510
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -3972,20 +3984,27 @@
       "research_V_status": "partial",
       "research_next_check": [
         "현재 공사/장비반입/가동률 및 매출전환 시점 확인 필요.",
-        "전사 추정치 변화·정상화 EPS·가치평가 미완료."
+        "전사 추정치 변화·정상화 EPS·가치평가 미완료.",
+        "OCF/AR/재고다음분기회수/전환확인"
       ],
       "evidence_notes": [
-        "2Q매출1278억/OP390.88억(+51.3%),OPM30.6%.CAPA2배는안성공장완공계획,현재전사실적2배아님",
-        "현재확인범위에대한분석자잠정평가.전체현금흐름·지배귀속·경쟁우위검증완료점수아님.",
+        "2Q매출1278억/OP391억,OPM30.6%.H1NI682.06억/OCF318.66억.",
+        "H1OCF318.66-Q1 268.41=Q2OCF50.26억; H1NI682.06-Q1 312.13=Q2NI369.93억.이익대비현금전환둔화는실제분기값.",
+        "H1현금2331.28억/차입70억/유동부채808.22억/AR1096.67억/재고1178.39억.현금은유동부채와차입을혼용하지않음.",
+        "현재확인범위의부분검증점수.전체재무완료/매수승격아님.",
         "FnGuide2026/09/30연간EPS:현재9351/1개월전9351/3개월전9787.수정률1m+0.00%/3m-4.45%.양의기저이면50+0.5×1m%+0.6×3m%를10~95범위로평가.적자전환은15.",
         "컨센서스는예측이며확정실적아님.참여증권사수·구성변경에따른효과는미검증.",
         "FnGuide9/30 2026E PER55.61/PBR8.16/ROE15.64%.동일기업2022~2025A역사및2027E와비교(실적/추정기준은혼용안함).",
-        "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님."
+        "분석자잠정밸류점수.정상화EPS/순차입금및완전한동일기준피어비교미완료라verified아님.",
+        "550000원은Notion작성스냅샷,현재값아님.약550K에서도고평가부담,기존2026EPS밸류표유지.",
+        "2027OP상단1800억은시나리오,컨센서스/발주확정아님.기존연구선과Notion제안가격선자동통합금지."
       ],
       "evidence_sources": [
         "https://www.awakeplus.co.kr/data/view/20260814001118",
         "https://zdnet.co.kr/view/?no=20260331161227",
         "https://stockeasy.intellio.kr/stock-analysis/stock-info/039030",
+        "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001118",
+        "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001105",
         "https://comp.wisereport.co.kr/company/c1050001.aspx?cmp_cd=039030&cn="
       ],
       "legacy_F": 96,
@@ -3998,7 +4017,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 548000.0,
+      "price": 546000.0,
       "change_pct": 4.94,
       "ma20": 455575.0,
       "ma50": 391510.0,
@@ -4038,7 +4057,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -4662,7 +4681,7 @@
           "ma50": 29427
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -4740,7 +4759,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:26:00+09:00",
+      "price_timestamp": "2026-10-01T13:41:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -5364,7 +5383,7 @@
           "ma50": 30580
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -5401,7 +5420,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 39300.0,
+      "price": 39400.0,
       "change_pct": -1.9,
       "ma20": 36197.5,
       "ma50": 30580.0,
@@ -5441,7 +5460,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:24:00+09:00",
+      "price_timestamp": "2026-10-01T13:41:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
@@ -6065,7 +6084,7 @@
           "ma50": 37120
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -6102,7 +6121,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 42500.0,
+      "price": 42700.0,
       "change_pct": -1.79,
       "ma20": 35435.0,
       "ma50": 37120.0,
@@ -6142,7 +6161,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
@@ -6766,7 +6785,7 @@
           "ma50": 14927
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -6806,7 +6825,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 18230.0,
+      "price": 18170.0,
       "change_pct": 1.96,
       "ma20": 14388.5,
       "ma50": 14926.8,
@@ -6846,7 +6865,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:26:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -7470,7 +7489,7 @@
           "ma50": 41663
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -7512,7 +7531,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 52000.0,
+      "price": 52100.0,
       "change_pct": 2.25,
       "ma20": 42172.5,
       "ma50": 41663.0,
@@ -7552,7 +7571,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -8176,7 +8195,7 @@
           "ma50": 16751
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -8215,7 +8234,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 20850.0,
+      "price": 21000.0,
       "change_pct": -0.64,
       "ma20": 16246.0,
       "ma50": 16751.0,
@@ -8255,7 +8274,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:26:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -8879,7 +8898,7 @@
           "ma50": 256766
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -8956,7 +8975,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:26:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
@@ -9580,7 +9599,7 @@
           "ma50": 45801
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -9613,7 +9632,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 47350.0,
+      "price": 47400.0,
       "change_pct": -4.3,
       "ma20": 50032.5,
       "ma50": 45801.0,
@@ -9653,7 +9672,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": true,
       "live_triggered": false,
       "live_invalidated": false,
@@ -10277,7 +10296,7 @@
           "ma50": 22914
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -10354,7 +10373,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:26:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -10978,7 +10997,7 @@
           "ma50": 52735
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -11011,7 +11030,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 55600.0,
+      "price": 55500.0,
       "change_pct": 9.51,
       "ma20": 48177.56,
       "ma50": 52735.07,
@@ -11051,14 +11070,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
       "rs_score": 21,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 55200,
+      "rs_basis_price": 55700,
       "rs_status": "live"
     },
     {
@@ -11675,7 +11694,7 @@
           "ma50": 33182
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -11753,7 +11772,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": true,
       "live_triggered": false,
       "live_invalidated": false,
@@ -12377,7 +12396,7 @@
           "ma50": 8982
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -12413,7 +12432,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 10010.0,
+      "price": 10100.0,
       "change_pct": 1.84,
       "ma20": 10298.0,
       "ma50": 8982.0,
@@ -12453,7 +12472,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
@@ -13077,7 +13096,7 @@
           "ma50": 128782
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -13114,7 +13133,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 130100.0,
+      "price": 130000.0,
       "change_pct": 5.77,
       "ma20": 128490.0,
       "ma50": 128782.0,
@@ -13154,7 +13173,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:26:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
@@ -13778,7 +13797,7 @@
           "ma50": 18099
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -13817,7 +13836,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 16150.0,
+      "price": 16120.0,
       "change_pct": -2.71,
       "ma20": 15239.0,
       "ma50": 18098.8,
@@ -13857,7 +13876,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:26:00+09:00",
+      "price_timestamp": "2026-10-01T13:41:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
@@ -14481,7 +14500,7 @@
           "ma50": 53193
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -14519,7 +14538,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 48650.0,
+      "price": 48600.0,
       "change_pct": 0.42,
       "ma20": 53815.0,
       "ma50": 53193.0,
@@ -14559,14 +14578,14 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
       "rs_score": 92,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 48200,
+      "rs_basis_price": 48600,
       "rs_status": "live"
     },
     {
@@ -15183,7 +15202,7 @@
           "ma50": 29586
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -15216,7 +15235,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 28650.0,
+      "price": 28750.0,
       "change_pct": 0.18,
       "ma20": 28255.0,
       "ma50": 29586.0,
@@ -15256,7 +15275,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:26:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
@@ -15880,7 +15899,7 @@
           "ma50": 114726
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -15915,7 +15934,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 117000.0,
+      "price": 117100.0,
       "change_pct": 0.43,
       "ma20": 124915.0,
       "ma50": 114726.0,
@@ -15955,7 +15974,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": true,
       "live_triggered": false,
       "live_invalidated": false,
@@ -16579,7 +16598,7 @@
           "ma50": 56317
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -16615,7 +16634,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 60000.0,
+      "price": 60050.0,
       "change_pct": 3.27,
       "ma20": 63090.0,
       "ma50": 56317.0,
@@ -16655,7 +16674,7 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
@@ -17279,7 +17298,7 @@
           "ma50": 63123
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -17315,7 +17334,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 83600.0,
+      "price": 83500.0,
       "change_pct": 3.44,
       "ma20": 65605.0,
       "ma50": 63123.0,
@@ -17355,7 +17374,7 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:26:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
@@ -17979,7 +17998,7 @@
           "ma50": 35900
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -18012,7 +18031,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 49550.0,
+      "price": 49800.0,
       "change_pct": 1.83,
       "ma20": 38617.5,
       "ma50": 35900.0,
@@ -18052,14 +18071,14 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
       "live_invalidated": false,
       "rs_score": 88,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.01",
-      "rs_basis_price": 49650,
+      "rs_basis_price": 49700,
       "rs_status": "live"
     },
     {
@@ -18676,7 +18695,7 @@
           "ma50": 5995
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -18712,7 +18731,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 10060.0,
+      "price": 10080.0,
       "change_pct": 13.8,
       "ma20": 6901.0,
       "ma50": 5994.8,
@@ -18752,7 +18771,7 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:27:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
@@ -19376,7 +19395,7 @@
           "ma50": 31772
         }
       ],
-      "calculated_at": "2026-10-01T13:47:01+09:00",
+      "calculated_at": "2026-10-01T14:02:16+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -19409,7 +19428,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 36700.0,
+      "price": 36450.0,
       "change_pct": 10.06,
       "ma20": 28557.5,
       "ma50": 31772.0,
@@ -19449,7 +19468,7 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T13:26:00+09:00",
+      "price_timestamp": "2026-10-01T13:42:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
       "live_invalidated": false,
