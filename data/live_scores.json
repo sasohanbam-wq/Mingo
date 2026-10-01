@@ -1,8 +1,8 @@
 {
   "version": 2,
   "model": "MINGO v2 gate-first",
-  "calculated_at": "2026-10-01T12:30:29+09:00",
-  "calculated_at_label": "2026-10-01 12:30 KST",
+  "calculated_at": "2026-10-01T12:47:40+09:00",
+  "calculated_at_label": "2026-10-01 12:47 KST",
   "market_state": "open",
   "expected_completed_session": "2026-09-30",
   "market_regime": {
@@ -42,7 +42,8 @@
     "legacy F/E/V are audit-only until structured evidence is re-verified",
     "price decline alone does not increase valuation score",
     "market regime (KOSPI/KOSDAQ vs MA20/MA60 + 20d return) modulates execution only: relative-overheat yardstick, bounded +/-10 execution adjustment, defense-mode setup blocks; invalidation and research verification are regime-independent",
-    "manual intraday snapshot never upgrades a verdict beyond the completed-session classification: it annotates zone/trigger touches, downgrades on MA20/invalidation breaks, and rejects implausible or stale ticks"
+    "manual intraday snapshot never upgrades a verdict beyond the completed-session classification: it annotates zone/trigger touches, downgrades on MA20/invalidation breaks, and rejects implausible or stale ticks",
+    "RS (rs_score) is the 종합 RS published by StockEasy (stockeasy.intellio.kr) per-stock summary pages, fetched each run; on fetch failure the previous value is kept with rs_status=stale_fallback. RS is display/context only and does not enter execution or research scores"
   ],
   "errors": [],
   "stocks": [
@@ -660,7 +661,7 @@
           "ma50": 47413
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -699,7 +700,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 55800.0,
+      "price": 55900.0,
       "change_pct": 3.06,
       "ma20": 49705.0,
       "ma50": 47413.0,
@@ -739,10 +740,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": true,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 96,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 55900,
+      "rs_status": "live"
     },
     {
       "name": "심텍",
@@ -1358,7 +1364,7 @@
           "ma50": 114138
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -1396,7 +1402,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 155300.0,
+      "price": 154500.0,
       "change_pct": -1.25,
       "ma20": 131825.0,
       "ma50": 114138.0,
@@ -1436,10 +1442,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 95,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 154500,
+      "rs_status": "live"
     },
     {
       "name": "GST",
@@ -2055,7 +2066,7 @@
           "ma50": 45314
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -2094,7 +2105,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 54300.0,
+      "price": 54500.0,
       "change_pct": -3.59,
       "ma20": 46167.5,
       "ma50": 45314.0,
@@ -2134,10 +2145,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 87,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 54400,
+      "rs_status": "live"
     },
     {
       "name": "DN오토모티브",
@@ -2753,7 +2769,7 @@
           "ma50": 45828
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -2826,10 +2842,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 88,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 49350,
+      "rs_status": "live"
     },
     {
       "name": "이오테크닉스",
@@ -3445,7 +3466,7 @@
           "ma50": 391510
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -3523,10 +3544,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 89,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 549000,
+      "rs_status": "live"
     },
     {
       "name": "월덱스",
@@ -4142,7 +4168,7 @@
           "ma50": 29427
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -4177,7 +4203,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 32900.0,
+      "price": 32950.0,
       "change_pct": -1.71,
       "ma20": 30322.5,
       "ma50": 29427.0,
@@ -4217,10 +4243,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 76,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 32900,
+      "rs_status": "live"
     },
     {
       "name": "사피엔반도체",
@@ -4836,7 +4867,7 @@
           "ma50": 30580
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -4873,7 +4904,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 39250.0,
+      "price": 39300.0,
       "change_pct": -1.9,
       "ma20": 36197.5,
       "ma50": 30580.0,
@@ -4913,10 +4944,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 76,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 39400,
+      "rs_status": "live"
     },
     {
       "name": "엘티씨",
@@ -5532,7 +5568,7 @@
           "ma50": 37120
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -5609,10 +5645,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 89,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 42600,
+      "rs_status": "live"
     },
     {
       "name": "엠케이전자",
@@ -6228,7 +6269,7 @@
           "ma50": 14927
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -6264,7 +6305,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 18030.0,
+      "price": 18140.0,
       "change_pct": 1.96,
       "ma20": 14388.5,
       "ma50": 14926.8,
@@ -6304,10 +6345,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 85,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 18240,
+      "rs_status": "live"
     },
     {
       "name": "동진쎄미켐",
@@ -6923,7 +6969,7 @@
           "ma50": 41663
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -6961,7 +7007,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 51500.0,
+      "price": 51900.0,
       "change_pct": 2.25,
       "ma20": 42172.5,
       "ma50": 41663.0,
@@ -7001,10 +7047,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 66,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 52000,
+      "rs_status": "live"
     },
     {
       "name": "카페24",
@@ -7620,7 +7671,7 @@
           "ma50": 16751
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -7656,7 +7707,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 20750.0,
+      "price": 20700.0,
       "change_pct": -0.64,
       "ma20": 16246.0,
       "ma50": 16751.0,
@@ -7696,10 +7747,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 11,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 20750,
+      "rs_status": "live"
     },
     {
       "name": "로보티즈",
@@ -8315,7 +8371,7 @@
           "ma50": 256766
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -8352,7 +8408,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 289500.0,
+      "price": 288500.0,
       "change_pct": 0.35,
       "ma20": 296525.0,
       "ma50": 256766.0,
@@ -8392,10 +8448,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 93,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 291500,
+      "rs_status": "live"
     },
     {
       "name": "현대해상",
@@ -9011,7 +9072,7 @@
           "ma50": 45801
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -9084,10 +9145,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": true,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 87,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 47350,
+      "rs_status": "live"
     },
     {
       "name": "세보엠이씨",
@@ -9703,7 +9769,7 @@
           "ma50": 22914
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -9740,7 +9806,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 26050.0,
+      "price": 25950.0,
       "change_pct": 3.05,
       "ma20": 24235.0,
       "ma50": 22913.6,
@@ -9780,10 +9846,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:26:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 82,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 26000,
+      "rs_status": "live"
     },
     {
       "name": "엘앤씨바이오",
@@ -10399,7 +10470,7 @@
           "ma50": 52735
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -10432,7 +10503,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 54800.0,
+      "price": 54900.0,
       "change_pct": 9.51,
       "ma20": 48177.56,
       "ma50": 52735.07,
@@ -10472,10 +10543,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 21,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 55000,
+      "rs_status": "live"
     },
     {
       "name": "GS건설",
@@ -11091,7 +11167,7 @@
           "ma50": 33182
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -11129,7 +11205,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 33500.0,
+      "price": 33400.0,
       "change_pct": -0.15,
       "ma20": 35595.0,
       "ma50": 33182.0,
@@ -11169,10 +11245,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": true,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 87,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 33450,
+      "rs_status": "live"
     },
     {
       "name": "지투파워",
@@ -11788,7 +11869,7 @@
           "ma50": 8982
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -11824,7 +11905,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 10080.0,
+      "price": 10020.0,
       "change_pct": 1.84,
       "ma20": 10298.0,
       "ma50": 8982.0,
@@ -11864,10 +11945,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:09:00+09:00",
+      "price_timestamp": "2026-10-01T12:26:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 79,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 10020,
+      "rs_status": "live"
     },
     {
       "name": "HD현대에너지솔루션",
@@ -12483,7 +12569,7 @@
           "ma50": 128782
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -12520,7 +12606,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 128800.0,
+      "price": 129200.0,
       "change_pct": 5.77,
       "ma20": 128490.0,
       "ma50": 128782.0,
@@ -12560,10 +12646,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 91,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 129250,
+      "rs_status": "live"
     },
     {
       "name": "오로라",
@@ -13179,7 +13270,7 @@
           "ma50": 18099
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -13215,7 +13306,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 16300.0,
+      "price": 16370.0,
       "change_pct": -2.71,
       "ma20": 15239.0,
       "ma50": 18098.8,
@@ -13255,10 +13346,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:25:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 52,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 16350,
+      "rs_status": "live"
     },
     {
       "name": "SGC에너지",
@@ -13874,7 +13970,7 @@
           "ma50": 53193
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -13912,7 +14008,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 48200.0,
+      "price": 48100.0,
       "change_pct": 0.42,
       "ma20": 53815.0,
       "ma50": 53193.0,
@@ -13952,10 +14048,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 92,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 48150,
+      "rs_status": "live"
     },
     {
       "name": "비츠로셀",
@@ -14571,7 +14672,7 @@
           "ma50": 29586
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -14644,10 +14745,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 83,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 28650,
+      "rs_status": "live"
     },
     {
       "name": "현대건설",
@@ -15263,7 +15369,7 @@
           "ma50": 114726
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -15298,7 +15404,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 117100.0,
+      "price": 117400.0,
       "change_pct": 0.43,
       "ma20": 124915.0,
       "ma50": 114726.0,
@@ -15338,10 +15444,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": true,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 89,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 117500,
+      "rs_status": "live"
     },
     {
       "name": "비에이치아이",
@@ -15957,7 +16068,7 @@
           "ma50": 56317
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -15993,7 +16104,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 60200.0,
+      "price": 60100.0,
       "change_pct": 3.27,
       "ma20": 63090.0,
       "ma50": 56317.0,
@@ -16033,10 +16144,15 @@
       "state": "yellow",
       "label": "🟡 조건부/대기",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 82,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 60100,
+      "rs_status": "live"
     },
     {
       "name": "프로텍",
@@ -16652,7 +16768,7 @@
           "ma50": 63123
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -16688,7 +16804,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 83300.0,
+      "price": 83800.0,
       "change_pct": 3.44,
       "ma20": 65605.0,
       "ma50": 63123.0,
@@ -16728,10 +16844,15 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 90,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 83500,
+      "rs_status": "live"
     },
     {
       "name": "하나마이크론",
@@ -17347,7 +17468,7 @@
           "ma50": 35900
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -17380,7 +17501,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 49600.0,
+      "price": 49850.0,
       "change_pct": 1.83,
       "ma20": 38617.5,
       "ma50": 35900.0,
@@ -17420,10 +17541,15 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": true,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 88,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 49700,
+      "rs_status": "live"
     },
     {
       "name": "에이팩트",
@@ -18039,7 +18165,7 @@
           "ma50": 5995
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -18071,7 +18197,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 10250.0,
+      "price": 10220.0,
       "change_pct": 13.8,
       "ma20": 6901.0,
       "ma50": 5994.8,
@@ -18111,10 +18237,15 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 91,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 10140,
+      "rs_status": "live"
     },
     {
       "name": "토모큐브",
@@ -18730,7 +18861,7 @@
           "ma50": 31772
         }
       ],
-      "calculated_at": "2026-10-01T12:30:29+09:00",
+      "calculated_at": "2026-10-01T12:47:40+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -18763,7 +18894,7 @@
       "regime_level": "attack",
       "regime_label": "공격",
       "regime_adjustment": 10.0,
-      "price": 37250.0,
+      "price": 37450.0,
       "change_pct": 10.06,
       "ma20": 28557.5,
       "ma50": 31772.0,
@@ -18803,10 +18934,15 @@
       "state": "red",
       "label": "🔴 보류",
       "price_mode": "manual_snapshot",
-      "price_timestamp": "2026-10-01T12:10:00+09:00",
+      "price_timestamp": "2026-10-01T12:27:00+09:00",
       "live_in_buy_zone": false,
       "live_triggered": false,
-      "live_invalidated": false
+      "live_invalidated": false,
+      "rs_score": 31,
+      "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
+      "rs_basis_date": "26.10.01",
+      "rs_basis_price": 36700,
+      "rs_status": "live"
     }
   ]
 }
