@@ -914,6 +914,55 @@
         "reviewed_at": "2026-10-01T10:58:00+09:00",
         "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
       }
+    },
+    "356860": {
+      "name": "티엘비",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "A",
+        "as_of": "2026-10-01",
+        "basis": [
+          "공식2Q26IR:매출882억원/OP128억원/순익108억원,OPM14.5%.",
+          "슬라이드10:SOCAMM 생산 및 매출 QoQ3배 증가. 슬라이드9:SOCAMM 매출비중QoQ3배이상. 전사매출3배증가 아님.",
+          "2Q말수주잔고1,318억원(QoQ149%)은향후매출가능성,확정당기매출아님."
+        ],
+        "sources": [
+          "https://www.tlbpcb.com/bbs/down.php?code=ir_performance&idx=310&no=2"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "공식3Q생산확대전망과실제실적분리. 최신추정치수정시계열미검증."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "현재시세·주식수·정상화EPS/순차입금·동일기준피어밸류검증미완료.분기NI×4를정상화EPS로쓰지않음."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "SOCAMM 단독매출/이익 규모와지속성",
+        "CAPEX/운전자본/현금흐름",
+        "완전F/E/V채점근거",
+        "현시세및일봉·거래량확인"
+      ],
+      "content_verification": {
+        "status": "official_facts_verified",
+        "reviewed_at": "2026-10-01T11:11:00+09:00",
+        "execution_note": "공급·실적 확인은현재신규매수신호가아님."
+      }
     }
   }
 }
