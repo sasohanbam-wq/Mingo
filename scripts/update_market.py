@@ -1,5 +1,6 @@
 import json
 import os
+import argparse
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -388,7 +389,54 @@ def classify(data_valid, gate, evidence_status, research_score, technical_score)
     return "yellow", "🟡 조건부/대기"
 
 
-def process_stock(stock, bench_df, context, research_map):
+def apply_manual_snapshot(row, raw, setup, context):
+    """Overlay the latest Yahoo price without pretending an unfinished candle is final."""
+    if raw is None or raw.empty:
+        return row
+    latest = raw.iloc[-1]
+    price = float(latest["Close"])
+    latest_date = str(latest["_session_date"])
+    if latest_date <= str(row.get("quote_as_of") or ""):
+        return row
+    low, high = map(float, setup["buy"])
+    stop = float(setup["stop"])
+    trigger = float(setup["trigger"])
+    ma20 = row.get("ma20")
+    in_zone = low <= price <= high
+    invalidated = price <= stop
+    triggered = price >= trigger
+    above_ma20 = ma20 is None or price >= float(ma20)
+    delta = (8 if in_zone else 0) + (5 if triggered else 0)
+    delta -= 10 if not above_ma20 else 0
+    delta -= 25 if invalidated else 0
+    row["execution_score"] = round(clamp(float(row["execution_score"]) + delta), 1)
+    if invalidated:
+        row["state"], row["label"] = "red", "🔴 현재가 손절선 이탈"
+        reason = "수동 조회 현재가가 손절선 이하"
+    elif not above_ma20:
+        row["state"], row["label"] = "yellow", "🟡 현재가 MA20 하회"
+        reason = "수동 조회 현재가가 완료세션 MA20 아래"
+    elif in_zone or triggered:
+        verified = row.get("evidence_status") == "verified" and (row.get("research_score") or 0) >= 70
+        row["state"] = "green" if verified else "blue"
+        row["label"] = "🟢 셋업+기업 검증 완료" if verified else "🔵 현재가 셋업 통과"
+        reason = "수동 조회 현재가가 매수구간 안" if in_zone else "수동 조회 현재가가 트리거 이상"
+    else:
+        reason = "수동 조회 현재가 반영 · 일봉 지표는 완료세션 기준"
+    row.update({
+        "price": price,
+        "setup_reason": reason,
+        "price_mode": "manual_snapshot",
+        "price_timestamp": context["calculated_at"],
+        "snapshot_session_date": latest_date,
+        "live_in_buy_zone": in_zone,
+        "live_triggered": triggered,
+        "live_invalidated": invalidated,
+    })
+    return row
+
+
+def process_stock(stock, bench_df, context, research_map, intraday_snapshot=False):
     symbol = stock["code"] + (".KS" if stock["exchange"] == "KS" else ".KQ")
     raw = load_history(symbol)
     hist, quote_as_of, quote_ok = select_completed(raw, context["expected_completed_session"])
@@ -420,7 +468,7 @@ def process_stock(stock, bench_df, context, research_map):
         clamp(metrics["technical_score"] + (10 if gate["setup_pass"] else -10)), 1
     )
 
-    return {
+    row = {
         "name": stock["name"],
         "code": stock["code"],
         "exchange": stock["exchange"],
@@ -465,9 +513,10 @@ def process_stock(stock, bench_df, context, research_map):
         "state": state,
         "label": label,
     }
+    return apply_manual_snapshot(row, raw, stock["setup"], context) if intraday_snapshot else row
 
 
-def main(now=None):
+def main(now=None, intraday_snapshot=False):
     with open(CFG, encoding="utf-8") as f:
         cfg = json.load(f)
     research_map = {}
@@ -497,7 +546,7 @@ def main(now=None):
     for stock in cfg["stocks"]:
         try:
             b = bench.get(stock["exchange"])
-            row = process_stock(stock, b, context, research_map)
+            row = process_stock(stock, b, context, research_map, intraday_snapshot)
         except Exception as exc:
             errors.append(f'{stock["code"]}: {exc}')
             prev = old.get(stock["code"], {})
@@ -543,6 +592,7 @@ def main(now=None):
         "market_state": context["market_state"],
         "expected_completed_session": context["expected_completed_session"],
         "source": SOURCE,
+        "price_mode": "manual_snapshot" if intraday_snapshot else "completed_session",
         "notes": [
             "completed regular-session daily data only",
             "stale/error/fallback can never produce green",
@@ -558,4 +608,7 @@ def main(now=None):
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--intraday-snapshot", action="store_true")
+    args = parser.parse_args()
+    main(intraday_snapshot=args.intraday_snapshot)

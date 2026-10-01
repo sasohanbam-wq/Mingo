@@ -2,6 +2,12 @@ name: Refresh market scores
 
 on:
   workflow_dispatch:
+    inputs:
+      current_price:
+        description: "당일 현재가를 한 번 조회해 점수에 반영"
+        required: true
+        type: boolean
+        default: true
   push:
     paths:
       - "scripts/update_market.py"
@@ -38,8 +44,13 @@ jobs:
       - name: Run v2 gate tests
         run: pytest -q tests/test_market_v2.py
 
-      - name: Recalculate completed-session scores
-        run: python scripts/update_market.py
+      - name: Recalculate scores
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.current_price }}" = "true" ]; then
+            python scripts/update_market.py --intraday-snapshot
+          else
+            python scripts/update_market.py
+          fi
 
       - name: Commit refreshed scores
         run: |
