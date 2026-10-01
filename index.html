@@ -256,7 +256,7 @@ function evBadge(s){
  const e=EV&&EV[s.code];
  if(!e)return '';
  const detail=e.kind==='evidence'?('F '+(e.F_score??'N/A')+'('+stLabel(e.F)+') · E '+(e.E_score??'N/A')+'('+stLabel(e.E)+') · V '+(e.V_score??'N/A')+'('+stLabel(e.V)+')'):('사실검증 '+(e.review==='facts_partially_verified'?'부분확인':(e.review||'—')));
- return '<div><span class="evbadge" data-evlink="1" title="'+detail+'">✓ 근거 확인됨 · '+detail+'</span></div>';
+ return '<div>'+(e.analysis_style?'<span class="evbadge">분석제안 · '+e.analysis_style+'</span>':'')+'<span class="evbadge" data-evlink="1" title="'+detail+'">✓ 근거 확인됨 · '+detail+'</span></div>';
 }
 document.addEventListener('click',e=>{const t=e.target.closest('[data-evlink]');if(t){e.preventDefault();e.stopPropagation();window.open(EV_INDEX,'_blank','noopener')}});
 function researchStatus(s){
@@ -413,7 +413,7 @@ async function refreshScores(){
    if(tg&&tg.tags)TAGS=tg.tags;
    if(an&&Array.isArray(an.stocks)){const present=new Set(d.stocks.map(s=>s.code));an.stocks.forEach(s=>{if(!present.has(s.code)){d.stocks.push({...s,analysis_pending:true,state:'yellow',quote_valid:false,setup_pass:false,research_score:null,execution_score:null});present.add(s.code)}})}
    EV={};
-   if(ev&&ev.stocks)Object.entries(ev.stocks).forEach(([code,s])=>{EV[code]={kind:'evidence',name:s.name,F:s.F&&s.F.status,E:s.E&&s.E.status,V:s.V&&s.V.status,F_score:s.F&&s.F.score,E_score:s.E&&s.E.score,V_score:s.V&&s.V.score,provisional:s.provisional_research_score,overall:s.overall_status};});
+   if(ev&&ev.stocks)Object.entries(ev.stocks).forEach(([code,s])=>{EV[code]={kind:'evidence',name:s.name,F:s.F&&s.F.status,E:s.E&&s.E.status,V:s.V&&s.V.status,F_score:s.F&&s.F.score,E_score:s.E&&s.E.score,V_score:s.V&&s.V.score,provisional:s.provisional_research_score,overall:s.overall_status,analysis_style:s.analysis_style};});
    if(cv&&cv.stocks)cv.stocks.forEach(s=>{if(s.code&&!EV[s.code])EV[s.code]={kind:'factcheck',name:s.name,review:s.review_status};});
    render(d);
  }catch(e){
