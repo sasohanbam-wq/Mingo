@@ -963,6 +963,62 @@
         "reviewed_at": "2026-10-01T11:11:00+09:00",
         "execution_note": "공급·실적 확인은현재신규매수신호가아님."
       }
+    },
+    "119850": {
+      "name": "지엔씨에너지",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "A",
+        "as_of": "2026-10-01",
+        "basis": [
+          "반기 연결 매출1219.23억원/OP145.64억원/순익264.20억원. H1 OP-46.44%,2Q OP101.60억원(-16.76%). 금융수익223.64억원: 순익증가를 본업성장으로 동일시하지 않음.",
+          "6/30 별도수주잔고4147억원. SGC군산755.09억원 및LG파주468.60억원 계약 원문 확인.",
+          "NDR의점유율70%/가스터빈90%,금액CAPA5000억원은회사설명수준. 독립통계·확정매출·확정수주가이던스아님."
+        ],
+        "sources": [
+          "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001483",
+          "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260803900306",
+          "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911900100"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "NH9/28의2027OP750억원/2028OP1023억원은증권사추정. 최신EPS수정시계열·인식시점검증미완료."
+        ],
+        "sources": [
+          "https://www.g-enews.com/article/Securities/2026/09/20260928091121420544093b5d4e_1"
+        ]
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "정상화EPS·순차입금·동일기준피어밸류미완료. 옛가격기준PER8.9배를현재저평가로복사하지않음."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "삼성물산국가AI센터계약공시내359.6099억원/959.6099억원충돌:USD+KRW산식및13.7%는359.6억원지지. 정정확인전959.6억원확정합산금지.",
+        "납기/환율조정/헤지의실제마진회복,수주취소·2027인식지연",
+        "당진DC PF·고객확보·보증위험을본업이익과분리"
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T11:16:21+09:00",
+        "research_note": "research/gncenergy-2026-10-01.md",
+        "execution_note": "이시점신규1차아님. 현재자동매수신호아님. KRX55,700원/완료봉MA20 49,640원(+12.2%).추세·실적전환후보,추격주의.조건부53,100~54,400재시험지지후54,400회복을재평가;종가53,100이탈이면해당눌림가설무효.과거연구시점조건이며현시세재검증필수.",
+        "sources": [
+          "https://stock.naver.com/domestic/stock/119850/price"
+        ]
+      }
     }
   }
 }
