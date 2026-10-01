@@ -316,6 +316,57 @@
         "net debt/cash flow",
         "housing margin durability"
       ]
+    },
+    "222800": {
+      "name": "심텍",
+      "overall_status": "verified",
+      "F": {
+        "score": 90,
+        "status": "verified",
+        "grade": "A",
+        "as_of": "2026-09-30",
+        "basis": [
+          "2025 revenue 1.676tn KRW, OP 147.1bn (OPM 8.8%) per DART filings",
+          "2Q26 revenue 572.1bn, OP 80.8bn (OPM 14.1%) — earnings surprise",
+          "cross-verified by Muse on 2026-09-30 against DART filings; audit trail in YB docs/cases/SIMMTECH.md"
+        ],
+        "sources": [
+          "https://github.com/sasohanbam-wq/YB/blob/main/docs/cases/SIMMTECH.md"
+        ]
+      },
+      "E": {
+        "score": 88,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "2026 consensus revenue 2.296tn, OP 368.9bn (FnGuide)",
+          "3-month consensus revisions: revenue +60.4%, OP +141.4% — strong upward revision trend",
+          "cross-verified by Muse on 2026-09-30; audit trail in YB docs/cases/SIMMTECH.md"
+        ],
+        "sources": [
+          "https://github.com/sasohanbam-wq/YB/blob/main/docs/cases/SIMMTECH.md"
+        ]
+      },
+      "V": {
+        "score": 62,
+        "status": "verified",
+        "grade": "B",
+        "as_of": "2026-09-30",
+        "basis": [
+          "2026E PER 12.9x, PBR 3.68x at 147,500 KRW (2026-09-29 close)",
+          "multiple at the upper end of the historical band — fair-to-full, not cheap; price merit is limited",
+          "cross-verified by Muse on 2026-09-30; audit trail in YB docs/cases/SIMMTECH.md"
+        ],
+        "sources": [
+          "https://github.com/sasohanbam-wq/YB/blob/main/docs/cases/SIMMTECH.md"
+        ]
+      },
+      "next_check": [
+        "3Q26 results — OPM holding near the 2Q26 level",
+        "consensus revision trend continuation",
+        "valuation band re-check after 3Q"
+      ]
     }
   }
 }

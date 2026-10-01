@@ -258,7 +258,76 @@ def technical_metrics(df, bench_df=None, relative_valid=True):
     }
 
 
-def setup_gate(df, metrics, setup):
+REGIME_ADJUSTMENT = {"attack": 10.0, "neutral": 0.0, "defense": -10.0, "unknown": 0.0}
+REGIME_LABELS = {"attack": "공격", "neutral": "중립", "defense": "방어", "unknown": "판정 불가"}
+
+
+def market_regime(bench, expected_session):
+    """Market regime from the KOSPI/KOSDAQ benchmark histories (completed
+    sessions only). Per index: +1 close above MA20, +1 above MA60, +1 positive
+    20-session return. attack: average >= 2.5, defense: average <= 1.0, else
+    neutral. The regime only modulates execution — the relative-overheat
+    yardstick, a bounded execution-score adjustment, and defense-mode setup
+    blocks. It never lifts an invalidation and never creates research scores.
+    Unknown (benchmark unavailable) behaves exactly like the pre-regime code.
+    """
+    indices = {}
+    points = []
+    extensions = []
+    as_of = None
+    for ex, label in (("KS", "KOSPI"), ("KQ", "KOSDAQ")):
+        df = bench.get(ex) if bench else None
+        if df is None:
+            continue
+        try:
+            hist, sess, _ = select_completed(df, expected_session)
+        except Exception:
+            continue
+        closes = hist["Close"].astype(float)
+        if len(closes) < 61:
+            continue
+        last = float(closes.iloc[-1])
+        ma20 = float(closes.tail(20).mean())
+        ma60 = float(closes.tail(60).mean())
+        ret20 = trailing_return(closes, 20)
+        pts = int(last > ma20) + int(last > ma60) + int(ret20 is not None and ret20 > 0)
+        ext = (last / ma20 - 1) * 100 if ma20 else 0.0
+        indices[label] = {
+            "close": round(last, 2),
+            "ma20": round(ma20, 2),
+            "ma60": round(ma60, 2),
+            "return_20d_pct": None if ret20 is None else round(ret20 * 100, 2),
+            "extension_ma20_pct": round(ext, 1),
+            "points": pts,
+            "as_of": sess,
+        }
+        points.append(pts)
+        extensions.append(ext)
+        as_of = sess
+    if not points:
+        return {
+            "level": "unknown",
+            "label": REGIME_LABELS["unknown"],
+            "points_avg": None,
+            "index_extension_ma20_pct": None,
+            "execution_adjustment": 0.0,
+            "as_of": None,
+            "indices": {},
+        }
+    avg = sum(points) / len(points)
+    level = "attack" if avg >= 2.5 else "defense" if avg <= 1.0 else "neutral"
+    return {
+        "level": level,
+        "label": REGIME_LABELS[level],
+        "points_avg": round(avg, 2),
+        "index_extension_ma20_pct": round(sum(extensions) / len(extensions), 1),
+        "execution_adjustment": REGIME_ADJUSTMENT[level],
+        "as_of": as_of,
+        "indices": indices,
+    }
+
+
+def setup_gate(df, metrics, setup, regime=None):
     p = metrics["price"]
     ma20 = metrics["ma20"]
     ma50 = metrics["ma50"]
@@ -269,6 +338,10 @@ def setup_gate(df, metrics, setup):
     trigger = setup.get("trigger")
     stop = setup.get("stop")
     stype = setup["type"]
+
+    regime_level = (regime or {}).get("level", "unknown")
+    idx_ext = (regime or {}).get("index_extension_ma20_pct")
+    idx_ext = 0.0 if idx_ext is None else float(idx_ext)
 
     latest = df.iloc[-1]
     prev_close = float(df["Close"].astype(float).iloc[-2]) if len(df) > 1 else p
@@ -286,9 +359,16 @@ def setup_gate(df, metrics, setup):
     breakout = breakout_confirmation(df, trigger)
 
     invalidated = stop is not None and p < stop
+    # Overheat extension is judged relative to the market: in a broad melt-up
+    # the index itself sits far above its MA20, so only the stock's *excess*
+    # extension over the index counts as idiosyncratic froth. With no regime
+    # data idx_ext is 0 and this reduces to the old absolute rule.
+    extension_overheated = (
+        ext is not None and ext > 20 and (ext - idx_ext) > 10
+    )
     overheated = (
         (rsi is not None and rsi > 84)
-        or (ext is not None and ext > 20)
+        or extension_overheated
     )
 
     pullback_pass = (
@@ -319,6 +399,18 @@ def setup_gate(df, metrics, setup):
         and p >= ma20 * 0.97
     )
 
+    # Defense regime: breakouts fail too often to chase, and pullbacks are
+    # only trusted in the lower half of the buy zone. Invalidation and
+    # overheat blocks above are regime-independent and stay untouched.
+    regime_blocked = None
+    if regime_level == "defense":
+        if breakout_pass:
+            breakout_pass = False
+            regime_blocked = "breakout"
+        if pullback_pass and p > (buy_lo + buy_hi) / 2:
+            pullback_pass = False
+            regime_blocked = regime_blocked or "pullback_upper_half"
+
     passed = pullback_pass or breakout_pass or recovery_pass or value_swing_pass
     if invalidated or overheated:
         passed = False
@@ -327,6 +419,10 @@ def setup_gate(df, metrics, setup):
         reason = "무효화 가격 이탈"
     elif overheated:
         reason = "과열/이격 과다 — 신규 추격 금지"
+    elif regime_blocked == "breakout":
+        reason = "방어 국면 — 돌파 셋업 비활성화"
+    elif regime_blocked == "pullback_upper_half":
+        reason = "방어 국면 — 눌림은 매수구간 하단에서만 허용"
     elif pullback_pass:
         reason = "눌림구간 + 상승추세 + 지지/반전 확인"
     elif breakout_pass:
@@ -363,6 +459,10 @@ def setup_gate(df, metrics, setup):
         "setup_pass": bool(passed),
         "invalidated": bool(invalidated),
         "overheated": bool(overheated),
+        "regime_level": regime_level,
+        "market_extension_ma20_pct": None if regime is None else regime.get("index_extension_ma20_pct"),
+        "excess_extension_ma20_pct": None if ext is None else round(ext - idx_ext, 1),
+        "regime_blocked": regime_blocked,
         "setup_reason": reason,
     }
 
@@ -460,7 +560,7 @@ def apply_manual_snapshot(row, price, price_timestamp, setup, context):
     return row
 
 
-def process_stock(stock, bench_df, context, research_map, intraday_snapshot=False):
+def process_stock(stock, bench_df, context, research_map, intraday_snapshot=False, regime=None):
     symbol = stock["code"] + (".KS" if stock["exchange"] == "KS" else ".KQ")
     raw = load_history(symbol)
     hist, quote_as_of, quote_ok = select_completed(raw, context["expected_completed_session"])
@@ -477,7 +577,7 @@ def process_stock(stock, bench_df, context, research_map, intraday_snapshot=Fals
     metrics = technical_metrics(
         hist, bench_hist, relative_valid=benchmark_aligned
     )
-    gate = setup_gate(hist, metrics, stock["setup"])
+    gate = setup_gate(hist, metrics, stock["setup"], regime=regime)
     research = research_map.get(stock["code"])
     evidence_status = research.get("overall_status", "legacy_unverified") if research else "legacy_unverified"
     research_score, research_score_status = compute_research_score(research)
@@ -488,8 +588,14 @@ def process_stock(stock, bench_df, context, research_map, intraday_snapshot=Fals
     )
 
     legacy = stock.get("legacy_scores", {})
+    regime_adj = float((regime or {}).get("execution_adjustment", 0.0) or 0.0)
     execution_score = round(
-        clamp(metrics["technical_score"] + (10 if gate["setup_pass"] else -10)), 1
+        clamp(
+            metrics["technical_score"]
+            + (10 if gate["setup_pass"] else -10)
+            + regime_adj
+        ),
+        1,
     )
 
     row = {
@@ -532,6 +638,9 @@ def process_stock(stock, bench_df, context, research_map, intraday_snapshot=Fals
         "research_score": research_score,
         "research_score_status": research_score_status,
         "execution_score": execution_score,
+        "regime_level": (regime or {}).get("level", "unknown"),
+        "regime_label": (regime or {}).get("label", REGIME_LABELS["unknown"]),
+        "regime_adjustment": regime_adj,
         **metrics,
         **gate,
         "state": state,
@@ -572,11 +681,13 @@ def main(now=None, intraday_snapshot=False):
             bench[ex] = None
             errors.append(f"benchmark {ex}: {exc} — relative-return metric withheld")
 
+    regime = market_regime(bench, context["expected_completed_session"])
+
     rows = []
     for stock in cfg["stocks"]:
         try:
             b = bench.get(stock["exchange"])
-            row = process_stock(stock, b, context, research_map, intraday_snapshot)
+            row = process_stock(stock, b, context, research_map, intraday_snapshot, regime=regime)
         except Exception as exc:
             errors.append(f'{stock["code"]}: {exc}')
             prev = old.get(stock["code"], {})
@@ -621,6 +732,7 @@ def main(now=None, intraday_snapshot=False):
         ).strftime("%Y-%m-%d %H:%M KST"),
         "market_state": context["market_state"],
         "expected_completed_session": context["expected_completed_session"],
+        "market_regime": regime,
         "source": SOURCE,
         "price_mode": "manual_snapshot" if intraday_snapshot else "completed_session",
         "notes": [
@@ -628,6 +740,7 @@ def main(now=None, intraday_snapshot=False):
             "stale/error/fallback can never produce green",
             "legacy F/E/V are audit-only until structured evidence is re-verified",
             "price decline alone does not increase valuation score",
+            "market regime (KOSPI/KOSDAQ vs MA20/MA60 + 20d return) modulates execution only: relative-overheat yardstick, bounded +/-10 execution adjustment, defense-mode setup blocks; invalidation and research verification are regime-independent",
         ],
         "errors": errors,
         "stocks": rows,

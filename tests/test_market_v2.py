@@ -226,3 +226,89 @@ def test_manual_snapshot_trigger_beyond_8pct_is_not_a_pass():
     )
     assert result["state"] == "yellow"
     assert result["live_triggered"] is False
+
+
+def _bench(closes_by_ex):
+    return {ex: frame(c) for ex, c in closes_by_ex.items()}
+
+
+def test_regime_attack_from_rising_indices():
+    up = list(np.linspace(100, 200, 200))
+    bench = _bench({"KS": up, "KQ": up})
+    expected = bench["KS"]["_session_date"].iloc[-1]
+    r = m.market_regime(bench, expected)
+    assert r["level"] == "attack"
+    assert r["execution_adjustment"] == 10.0
+    assert r["index_extension_ma20_pct"] > 0
+
+
+def test_regime_defense_from_falling_indices():
+    down = list(np.linspace(200, 100, 200))
+    bench = _bench({"KS": down, "KQ": down})
+    expected = bench["KS"]["_session_date"].iloc[-1]
+    r = m.market_regime(bench, expected)
+    assert r["level"] == "defense"
+    assert r["execution_adjustment"] == -10.0
+
+
+def test_regime_unknown_without_benchmarks():
+    r = m.market_regime({}, "2026-09-30")
+    assert r["level"] == "unknown"
+    assert r["execution_adjustment"] == 0.0
+
+
+def test_overheat_extension_is_relative_to_market():
+    d = frame([100.0] * 80)
+    metrics = {
+        "price": 122.0, "ma20": 100.0, "ma50": 95.0,
+        "rsi14_wilder": 60.0, "extension_ma20_pct": 22.0, "volume_ratio": 1.0,
+    }
+    setup = {"type": "trend", "buy": [130, 140], "trigger": 150, "stop": 90}
+    absolute = m.setup_gate(d, metrics, setup)
+    assert absolute["overheated"] is True
+    hot_market = m.setup_gate(d, metrics, setup, regime={
+        "level": "attack", "index_extension_ma20_pct": 15.0, "execution_adjustment": 10.0,
+    })
+    assert hot_market["overheated"] is False
+    assert hot_market["excess_extension_ma20_pct"] == 7.0
+    cool_market = m.setup_gate(d, metrics, setup, regime={
+        "level": "defense", "index_extension_ma20_pct": 5.0, "execution_adjustment": -10.0,
+    })
+    assert cool_market["overheated"] is True
+
+
+def test_defense_regime_blocks_breakout():
+    closes = [90.0] * 27 + [98.0, 99.0, 101.0]
+    volumes = [100.0] * 29 + [180.0]
+    highs = [91.0] * 27 + [99.0, 99.5, 102.0]
+    d = frame(closes, highs=highs, volumes=volumes)
+    b = frame(np.linspace(90, 105, 80))
+    t = m.technical_metrics(d, b)
+    t["rsi14_wilder"] = 60.0  # isolate the regime block; the RSI gate is tested separately
+    setup = {"type": "trend", "buy": [80, 85], "trigger": 100, "stop": 85}
+    neutral = m.setup_gate(d, t, setup)
+    assert neutral["setup_pass"] is True
+    defense = m.setup_gate(d, t, setup, regime={
+        "level": "defense", "index_extension_ma20_pct": 0.0, "execution_adjustment": -10.0,
+    })
+    assert defense["setup_pass"] is False
+    assert defense["regime_blocked"] == "breakout"
+    assert "방어" in defense["setup_reason"]
+
+
+def test_defense_regime_pullback_only_in_lower_half():
+    closes = list(np.linspace(80, 100, 79)) + [100.6]
+    lows = np.array(closes) - 0.5
+    lows[-2] = 99.1
+    d = frame(closes, lows=lows)
+    b = frame(np.linspace(90, 105, 80))
+    t = m.technical_metrics(d, b)
+    t["rsi14_wilder"] = 60.0
+    setup = {"type": "trend", "buy": [99, 101], "trigger": 105, "stop": 95}
+    neutral = m.setup_gate(d, t, setup)
+    assert neutral["setup_pass"] is True
+    defense = m.setup_gate(d, t, setup, regime={
+        "level": "defense", "index_extension_ma20_pct": 0.0, "execution_adjustment": -10.0,
+    })
+    assert defense["setup_pass"] is False
+    assert defense["regime_blocked"] == "pullback_upper_half"

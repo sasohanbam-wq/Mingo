@@ -6,7 +6,7 @@
 </style></head><body><main class="wrap">
 <div class="top"><div><div class="brand">MINGO INVESTMENT OS · V2</div><div id="updated" class="sub">데이터 불러오는 중…</div></div><div><a class="refresh" style="text-decoration:none;display:inline-block" href="https://github.com/sasohanbam-wq/Mingo/actions/workflows/market-refresh.yml" target="_blank" rel="noopener">⚡ 지금 가격으로 재계산</a> <button id="refreshBtn" class="refresh">↻ 결과 확인</button></div></div>
 <section><h1>오늘의 판단</h1><div class="sub">점수가 높아도 바로 사는 것이 아니다. <b>가격 조건과 기업 검증을 모두 통과한 🟢만 매수 검토 대상</b>이며, 🔵는 가격만 맞는 관찰 종목이다.</div></section>
-<div class="chips"><span class="chip live">Gate-first</span><span class="chip">⚡ 무료 수동 현재가</span><span id="sessionChip" class="chip">세션 확인중</span><span id="asofChip" class="chip">가격 기준일 확인중</span></div>
+<div class="chips"><span class="chip live">Gate-first</span><span class="chip">⚡ 무료 수동 현재가</span><span id="sessionChip" class="chip">세션 확인중</span><span id="asofChip" class="chip">가격 기준일 확인중</span><span id="regimeChip" class="chip">시장 레짐 확인중</span></div>
 <div id="verdict" class="notice">판단을 계산하는 중…</div>
 <div class="summary"><button class="go" data-jump="green"><small>🟢 매수 검토 가능</small><b id="greenCount">—</b></button><button class="watch" data-jump="blue"><small>🔵 가격관찰만</small><b id="blueCount">—</b></button><button data-jump="yellow"><small>🟡 기다림</small><b id="yellowCount">—</b></button><button data-jump="red"><small>🔴 제외/보류</small><b id="redCount">—</b></button></div>
 <div id="error" class="error"></div>
@@ -30,6 +30,7 @@
 <div class="minirow"><b>가치스윙</b><span>별도 상태로 분리; 추세매수와 동일 라벨 사용 금지</span></div>
 <div class="minirow"><b>기술점수</b><span>추세 45% · 지수 초과수익 30% · Wilder RSI 15% · 거래량 10%</span></div>
 <div class="minirow"><b>F/E/V</b><span>F 37.5% · E 37.5% · V 25%. 세 요인이 모두 verified일 때만 연구점수 생성</span></div><div class="minirow"><b>확정 🟢</b><span>셋업 Gate 통과 + 연구점수 70 이상 + 가격 데이터 유효</span></div>
+<div class="minirow"><b>시장 레짐</b><span>코스피·코스닥의 MA20/MA60 위치와 20일 수익률로 공격/중립/방어 판정. 과열은 절대 이격이 아니라 지수 대비 상대 이격으로 측정, 실행점수에 레짐 보정(공격 +10 · 방어 −10), 방어 국면에선 돌파 셋업 비활성화·눌림은 구간 하단에서만 허용. 손절 무효화와 기업 검증 기준은 레짐과 무관하게 유지됨</span></div>
 </div></details>
 
 <details><summary>🧾 기업점수 검증 현황</summary><div id="evidenceList" class="inside"></div></details>
@@ -48,13 +49,15 @@ function row(s){
  const snap=s.price_mode==='manual_snapshot';
  const priceLabel=s.live?'실시간':(snap?'수동조회':'완료세션');
  const timeLabel=s.live?(s.live_timestamp||'방금'):(snap?(s.price_timestamp||'방금'):(s.quote_as_of||'—'));
- return '<a class="stock" data-state="'+s.state+'" data-name="'+s.name.toLowerCase()+'" href="stocks/'+s.page+'"><div><b>'+s.name+'</b> <span class="ticker">'+s.code+'</span><div class="desc">'+s.theme+'</div><div class="meta">'+priceLabel+' '+fmt(s.price)+'원 · '+timeLabel+' · RSI '+(s.rsi14_wilder??'—')+'</div><div class="meta">'+s.setup_reason+'</div></div><div class="stockright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="scorebig">가격점수 '+(s.execution_score??'—')+'</div><div class="meta '+(ev==='verified'?'':'warn')+'">기업검증 '+(ev==='verified'?'완료':'미완료')+' · 연구 '+(s.research_score??'N/A')+'</div></div></a>';
+ return '<a class="stock" data-state="'+s.state+'" data-name="'+s.name.toLowerCase()+'" href="stocks/'+s.page+'"><div><b>'+s.name+'</b> <span class="ticker">'+s.code+'</span><div class="desc">'+s.theme+'</div><div class="meta">'+priceLabel+' '+fmt(s.price)+'원 · '+timeLabel+' · RSI '+(s.rsi14_wilder??'—')+'</div><div class="meta">'+s.setup_reason+'</div></div><div class="stockright"><span class="badge '+badgeClass(s.state)+'">'+actionText(s)+'</span><div class="scorebig">가격점수 '+(s.execution_score??'—')+((s.regime_adjustment)?' <span class="meta">레짐 '+(s.regime_adjustment>0?'+':'')+s.regime_adjustment+'</span>':'')+'</div><div class="meta '+(ev==='verified'?'':'warn')+'">기업검증 '+(ev==='verified'?'완료':'미완료')+' · 연구 '+(s.research_score??'N/A')+'</div></div></a>';
 }
 function render(d){
  DATA=d;
  document.getElementById('updated').textContent=(d.price_mode==='manual_snapshot'?'현재가 수동 갱신 ':'완료세션 계산 ')+(d.calculated_at_label||d.calculated_at||'—');
  document.getElementById('sessionChip').textContent='시장 '+(d.market_state||'—');
  document.getElementById('asofChip').textContent='완료세션 '+(d.expected_completed_session||'—');
+ const rg=d.market_regime;
+ document.getElementById('regimeChip').textContent=(!rg||rg.level==='unknown'||rg.index_extension_ma20_pct==null)?'시장 레짐 판정 불가':('시장 레짐 '+rg.label+' · 지수 MA20 이격 '+(rg.index_extension_ma20_pct>=0?'+':'')+rg.index_extension_ma20_pct+'% · 실행 보정 '+(rg.execution_adjustment>0?'+':'')+(rg.execution_adjustment??0));
  document.getElementById('count').textContent=d.stocks.length+'종목';
  const counts=Object.fromEntries(['green','blue','yellow','red'].map(x=>[x,d.stocks.filter(s=>s.state===x).length]));
  Object.entries(counts).forEach(([k,v])=>document.getElementById(k+'Count').textContent=v+'개');
