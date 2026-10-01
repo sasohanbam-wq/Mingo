@@ -1966,6 +1966,163 @@
         "종가차트/거래량/당일수급"
       ],
       "score_note": "미완료팩터는N/A.가격점수/매수게이트불변."
+    },
+    "192820": {
+      "name": "코스맥스",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "basis": [
+          "공시집계Q2매출7949억/OP737억확인.원회계표전체/현금흐름/정상화미완료."
+        ],
+        "sources": [
+          "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001436",
+          "https://www.awakeplus.co.kr/data/view/20260813001436"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "basis": [
+          "원컨센서스1/3개월표직접재검증전N/A.선별용수정율은완료점수아님."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "basis": [
+          "정상화이익/동일기준피어/순차입미검증."
+        ],
+        "sources": []
+      },
+      "research_score": null,
+      "provisional_research_score": null,
+      "review_note": "research/research/screen-2026-10-01.md",
+      "next_check": [
+        "전체재무/현금흐름",
+        "원EPS수정표/정상화밸류",
+        "오늘수급과종가셋업"
+      ],
+      "score_note": "부분분석카드추가,매수게이트승격아님."
+    },
+    "003160": {
+      "name": "디아이",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "basis": [
+          "Q2매출1686억/OP396억(공시집계). 삼성153억계약은2027말까지납기,올해수익확정아님."
+        ],
+        "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260814001182"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "basis": [
+          "원컨센서스1/3개월표직접재검증전N/A.선별용수정율은완료점수아님."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "basis": [
+          "정상화이익/동일기준피어/순차입미검증."
+        ],
+        "sources": []
+      },
+      "research_score": null,
+      "provisional_research_score": null,
+      "review_note": "research/research/screen-2026-10-01.md",
+      "next_check": [
+        "전체재무/현금흐름",
+        "원EPS수정표/정상화밸류",
+        "오늘수급과종가셋업"
+      ],
+      "score_note": "부분분석카드추가,매수게이트승격아님."
+    },
+    "131290": {
+      "name": "티에스이",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "basis": [
+          "Q2매출1888억/OP525억(공시집계). 전체현금흐름/정상화미검증."
+        ],
+        "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260814002616"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "basis": [
+          "원컨센서스1/3개월표직접재검증전N/A.선별용수정율은완료점수아님."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "basis": [
+          "정상화이익/동일기준피어/순차입미검증."
+        ],
+        "sources": []
+      },
+      "research_score": null,
+      "provisional_research_score": null,
+      "review_note": "research/research/screen-2026-10-01.md",
+      "next_check": [
+        "전체재무/현금흐름",
+        "원EPS수정표/정상화밸류",
+        "오늘수급과종가셋업"
+      ],
+      "score_note": "부분분석카드추가,매수게이트승격아님."
+    },
+    "010120": {
+      "name": "LS ELECTRIC",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "basis": [
+          "Q2OP1790억(+64.4%)회사IR. 1812억북미계약은자회사LSELECTRICAMERICA향2030납기초고압변압기공급."
+        ],
+        "sources": [
+          "https://www.ls-electric.com/ko/company/data/26_2Q_Results.pdf"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "basis": [
+          "원컨센서스1/3개월표직접재검증전N/A.선별용수정율은완료점수아님."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "basis": [
+          "정상화이익/동일기준피어/순차입미검증."
+        ],
+        "sources": []
+      },
+      "research_score": null,
+      "provisional_research_score": null,
+      "review_note": "research/research/screen-2026-10-01.md",
+      "next_check": [
+        "전체재무/현금흐름",
+        "원EPS수정표/정상화밸류",
+        "오늘수급과종가셋업"
+      ],
+      "score_note": "부분분석카드추가,매수게이트승격아님."
     }
   }
 }
