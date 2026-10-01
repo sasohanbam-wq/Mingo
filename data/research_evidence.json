@@ -367,6 +367,553 @@
         "consensus revision trend continuation",
         "valuation band re-check after 3Q"
       ]
+    },
+    "042000": {
+      "name": "카페24",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "C",
+        "as_of": "2026-10-01",
+        "basis": [
+          "이전 검증의 2Q OP 약82억원/YoY -26.7%는 집계자료와 부합."
+        ],
+        "sources": [
+          "https://stockeasy.intellio.kr/stock-analysis/stock-info/042000"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "공식 재무 원문 대조 및 비용레버리지 회복 실현 여부 미완료.",
+        "단기 주가 반등은 실적 회복 완료와 다름."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
+    },
+    "039030": {
+      "name": "이오테크닉스",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "C",
+        "as_of": "2026-10-01",
+        "basis": [
+          "안성 신규공장 완공시 생산능력 약2배 계획. 기존 공장이 이미2배 가동한다는 뜻이 아님.",
+          "이전 검증 2Q OP390.88억원은 집계자료와 부합."
+        ],
+        "sources": [
+          "https://zdnet.co.kr/view/?no=20260331161227",
+          "https://stockeasy.intellio.kr/stock-analysis/stock-info/039030"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "현재 공사/장비반입/가동률 및 매출전환 시점 확인 필요.",
+        "전사 추정치 변화·정상화 EPS·가치평가 미완료."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
+    },
+    "322000": {
+      "name": "HD현대에너지솔루션",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "C",
+        "as_of": "2026-10-01",
+        "basis": [
+          "2Q 매출1,650억원/OP361억원은 7/27 증권사 인용 기사와 부합.",
+          "앙골라 프로젝트 종료 이후 분기 전망을 별도로 제시. 종료분을 반복 신규 촉매로 취급하면 안 됨."
+        ],
+        "sources": [
+          "https://www.sidae.com/article/2026072708265342935",
+          "https://zdnet.co.kr/view/?no=20260724170453"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "경상OP306억원은 증권사 추정이지 공식 확정 세부수치가 아님.",
+        "일회성·고마진 프로젝트 분해와 후속 수주 재현성 확인 필요."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
+    },
+    "170920": {
+      "name": "엘티씨",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "C",
+        "as_of": "2026-10-01",
+        "basis": [
+          "연결 영업이익과 지배주주 순이익/EPS의 구분이 필요."
+        ],
+        "sources": [
+          "https://stockeasy.intellio.kr/stock-analysis/stock-info/170920"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "자회사 비지배지분 때문에 연결OP 성장을 지배EPS 성장으로 그대로 사용하지 않기.",
+        "공식 반기표 및 정상화 이익/주식수 재검증 필요."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
+    },
+    "053610": {
+      "name": "프로텍",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "C",
+        "as_of": "2026-10-01",
+        "basis": [
+          "디스펜서 본업과 PMT 등 자회사 실적 회복의 연결이익 기여를 구분해야 함."
+        ],
+        "sources": [
+          "https://stockeasy.intellio.kr/stock-analysis/stock-info/053610"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "각 부문/자회사 영업기여 공식 자료 대조, 최근 추정치 변화 및 밸류 미완료."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
+    },
+    "011560": {
+      "name": "세보엠이씨",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "C",
+        "as_of": "2026-10-01",
+        "basis": [
+          "반기보고서 공시요약:2Q 매출약2,898억원/OP181억원/순익151억원."
+        ],
+        "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260814000801",
+          "https://www.sebomec.com/kor/customer/finance.php"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "원 재무표 전체감사 아님. 순현금358억원 기준 재무상태표 미확인.",
+        "기계설비공사 이익률과 소프트웨어형 수익성을 혼동하지 않기."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
+    },
+    "039830": {
+      "name": "오로라",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "C",
+        "as_of": "2026-10-01",
+        "basis": [
+          "2Q 매출약912억원/OP122억원은 기존 집계 검증과 부합.",
+          "사옥매각은 추진 단계로 부채상환 완료와 다름."
+        ],
+        "sources": [
+          "https://www.thinkpool.com/stockDiscuss/039830/cont/11904907",
+          "https://www.etoday.co.kr/news/view/2628265",
+          "https://www.etoday.co.kr/news/view/2594277"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "2026E 매출/OP 전망 출처·날짜 상이. 현재 컨센서스로 확정하지 않기."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
+    },
+    "452430": {
+      "name": "사피엔반도체",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "C",
+        "as_of": "2026-10-01",
+        "basis": [
+          "2Q 매출약72.15억원/OP약3.12억원 흑자전환.",
+          "8/4 보도 공동개발·공급72억원 계약기간2026/7~2027/10."
+        ],
+        "sources": [
+          "http://www.dailyinvest.kr/news/articleView.html?idxno=72114"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "NRE/개발 계약을 당기양산 매출로 동일시하지 않기.",
+        "대형고객 양산확대는 전망. PER276.5 vs Fwd32.1의 기준 미확인."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
+    },
+    "108490": {
+      "name": "로보티즈",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "B",
+        "as_of": "2026-10-01",
+        "basis": [
+          "한국투자8/18 보고서의 출하량·생산 확대 전망은 실현 결과와 구분."
+        ],
+        "sources": [
+          "https://securities.koreainvestment.com/main/research/research/StrategyDetail.jsp?id=158402&jkGubun=6"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "상반기약20만대/하반기30만대는 보고서 추정·전망. 현재완료 생산능력으로 쓰지 않기.",
+        "본업OP와 투자손익, 정상화EPS 검증 필요."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
+    },
+    "000720": {
+      "name": "현대건설",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "C",
+        "as_of": "2026-10-01",
+        "basis": [
+          "보도:2Q OP2,618억원(+20.7%), H1 4,427억원(+2.8%), 수주잔고103.98조원."
+        ],
+        "sources": [
+          "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=AKR20260731089751527"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "원전옵션은 실제계약·진행률·마진으로 검증. 그룹전체 사업을즉시 해당회사EPS로 만들지 않기."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
+    },
+    "388050": {
+      "name": "지투파워",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "C",
+        "as_of": "2026-10-01",
+        "basis": [
+          "반기공시요약에서2Q 약104억원/OP약4억원, H1 약296억원/OP27억원."
+        ],
+        "sources": [
+          "https://www.awakeplus.co.kr/data/view/20260814000447"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "2026E1,050억원/133억원은 신뢰가능 컨센서스 원문 미확인.",
+        "하반기 집중인식·매출과 이익전달 위험 검증 필요."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
+    },
+    "083650": {
+      "name": "비에이치아이",
+      "overall_status": "incomplete",
+      "F": {
+        "score": null,
+        "status": "partial",
+        "grade": "A",
+        "as_of": "2026-10-01",
+        "basis": [
+          "회사공식:2Q 연결매출2,963억원/OP455억원, YoY약+75%/+123.1%.",
+          "기존수주 프로젝트의 매출인식 및 고마진 프로젝트 믹스 개선."
+        ],
+        "sources": [
+          "https://www.bhi.co.kr/notice/2770"
+        ]
+      },
+      "E": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 추정치 시계열/수정률 원문 미확인. 계획·촉매를 확정 EPS 성장으로 환산하지 않음."
+        ],
+        "sources": []
+      },
+      "V": {
+        "score": null,
+        "status": "N/A",
+        "grade": null,
+        "as_of": "2026-10-01",
+        "basis": [
+          "최신 주식수/순차입금/정상화 EPS/동일기준 비교밸류 검증 미완료."
+        ],
+        "sources": []
+      },
+      "next_check": [
+        "2026E1.2조/OP1,463억원 최신기관컨센서스 원문 미확인.",
+        "분기믹스가 연중 지속되는지, 정상화EPS/현금흐름/밸류 재검증 필요."
+      ],
+      "content_verification": {
+        "status": "facts_partially_verified",
+        "reviewed_at": "2026-10-01T10:58:00+09:00",
+        "execution_note": "이 자료는 기업 근거 업데이트. 현재 시세/종가·거래량·수급을 재확인하지 않은 신규 매수 신호가 아님."
+      }
     }
   }
 }
