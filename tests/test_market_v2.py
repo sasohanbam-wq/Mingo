@@ -410,3 +410,20 @@ def test_auto_snapshot_market_hours_matrix():
     # explicit flags always win
     assert m.should_auto_snapshot(at(3, 1000), explicit_snapshot=True) is True
     assert m.should_auto_snapshot(at(1, 1000), completed_only=True) is False
+
+
+def test_parse_stockeasy_rs_extracts_score_and_basis():
+    html = (
+        '<dl><div><dt class="text-xs text-fg-subtle">종합 RS</dt>'
+        '<dd class="mt-1 text-sm font-semibold tabular-nums text-fg">95</dd></div></dl>'
+        '<p>심텍은 KOSDAQ 반도체소재 업종 종목으로 시가총액 5.9조 원, '
+        '26.10.01 종가 154,500원(+2.79%)입니다.</p>'
+    )
+    parsed = m.parse_stockeasy_rs(html)
+    assert parsed == {"score": 95, "basis_date": "26.10.01", "basis_price": 154500}
+
+
+def test_parse_stockeasy_rs_missing_or_empty_returns_none():
+    assert m.parse_stockeasy_rs("") is None
+    assert m.parse_stockeasy_rs("<html>no rs here</html>") is None
+    assert m.parse_stockeasy_rs(None) is None

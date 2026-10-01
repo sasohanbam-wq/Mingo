@@ -1,6 +1,8 @@
 import json
 import os
+import re
 import argparse
+import urllib.request
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -15,6 +17,37 @@ EVIDENCE = os.path.join(ROOT, "data", "research_evidence.json")
 KST = ZoneInfo("Asia/Seoul")
 CAL = xcals.get_calendar("XKRX")
 SOURCE = "Yahoo Finance daily OHLCV via yfinance (completed regular session only)"
+STOCKEASY_RS_URL = "https://stockeasy.intellio.kr/stock-analysis/stock-info/{code}"
+STOCKEASY_RS_SOURCE = "StockEasy (stockeasy.intellio.kr) 종합 RS"
+
+
+def parse_stockeasy_rs(html):
+    """Extract the 종합 RS score and its basis close from a StockEasy summary page."""
+    if not html:
+        return None
+    m = re.search(r"종합 RS</dt><dd[^>]*>(\d+)</dd>", html)
+    if not m:
+        return None
+    basis = re.search(r"(\d{2}\.\d{2}\.\d{2}) 종가 ([\d,]+)원", html)
+    return {
+        "score": int(m.group(1)),
+        "basis_date": basis.group(1) if basis else None,
+        "basis_price": int(basis.group(2).replace(",", "")) if basis else None,
+    }
+
+
+def fetch_stockeasy_rs(code, timeout=10):
+    """Best-effort RS fetch; returns None on any failure (never raises)."""
+    try:
+        req = urllib.request.Request(
+            STOCKEASY_RS_URL.format(code=code),
+            headers={"User-Agent": "Mozilla/5.0 (Mingo dashboard RS sync)"},
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            html = resp.read().decode("utf-8", "ignore")
+        return parse_stockeasy_rs(html)
+    except Exception:
+        return None
 
 
 def clamp(x, lo=0.0, hi=100.0):
@@ -813,6 +846,24 @@ def main(now=None, intraday_snapshot=False, completed_only=False):
             }
         rows.append(row)
 
+    # RS (종합) comes from StockEasy summary pages, refreshed every run.
+    # On fetch failure, fall back to the previous run's value marked stale.
+    for row in rows:
+        rs = fetch_stockeasy_rs(row["code"])
+        if rs is not None:
+            row["rs_score"] = rs["score"]
+            row["rs_source"] = STOCKEASY_RS_SOURCE
+            row["rs_basis_date"] = rs["basis_date"]
+            row["rs_basis_price"] = rs["basis_price"]
+            row["rs_status"] = "live"
+        else:
+            prev = old.get(row["code"], {})
+            row["rs_score"] = prev.get("rs_score")
+            row["rs_source"] = prev.get("rs_source", STOCKEASY_RS_SOURCE)
+            row["rs_basis_date"] = prev.get("rs_basis_date")
+            row["rs_basis_price"] = prev.get("rs_basis_price")
+            row["rs_status"] = "stale_fallback" if prev.get("rs_score") is not None else "unavailable"
+
     priority = {"green": 0, "blue": 1, "yellow": 2, "red": 3, "gray": 4}
     rows.sort(
         key=lambda x: (
@@ -841,6 +892,7 @@ def main(now=None, intraday_snapshot=False, completed_only=False):
             "price decline alone does not increase valuation score",
             "market regime (KOSPI/KOSDAQ vs MA20/MA60 + 20d return) modulates execution only: relative-overheat yardstick, bounded +/-10 execution adjustment, defense-mode setup blocks; invalidation and research verification are regime-independent",
             "manual intraday snapshot never upgrades a verdict beyond the completed-session classification: it annotates zone/trigger touches, downgrades on MA20/invalidation breaks, and rejects implausible or stale ticks",
+            "RS (rs_score) is the 종합 RS published by StockEasy (stockeasy.intellio.kr) per-stock summary pages, fetched each run; on fetch failure the previous value is kept with rs_status=stale_fallback. RS is display/context only and does not enter execution or research scores",
         ],
         "errors": errors,
         "stocks": rows,
