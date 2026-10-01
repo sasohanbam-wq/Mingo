@@ -440,7 +440,7 @@ function apply(){
 async function refreshScores(){
  const b=document.getElementById('refreshBtn');b.disabled=true;b.textContent='↻ 불러오는 중';
  const RAW='https://raw.githubusercontent.com/sasohanbam-wq/Mingo/main/data/';
- const get=p=>fetch(RAW+p+'?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).catch(()=>null);
+ const get=async p=>{for(const base of ['data/',RAW]){try{const r=await fetch(base+p+'?t='+Date.now(),{cache:'no-store'});if(r.ok)return await r.json();}catch(e){}}return null;};
  try{
    const d=await get('live_scores.json');
    if(!d||d.version!==2)throw new Error('v2 score snapshot not ready');
