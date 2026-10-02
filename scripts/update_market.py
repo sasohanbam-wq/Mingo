@@ -448,35 +448,6 @@ def build_index_series(bench, n=60, completed_session=None):
     return out
 
 
-def attach_index_live(index_series):
-    """Display-only intraday overlay for the two benchmark index cards.
-
-    Muse 2026-10-01: mirrors the stock snapshot rule — a live index value
-    may be SHOWN next to the completed-session close, but the market regime
-    and every gate keep using completed-session closes only. Ticks beyond
-    +/-15% vs the completed close (far outside any real KRX index day) are
-    dropped as implausible.
-    """
-    for label, symbol in (("KOSPI", "^KS11"), ("KOSDAQ", "^KQ11")):
-        entry = (index_series or {}).get(label)
-        if not entry or not entry.get("close"):
-            continue
-        try:
-            price, ts = load_current_price(symbol)
-        except Exception:
-            continue
-        ref = float(entry["close"])
-        if not ref:
-            continue
-        change = (float(price) / ref - 1) * 100
-        if abs(change) > 15:
-            continue
-        entry["live_close"] = round(float(price), 2)
-        entry["live_change_pct"] = round(change, 2)
-        entry["live_timestamp"] = ts
-    return index_series
-
-
 def trailing_return(series, n):
     s = pd.Series(series, dtype=float).dropna()
     if len(s) <= n:
@@ -1199,8 +1170,7 @@ def main(now=None, intraday_snapshot=False, completed_only=False):
     regime = market_regime(bench, context["expected_completed_session"])
 
     index_series = build_index_series(bench, completed_session=context["expected_completed_session"])
-    if intraday_snapshot:
-        attach_index_live(index_series)
+    # 2026-10-02: index live overlay removed per user request — completed-session values only
 
     rows = []
     for stock in cfg["stocks"]:
