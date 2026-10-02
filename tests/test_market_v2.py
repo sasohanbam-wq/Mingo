@@ -611,3 +611,4 @@ def test_parse_stockeasy_sector_flow_slims_payload():
     assert m.parse_stockeasy_sector_flow(None) is None
 
 # retrigger 2026-10-01: signals rollout regeneration
+# retrigger 2026-10-02 09:06 KST: user-requested morning refresh at market open
