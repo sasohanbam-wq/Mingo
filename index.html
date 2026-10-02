@@ -203,9 +203,6 @@ summary{cursor:pointer;padding:15px 16px;font-weight:850}
 <div class="summary fadeup"><button class="go" data-jump="green"><small>🟢 매수 검토 가능</small><b id="greenCount">—</b></button><button class="watch" data-jump="blue"><small>🔵 가격관찰만</small><b id="blueCount">—</b></button><button class="wait" data-jump="yellow"><small>🟡 기다림</small><b id="yellowCount">—</b></button><button class="no" data-jump="red"><small>🔴 제외/보류</small><b id="redCount">—</b></button><button class="holdb" id="holdJump"><small>💼 보유</small><b id="holdCount">—</b></button></div>
 <div id="error" class="error"></div>
 
-<div class="sectionhead"><h2><span class="em">🔥</span> 오늘의 특징주</h2><span class="hint">급등 · RS · 거래량 · 트리거 — 데이터로 자동 선정</span></div>
-<section class="feat" id="feat"><div class="sk" style="height:172px"></div><div class="sk" style="height:172px"></div><div class="sk" style="height:172px"></div><div class="sk" style="height:172px"></div></section>
-
 <div class="sectionhead"><h2><span class="em">🗺️</span> 테마 지도</h2><span class="hint">테마를 누르면 해당 종목만 추려서 보여줍니다</span></div>
 <section class="themes" id="themes"><div class="sk" style="height:76px"></div><div class="sk" style="height:76px"></div><div class="sk" style="height:76px"></div><div class="sk" style="height:76px"></div></section>
 
@@ -366,7 +363,7 @@ function renderStrip(d){
   +'<div class="breadth"><i style="width:'+(valid.length?up/valid.length*100:0)+'%;background:#ff5c5c"></i><i style="width:'+(valid.length?fl/valid.length*100:0)+'%;background:#3d5a75"></i><i style="width:'+(valid.length?dn/valid.length*100:0)+'%;background:#4f8ff7"></i></div>'
   +'<div class="breadthLab"><span>▲ 상승 '+up+'</span><span>하락 '+dn+' ▼</span></div>'
   +flowLine(d.market_flow)+'</div>';
- document.getElementById('mstrip').innerHTML=card('코스피','KOSPI')+card('코스닥','KOSDAQ')+third;
+ document.getElementById('mstrip').innerHTML=third;document.getElementById('mstrip').style.gridTemplateColumns='1fr';
  document.querySelectorAll('#mstrip .mv[data-cu]').forEach(el=>{const v=parseFloat(el.dataset.cu);if(!isNaN(v)){const t0=performance.now();const step=t=>{const p=Math.min(1,(t-t0)/800),e=1-Math.pow(1-p,3);el.textContent=(v*e).toLocaleString('ko-KR',{minimumFractionDigits:2,maximumFractionDigits:2});if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}});
 }
 /* ---------- marquee ---------- */
@@ -374,27 +371,6 @@ function renderMarquee(d){
  const items=d.stocks.map(s=>'<span class="mq"><b>'+s.name+'</b><span class="p">'+fmt(s.price)+'원</span><span class="c '+chgCls(s.change_pct)+'">'+chgArrow(s.change_pct)+' '+fpct(s.change_pct)+'</span>'+(s.rs_score!=null?'<span class="rsbadge '+(s.rs_score>=90?'rsS':s.rs_score>=70?'rsA':s.rs_score>=50?'rsB':'rsC')+'">RS '+s.rs_score+'</span>':'')+'</span>').join('');
  document.getElementById('mqTrack').innerHTML=items+items;
  document.getElementById('marquee').style.display='block';
-}
-/* ---------- feature picks ---------- */
-function featCard(tag,ac,s,stat,statCls,reason){
- const vals=closes(s,30), col=s.change_pct>=0?'#ff5c5c':'#4f8ff7';
- return '<a class="fcard fadeup" style="--ac:'+ac+'" href="'+(s.research_note?'https://github.com/sasohanbam-wq/Mingo/blob/main/'+s.research_note:'stocks/'+s.page)+'"><div class="fk">'+tag+'</div><div class="fn">'+s.name+' <span class="ticker">'+s.code+'</span></div><div class="fstat '+(statCls||'')+'">'+stat+'</div><div class="freason">'+reason+'</div>'+sparkSVG(vals,220,38,col,'')+'</a>';
-}
-function renderFeat(d){
- const v=d.stocks.filter(s=>s.quote_valid&&s.price!=null);
- if(!v.length)return;
- const by=(fn)=>[...v].sort((a,b)=>(fn(b)??-1e9)-(fn(a)??-1e9))[0];
- const gainer=by(s=>s.change_pct), rsTop=by(s=>s.rs_score), volTop=by(s=>s.volume_ratio);
- let trig=v.find(s=>s.setup_pass)||v.find(s=>s.live_triggered);
- if(!trig){const cand=v.filter(s=>s.trigger&&s.price&&s.price<s.trigger);if(cand.length)trig=cand.sort((a,b)=>((a.trigger-a.price)/a.price)-((b.trigger-b.price)/b.price))[0]}
- let trigCard='';
- if(trig){const dist=trig.trigger&&trig.price?((trig.trigger-trig.price)/trig.price*100):0;
-  trigCard=featCard(trig.setup_pass?'🎯 셋업 통과':(trig.live_triggered?'🎯 트리거 터치':'🎯 트리거 임박'),'#ffd166',trig,trig.setup_pass?'돌파 확인 ✓':(trig.live_triggered?'장중 터치':'-'+Math.abs(dist).toFixed(1)+'%'),'',(trig.setup_pass||trig.live_triggered?'게이트를 통과했어요. 상세에서 손절선까지 확인하세요.':'트리거 '+fmt(trig.trigger)+'원까지 '+Math.abs(dist).toFixed(1)+'% — '+(trig.setup_reason||'')));}
- document.getElementById('feat').innerHTML=
-  featCard('🔥 오늘의 급등','#ff5c5c',gainer,fpct(gainer.change_pct),'up',(gainer.live?'장중 현재가 ':'완료세션 종가 ')+fmt(gainer.price)+'원 · '+(gainer.theme||''))
- +featCard('💪 RS 최강 · 스탁이지','#5ee6c4',rsTop,'RS '+rsTop.rs_score,'','상대강도 상위권. 20일 초과수익 '+fpct(rsTop.excess_return_20d_pct)+' · 60일 '+fpct(rsTop.excess_return_60d_pct))
- +featCard('📊 거래량 폭발','#73b7ff',volTop,Number(volTop.volume_ratio).toFixed(2)+'배','','20일 평균 대비 거래량. RSI '+(volTop.rsi14_wilder??'—')+' · '+(volTop.setup_reason||''))
- +trigCard;
 }
 /* ---------- themes ---------- */
 const BUCKETS=[
@@ -442,7 +418,7 @@ function render(d){
  const counts=Object.fromEntries(['green','blue','yellow','red'].map(x=>[x,d.stocks.filter(s=>s.state===x).length]));
  countUp(document.getElementById('greenCount'),counts.green,'개');countUp(document.getElementById('blueCount'),counts.blue,'개');countUp(document.getElementById('yellowCount'),counts.yellow,'개');countUp(document.getElementById('redCount'),counts.red,'개');countUp(document.getElementById('holdCount'),d.stocks.filter(s=>TAGS[s.code]&&TAGS[s.code].holding).length,'개');
  document.getElementById('verdict').innerHTML=counts.green?'<b>오늘 매수 검토 가능한 종목은 '+counts.green+'개입니다.</b> 그래도 종목 상세의 리스크와 손절선을 확인하세요.':'<b>현재 매수 검토 가능한 종목은 0개입니다.</b> 🔵 '+counts.blue+'개는 가격만 조건을 충족했을 뿐 기업 검증이 끝나지 않았으므로 매수 후보가 아닙니다.';
- renderStrip(d); renderMarquee(d); renderFeat(d); renderThemes(d); renderSignals(d); switchView();
+ renderStrip(d); renderMarquee(d); renderThemes(d); renderSignals(d); switchView();
 function pos52bar(s){
  if(s.se_pos52==null)return '';
  return '<div class="pos52"><div class="pbar"><span class="pdot" style="left:'+Math.max(0,Math.min(100,s.se_pos52))+'%"></span></div><div class="plab"><span>52주 저 '+fmt(s.se_low52)+'</span><span>현재 위치 '+s.se_pos52+'%</span><span>고 '+fmt(s.se_high52)+'</span></div></div>';
