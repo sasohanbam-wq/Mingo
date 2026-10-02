@@ -612,3 +612,4 @@ def test_parse_stockeasy_sector_flow_slims_payload():
 
 # retrigger 2026-10-01: signals rollout regeneration
 # retrigger 2026-10-02 09:06 KST: user-requested morning refresh at market open
+# morning-trigger: 2026-10-02 09:36 KST live-price reattach (user: index cards stale)
