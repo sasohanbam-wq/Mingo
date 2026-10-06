@@ -1,9 +1,9 @@
 {
   "version": 2,
   "model": "MINGO v2 gate-first",
-  "calculated_at": "2026-10-06T00:57:40+09:00",
-  "calculated_at_label": "2026-10-06 00:57 KST",
-  "market_state": "preopen",
+  "calculated_at": "2026-10-06T09:03:24+09:00",
+  "calculated_at_label": "2026-10-06 09:03 KST",
+  "market_state": "open",
   "expected_completed_session": "2026-10-02",
   "market_regime": {
     "level": "attack",
@@ -528,9 +528,9 @@
     }
   },
   "market_flow": {
-    "foreign": -2431,
-    "institution": 6977,
-    "individual": -19463,
+    "foreign": -1235,
+    "institution": 512,
+    "individual": 606,
     "source": "StockEasy (stockeasy.intellio.kr) 메인 투자자별 순매수",
     "status": "live"
   },
@@ -574,7 +574,7 @@
         "days_since_high52": 246,
         "new_high_close": false,
         "new_high_touch": false,
-        "se_pos52": 20
+        "se_pos52": 19
       },
       {
         "code": "033160",
@@ -592,7 +592,7 @@
         "days_since_high52": 90,
         "new_high_close": false,
         "new_high_touch": false,
-        "se_pos52": 41
+        "se_pos52": 42
       },
       {
         "code": "475960",
@@ -610,7 +610,7 @@
         "days_since_high52": 148,
         "new_high_close": false,
         "new_high_touch": false,
-        "se_pos52": 20
+        "se_pos52": 21
       },
       {
         "code": "011560",
@@ -646,7 +646,7 @@
         "days_since_high52": 88,
         "new_high_close": false,
         "new_high_touch": false,
-        "se_pos52": 51
+        "se_pos52": 48
       }
     ],
     "market_context": {
@@ -755,8 +755,8 @@
     "source": "Mingo tracked stocks · completed-session daily data (display only)"
   },
   "source": "Yahoo Finance daily OHLCV via yfinance (completed regular session only)",
-  "price_mode": "completed_session",
-  "snapshot_auto": false,
+  "price_mode": "manual_snapshot",
+  "snapshot_auto": true,
   "notes": [
     "completed regular-session daily data only",
     "stale/error/fallback can never produce green",
@@ -782,7 +782,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -1385,7 +1385,7 @@
           "ma50": 29573
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -1477,9 +1477,10 @@
       "setup_reason": "실제 돌파가격 종가 돌파 + 거래량 1.2× 이상",
       "state": "blue",
       "label": "🔵 셋업 통과 · F/E/V 검증중",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 77,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
+      "rs_basis_date": "26.10.06",
       "rs_basis_price": 33150,
       "rs_status": "live",
       "se_market_cap": "5,473억 원",
@@ -1543,7 +1544,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -2146,7 +2147,7 @@
           "ma50": 36737
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -2228,15 +2229,16 @@
       "setup_reason": "실제 돌파가격 종가 돌파 + 거래량 1.2× 이상",
       "state": "blue",
       "label": "🔵 셋업 통과 · F/E/V 검증중",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 88,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 43700,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 43500,
       "rs_status": "live",
-      "se_market_cap": "4,617억 원",
+      "se_market_cap": "4,595억 원",
       "se_high52": 60700,
       "se_low52": 15300,
-      "se_pos52": 63,
+      "se_pos52": 62,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -2294,7 +2296,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -2897,7 +2899,7 @@
           "ma50": 129236
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -2979,10 +2981,11 @@
       "setup_reason": "실제 돌파가격 종가 돌파 + 거래량 1.2× 이상",
       "state": "blue",
       "label": "🔵 셋업 통과 · F/E/V 검증중",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 90,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 139300,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 139700,
       "rs_status": "live",
       "se_market_cap": "1.6조 원",
       "se_high52": 256000,
@@ -3045,7 +3048,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -3648,7 +3651,7 @@
           "ma50": 31751
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -3726,15 +3729,16 @@
       "setup_reason": "실제 돌파가격 종가 돌파 + 거래량 1.2× 이상",
       "state": "blue",
       "label": "🔵 셋업 통과 · F/E/V 검증중",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 28,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 34300,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 34750,
       "rs_status": "live",
-      "se_market_cap": "4,622억 원",
+      "se_market_cap": "4,683억 원",
       "se_high52": 67800,
       "se_low52": 26000,
-      "se_pos52": 20,
+      "se_pos52": 21,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -3792,7 +3796,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -4395,7 +4399,7 @@
           "ma50": 48150
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -4487,6 +4491,7 @@
       "setup_reason": "매수구간 밖이며 돌파트리거 미통과",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 92,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.02",
@@ -4553,7 +4558,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -5156,7 +5161,7 @@
           "ma50": 46318
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -5234,10 +5239,11 @@
       "setup_reason": "매수구간 밖이며 돌파트리거 미통과",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 88,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 50000,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 50100,
       "rs_status": "live",
       "se_market_cap": "2.9조 원",
       "se_high52": 67500,
@@ -5300,7 +5306,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -5903,7 +5909,7 @@
           "ma50": 45756
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -5992,15 +5998,16 @@
       "setup_reason": "매수구간 밖이며 돌파트리거 미통과",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 89,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 53800,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 55000,
       "rs_status": "live",
-      "se_market_cap": "9,915억 원",
+      "se_market_cap": "1.0조 원",
       "se_high52": 70800,
       "se_low52": 21600,
-      "se_pos52": 65,
+      "se_pos52": 68,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -6058,7 +6065,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -6661,7 +6668,7 @@
           "ma50": 400740
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -6752,15 +6759,16 @@
       "setup_reason": "셋업 조건 미충족",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 89,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 532000,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 545000,
       "rs_status": "live",
-      "se_market_cap": "6.6조 원",
+      "se_market_cap": "6.7조 원",
       "se_high52": 623000,
       "se_low52": 219000,
-      "se_pos52": 77,
+      "se_pos52": 81,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -6818,7 +6826,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -7421,7 +7429,7 @@
           "ma50": 31053
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -7503,15 +7511,16 @@
       "setup_reason": "회복 트리거 미통과",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 73,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 37800,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 36900,
       "rs_status": "live",
-      "se_market_cap": "3,121억 원",
+      "se_market_cap": "3,046억 원",
       "se_high52": 56000,
       "se_low52": 19000,
-      "se_pos52": 51,
+      "se_pos52": 48,
       "se_quarterly": [
         {
           "q": "25.3Q",
@@ -7569,7 +7578,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -8172,7 +8181,7 @@
           "ma50": 261292
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -8254,6 +8263,7 @@
       "setup_reason": "셋업 조건 미충족",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 95,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.02",
@@ -8261,8 +8271,8 @@
       "rs_status": "live",
       "se_market_cap": "4.6조 원",
       "se_high52": 464000,
-      "se_low52": 108800,
-      "se_pos52": 57,
+      "se_low52": 135100,
+      "se_pos52": 53,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -8320,7 +8330,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -8923,7 +8933,7 @@
           "ma50": 23058
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -9005,12 +9015,13 @@
       "setup_reason": "매수구간 밖이며 돌파트리거 미통과",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 82,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 24400,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 24450,
       "rs_status": "live",
-      "se_market_cap": "2,461억 원",
+      "se_market_cap": "2,466억 원",
       "se_high52": 29300,
       "se_low52": 12470,
       "se_pos52": 71,
@@ -9071,7 +9082,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -9674,7 +9685,7 @@
           "ma50": 33469
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -9757,10 +9768,11 @@
       "setup_reason": "가치스윙 반전조건 미충족",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 82,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 33000,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 33050,
       "rs_status": "live",
       "se_market_cap": "2.8조 원",
       "se_high52": 44850,
@@ -9823,7 +9835,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -10426,7 +10438,7 @@
           "ma50": 9128
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -10507,15 +10519,16 @@
       "setup_reason": "회복 트리거 미통과",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 77,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 10150,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 10100,
       "rs_status": "live",
-      "se_market_cap": "1,899억 원",
+      "se_market_cap": "1,890억 원",
       "se_high52": 18460,
       "se_low52": 5350,
-      "se_pos52": 37,
+      "se_pos52": 36,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -10573,7 +10586,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -11176,7 +11189,7 @@
           "ma50": 46224
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -11254,10 +11267,11 @@
       "setup_reason": "가치스윙 반전조건 미충족",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 86,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 47550,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 47650,
       "rs_status": "live",
       "se_market_cap": "4.1조 원",
       "se_high52": 54700,
@@ -11320,7 +11334,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -11923,7 +11937,7 @@
           "ma50": 29653
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -12001,10 +12015,11 @@
       "setup_reason": "매수구간 밖이며 돌파트리거 미통과",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 84,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 29600,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 29900,
       "rs_status": "live",
       "se_market_cap": "1.3조 원",
       "se_high52": 67800,
@@ -12067,7 +12082,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -12670,7 +12685,7 @@
           "ma50": 17977
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -12754,15 +12769,16 @@
       "setup_reason": "가치스윙 반전조건 미충족",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 60,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 15730,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 16050,
       "rs_status": "live",
-      "se_market_cap": "1,693억 원",
+      "se_market_cap": "1,727억 원",
       "se_high52": 26400,
       "se_low52": 9040,
-      "se_pos52": 39,
+      "se_pos52": 40,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -12820,7 +12836,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -13423,7 +13439,7 @@
           "ma50": 115662
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -13503,10 +13519,11 @@
       "setup_reason": "회복 트리거 미통과",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 87,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 114100,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 114600,
       "rs_status": "live",
       "se_market_cap": "13조 원",
       "se_high52": 198400,
@@ -13569,7 +13586,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -14172,7 +14189,7 @@
           "ma50": 52315
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -14250,12 +14267,13 @@
       "setup_reason": "셋업 조건 미충족",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 25,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 53700,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 53800,
       "rs_status": "live",
-      "se_market_cap": "1.4조 원",
+      "se_market_cap": "1.5조 원",
       "se_high52": 125000,
       "se_low52": 42150,
       "se_pos52": 14,
@@ -14316,7 +14334,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -14919,7 +14937,7 @@
           "ma50": 53608
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -15002,15 +15020,16 @@
       "setup_reason": "가치스윙 반전조건 미충족",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 92,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 47500,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 49400,
       "rs_status": "live",
-      "se_market_cap": "6,844억 원",
+      "se_market_cap": "7,118억 원",
       "se_high52": 70700,
       "se_low52": 20150,
-      "se_pos52": 54,
+      "se_pos52": 58,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -15068,7 +15087,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -15671,7 +15690,7 @@
           "ma50": 57095
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -15752,15 +15771,16 @@
       "setup_reason": "회복 트리거 미통과",
       "state": "yellow",
       "label": "🟡 조건부/대기",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 78,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 59500,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 59000,
       "rs_status": "live",
       "se_market_cap": "1.8조 원",
       "se_high52": 114200,
       "se_low52": 33150,
-      "se_pos52": 33,
+      "se_pos52": 32,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -15818,7 +15838,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -16421,7 +16441,7 @@
           "ma50": 116668
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -16504,6 +16524,7 @@
       "setup_reason": "과열/이격 과다 — 신규 추격 금지",
       "state": "red",
       "label": "🔴 보류",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 96,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.02",
@@ -16511,7 +16532,7 @@
       "rs_status": "live",
       "se_market_cap": "6.4조 원",
       "se_high52": 171000,
-      "se_low52": 32800,
+      "se_low52": 33800,
       "se_pos52": 97,
       "se_quarterly": [
         {
@@ -16570,7 +16591,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -17173,7 +17194,7 @@
           "ma50": 64009
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -17260,15 +17281,16 @@
       "setup_reason": "과열/이격 과다 — 신규 추격 금지",
       "state": "red",
       "label": "🔴 보류",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 90,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 85000,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 85700,
       "rs_status": "live",
-      "se_market_cap": "7,650억 원",
+      "se_market_cap": "7,713억 원",
       "se_high52": 101900,
       "se_low52": 29000,
-      "se_pos52": 77,
+      "se_pos52": 78,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -17326,7 +17348,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -17929,7 +17951,7 @@
           "ma50": 36481
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -18007,15 +18029,16 @@
       "setup_reason": "과열/이격 과다 — 신규 추격 금지",
       "state": "red",
       "label": "🔴 보류",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 89,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 51300,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 52500,
       "rs_status": "live",
-      "se_market_cap": "3.4조 원",
+      "se_market_cap": "3.5조 원",
       "se_high52": 58500,
-      "se_low52": 19150,
-      "se_pos52": 82,
+      "se_low52": 19640,
+      "se_pos52": 85,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -18073,7 +18096,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -18676,7 +18699,7 @@
           "ma50": 6213
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -18757,15 +18780,16 @@
       "setup_reason": "과열/이격 과다 — 신규 추격 금지",
       "state": "red",
       "label": "🔴 보류",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 92,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 10140,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 9920,
       "rs_status": "live",
-      "se_market_cap": "4,444억 원",
+      "se_market_cap": "4,347억 원",
       "se_high52": 13100,
       "se_low52": 3790,
-      "se_pos52": 68,
+      "se_pos52": 66,
       "se_quarterly": [
         {
           "q": "25.3Q",
@@ -18823,7 +18847,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -19426,7 +19450,7 @@
           "ma50": 42079
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -19513,15 +19537,16 @@
       "setup_reason": "과열/이격 과다 — 신규 추격 금지",
       "state": "red",
       "label": "🔴 보류",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 71,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 52000,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 52300,
       "rs_status": "live",
       "se_market_cap": "2.7조 원",
       "se_high52": 72200,
       "se_low52": 31500,
-      "se_pos52": 50,
+      "se_pos52": 51,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -19579,7 +19604,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -20182,7 +20207,7 @@
           "ma50": 15077
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -20267,15 +20292,16 @@
       "setup_reason": "과열/이격 과다 — 신규 추격 금지",
       "state": "red",
       "label": "🔴 보류",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 88,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 19930,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 19950,
       "rs_status": "live",
-      "se_market_cap": "4,896억 원",
+      "se_market_cap": "4,901억 원",
       "se_high52": 37000,
       "se_low52": 7830,
-      "se_pos52": 41,
+      "se_pos52": 42,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -20333,7 +20359,7 @@
       "benchmark_as_of": "2026-10-02",
       "benchmark_status": "aligned",
       "expected_completed_session": "2026-10-02",
-      "session": "preopen",
+      "session": "open",
       "chart": [
         {
           "d": "07-07",
@@ -20936,7 +20962,7 @@
           "ma50": 16971
         }
       ],
-      "calculated_at": "2026-10-06T00:57:40+09:00",
+      "calculated_at": "2026-10-06T09:03:24+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -21020,15 +21046,16 @@
       "setup_reason": "과열/이격 과다 — 신규 추격 금지",
       "state": "red",
       "label": "🔴 보류",
+      "snapshot_status": "unavailable: RuntimeError",
       "rs_score": 22,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
-      "rs_basis_date": "26.10.02",
-      "rs_basis_price": 20700,
+      "rs_basis_date": "26.10.06",
+      "rs_basis_price": 20350,
       "rs_status": "live",
-      "se_market_cap": "5,005억 원",
+      "se_market_cap": "4,920억 원",
       "se_high52": 43950,
       "se_low52": 14870,
-      "se_pos52": 20,
+      "se_pos52": 19,
       "se_quarterly": [
         {
           "q": "26.2Q",
