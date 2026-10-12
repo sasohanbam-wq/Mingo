@@ -1,8 +1,8 @@
 {
   "version": 2,
   "model": "MINGO v2 gate-first",
-  "calculated_at": "2026-10-13T00:11:45+09:00",
-  "calculated_at_label": "2026-10-13 00:11 KST",
+  "calculated_at": "2026-10-13T01:42:12+09:00",
+  "calculated_at_label": "2026-10-13 01:42 KST",
   "market_state": "preopen",
   "expected_completed_session": "2026-10-12",
   "market_regime": {
@@ -1258,7 +1258,7 @@
           "ma50": 46632
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -2016,7 +2016,7 @@
           "ma50": 65107
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -2772,7 +2772,7 @@
           "ma50": 128758
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -3523,7 +3523,7 @@
           "ma50": 413750
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -4283,7 +4283,7 @@
           "ma50": 29744
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -5044,7 +5044,7 @@
           "ma50": 36588
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -5795,7 +5795,7 @@
           "ma50": 46921
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -6542,7 +6542,7 @@
           "ma50": 121344
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -7294,7 +7294,7 @@
           "ma50": 37478
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -8041,7 +8041,7 @@
           "ma50": 42590
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -8797,7 +8797,7 @@
           "ma50": 15341
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -9551,7 +9551,7 @@
           "ma50": 6534
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -10301,7 +10301,7 @@
           "ma50": 17333
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -11054,7 +11054,7 @@
           "ma50": 23148
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -11805,7 +11805,7 @@
           "ma50": 48696
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -12566,7 +12566,7 @@
           "ma50": 46746
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -13313,7 +13313,7 @@
           "ma50": 52051
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -14060,7 +14060,7 @@
           "ma50": 33554
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -14812,7 +14812,7 @@
           "ma50": 267114
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -15563,7 +15563,7 @@
           "ma50": 31599
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -16314,7 +16314,7 @@
           "ma50": 9334
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -17064,7 +17064,7 @@
           "ma50": 31719
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -17811,7 +17811,7 @@
           "ma50": 53513
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -18563,7 +18563,7 @@
           "ma50": 116020
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -19312,7 +19312,7 @@
           "ma50": 57778
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -20062,7 +20062,7 @@
           "ma50": 29555
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -20809,7 +20809,7 @@
           "ma50": 17746
         }
       ],
-      "calculated_at": "2026-10-13T00:11:45+09:00",
+      "calculated_at": "2026-10-13T01:42:12+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
