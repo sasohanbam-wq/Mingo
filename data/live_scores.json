@@ -1,8 +1,8 @@
 {
   "version": 2,
   "model": "MINGO v2 gate-first",
-  "calculated_at": "2026-10-28T20:33:44+09:00",
-  "calculated_at_label": "2026-10-28 20:33 KST",
+  "calculated_at": "2026-10-28T22:58:59+09:00",
+  "calculated_at_label": "2026-10-28 22:58 KST",
   "market_state": "closed",
   "expected_completed_session": "2026-10-28",
   "market_regime": {
@@ -532,7 +532,7 @@
     "institution": 12507,
     "individual": -21392,
     "source": "StockEasy (stockeasy.intellio.kr) 메인 투자자별 순매수",
-    "status": "live"
+    "status": "stale_fallback"
   },
   "signals": {
     "as_of": "2026-10-28",
@@ -687,7 +687,7 @@
         }
       ],
       "source": "StockEasy (stockeasy.intellio.kr) 52주 신고가 섹터 흐름",
-      "status": "live"
+      "status": "stale_fallback"
     },
     "source": "Mingo tracked stocks · completed-session daily data (display only)"
   },
@@ -1322,7 +1322,7 @@
           "ma50": 7720
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -1407,7 +1407,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 10930,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "4,873억 원",
       "se_high52": 13100,
       "se_low52": 3790,
@@ -1456,7 +1456,7 @@
         "반도체",
         "메모리"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "엘티씨",
@@ -2072,7 +2072,7 @@
           "ma50": 36489
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -2158,7 +2158,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 40850,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "4,315억 원",
       "se_high52": 60700,
       "se_low52": 15300,
@@ -2207,7 +2207,7 @@
         "반도체",
         "반도체소재"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "로보티즈",
@@ -2823,7 +2823,7 @@
           "ma50": 274470
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -2909,7 +2909,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 275500,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "4.0조 원",
       "se_high52": 464000,
       "se_low52": 155000,
@@ -2958,7 +2958,7 @@
         "기계",
         "로봇/자동화"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "토모큐브",
@@ -3574,7 +3574,7 @@
           "ma50": 30708
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -3656,7 +3656,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 31950,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "4,306억 원",
       "se_high52": 67800,
       "se_low52": 26000,
@@ -3705,7 +3705,7 @@
         "바이오",
         "의료기기"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "세보엠이씨",
@@ -4321,7 +4321,7 @@
           "ma50": 23112
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -4407,7 +4407,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 21000,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "2,118억 원",
       "se_high52": 29300,
       "se_low52": 12470,
@@ -4456,7 +4456,7 @@
         "반도체",
         "반도체장비"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "카페24",
@@ -5072,7 +5072,7 @@
           "ma50": 17254
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -5160,7 +5160,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 17240,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "4,168억 원",
       "se_high52": 40600,
       "se_low52": 14870,
@@ -5209,7 +5209,7 @@
         "IT/플랫폼",
         "인터넷/플랫폼"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "심텍",
@@ -5825,7 +5825,7 @@
           "ma50": 130100
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -5912,7 +5912,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 127500,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "5.0조 원",
       "se_high52": 182600,
       "se_low52": 42500,
@@ -5961,7 +5961,7 @@
         "반도체",
         "반도체소재"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "이오테크닉스",
@@ -6577,7 +6577,7 @@
           "ma50": 445260
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -6672,7 +6672,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 418500,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "5.2조 원",
       "se_high52": 623000,
       "se_low52": 219000,
@@ -6721,7 +6721,7 @@
         "반도체",
         "반도체장비"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "GST",
@@ -7337,7 +7337,7 @@
           "ma50": 47020
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -7430,7 +7430,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 45600,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "8,404억 원",
       "se_high52": 70800,
       "se_low52": 22800,
@@ -7479,7 +7479,7 @@
         "반도체",
         "반도체장비"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "프로텍",
@@ -8095,7 +8095,7 @@
           "ma50": 66890
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -8186,7 +8186,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 65500,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "5,895억 원",
       "se_high52": 101900,
       "se_low52": 29000,
@@ -8235,7 +8235,7 @@
         "반도체",
         "반도체장비"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "GS건설",
@@ -8851,7 +8851,7 @@
           "ma50": 33602
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -8938,7 +8938,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 30050,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "2.6조 원",
       "se_high52": 44850,
       "se_low52": 17880,
@@ -8987,7 +8987,7 @@
         "인프라",
         "건설"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "엘앤씨바이오",
@@ -9603,7 +9603,7 @@
           "ma50": 26118
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -9685,7 +9685,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 24950,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "6,729억 원",
       "se_high52": 125000,
       "se_low52": 23400,
@@ -9734,7 +9734,7 @@
         "바이오",
         "의료기기"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "하나마이크론",
@@ -10350,7 +10350,7 @@
           "ma50": 39731
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -10432,7 +10432,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 37100,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "2.5조 원",
       "se_high52": 58500,
       "se_low52": 22400,
@@ -10481,7 +10481,7 @@
         "반도체",
         "반도체장비"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "현대해상",
@@ -11097,7 +11097,7 @@
           "ma50": 47882
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -11179,7 +11179,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 42150,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "3.6조 원",
       "se_high52": 54700,
       "se_low52": 26100,
@@ -11228,7 +11228,7 @@
         "금융",
         "보험"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "동진쎄미켐",
@@ -11844,7 +11844,7 @@
           "ma50": 43255
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -11935,7 +11935,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 41600,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "2.1조 원",
       "se_high52": 72200,
       "se_low52": 31500,
@@ -11984,7 +11984,7 @@
         "반도체",
         "반도체소재"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "엠케이전자",
@@ -12600,7 +12600,7 @@
           "ma50": 15354
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -12689,7 +12689,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 14560,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "3,577억 원",
       "se_high52": 37000,
       "se_low52": 7830,
@@ -12738,7 +12738,7 @@
         "반도체",
         "반도체소재"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "DN오토모티브",
@@ -13354,7 +13354,7 @@
           "ma50": 46194
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -13436,7 +13436,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 40150,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "2.3조 원",
       "se_high52": 67500,
       "se_low52": 21550,
@@ -13485,7 +13485,7 @@
         "자동차",
         "자동차부품"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "지엔씨에너지",
@@ -14101,7 +14101,7 @@
           "ma50": 48017
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -14197,7 +14197,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 37450,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "6,160억 원",
       "se_high52": 59000,
       "se_low52": 18350,
@@ -14246,7 +14246,7 @@
         "전력/에너지",
         "전력기기"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "월덱스",
@@ -14862,7 +14862,7 @@
           "ma50": 29216
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -14958,7 +14958,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 26000,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "4,293억 원",
       "se_high52": 35400,
       "se_low52": 20700,
@@ -15007,7 +15007,7 @@
         "반도체",
         "반도체소재"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "지투파워",
@@ -15623,7 +15623,7 @@
           "ma50": 9644
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -15708,7 +15708,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 7960,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "1,489억 원",
       "se_high52": 18460,
       "se_low52": 5350,
@@ -15757,7 +15757,7 @@
         "전력/에너지",
         "전력기기"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "현대건설",
@@ -16373,7 +16373,7 @@
           "ma50": 114004
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -16457,7 +16457,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 95500,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "11조 원",
       "se_high52": 198400,
       "se_low52": 55700,
@@ -16506,7 +16506,7 @@
         "인프라",
         "건설"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "오로라",
@@ -17122,7 +17122,7 @@
           "ma50": 15799
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -17210,7 +17210,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 13570,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "1,461억 원",
       "se_high52": 25550,
       "se_low52": 9040,
@@ -17259,7 +17259,7 @@
         "소비재",
         "패션/의류"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "HD현대에너지솔루션",
@@ -17875,7 +17875,7 @@
           "ma50": 127276
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -17961,7 +17961,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 84300,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "9,442억 원",
       "se_high52": 256000,
       "se_low52": 46950,
@@ -18010,7 +18010,7 @@
         "전력/에너지",
         "신재생"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "비츠로셀",
@@ -18626,7 +18626,7 @@
           "ma50": 27905
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -18708,7 +18708,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 23850,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "1.1조 원",
       "se_high52": 67800,
       "se_low52": 16420,
@@ -18757,7 +18757,7 @@
         "2차전지",
         "배터리셀"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "비에이치아이",
@@ -19373,7 +19373,7 @@
           "ma50": 57785
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -19458,7 +19458,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 44650,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "1.4조 원",
       "se_high52": 114200,
       "se_low52": 33150,
@@ -19507,7 +19507,7 @@
         "전력/에너지",
         "전력기기"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "사피엔반도체",
@@ -20123,7 +20123,7 @@
           "ma50": 32127
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -20209,7 +20209,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 26350,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "2,175억 원",
       "se_high52": 56000,
       "se_low52": 19000,
@@ -20258,7 +20258,7 @@
         "반도체",
         "비메모리/팹리스"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     },
     {
       "name": "SGC에너지",
@@ -20874,7 +20874,7 @@
           "ma50": 51081
         }
       ],
-      "calculated_at": "2026-10-28T20:33:44+09:00",
+      "calculated_at": "2026-10-28T22:58:59+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -20961,7 +20961,7 @@
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.10.28",
       "rs_basis_price": 33300,
-      "rs_status": "live",
+      "rs_status": "stale_fallback",
       "se_market_cap": "4,798억 원",
       "se_high52": 70700,
       "se_low52": 20150,
@@ -21010,7 +21010,7 @@
         "전력/에너지",
         "신재생"
       ],
-      "se_status": "live"
+      "se_status": "stale_fallback"
     }
   ]
 }
