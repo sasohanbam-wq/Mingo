@@ -1,8 +1,8 @@
 {
   "version": 2,
   "model": "MINGO v2 gate-first",
-  "calculated_at": "2026-10-30T20:34:25+09:00",
-  "calculated_at_label": "2026-10-30 20:34 KST",
+  "calculated_at": "2026-10-30T23:04:41+09:00",
+  "calculated_at_label": "2026-10-30 23:04 KST",
   "market_state": "closed",
   "expected_completed_session": "2026-10-30",
   "market_regime": {
@@ -546,9 +546,9 @@
         "price": 26000.0,
         "change_pct": -11.56,
         "rs_score": 87,
-        "volume_ratio": 2.1,
+        "volume_ratio": 2.02,
         "state": "red",
-        "execution_score": 14.1,
+        "execution_score": 13.9,
         "high52": 44850.0,
         "high52_date": "2026-04-28",
         "dist_high52_pct": -42.03,
@@ -1277,7 +1277,7 @@
           "ma50": 36550
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -2028,7 +2028,7 @@
           "ma50": 7873
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -2778,7 +2778,7 @@
           "ma50": 30468
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -3520,12 +3520,12 @@
           "h": 44450,
           "l": 42300,
           "c": 43950,
-          "v": 272163,
+          "v": 239066,
           "ma20": 44445,
           "ma50": 47860
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -3554,7 +3554,7 @@
       "legacy_PR": 52,
       "research_score": null,
       "research_score_status": "N/A — one or more F/E/V factors are not verified",
-      "execution_score": 36.8,
+      "execution_score": 36.7,
       "regime_level": "defense",
       "regime_label": "방어",
       "regime_adjustment": -10.0,
@@ -3568,7 +3568,7 @@
       "rsi14_wilder": 46.0,
       "excess_return_20d_pct": 8.0,
       "excess_return_60d_pct": 27.4,
-      "volume_ratio": 0.84,
+      "volume_ratio": 0.74,
       "high52_actual": 54700.0,
       "high52_date": "2026-09-03",
       "new_high_close": false,
@@ -3576,7 +3576,7 @@
       "dist_high52_pct": -19.65,
       "days_since_high52": 37,
       "extension_ma20_pct": -1.1,
-      "technical_score": 56.8,
+      "technical_score": 56.7,
       "trend_score": 39.0,
       "relative_return_score": 85.3,
       "relative_return_status": "valid",
@@ -4272,7 +4272,7 @@
           "ma50": 130548
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -5024,7 +5024,7 @@
           "ma50": 274080
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -5770,12 +5770,12 @@
           "h": 41650,
           "l": 39900,
           "c": 40250,
-          "v": 101610,
+          "v": 97691,
           "ma20": 42548,
           "ma50": 45657
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -5818,7 +5818,7 @@
       "rsi14_wilder": 42.7,
       "excess_return_20d_pct": -1.2,
       "excess_return_60d_pct": 12.9,
-      "volume_ratio": 0.49,
+      "volume_ratio": 0.47,
       "high52_actual": 67500.0,
       "high52_date": "2026-08-18",
       "new_high_close": false,
@@ -6522,7 +6522,7 @@
           "ma50": 445680
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -7282,7 +7282,7 @@
           "ma50": 17200
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -8035,7 +8035,7 @@
           "ma50": 26042
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -8782,7 +8782,7 @@
           "ma50": 46739
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -9540,7 +9540,7 @@
           "ma50": 66718
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -10296,7 +10296,7 @@
           "ma50": 39676
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -11036,14 +11036,14 @@
           "d": "10-30",
           "o": 29000,
           "h": 29000,
-          "l": 25400,
+          "l": 25450,
           "c": 26000,
-          "v": 1793838,
+          "v": 1729107,
           "ma20": 29878,
           "ma50": 33289
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -11077,7 +11077,7 @@
       "legacy_PR": 52,
       "research_score": null,
       "research_score_status": "N/A — one or more F/E/V factors are not verified",
-      "execution_score": 14.1,
+      "execution_score": 13.9,
       "regime_level": "defense",
       "regime_label": "방어",
       "regime_adjustment": -10.0,
@@ -11087,11 +11087,11 @@
       "ma50": 33289.0,
       "ma200": 29025.85,
       "high20_actual": 34500.0,
-      "low20_actual": 25400.0,
+      "low20_actual": 25450.0,
       "rsi14_wilder": 32.1,
       "excess_return_20d_pct": -7.2,
       "excess_return_60d_pct": 24.0,
-      "volume_ratio": 2.1,
+      "volume_ratio": 2.02,
       "high52_actual": 44850.0,
       "high52_date": "2026-04-28",
       "new_high_close": false,
@@ -11099,7 +11099,7 @@
       "dist_high52_pct": -42.03,
       "days_since_high52": 123,
       "extension_ma20_pct": -13.0,
-      "technical_score": 34.1,
+      "technical_score": 33.9,
       "trend_score": 17.0,
       "relative_return_score": 52.3,
       "relative_return_status": "valid",
@@ -11795,7 +11795,7 @@
           "ma50": 43124
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -12551,7 +12551,7 @@
           "ma50": 22987
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -13302,7 +13302,7 @@
           "ma50": 15216
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -14056,7 +14056,7 @@
           "ma50": 27578
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -14803,7 +14803,7 @@
           "ma50": 29083
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -15564,7 +15564,7 @@
           "ma50": 125384
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -16315,7 +16315,7 @@
           "ma50": 47145
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -17076,7 +17076,7 @@
           "ma50": 57111
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -17826,7 +17826,7 @@
           "ma50": 32008
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -18572,12 +18572,12 @@
           "h": 89400,
           "l": 81600,
           "c": 83600,
-          "v": 742097,
+          "v": 678504,
           "ma20": 98130,
           "ma50": 112914
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -18622,7 +18622,7 @@
       "rsi14_wilder": 28.9,
       "excess_return_20d_pct": -12.7,
       "excess_return_60d_pct": 1.5,
-      "volume_ratio": 1.23,
+      "volume_ratio": 1.12,
       "high52_actual": 198400.0,
       "high52_date": "2026-04-08",
       "new_high_close": false,
@@ -18630,7 +18630,7 @@
       "dist_high52_pct": -57.86,
       "days_since_high52": 137,
       "extension_ma20_pct": -14.8,
-      "technical_score": 18.2,
+      "technical_score": 18.0,
       "trend_score": 3.0,
       "relative_return_score": 25.7,
       "relative_return_status": "valid",
@@ -19319,14 +19319,14 @@
           "d": "10-30",
           "o": 13020,
           "h": 13200,
-          "l": 12520,
+          "l": 12580,
           "c": 12950,
           "v": 24185,
           "ma20": 14420,
           "ma50": 15399
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -19371,7 +19371,7 @@
       "ma50": 15398.8,
       "ma200": 15532.1,
       "high20_actual": 16480.0,
-      "low20_actual": 12520.0,
+      "low20_actual": 12580.0,
       "rsi14_wilder": 34.8,
       "excess_return_20d_pct": -0.7,
       "excess_return_60d_pct": -41.6,
@@ -20074,12 +20074,12 @@
           "h": 31650,
           "l": 29700,
           "c": 30450,
-          "v": 65971,
+          "v": 64551,
           "ma20": 39785,
           "ma50": 49812
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
@@ -20127,7 +20127,7 @@
       "rsi14_wilder": 24.5,
       "excess_return_20d_pct": -20.4,
       "excess_return_60d_pct": -12.2,
-      "volume_ratio": 0.77,
+      "volume_ratio": 0.75,
       "high52_actual": 70700.0,
       "high52_date": "2026-04-24",
       "new_high_close": false,
@@ -20831,7 +20831,7 @@
           "ma50": 9523
         }
       ],
-      "calculated_at": "2026-10-30T20:34:25+09:00",
+      "calculated_at": "2026-10-30T23:04:41+09:00",
       "data_status": "valid",
       "quote_valid": true,
       "evidence_status": "incomplete",
