@@ -1,8 +1,8 @@
 {
   "version": 2,
   "model": "MINGO v2 gate-first",
-  "calculated_at": "2026-11-03T00:34:27+09:00",
-  "calculated_at_label": "2026-11-03 00:34 KST",
+  "calculated_at": "2026-11-03T02:00:19+09:00",
+  "calculated_at_label": "2026-11-03 02:00 KST",
   "market_state": "preopen",
   "expected_completed_session": "2026-11-02",
   "market_regime": {
@@ -1271,7 +1271,7 @@
           "ma50": 36550
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -2022,7 +2022,7 @@
           "ma50": 7873
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -2772,7 +2772,7 @@
           "ma50": 130548
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -3524,7 +3524,7 @@
           "ma50": 47860
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -4271,7 +4271,7 @@
           "ma50": 45657
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -5018,7 +5018,7 @@
           "ma50": 445680
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -5778,7 +5778,7 @@
           "ma50": 39676
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -6525,7 +6525,7 @@
           "ma50": 46739
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -7283,7 +7283,7 @@
           "ma50": 66718
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -8039,7 +8039,7 @@
           "ma50": 17200
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -8126,12 +8126,12 @@
       "rs_score": 12,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.11.02",
-      "rs_basis_price": 16560,
+      "rs_basis_price": 16500,
       "rs_status": "live",
-      "se_market_cap": "4,004억 원",
+      "se_market_cap": "3,989억 원",
       "se_high52": 40600,
       "se_low52": 14870,
-      "se_pos52": 7,
+      "se_pos52": 6,
       "se_quarterly": [
         {
           "q": "26.2Q",
@@ -8792,7 +8792,7 @@
           "ma50": 30468
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -9539,7 +9539,7 @@
           "ma50": 274080
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -10290,7 +10290,7 @@
           "ma50": 15216
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -11044,7 +11044,7 @@
           "ma50": 43124
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -11800,7 +11800,7 @@
           "ma50": 26042
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -12547,7 +12547,7 @@
           "ma50": 33289
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -13299,7 +13299,7 @@
           "ma50": 22987
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -14050,7 +14050,7 @@
           "ma50": 29083
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -14811,7 +14811,7 @@
           "ma50": 47145
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -15572,7 +15572,7 @@
           "ma50": 49812
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -16324,7 +16324,7 @@
           "ma50": 125384
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -17075,7 +17075,7 @@
           "ma50": 27578
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -17822,7 +17822,7 @@
           "ma50": 57111
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -18572,7 +18572,7 @@
           "ma50": 32008
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -18654,15 +18654,15 @@
       "setup_reason": "무효화 가격 이탈",
       "state": "gray",
       "label": "⚪ 데이터 확인 필요",
-      "rs_score": 65,
+      "rs_score": 70,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.11.02",
-      "rs_basis_price": 24500,
+      "rs_basis_price": 24300,
       "rs_status": "live",
-      "se_market_cap": "2,023억 원",
+      "se_market_cap": "2,006억 원",
       "se_high52": 56000,
       "se_low52": 19000,
-      "se_pos52": 15,
+      "se_pos52": 14,
       "se_quarterly": [
         {
           "q": "25.3Q",
@@ -19323,7 +19323,7 @@
           "ma50": 112914
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -20072,7 +20072,7 @@
           "ma50": 15399
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -20825,7 +20825,7 @@
           "ma50": 9523
         }
       ],
-      "calculated_at": "2026-11-03T00:34:27+09:00",
+      "calculated_at": "2026-11-03T02:00:19+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -20906,15 +20906,15 @@
       "setup_reason": "무효화 가격 이탈",
       "state": "gray",
       "label": "⚪ 데이터 확인 필요",
-      "rs_score": 75,
+      "rs_score": 80,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.11.02",
-      "rs_basis_price": 7370,
+      "rs_basis_price": 7460,
       "rs_status": "live",
-      "se_market_cap": "1,379억 원",
+      "se_market_cap": "1,396억 원",
       "se_high52": 18460,
       "se_low52": 5350,
-      "se_pos52": 15,
+      "se_pos52": 16,
       "se_quarterly": [
         {
           "q": "26.2Q",
