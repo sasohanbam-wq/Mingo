@@ -1,8 +1,8 @@
 {
   "version": 2,
   "model": "MINGO v2 gate-first",
-  "calculated_at": "2026-11-17T01:20:06+09:00",
-  "calculated_at_label": "2026-11-17 01:20 KST",
+  "calculated_at": "2026-11-17T01:57:46+09:00",
+  "calculated_at_label": "2026-11-17 01:57 KST",
   "market_state": "preopen",
   "expected_completed_session": "2026-11-16",
   "market_regime": {
@@ -1267,7 +1267,7 @@
           "ma50": 32125
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -1387,16 +1387,16 @@
       ],
       "se_disclosures": [
         {
+          "title": "타인에대한채무보증결정",
+          "date": "2026-11-16"
+        },
+        {
           "title": "분기보고서 (2026.09)",
           "date": "2026-11-13"
         },
         {
           "title": "특수관계인과의내부거래",
           "date": "2026-11-13"
-        },
-        {
-          "title": "기업설명회(IR)개최(안내공시)",
-          "date": "2026-11-10"
         }
       ],
       "se_sectors": [
@@ -2019,7 +2019,7 @@
           "ma50": 65813
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -2775,7 +2775,7 @@
           "ma50": 130086
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -3527,7 +3527,7 @@
           "ma50": 44086
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -4288,7 +4288,7 @@
           "ma50": 22131
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -5039,7 +5039,7 @@
           "ma50": 45675
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -5797,7 +5797,7 @@
           "ma50": 268820
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -6548,7 +6548,7 @@
           "ma50": 28373
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -6651,6 +6651,12 @@
       "se_pos52": 34,
       "se_quarterly": [
         {
+          "q": "26.3Q",
+          "revenue": 765,
+          "op": 144,
+          "net": -31
+        },
+        {
           "q": "26.2Q",
           "revenue": 754,
           "op": 165,
@@ -6667,12 +6673,6 @@
           "revenue": 841,
           "op": 224,
           "net": 298
-        },
-        {
-          "q": "25.3Q",
-          "revenue": 669,
-          "op": 130,
-          "net": 130
         }
       ],
       "se_disclosures": [
@@ -7309,7 +7309,7 @@
           "ma50": 31057
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -8060,7 +8060,7 @@
           "ma50": 14478
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -8155,6 +8155,12 @@
       "se_pos52": 29,
       "se_quarterly": [
         {
+          "q": "26.3Q",
+          "revenue": 1092,
+          "op": 194,
+          "net": 93
+        },
+        {
           "q": "26.2Q",
           "revenue": 912,
           "op": 122,
@@ -8171,12 +8177,6 @@
           "revenue": 834,
           "op": 93,
           "net": 16
-        },
-        {
-          "q": "25.3Q",
-          "revenue": 879,
-          "op": 167,
-          "net": 87
         }
       ],
       "se_disclosures": [
@@ -8813,7 +8813,7 @@
           "ma50": 8254
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -8894,15 +8894,15 @@
       "setup_reason": "추세형이지만 MA20 아래 — 매수 Gate 실패",
       "state": "gray",
       "label": "⚪ 데이터 확인 필요",
-      "rs_score": 90,
+      "rs_score": 86,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.11.16",
-      "rs_basis_price": 6450,
+      "rs_basis_price": 6410,
       "rs_status": "live",
-      "se_market_cap": "2,888억 원",
+      "se_market_cap": "2,870억 원",
       "se_high52": 13100,
       "se_low52": 3790,
-      "se_pos52": 29,
+      "se_pos52": 28,
       "se_quarterly": [
         {
           "q": "25.3Q",
@@ -9563,7 +9563,7 @@
           "ma50": 44177
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -10315,7 +10315,7 @@
           "ma50": 433730
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -11075,7 +11075,7 @@
           "ma50": 43614
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -11164,6 +11164,12 @@
       "se_pos52": 28,
       "se_quarterly": [
         {
+          "q": "26.3Q",
+          "revenue": 11590,
+          "op": 1595,
+          "net": 748
+        },
+        {
           "q": "26.2Q",
           "revenue": 12493,
           "op": 2054,
@@ -11180,12 +11186,6 @@
           "revenue": 9686,
           "op": 1500,
           "net": 1062
-        },
-        {
-          "q": "25.3Q",
-          "revenue": 9187,
-          "op": 1187,
-          "net": 785
         }
       ],
       "se_disclosures": [
@@ -11822,7 +11822,7 @@
           "ma50": 38192
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -12569,7 +12569,7 @@
           "ma50": 45964
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -13316,7 +13316,7 @@
           "ma50": 36001
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -14067,7 +14067,7 @@
           "ma50": 14601
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -14821,7 +14821,7 @@
           "ma50": 41797
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -14919,6 +14919,12 @@
       "se_pos52": 9,
       "se_quarterly": [
         {
+          "q": "26.3Q",
+          "revenue": 3708,
+          "op": 611,
+          "net": 1129
+        },
+        {
           "q": "26.2Q",
           "revenue": 3469,
           "op": 593,
@@ -14935,12 +14941,6 @@
           "revenue": 3092,
           "op": 416,
           "net": 293
-        },
-        {
-          "q": "25.3Q",
-          "revenue": 2999,
-          "op": 404,
-          "net": 232
         }
       ],
       "se_disclosures": [
@@ -15577,7 +15577,7 @@
           "ma50": 29686
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -16324,7 +16324,7 @@
           "ma50": 115370
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -17075,7 +17075,7 @@
           "ma50": 25920
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -17822,7 +17822,7 @@
           "ma50": 52501
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -18572,7 +18572,7 @@
           "ma50": 25654
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -19319,7 +19319,7 @@
           "ma50": 16914
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -19406,9 +19406,9 @@
       "rs_score": 9,
       "rs_source": "StockEasy (stockeasy.intellio.kr) 종합 RS",
       "rs_basis_date": "26.11.16",
-      "rs_basis_price": 14050,
+      "rs_basis_price": 13980,
       "rs_status": "live",
-      "se_market_cap": "3,397억 원",
+      "se_market_cap": "3,380억 원",
       "se_high52": 40600,
       "se_low52": 13700,
       "se_pos52": 1,
@@ -20072,7 +20072,7 @@
           "ma50": 105984
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
@@ -20821,7 +20821,7 @@
           "ma50": 9074
         }
       ],
-      "calculated_at": "2026-11-17T01:20:06+09:00",
+      "calculated_at": "2026-11-17T01:57:46+09:00",
       "data_status": "stale",
       "quote_valid": false,
       "evidence_status": "incomplete",
